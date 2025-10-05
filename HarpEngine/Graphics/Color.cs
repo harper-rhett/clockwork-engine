@@ -63,6 +63,13 @@ public struct Color
 		return color;
 	}
 
+	public Color SetAlpha(byte alpha)
+	{
+		Color color = this;
+		color.A = alpha;
+		return color;
+	}
+
 	public static Color Lerp(Color from, Color to, float amount)
 	{
 		Color color = new();

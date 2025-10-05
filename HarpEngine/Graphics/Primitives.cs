@@ -89,6 +89,8 @@ public static class Primitives
 	private static extern void DrawRectanglePro(Rectangle rectangle, Vector2 origin, float rotation, Color color);
 	public static void DrawRectangle(Rectangle rectangle, Vector2 origin, float rotation, Color color) => DrawRectanglePro(rectangle, origin, rotation, color);
 
+	public static void DrawSquare(int x, int y, int size, Color color) => DrawRectangle(x, y, size, size, color);
+
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
 	private static extern void DrawRectangleGradientV(int x, int y, int width, int height, Color topColor, Color bottomColor);
 	public static void DrawRectangleGradientVertical(int x, int y, int width, int height, Color topColor, Color bottomColor) => DrawRectangleGradientV(x, y, width, height, topColor, bottomColor);
@@ -117,6 +119,8 @@ public static class Primitives
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
 	private static extern void DrawRectangleRoundedLinesEx(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color);
 	public static void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color) => DrawRectangleRoundedLinesEx(rectangle, roundness, segments, lineThickness, color);
+
+	// Triangles
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
 	public static extern void DrawTriangle(Vector2 cornerOne, Vector2 cornerTwo, Vector2 cornerThree, Color color);
