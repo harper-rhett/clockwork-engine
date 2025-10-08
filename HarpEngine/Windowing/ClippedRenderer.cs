@@ -37,7 +37,8 @@ internal class ClippedRenderer : WindowRenderer
 
 		if (widerWindow)
 		{
-			float clippedGameHeight = gameHeight / windowAspect;
+			float aspectScale = gameAspect / windowAspect;
+			float clippedGameHeight = gameHeight * aspectScale;
 			gameRectangle.X = 0;
 			gameRectangle.Y = (gameHeight - clippedGameHeight) / 2f;
 			gameRectangle.Width = gameWidth;
@@ -45,8 +46,8 @@ internal class ClippedRenderer : WindowRenderer
 		}
 		else if (widerGame)
 		{
-			float clippedGameWidth = gameWidth * windowAspect;
-			//float aspectScale = gameAspect / windowAspect;
+			float aspectScale = gameAspect / windowAspect;
+			float clippedGameWidth = gameWidth / aspectScale;
 			gameRectangle.X = (gameWidth - clippedGameWidth) / 2f;
 			gameRectangle.Y = 0;
 			gameRectangle.Width = clippedGameWidth;
