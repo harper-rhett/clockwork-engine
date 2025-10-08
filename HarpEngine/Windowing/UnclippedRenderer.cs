@@ -20,11 +20,11 @@ internal class UnclippedRenderer : WindowRenderer
 	internal override void Update(RenderTexture gameRenderTexture)
 	{
 		// Initialize
-		RefreshValues(gameRenderTexture);
+		RefreshDimensions(gameRenderTexture);
 		gameRectangle = new(0, 0, gameWidth, -gameHeight);
 
 		// Only calculate viewport rectangle if window has been resized
-		if (DidResize) CalculateViewportRectangle(windowWidth, windowHeight);
+		if (DidResize) CalculateScale();
 		CalculateMouse();
 	}
 
@@ -35,14 +35,35 @@ internal class UnclippedRenderer : WindowRenderer
 		gameRenderTexture.Texture.Draw(gameRectangle, viewportRectangle, Vector2.Zero, 0, Colors.White);
 	}
 
-	private void CalculateViewportRectangle(int windowWidth, int windowHeight)
+	private void CalculateScale()
 	{
 		viewportRectangle = new();
-		int minimumDimension = Math.Min(windowWidth, windowHeight);
-		viewportRectangle.X = (windowWidth - minimumDimension) / 2f;
-		viewportRectangle.Y = (windowHeight - minimumDimension) / 2f;
-		viewportRectangle.Width = minimumDimension;
-		viewportRectangle.Height = minimumDimension;
+
+		float gameAspect = (float)gameWidth / gameHeight;
+		float windowAspect = (float)windowWidth / windowHeight;
+		bool widerWindow = windowAspect > gameAspect;
+		bool widerGame = windowAspect < gameAspect;
+
+		if (widerWindow)
+		{
+			float viewportWidth = windowHeight * gameAspect;
+			viewportRectangle.X = (windowWidth - viewportWidth) / 2f;
+			viewportRectangle.Y = 0;
+			viewportRectangle.Width = viewportWidth;
+			viewportRectangle.Height = windowHeight;
+		}
+		else if (widerGame)
+		{
+			float viewportHeight = windowWidth / gameAspect;
+			viewportRectangle.X = 0;
+			viewportRectangle.Y = (windowHeight - viewportHeight) / 2f;
+			viewportRectangle.Width = windowWidth;
+			viewportRectangle.Height = viewportHeight;
+		}
+		else
+		{
+			viewportRectangle = new(0, 0, windowWidth, windowHeight);
+		}
 	}
 
 	private void CalculateMouse()
