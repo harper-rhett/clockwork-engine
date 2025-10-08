@@ -4,8 +4,6 @@ public delegate void Particle2DInitializer(ref Particle2D particle);
 
 public static partial class ParticleInitializers
 {
-	private static Random random = new();
-
 	public static Particle2DInitializer OverridePosition(Vector2 position)
 	{
 		return (ref Particle2D particle) => particle.Position = position;
@@ -68,7 +66,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			float speed = random.NextFloat(minimumSpeed, maximumSpeed);
+			float speed = Generate.Float(minimumSpeed, maximumSpeed);
 			Vector2 direction = Vector2.Normalize(particle.Velocity);
 			particle.Velocity = direction * speed;
 		};
@@ -78,7 +76,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			Vector2 direction = random.NextVector2();
+			Vector2 direction = Generate.Vector2();
 			particle.Velocity = direction;
 		};
 	}
@@ -93,7 +91,7 @@ public static partial class ParticleInitializers
 		return (ref Particle2D particle) =>
 		{
 			Vector2 direction = Vector2.Normalize(particle.Velocity);
-			float distance = random.NextFloat() * maxRadius;
+			float distance = Generate.Float() * maxRadius;
 			particle.Position += direction * distance;
 		};
 	}
@@ -102,8 +100,8 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			Vector2 direction = random.NextVector2();
-			float distance = random.NextFloat() * maxRadius;
+			Vector2 direction = Generate.Vector2();
+			float distance = Generate.Float() * maxRadius;
 			particle.Position += direction * distance;
 		};
 	}
@@ -112,7 +110,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			float angle = random.NextFloat(-halfConicAngle, halfConicAngle);
+			float angle = Generate.Float(-halfConicAngle, halfConicAngle);
 			Matrix3x2 rotationMatrix = Matrix3x2.CreateRotation(float.DegreesToRadians(angle));
 			particle.Velocity = Vector2.Transform(direction, rotationMatrix);
 		};
@@ -120,14 +118,14 @@ public static partial class ParticleInitializers
 
 	public static Particle2DInitializer RandomizeRotation()
 	{
-		return (ref Particle2D particle) => particle.Rotation = random.NextDegrees();
+		return (ref Particle2D particle) => particle.Rotation = Generate.Degrees();
 	}
 
 	public static Particle2DInitializer RandomizeRotationSpeed(float minimumRotation, float maximumRotation)
 	{
 		return (ref Particle2D particle) =>
 		{
-			particle.RotationSpeed = random.NextFloat(minimumRotation, maximumRotation);
+			particle.RotationSpeed = Generate.Float(minimumRotation, maximumRotation);
 		};
 	}
 
@@ -135,7 +133,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			particle.Lifespan = random.NextFloat(minimumLifespan, maximumLifespan);
+			particle.Lifespan = Generate.Float(minimumLifespan, maximumLifespan);
 		};
 	}
 }

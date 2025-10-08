@@ -28,6 +28,7 @@ public static class Mouse
 
 	public static int GameX => Window.Renderer.MouseGameX;
 	public static int GameY => Window.Renderer.MouseGameY;
+	public static Vector2 GamePosition => new(GameX, GameY);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
 	private static extern Vector2 GetMouseDelta();

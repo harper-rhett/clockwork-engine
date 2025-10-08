@@ -7,6 +7,7 @@ public class RectangleShape : Entity
 	public int Width;
 	public int Height;
 	public Color Color;
+	public Rectangle Rectangle => new(Transform.WorldPosition, Width, Height);
 
 	public RectangleShape(Scene scene, int width, int height, Color color) : base(scene)
 	{
@@ -17,7 +18,9 @@ public class RectangleShape : Entity
 
 	public override void Draw()
 	{
-		Rectangle rectangle = new(Transform.WorldPosition, Width, Height);
-		Primitives.DrawRectangle(rectangle, Origin, Transform.WorldRotation, Color);
+		Primitives.DrawRectangle(Rectangle, Origin, Transform.WorldRotation, Color);
 	}
+
+	public bool CollidesWith(Rectangle rectangle) => Collision.RectangleOnRectangle(Rectangle, rectangle);
+	public bool CollidesWith(RectangleShape rectangleShape) => Collision.RectangleOnRectangle(Rectangle, rectangleShape.Rectangle);
 }
