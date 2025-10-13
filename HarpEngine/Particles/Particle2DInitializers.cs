@@ -76,7 +76,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			Vector2 direction = Generate.Vector2();
+			Vector2 direction = Generate.UnitVector2();
 			particle.Velocity = direction;
 		};
 	}
@@ -100,7 +100,7 @@ public static partial class ParticleInitializers
 	{
 		return (ref Particle2D particle) =>
 		{
-			Vector2 direction = Generate.Vector2();
+			Vector2 direction = Generate.UnitVector2();
 			float distance = Generate.Float() * maxRadius;
 			particle.Position += direction * distance;
 		};

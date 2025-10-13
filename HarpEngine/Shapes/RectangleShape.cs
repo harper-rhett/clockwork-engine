@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Shapes;
 
-public class RectangleShape : Entity, ICollidesWithRectangle
+public class RectangleShape : Entity, ICollidesWithRectangle, ICollidesWithCircle
 {
 	public Transform2D Transform = new();
 	public Vector2 Origin = Vector2.Zero;
@@ -24,4 +24,7 @@ public class RectangleShape : Entity, ICollidesWithRectangle
 	public bool CollidesWithPoint(Vector2 position) => Collision.PointInRectangle(position, Rectangle);
 	public bool CollidesWithRectangle(Rectangle rectangle) => Collision.RectangleOnRectangle(Rectangle, rectangle);
 	public bool CollidesWithRectangle(RectangleShape rectangleShape) => Collision.RectangleOnRectangle(Rectangle, rectangleShape.Rectangle);
+
+	public bool CollidesWithCircle(Vector2 circlePosition, float circleRadius) => Collision.CircleOnRectangle(circlePosition, circleRadius, Rectangle);
+	public bool CollidesWithCircle(CircleShape circleShape) => Collision.CircleOnRectangle(circleShape.Transform.WorldPosition, circleShape.Radius, Rectangle);
 }

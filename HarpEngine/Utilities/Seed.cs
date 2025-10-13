@@ -60,7 +60,7 @@
 			return NextFloat() * 360f;
 		}
 
-		public Vector2 NextVector2()
+		public Vector2 NextUnitVector2()
 		{
 			float radians = NextRadians();
 			float x = MathF.Cos(radians);

@@ -19,5 +19,5 @@ public static class Generate
 	public static bool Bool() => seed.NextBool();
 	public static float Radians() => seed.NextRadians();
 	public static float Degrees() => seed.NextDegrees();
-	public static Vector2 Vector2() => seed.NextVector2();
+	public static Vector2 UnitVector2() => seed.NextUnitVector2();
 }

@@ -42,4 +42,31 @@ public static class Collision
 		bool doesNotCollide = leftEdgePastRightEdge || rightEdgeBeforeLeftEdge || topEdgePastBottomEdge || bottomEdgeBeforeTopEdge;
 		return !doesNotCollide;
 	}
+
+	public static bool CircleOnRectangle(Vector2 circlePosition, float circleRadius, Rectangle rectangle)
+	{
+		// Precalculate edges
+		float rightEdge = rectangle.X + rectangle.Width;
+		float bottomEdge = rectangle.Y + rectangle.Height;
+
+		// Get left or right edge to check
+		float xEdge;
+		if (circlePosition.X < rectangle.X) xEdge = rectangle.X;
+		else if (circlePosition.X > rightEdge) xEdge = rightEdge;
+		else xEdge = circlePosition.X;
+
+		// Get top or bottom edge to check
+		float yEdge;
+		if (circlePosition.Y < rectangle.Y) yEdge = rectangle.Y;
+		else if (circlePosition.Y > bottomEdge) yEdge = bottomEdge;
+		else yEdge = circlePosition.Y;
+
+		// Get distance
+		float xDistance = circlePosition.X - xEdge;
+		float yDistance = circlePosition.Y - yEdge;
+		float distance = float.Sqrt(xDistance * xDistance + yDistance * yDistance);
+
+		// Check for collision
+		return distance <= circleRadius;
+	}
 }
