@@ -5,6 +5,11 @@ public class Camera2D : Camera
 	// General
 	private RaylibCamera2D raylibCamera;
 	public Transform2D Transform = new();
+	public Vector2 Offset
+	{
+		get => raylibCamera.Offset;
+		set => raylibCamera.Offset = value;
+	}
 
 	// World space transitions
 	private Vector2 originalWorldPosition;
