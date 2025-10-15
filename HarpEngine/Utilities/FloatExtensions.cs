@@ -2,17 +2,17 @@
 
 public static class FloatExtensions
 {
-	public static int GetRounded(this float value)
+	public static int Rounded(this float value)
 	{
 		return (int)float.Round(value);
 	}
 
-	public static int GetFloored(this float value)
+	public static int Floored(this float value)
 	{
 		return (int)float.Floor(value);
 	}
 
-	public static int GetCeiled(this float value)
+	public static int Ceiled(this float value)
 	{
 		return (int)float.Ceiling(value);
 	}
