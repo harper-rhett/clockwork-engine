@@ -42,6 +42,7 @@ public unsafe struct Shader : IDisposable
 	public static Shader LoadFromCode(string vertexCode, string fragmentCode) => LoadShaderFromMemory(vertexCode, fragmentCode);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsShaderValid(Shader shader);
 	public bool IsValid => IsShaderValid(this);
 

@@ -18,6 +18,7 @@ public unsafe struct Texture : IDisposable
 	public static Texture LoadFromImage(Image image) => LoadTextureFromImage(image);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsTextureValid(Texture texture);
 	public bool IsValid => IsTextureValid(this);
 

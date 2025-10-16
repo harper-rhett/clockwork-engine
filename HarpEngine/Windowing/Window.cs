@@ -36,6 +36,7 @@ public unsafe static class Window
 	public static void Close() => CloseWindow();
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool WindowShouldClose();
 	internal static bool ShouldClose() => WindowShouldClose();
 

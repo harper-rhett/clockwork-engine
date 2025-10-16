@@ -10,6 +10,7 @@ public struct AudioStream : IDisposable
 	public uint Channels;
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsAudioStreamValid(AudioStream audioStream);
 	public bool IsValid => IsAudioStreamValid(this);
 
@@ -17,6 +18,7 @@ public struct AudioStream : IDisposable
 	private static extern void UnloadAudioStream(AudioStream audioStream);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsAudioStreamProcessed(AudioStream audioStream);
 	public bool IsProcessed => IsAudioStreamProcessed(this);
 
@@ -33,6 +35,7 @@ public struct AudioStream : IDisposable
 	public void Resume() => ResumeAudioStream(this);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsAudioStreamPlaying(AudioStream audioStream);
 	public bool IsPlaying => IsAudioStreamPlaying(this);
 

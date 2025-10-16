@@ -20,6 +20,7 @@ public struct RenderTexture : IDisposable
 	public static RenderTexture Load(int width, int height) => LoadRenderTexture(width, height);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsRenderTextureValid(RenderTexture renderTexture);
 	public bool IsValid => IsRenderTextureValid(this);
 

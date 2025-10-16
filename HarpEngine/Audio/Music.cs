@@ -19,6 +19,7 @@ public unsafe struct Music : IDisposable
 	public static Music Load(string filePath) => LoadMusicStream(filePath);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsMusicValid(Music music);
 	public bool IsValid => IsMusicValid(this);
 
@@ -30,6 +31,7 @@ public unsafe struct Music : IDisposable
 	public void Play() => PlayMusicStream(this);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsMusicStreamPlaying(Music music);
 	public bool IsPlaying => IsMusicStreamPlaying(this);
 

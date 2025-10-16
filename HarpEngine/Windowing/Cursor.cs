@@ -19,6 +19,7 @@ internal class Cursor
 	public static void Disable() => DisableCursor();
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsCursorOnScreen();
 	public static bool IsOnScreen => IsCursorOnScreen();
 }

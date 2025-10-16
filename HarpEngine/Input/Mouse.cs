@@ -3,14 +3,17 @@
 public static class Mouse
 {
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsMouseButtonPressed(MouseButton mouseButton);
 	public static bool IsButtonPressed(MouseButton mouseButton) => IsMouseButtonPressed(mouseButton);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsMouseButtonDown(MouseButton mouseButton);
 	public static bool IsButtonDown(MouseButton mouseButton) => IsMouseButtonDown(mouseButton);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsMouseButtonReleased(MouseButton mouseButton);
 	public static bool IsButtonReleased(MouseButton mouseButton) => IsMouseButtonReleased(mouseButton);
 

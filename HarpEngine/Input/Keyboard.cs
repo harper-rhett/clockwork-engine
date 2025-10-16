@@ -3,15 +3,19 @@
 public static class Keyboard
 {
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyPressed(KeyboardKey key);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyRepeating(KeyboardKey key);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyDown(KeyboardKey key);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyReleased(KeyboardKey key);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]

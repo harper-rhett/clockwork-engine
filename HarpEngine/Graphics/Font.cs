@@ -26,6 +26,7 @@ public unsafe struct Font : IDisposable
 	public static Font Load(Image image, Color key, int firstCharacter) => LoadFontFromImage(image, key, firstCharacter);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsFontValid(Font font);
 	public bool IsValid => IsFontValid(this);
 

@@ -11,6 +11,7 @@ public unsafe struct Sound : IDisposable
 	public static Sound Load(string filePath) => LoadSound(filePath);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsSoundValid(Sound sound);
 	public bool IsValid => IsSoundValid(this);
 
@@ -34,6 +35,7 @@ public unsafe struct Sound : IDisposable
 	public void Resume() => ResumeSound(this);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsSoundPlaying(Sound sound);
 	public bool IsPlaying => IsSoundPlaying(this);
 

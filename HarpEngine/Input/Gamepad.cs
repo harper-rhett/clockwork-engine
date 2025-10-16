@@ -16,6 +16,7 @@ public class Gamepad
 	}
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsGamepadAvailable(int gamepadIndex);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
@@ -23,14 +24,17 @@ public class Gamepad
 	public string Name => GetGamepadName(index);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsGamepadButtonPressed(int gamepadIndex, GamepadButton button);
 	public bool IsButtonPressed(GamepadButton button) => IsGamepadButtonPressed(index, button);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsGamepadButtonDown(int gamepadIndex, GamepadButton button);
 	public bool IsButtonDown(GamepadButton button) => IsGamepadButtonDown(index, button);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsGamepadButtonReleased(int gamepadIndex, GamepadButton button);
 	public bool IsButtonReleased(GamepadButton button) => IsGamepadButtonReleased(index, button);
 

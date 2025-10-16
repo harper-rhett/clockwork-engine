@@ -22,6 +22,7 @@ public unsafe partial struct Image : IDisposable
 	public static Image LoadFromTexture(Texture texture) => LoadImageFromTexture(texture);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsImageValid(Image image);
 	public bool IsValid => IsImageValid(this);
 
@@ -29,6 +30,7 @@ public unsafe partial struct Image : IDisposable
 	private static extern void UnloadImage(Image image);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool ExportImage(Image image, string fileName);
 	public void Export(string fileName, out bool success)
 	{
