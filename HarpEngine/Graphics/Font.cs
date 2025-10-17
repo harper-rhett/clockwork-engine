@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace HarpEngine.Graphics;
+﻿namespace HarpEngine.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct Font : IDisposable

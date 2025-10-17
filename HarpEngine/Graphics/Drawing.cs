@@ -14,23 +14,18 @@ public enum BlendMode
 
 public static class Drawing
 {
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void ClearBackground(Color color);
-	public static void Clear(Color color) => ClearBackground(color);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ClearBackground")]
+	public static extern void Clear(Color color);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void BeginDrawing();
-	public static void Begin() => BeginDrawing();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginDrawing")]
+	public static extern void Begin();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void EndDrawing();
-	public static void End() => EndDrawing();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndDrawing")]
+	public static extern void End();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void BeginBlendMode(BlendMode blendMode);
-	public static void BeginBlending(BlendMode blendMode) => BeginBlendMode(blendMode);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginBlendMode")]
+	public static extern void BeginBlending(BlendMode blendMode);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void EndBlendMode();
-	public static void EndBlending() => EndBlendMode();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndBlending")]
+	public static extern void EndBlending();
 }
