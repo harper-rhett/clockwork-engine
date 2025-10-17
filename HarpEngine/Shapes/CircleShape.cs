@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Shapes;
 
-public class CircleShape : Entity, ICollidesWithCircle, ICollidesWithRectangle
+public class CircleShape : Entity, ICollidesWithPoint, ICollidesWithCircle, ICollidesWithRectangle
 {
 	public Transform2D Transform = new();
 	public float Radius;
@@ -18,6 +18,7 @@ public class CircleShape : Entity, ICollidesWithCircle, ICollidesWithRectangle
 	}
 
 	public bool CollidesWithPoint(Vector2 position) => Collision.PointInCircle(position, Transform.WorldPosition, Radius);
+
 	public bool CollidesWithCircle(Vector2 position, float radius) => Collision.CircleOnCircle(Transform.WorldPosition, Radius, position, radius);
 	public bool CollidesWithCircle(CircleShape circleShape) => Collision.CircleOnCircle(Transform.WorldPosition, Radius, circleShape.Transform.WorldPosition, circleShape.Radius);
 

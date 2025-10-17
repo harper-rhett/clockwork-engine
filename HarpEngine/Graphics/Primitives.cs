@@ -8,7 +8,7 @@ public static class Primitives
 	public static extern void DrawPixel(int x, int y, Color color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	public static extern void DrawPixelV(Vector2 position, Color color);
+	private static extern void DrawPixelV(Vector2 position, Color color);
 	public static void DrawPixel(Vector2 position, Color color) => DrawPixelV(position, color);
 
 	// Lines

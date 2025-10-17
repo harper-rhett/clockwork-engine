@@ -1,8 +1,7 @@
-﻿namespace HarpEngine.Shapes
+﻿namespace HarpEngine.Shapes;
+
+public interface ICollidesWithRectangle
 {
-	public interface ICollidesWithRectangle
-	{
-		public bool CollidesWithRectangle(Rectangle rectangle);
-		public bool CollidesWithRectangle(RectangleShape rectangleShape);
-	}
+	public bool CollidesWithRectangle(Rectangle rectangle);
+	public bool CollidesWithRectangle(RectangleShape rectangleShape);
 }
