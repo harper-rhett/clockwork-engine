@@ -112,10 +112,12 @@ public static class Primitives
 	public static extern void DrawTriangleLines(Vector2 cornerOne, Vector2 cornerTwo, Vector2 cornerThree, Color color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTriangleFan")]
-	public static extern void DrawTriangleFan(Vector2[] positions, int positionCount, Color color);
+	private static extern void DrawTriangleFan(Vector2[] positions, int positionCount, Color color);
+	public static void DrawTriangleFan(Vector2[] positions, Color color) => DrawTriangleFan(positions, positions.Length, color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTriangleStrip")]
-	public static extern void DrawTriangleStrip(Vector2[] positions, int positionCount, Color color);
+	private static extern void DrawTriangleStrip(Vector2[] positions, int positionCount, Color color);
+	public static void DrawTriangleStrip(Vector2[] positions, Color color) => DrawTriangleStrip(positions, positions.Length, color);
 
 	// Polygons
 
