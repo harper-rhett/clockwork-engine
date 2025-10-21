@@ -101,7 +101,7 @@ public static class Primitives
 	public static extern void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, Color color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRectangleRoundedLinesEx")]
-	public static extern void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color)
+	public static extern void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color);
 
 	// Triangles
 
