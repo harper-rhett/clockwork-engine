@@ -90,10 +90,32 @@ public static class Collision
 
 	public static bool PointOnLine(Vector2 pointPosition, Vector2 lineStartPosition, Vector2 lineEndPosition, float tolerance)
 	{
+		// It may be better to project the point onto the line with the dot product,
+		// then check the distance the original point is from the projected point,
+		// determine if that distance falls within tolerance,
+		// and finally determine if that projected point falls within the line start and end.
+
+		// The current method is inconsistent. It triggers more easily at the line's center than it does on its edge points.
+
 		float lineLength = Vector2.Distance(lineStartPosition, lineEndPosition);
 		float distanceToStart = Vector2.Distance(pointPosition, lineStartPosition);
 		float distanceToEnd = Vector2.Distance(pointPosition, lineEndPosition);
 		float distanceToBoth = distanceToStart + distanceToEnd;
 		return distanceToBoth <= lineLength + tolerance;
+	}
+
+	public static bool CircleOnLine(Vector2 circlePosition, float radius, Vector2 lineStartPosition, Vector2 lineEndPosition)
+	{
+		Vector2 lineStartToCircle = circlePosition - lineStartPosition;
+		Vector2 lineStartToLineEnd = lineEndPosition - lineStartPosition;
+		Vector2 projectedCircle = lineStartPosition + lineStartToCircle.Project(lineStartToLineEnd);
+
+		float distanceToLine = Vector2.Distance(circlePosition, projectedCircle);
+		if (distanceToLine > radius) return false;
+
+		float distanceToStart = Vector2.Distance(projectedCircle, lineStartPosition);
+		float distanceToEnd = Vector2.Distance(projectedCircle, lineEndPosition);
+		float distanceToBoth = distanceToStart + distanceToEnd;
+		return distanceToBoth < lineStartToLineEnd.Length() + radius;
 	}
 }
