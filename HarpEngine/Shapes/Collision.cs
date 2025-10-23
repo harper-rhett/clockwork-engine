@@ -95,6 +95,7 @@ public static class Collision
 		// determine if that distance falls within tolerance,
 		// and finally determine if that projected point falls within the line start and end.
 
+		// That is what CircleOnLine is doing.
 		// The current method is inconsistent. It triggers more easily at the line's center than it does on its edge points.
 
 		float lineLength = Vector2.Distance(lineStartPosition, lineEndPosition);
@@ -117,5 +118,42 @@ public static class Collision
 		float distanceToEnd = Vector2.Distance(projectedCircle, lineEndPosition);
 		float distanceToBoth = distanceToStart + distanceToEnd;
 		return distanceToBoth < lineStartToLineEnd.Length() + radius;
+	}
+
+	public static bool LineOnLine(Vector2 startPositionA, Vector2 endPositionA, Vector2 startPositionB, Vector2 endPositionB)
+	{
+		// Get differences
+		float xDiffStart = startPositionA.X - startPositionB.X; // x1 - x3
+		float yDiffStart = startPositionA.Y - startPositionB.Y; // y1 - y3
+		float xDiffA = endPositionA.X - startPositionA.X; // x2 - x1
+		float yDiffA = endPositionA.Y - startPositionA.Y; // y2 - y1
+		float xDiffB = endPositionB.X - startPositionB.X; // x4 - x3
+		float yDiffB = endPositionB.Y - startPositionB.Y; // y4 - y3
+
+		// Denominator: (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)
+		float denominator = yDiffB * xDiffA - xDiffB * yDiffA;
+		if (denominator == 0) return false;
+
+		// First Numerator: (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)
+		float firstNumerator = xDiffB * yDiffStart - yDiffB * xDiffStart;
+		float firstIntersection = firstNumerator / denominator;
+
+		// Second Numerator: (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)
+		float secondNumerator = xDiffA * yDiffStart - yDiffA * xDiffStart;
+		float secondIntersection = secondNumerator / denominator;
+
+		// Check for collision
+		bool firstCollision = firstIntersection >= 0 && firstIntersection <= 1;
+		bool secondCollision = secondIntersection >= 0 && secondIntersection <= 1;
+		return firstCollision && secondCollision;
+	}
+
+	public static bool LineOnRectangle(Vector2 lineStartPosition, Vector2 lineEndPosition, Rectangle rectangle)
+	{
+		// I am not happy with this method, but it is the easiest to implement for now.
+		// Refer to Cohen–Sutherland and Liang–Barsky for more efficient algorithms.
+		// https://en.wikipedia.org/w/index.php?title=Line_clipping&useskin=vector#Fast_clipping
+
+		return false;
 	}
 }
