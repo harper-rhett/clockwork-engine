@@ -137,15 +137,16 @@ public static class Collision
 		// First Numerator: (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)
 		float firstNumerator = xDiffB * yDiffStart - yDiffB * xDiffStart;
 		float firstIntersection = firstNumerator / denominator;
+		bool firstIntersects = firstIntersection >= 0 && firstIntersection <= 1;
+		if (!firstIntersects) return false;
 
 		// Second Numerator: (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)
 		float secondNumerator = xDiffA * yDiffStart - yDiffA * xDiffStart;
 		float secondIntersection = secondNumerator / denominator;
+		bool secondIntersects = secondIntersection >= 0 && secondIntersection <= 1;
 
 		// Check for collision
-		bool firstCollision = firstIntersection >= 0 && firstIntersection <= 1;
-		bool secondCollision = secondIntersection >= 0 && secondIntersection <= 1;
-		return firstCollision && secondCollision;
+		return secondIntersects;
 	}
 
 	public static bool LineOnRectangle(Vector2 lineStartPosition, Vector2 lineEndPosition, Rectangle rectangle)
@@ -154,6 +155,16 @@ public static class Collision
 		// Refer to Cohen–Sutherland and Liang–Barsky for more efficient algorithms.
 		// https://en.wikipedia.org/w/index.php?title=Line_clipping&useskin=vector#Fast_clipping
 
-		return false;
+		float right = rectangle.X + rectangle.Width;
+		float bottom = rectangle.Y + rectangle.Height;
+		Vector2 topLeft = rectangle.Position;
+		Vector2 topRight = new(right, rectangle.Y);
+		Vector2 bottomLeft = new(rectangle.X, bottom);
+		Vector2 bottomRight = new(right, bottom);
+
+		return LineOnLine(lineStartPosition, lineEndPosition, topLeft, bottomLeft)
+			|| LineOnLine(lineStartPosition, lineEndPosition, topRight, bottomRight)
+			|| LineOnLine(lineStartPosition, lineEndPosition, topLeft, topRight)
+			|| LineOnLine(lineStartPosition, lineEndPosition, bottomLeft, bottomRight);
 	}
 }
