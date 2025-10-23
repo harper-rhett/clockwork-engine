@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Shapes;
 
-public static class Collision
+public static class Intersection
 {
 	public static bool PointInCircle(Vector2 pointPosition, Vector2 circlePosition, float radius)
 	{
@@ -40,9 +40,9 @@ public static class Collision
 
 	public static bool PointInRectangle(Vector2 pointPosition, Rectangle rectangle)
 	{
-		bool xCollides = pointPosition.X >= rectangle.X && pointPosition.X <= rectangle.X + rectangle.Width;
-		bool yCollides = pointPosition.Y >= rectangle.Y && pointPosition.Y <= rectangle.Y + rectangle.Height;
-		return xCollides && yCollides;
+		bool xIntersects = pointPosition.X >= rectangle.X && pointPosition.X <= rectangle.X + rectangle.Width;
+		bool yIntersects = pointPosition.Y >= rectangle.Y && pointPosition.Y <= rectangle.Y + rectangle.Height;
+		return xIntersects && yIntersects;
 	}
 
 	public static bool RectangleOnRectangle(Rectangle rectangleA, Rectangle rectangleB)
@@ -57,8 +57,8 @@ public static class Collision
 		bool topEdgePastBottomEdge = rectangleA.Y >= bottomEdgeB;
 		bool bottomEdgeBeforeTopEdge = bottomEdgeA <= rectangleB.Y;
 
-		bool doesNotCollide = leftEdgePastRightEdge || rightEdgeBeforeLeftEdge || topEdgePastBottomEdge || bottomEdgeBeforeTopEdge;
-		return !doesNotCollide;
+		bool doesNotIntersect = leftEdgePastRightEdge || rightEdgeBeforeLeftEdge || topEdgePastBottomEdge || bottomEdgeBeforeTopEdge;
+		return !doesNotIntersect;
 	}
 
 	public static bool CircleOnRectangle(Vector2 circlePosition, float circleRadius, Rectangle rectangle)
@@ -84,7 +84,7 @@ public static class Collision
 		float yDistance = circlePosition.Y - yEdge;
 		float distance = float.Sqrt(xDistance * xDistance + yDistance * yDistance);
 
-		// Check for collision
+		// Check for intersection
 		return distance <= circleRadius;
 	}
 
@@ -145,7 +145,7 @@ public static class Collision
 		float secondIntersection = secondNumerator / denominator;
 		bool secondIntersects = secondIntersection >= 0 && secondIntersection <= 1;
 
-		// Check for collision
+		// Check for intersection
 		return secondIntersects;
 	}
 

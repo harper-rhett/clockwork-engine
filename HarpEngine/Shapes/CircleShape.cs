@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Shapes;
 
-public class CircleShape : Entity, ICollidesWithPoint, ICollidesWithCircle, ICollidesWithRectangle
+public class CircleShape : Entity, IIntersectWithPoint, IIntersectWithCircle, IIntersectWithRectangle
 {
 	public Transform2D Transform = new();
 	public float Radius;
@@ -17,11 +17,11 @@ public class CircleShape : Entity, ICollidesWithPoint, ICollidesWithCircle, ICol
 		Primitives.DrawCircle(Transform.WorldPosition, Radius, Color);
 	}
 
-	public bool CollidesWithPoint(Vector2 position) => Collision.PointInCircle(position, Transform.WorldPosition, Radius);
+	public bool CollidesWithPoint(Vector2 position) => Intersection.PointInCircle(position, Transform.WorldPosition, Radius);
 
-	public bool CollidesWithCircle(Vector2 position, float radius) => Collision.CircleOnCircle(Transform.WorldPosition, Radius, position, radius);
-	public bool CollidesWithCircle(CircleShape circleShape) => Collision.CircleOnCircle(Transform.WorldPosition, Radius, circleShape.Transform.WorldPosition, circleShape.Radius);
+	public bool CollidesWithCircle(Vector2 position, float radius) => Intersection.CircleOnCircle(Transform.WorldPosition, Radius, position, radius);
+	public bool CollidesWithCircle(CircleShape circleShape) => Intersection.CircleOnCircle(Transform.WorldPosition, Radius, circleShape.Transform.WorldPosition, circleShape.Radius);
 
-	public bool CollidesWithRectangle(Rectangle rectangle) => Collision.CircleOnRectangle(Transform.WorldPosition, Radius, rectangle);
-	public bool CollidesWithRectangle(RectangleShape rectangleShape) => Collision.CircleOnRectangle(Transform.WorldPosition, Radius, rectangleShape.Rectangle);
+	public bool CollidesWithRectangle(Rectangle rectangle) => Intersection.CircleOnRectangle(Transform.WorldPosition, Radius, rectangle);
+	public bool CollidesWithRectangle(RectangleShape rectangleShape) => Intersection.CircleOnRectangle(Transform.WorldPosition, Radius, rectangleShape.Rectangle);
 }
