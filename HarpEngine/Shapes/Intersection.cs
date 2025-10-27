@@ -108,8 +108,8 @@ public static class Intersection
 	public static bool CircleOnLine(Vector2 circlePosition, float radius, Vector2 lineStartPosition, Vector2 lineEndPosition)
 	{
 		Vector2 lineStartToCircle = circlePosition - lineStartPosition;
-		Vector2 lineStartToLineEnd = lineEndPosition - lineStartPosition;
-		Vector2 projectedCircle = lineStartPosition + lineStartToCircle.Project(lineStartToLineEnd);
+		Vector2 lineStartToEnd = lineEndPosition - lineStartPosition;
+		Vector2 projectedCircle = lineStartPosition + lineStartToCircle.Project(lineStartToEnd);
 
 		float distanceToLine = Vector2.Distance(circlePosition, projectedCircle);
 		if (distanceToLine > radius) return false;
@@ -117,7 +117,7 @@ public static class Intersection
 		float distanceToStart = Vector2.Distance(projectedCircle, lineStartPosition);
 		float distanceToEnd = Vector2.Distance(projectedCircle, lineEndPosition);
 		float distanceToBoth = distanceToStart + distanceToEnd;
-		return distanceToBoth < lineStartToLineEnd.Length() + radius;
+		return distanceToBoth < lineStartToEnd.Length() + radius;
 	}
 
 	public static bool LineOnLine(Vector2 startPositionA, Vector2 endPositionA, Vector2 startPositionB, Vector2 endPositionB)
@@ -154,6 +154,8 @@ public static class Intersection
 		// I am not happy with this method, but it is the easiest to implement for now.
 		// Refer to Cohen–Sutherland and Liang–Barsky for more efficient algorithms.
 		// https://en.wikipedia.org/w/index.php?title=Line_clipping&useskin=vector#Fast_clipping
+
+		if (PointInRectangle(lineStartPosition, rectangle) || PointInRectangle(lineEndPosition, rectangle)) return true;
 
 		float right = rectangle.X + rectangle.Width;
 		float bottom = rectangle.Y + rectangle.Height;
