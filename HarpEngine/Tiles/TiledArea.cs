@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Tiles;
 
-public class TiledArea<TileType> : Entity where TileType : Enum
+public class TiledArea<TileType> where TileType : Enum
 {
 	public readonly Vector2 Position;
 	public readonly int WidthInTiles;
@@ -12,7 +12,7 @@ public class TiledArea<TileType> : Entity where TileType : Enum
 	private readonly Rectangle renderRectangle;
 	private Tile<TileType>[,] tiles;
 
-	public TiledArea(Scene scene, Vector2 position, int widthInTiles, int heightInTiles, int tileSize, Tile<TileType>[,] tiles) : base(scene)
+	public TiledArea(Vector2 position, int widthInTiles, int heightInTiles, int tileSize, Tile<TileType>[,] tiles)
 	{
 		Position = position;
 		WidthInTiles = widthInTiles;
@@ -39,7 +39,7 @@ public class TiledArea<TileType> : Entity where TileType : Enum
 		RenderTexture.EndDrawing();
 	}
 
-	public override void Draw()
+	public void Draw()
 	{
 		renderTexture.Texture.Draw(renderRectangle, Position, Colors.White);
 	}
