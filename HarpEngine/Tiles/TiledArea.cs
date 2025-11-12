@@ -1,6 +1,6 @@
 ﻿namespace HarpEngine.Tiles;
 
-public class TiledArea<TileType> where TileType : Enum
+public class TiledArea
 {
 	public readonly Vector2 Position;
 	public readonly int WidthInTiles;
@@ -10,9 +10,14 @@ public class TiledArea<TileType> where TileType : Enum
 	public readonly int TileSize;
 	private readonly RenderTexture renderTexture;
 	private readonly Rectangle renderRectangle;
-	private Tile<TileType>[,] tiles;
+	public int[,] TileTypes { private get; set; }
 
-	public TiledArea(Vector2 position, int widthInTiles, int heightInTiles, int tileSize, Tile<TileType>[,] tiles)
+	public Tile[] Tiles
+	{
+		set => ProcessTexture(value);
+	}
+
+	public TiledArea(Vector2 position, int widthInTiles, int heightInTiles, int tileSize)
 	{
 		Position = position;
 		WidthInTiles = widthInTiles;
@@ -22,20 +27,12 @@ public class TiledArea<TileType> where TileType : Enum
 		TileSize = tileSize;
 		renderTexture = RenderTexture.Load(WidthInPixels, HeightInPixels);
 		renderRectangle = new(0, 0, WidthInPixels, -HeightInPixels);
-
-		ProcessTexture();
 	}
 
-	private void ProcessTexture()
+	private void ProcessTexture(Tile[] tiles)
 	{
 		RenderTexture.BeginDrawing(renderTexture);
-		for (int tileX = 0; tileX < WidthInTiles; tileX++)
-			for (int tileY = 0; tileY < HeightInTiles; tileY++)
-			{
-				Tile<TileType> tile = tiles[tileX, tileY];
-				Vector2 tilePosition = Position + new Vector2(tileX * TileSize, tileY * TileSize);
-				tile.Draw(tilePosition);
-			}
+		foreach (Tile tile in tiles) tile.Draw();
 		RenderTexture.EndDrawing();
 	}
 
@@ -44,11 +41,11 @@ public class TiledArea<TileType> where TileType : Enum
 		renderTexture.Texture.Draw(renderRectangle, Position, Colors.White);
 	}
 
-	public TileType GetTile(int pixelX, int pixelY)
+	public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
 	{
-		int tileX = (pixelX - Position.X.Floored()) / TileSize;
-		int tileY = (pixelY - Position.Y.Floored()) / TileSize;
-		return tiles[tileX, tileY].Type;
+		int tileX = ((float)pixelX / TileSize).Floored();
+		int tileY = ((float)pixelY / TileSize).Floored();
+		return (TileType)(object)TileTypes[tileX, tileY];
 	}
 
 	public bool InBounds(int pixelX, int pixelY)
