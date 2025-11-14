@@ -38,13 +38,16 @@ public class TiledArea
 
 	public void Draw()
 	{
-		renderTexture.Texture.Draw(renderRectangle, Position, Colors.White);
+		// WTF is going on???
+		renderTexture.Texture.Draw(renderRectangle, Position + Vector2.UnitY * HeightInPixels, Colors.White);
 	}
 
 	public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
 	{
-		int tileX = ((float)pixelX / TileSize).Floored();
-		int tileY = ((float)pixelY / TileSize).Floored();
+		float localX = pixelX - Position.X;
+		float localY = pixelY - Position.Y;
+		int tileX = (localX / TileSize).Floored();
+		int tileY = (localY / TileSize).Floored();
 		return (TileType)(object)TileTypes[tileX, tileY];
 	}
 
@@ -55,7 +58,7 @@ public class TiledArea
 		return xCheck && yCheck;
 	}
 
-	public Vector2 SnapPosition(int pixelX, int pixelY)
+	public Vector2 SnapPosition(int pixelX, int pixelY) // can be moved to TiledWorld?
 	{
 		int tilePixelX = ((float)pixelX / TileSize).Floored() * TileSize;
 		int tilePixelY = ((float)pixelY / TileSize).Floored() * TileSize;

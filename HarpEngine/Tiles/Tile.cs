@@ -2,13 +2,13 @@
 
 public class Tile
 {
-	private Vector2 position;
+	private Vector2 localPosition;
 	private Texture tilesetTexture;
 	private Rectangle spriteRectangle;
 
-	public Tile(Vector2 position, Texture tilesetTexture, int tilesetX, int tilesetY, int size, bool xFlipped, bool yFlipped)
+	public Tile(Vector2 localPosition, Texture tilesetTexture, int tilesetX, int tilesetY, int size, bool xFlipped, bool yFlipped)
 	{
-		this.position = position;
+		this.localPosition = localPosition;
 		this.tilesetTexture = tilesetTexture;
 
 		int width = xFlipped ? -size : size;
@@ -18,6 +18,6 @@ public class Tile
 
 	public void Draw()
 	{
-		tilesetTexture.Draw(spriteRectangle, position, Colors.White);
+		tilesetTexture.Draw(spriteRectangle, localPosition, Colors.White);
 	}
 }

@@ -22,7 +22,7 @@ public class Scene
 		BackgroundColor = backgroundColor;
 	}
 
-	public void UpdateSystems()
+	public void Update()
 	{
 		if (IsPaused) return;
 		Time += Engine.FrameTime * TimeModifier;
@@ -31,8 +31,6 @@ public class Scene
 		Entities.ProcessMoves();
 		UpdateEntities();
 		Entities.ProcessRemovals();
-
-		Update();
 	}
 
 	private void UpdateEntities()
@@ -43,13 +41,10 @@ public class Scene
 		}
 	}
 
-	public virtual void Update() { }
-
-	public void DrawSystems()
+	public void Draw()
 	{
 		DrawGame();
 		DrawGUI();
-		Draw();
 	}
 
 	private void DrawGame()
@@ -70,6 +65,4 @@ public class Scene
 			if (entity.IsRendering) entity.DrawGUI();
 		}
 	}
-
-	public virtual void Draw() { }
 }
