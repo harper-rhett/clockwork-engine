@@ -10,7 +10,7 @@ public class TiledArea
 	public readonly int TileSize;
 	private readonly RenderTexture renderTexture;
 	private readonly Rectangle renderRectangle;
-	public int[,] TileTypes { private get; set; }
+	public int[,] TilesByID { private get; set; }
 
 	public Tile[] Tiles
 	{
@@ -41,13 +41,24 @@ public class TiledArea
 		renderTexture.Texture.Draw(renderRectangle, Position, Colors.White);
 	}
 
-	public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
+	public Coordinate GetTileLocalCoordinate(int pixelX, int pixelY)
 	{
 		float localX = pixelX - Position.X;
 		float localY = pixelY - Position.Y;
 		int tileX = (localX / TileSize).Floored();
 		int tileY = (localY / TileSize).Floored();
-		return (TileType)(object)TileTypes[tileX, tileY];
+		return new(tileX, tileY);
+	}
+
+	public int GetTileID(int pixelX, int pixelY)
+	{
+		Coordinate tileCoordinate = GetTileLocalCoordinate(pixelX, pixelY);
+		return TilesByID[tileCoordinate.X, tileCoordinate.Y];
+	}
+
+	public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
+	{
+		return (TileType)(object)GetTileID(pixelX, pixelY);
 	}
 
 	public bool InBounds(int pixelX, int pixelY)
