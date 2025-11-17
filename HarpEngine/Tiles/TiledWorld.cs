@@ -65,4 +65,11 @@ public class TiledWorld : Entity
 	{
 		return GetTileCoordinate(pixelPosition.X.Floored(), pixelPosition.Y.Floored());
 	}
+
+	public Vector2 SnapPosition(int pixelX, int pixelY)
+	{
+		int tilePixelX = ((float)pixelX / tileSize).Floored() * tileSize;
+		int tilePixelY = ((float)pixelY / tileSize).Floored() * tileSize;
+		return new(tilePixelX, tilePixelY);
+	}
 }

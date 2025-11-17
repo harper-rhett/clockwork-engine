@@ -67,11 +67,4 @@ public class TiledArea
 		bool yCheck = pixelY >= Position.Y.Floored() && pixelY < Position.Y.Floored() + HeightInPixels;
 		return xCheck && yCheck;
 	}
-
-	public Vector2 SnapPosition(int pixelX, int pixelY) // can be moved to TiledWorld?
-	{
-		int tilePixelX = ((float)pixelX / TileSize).Floored() * TileSize;
-		int tilePixelY = ((float)pixelY / TileSize).Floored() * TileSize;
-		return new(tilePixelX, tilePixelY);
-	}
 }

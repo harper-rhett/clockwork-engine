@@ -2,11 +2,13 @@
 
 public class TiledCollider<TileType> where TileType : Enum
 {
+	public bool CenterInBounds { get; set; }
 	public bool LeftInBounds { get; private set; }
 	public bool RightInBounds { get; private set; }
 	public bool TopInBounds { get; private set; }
 	public bool BottomInBounds { get; private set; }
 
+	public TileType CenterTile { get; private set; }
 	public TileType LeftCenterTile { get; private set; }
 	public TileType RightCenterTile { get; private set; }
 	public TileType TopCenterTile { get; private set; }
@@ -21,6 +23,8 @@ public class TiledCollider<TileType> where TileType : Enum
 	private readonly int halfWidth;
 	private readonly int height;
 	private readonly int halfHeight;
+	public int CenterX { get; private set; }
+	public int CenterY { get; private set; }
 
 	public TiledCollider(int width, int height)
 	{
@@ -32,10 +36,16 @@ public class TiledCollider<TileType> where TileType : Enum
 
 	public void Update(TiledArea area, Vector2 position)
 	{
+		// Reset hash sets
 		leftTiles.Clear();
 		rightTiles.Clear();
 		topTiles.Clear();
 		bottomTiles.Clear();
+
+		// Update collisions
+		CenterX = position.X.Floored() + halfWidth;
+		CenterY = position.Y.Floored() + halfHeight;
+		CheckCenter(area, position);
 		CheckLeftRight(area, position);
 		CheckTopBottom(area, position);
 	}
@@ -52,24 +62,30 @@ public class TiledCollider<TileType> where TileType : Enum
 	public bool IsTileBottom(int tileTypeID) => bottomTiles.Contains(tileTypeID);
 	public bool IsTileBottom(TileType tileType) => IsTileBottom((int)(object)tileType);
 
+	private void CheckCenter(TiledArea area, Vector2 position)
+	{
+		CenterInBounds = area.InBounds(CenterX, CenterY);
+		if (!CenterInBounds) return;
+		CenterTile = area.GetTileType<TileType>(CenterX, CenterY);
+	}
+
 	private void CheckTopBottom(TiledArea area, Vector2 position)
 	{
 		int leftX = (position.X).Floored();
-		int centerX = leftX + halfWidth;
 		int rightX = (position.X + width - 1).Floored();
 		int topY = (position.Y - 1).Floored();
 		int bottomY = (position.Y + height).Floored();
 
-		CheckTop(area, position, leftX, centerX, rightX, topY);
-		CheckBottom(area, position, leftX, centerX, rightX, bottomY);
+		CheckTop(area, position, leftX, rightX, topY);
+		CheckBottom(area, position, leftX, rightX, bottomY);
 	}
 
-	private void CheckTop(TiledArea area, Vector2 position, int leftX, int centerX, int rightX, int topY)
+	private void CheckTop(TiledArea area, Vector2 position, int leftX, int rightX, int topY)
 	{
 		TopInBounds = area.InBounds(leftX, topY) && area.InBounds(rightX, topY);
 		if (!TopInBounds) return;
 
-		TopCenterTile = (TileType)(object)area.GetTileTypeID(centerX, topY);
+		TopCenterTile = area.GetTileType<TileType>(CenterX, topY);
 		for (int x = leftX; x <= rightX; x++)
 		{
 			int tileTypeID = area.GetTileTypeID(x, topY);
@@ -77,12 +93,12 @@ public class TiledCollider<TileType> where TileType : Enum
 		}
 	}
 
-	private void CheckBottom(TiledArea area, Vector2 position, int leftX, int centerX, int rightX, int bottomY)
+	private void CheckBottom(TiledArea area, Vector2 position, int leftX, int rightX, int bottomY)
 	{
 		BottomInBounds = area.InBounds(leftX, bottomY) && area.InBounds(rightX, bottomY);
 		if (!BottomInBounds) return;
 
-		BottomCenterTile = (TileType)(object)area.GetTileTypeID(centerX, bottomY);
+		BottomCenterTile = area.GetTileType<TileType>(CenterX, bottomY);
 		for (int x = leftX; x <= rightX; x++)
 		{
 			int tileTypeID = area.GetTileTypeID(x, bottomY);
@@ -93,21 +109,20 @@ public class TiledCollider<TileType> where TileType : Enum
 	private void CheckLeftRight(TiledArea area, Vector2 position)
 	{
 		int topY = (position.Y).Floored();
-		int centerY = topY + halfHeight;
 		int bottomY = (position.Y + height - 1).Floored();
 		int leftX = (position.X - 1).Floored();
 		int rightX = (position.X + width).Floored();
 
-		CheckLeft(area, position, topY, centerY, bottomY, leftX);
-		CheckRight(area, position, topY, centerY, bottomY, rightX);
+		CheckLeft(area, position, topY, bottomY, leftX);
+		CheckRight(area, position, topY, bottomY, rightX);
 	}
 
-	private void CheckLeft(TiledArea area, Vector2 position, int topY, int centerY, int bottomY, int leftX)
+	private void CheckLeft(TiledArea area, Vector2 position, int topY, int bottomY, int leftX)
 	{
 		LeftInBounds = area.InBounds(leftX, topY) && area.InBounds(leftX, bottomY);
 		if (!LeftInBounds) return;
 
-		LeftCenterTile = (TileType)(object)area.GetTileTypeID(leftX, centerY);
+		LeftCenterTile = area.GetTileType<TileType>(leftX, CenterY);
 		for (int y = topY; y <= bottomY; y++)
 		{
 			int tileTypeID = area.GetTileTypeID(leftX, y);
@@ -115,12 +130,12 @@ public class TiledCollider<TileType> where TileType : Enum
 		}
 	}
 
-	private void CheckRight(TiledArea area, Vector2 position, int topY, int centerY, int bottomY, int rightX)
+	private void CheckRight(TiledArea area, Vector2 position, int topY, int bottomY, int rightX)
 	{
 		RightInBounds = area.InBounds(rightX, topY) && area.InBounds(rightX, bottomY);
 		if (!RightInBounds) return;
 
-		RightCenterTile = (TileType)(object)area.GetTileTypeID(rightX, centerY);
+		RightCenterTile = area.GetTileType<TileType>(rightX, CenterY);
 		for (int y = topY; y <= bottomY; y++)
 		{
 			int tileTypeID = area.GetTileTypeID(rightX, y);
