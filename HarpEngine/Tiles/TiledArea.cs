@@ -50,7 +50,7 @@ public class TiledArea
 		return new(tileX, tileY);
 	}
 
-	public int GetTileID(int pixelX, int pixelY)
+	public int GetTileTypeID(int pixelX, int pixelY)
 	{
 		Coordinate tileCoordinate = GetTileLocalCoordinate(pixelX, pixelY);
 		return TilesByID[tileCoordinate.X, tileCoordinate.Y];
@@ -58,7 +58,7 @@ public class TiledArea
 
 	public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
 	{
-		return (TileType)(object)GetTileID(pixelX, pixelY);
+		return (TileType)(object)GetTileTypeID(pixelX, pixelY);
 	}
 
 	public bool InBounds(int pixelX, int pixelY)
