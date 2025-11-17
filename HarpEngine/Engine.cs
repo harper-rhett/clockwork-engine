@@ -45,8 +45,6 @@ public static class Engine
 	{
 		// Initialize window
 		Window.Initialize(800, 800, windowTitle);
-		HalfGameWidth = GameWidth / 2;
-		HalfGameHeight = GameHeight / 2;
 
 		// Initialize game
 		AudioDevice.Initialize();
