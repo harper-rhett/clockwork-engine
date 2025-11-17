@@ -41,6 +41,7 @@ public static class Engine
 	// Extra
 	public static float FrameTime {  get; private set; }
 
+	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
 	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
 	{
 		// Initialize window
