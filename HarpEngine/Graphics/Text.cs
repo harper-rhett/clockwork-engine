@@ -7,10 +7,10 @@ public static class Text
 	public static void Draw(string text, Vector2 position, int fontSize, Color color) => Draw(text, (int)float.Round(position.X), (int)float.Round(position.Y), fontSize, color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextEx")]
-	public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color tint);
+	public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextPro")]
-	public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint);
+	public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color color);
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTextLineSpacing")]
 	public static extern void SetLineSpacing(int spacing);
