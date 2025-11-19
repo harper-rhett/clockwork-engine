@@ -71,7 +71,7 @@ internal class MyGame : Game // the game class handles scenes
     // Initialize game here
 
     // If you are only using one scene (such as for prototyping) you can add entities to the scene in your game class.
-    MyEntity myEntity = AddEntity(new MyEntity(scene)); // added to the scene
+    MyEntity myEntity = AddEntity(new MyEntity()); // added to the scene
     // For larger projects it is recommended you create your own scene classes (inheriting from Scene).
     // For instance, MenuScene.cs, GameScene.cs, etc.
 
