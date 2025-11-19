@@ -12,6 +12,7 @@ public class TextureAnimation
 		get => currentTime;
 		set => currentTime = value % PlayTime;
 	}
+	public bool PlayOnce;
 
 	public TextureAnimation(Texture texture, int cellCount, int cellWidth, int cellHeight, float timePerCell)
 	{
@@ -42,14 +43,17 @@ public class TextureAnimation
 
 	public void Draw(Vector2 position, Vector2 direction, float frameTime, Color color)
 	{
-		int cellIndex = (currentTime / timePerCell).Floored();
+		int cellIndex;
+		if (PlayOnce && currentTime >= PlayTime) cellIndex = cells.Length - 1;
+		else cellIndex = (currentTime / timePerCell).Floored();
+
 		Rectangle cell = cells[cellIndex];
 		cell.Width *= direction.X;
 		cell.Height *= direction.Y;
 		texture.Draw(cell, position, color);
 
 		currentTime += frameTime;
-		currentTime %= PlayTime;
+		if (!PlayOnce) currentTime %= PlayTime;
 	}
 
 	public void Reset() => currentTime = 0;
