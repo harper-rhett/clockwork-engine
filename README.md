@@ -20,6 +20,7 @@ Currently there is only support for x64 systems, but that will change. Raylib ex
 - Transforms (opt-in parent-child system)
 - Collision helpers (with extensions built into the entity system)
 - Texture animation (including an animation manager)
+- Tiling systems (forgot documentation, patience please)
 
 ## Roadmap
 - Noise generation (Simplex, Perlin, Cellular, Drum and Bass)
