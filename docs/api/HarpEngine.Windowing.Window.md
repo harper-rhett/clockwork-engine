@@ -34,6 +34,16 @@ public static int Height { get; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
+### <a id="HarpEngine_Windowing_Window_Monitor"></a> Monitor
+
+```csharp
+public static int Monitor { set; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
 ### <a id="HarpEngine_Windowing_Window_Position"></a> Position
 
 ```csharp
@@ -56,32 +66,22 @@ public static int Width { get; }
 
 ## Methods
 
-### <a id="HarpEngine_Windowing_Window_ChangeTitle_System_String_"></a> ChangeTitle\(string\)
-
-```csharp
-public static void ChangeTitle(string title)
-```
-
-#### Parameters
-
-`title` [string](https://learn.microsoft.com/dotnet/api/system.string)
-
 ### <a id="HarpEngine_Windowing_Window_Close"></a> Close\(\)
 
 ```csharp
-public static void Close()
+public static extern void Close()
 ```
 
 ### <a id="HarpEngine_Windowing_Window_Focus"></a> Focus\(\)
 
 ```csharp
-public static void Focus()
+public static extern void Focus()
 ```
 
 ### <a id="HarpEngine_Windowing_Window_Initialize_System_Int32_System_Int32_System_String_"></a> Initialize\(int, int, string\)
 
 ```csharp
-public static void Initialize(int width, int height, string title)
+public static extern void Initialize(int width, int height, string title)
 ```
 
 #### Parameters
@@ -95,7 +95,7 @@ public static void Initialize(int width, int height, string title)
 ### <a id="HarpEngine_Windowing_Window_Resize_System_Int32_System_Int32_"></a> Resize\(int, int\)
 
 ```csharp
-public static void Resize(int width, int height)
+public static extern void Resize(int width, int height)
 ```
 
 #### Parameters
@@ -137,7 +137,7 @@ public static void SetFullscreen(bool isFullscreen)
 ### <a id="HarpEngine_Windowing_Window_SetIcon_HarpEngine_Graphics_Image_"></a> SetIcon\(Image\)
 
 ```csharp
-public static void SetIcon(Image image)
+public static extern void SetIcon(Image image)
 ```
 
 #### Parameters
@@ -147,7 +147,7 @@ public static void SetIcon(Image image)
 ### <a id="HarpEngine_Windowing_Window_SetIcons_HarpEngine_Graphics_Image__System_Int32_"></a> SetIcons\(Image\*, int\)
 
 ```csharp
-public static void SetIcons(Image* images, int count)
+public static extern void SetIcons(Image* images, int count)
 ```
 
 #### Parameters
@@ -186,20 +186,10 @@ public static void SetMinimized(bool isMinimized)
 
 `isMinimized` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="HarpEngine_Windowing_Window_SetMonitor_System_Int32_"></a> SetMonitor\(int\)
-
-```csharp
-public static void SetMonitor(int monitor)
-```
-
-#### Parameters
-
-`monitor` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
 ### <a id="HarpEngine_Windowing_Window_SetPosition_System_Int32_System_Int32_"></a> SetPosition\(int, int\)
 
 ```csharp
-public static void SetPosition(int x, int y)
+public static extern void SetPosition(int x, int y)
 ```
 
 #### Parameters
@@ -233,6 +223,16 @@ public static void SetResizable(bool isResizable)
 #### Parameters
 
 `isResizable` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="HarpEngine_Windowing_Window_SetTitle_System_String_"></a> SetTitle\(string\)
+
+```csharp
+public static extern void SetTitle(string title)
+```
+
+#### Parameters
+
+`title` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
 ### <a id="HarpEngine_Windowing_Window_SetUndecorated_System_Boolean_"></a> SetUndecorated\(bool\)
 

@@ -46,10 +46,10 @@ public static int Count { get; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="HarpEngine_Windowing_Monitor_Current"></a> Current
+### <a id="HarpEngine_Windowing_Monitor_CurrentIndex"></a> CurrentIndex
 
 ```csharp
-public static int Current { get; }
+public static int CurrentIndex { get; }
 ```
 
 #### Property Value

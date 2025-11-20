@@ -1,30 +1,35 @@
-# <a id="HarpEngine_Shapes_Circle"></a> Class Circle
+# <a id="HarpEngine_Shapes_PolygonShape"></a> Class PolygonShape
 
 Namespace: [HarpEngine.Shapes](HarpEngine.Shapes.md)  
 Assembly: HarpEngine.dll  
 
 ```csharp
-public class Circle : Entity
+public class PolygonShape : Entity, ITransform2D
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 [Entity](HarpEngine.Entity.md) ← 
-[Circle](HarpEngine.Shapes.Circle.md)
+[PolygonShape](HarpEngine.Shapes.PolygonShape.md)
+
+#### Implements
+
+[ITransform2D](HarpEngine.Utilities.ITransform2D.md)
 
 #### Inherited Members
 
-[Entity.scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_scene), 
+[Entity.Scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_Scene), 
 [Entity.IsUpdating](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsUpdating), 
 [Entity.IsRendering](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsRendering), 
 [Entity.UpdateLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawLayer), 
-[Entity.Update\(float\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Update\_System\_Single\_), 
-[Entity.Draw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Draw), 
-[Entity.DrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawGUI), 
+[Entity.OnUpdate\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnUpdate), 
+[Entity.OnDraw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDraw), 
+[Entity.OnDrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDrawGUI), 
 [Entity.Remove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Remove), 
-[Entity.OnRemove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemove), 
+[Entity.OnAddedToScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnAddedToScene), 
+[Entity.OnRemovedFromScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemovedFromScene), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -35,23 +40,23 @@ public class Circle : Entity
 
 ## Constructors
 
-### <a id="HarpEngine_Shapes_Circle__ctor_HarpEngine_Scene_System_Single_HarpEngine_Graphics_Color_"></a> Circle\(Scene, float, Color\)
+### <a id="HarpEngine_Shapes_PolygonShape__ctor_System_Single_System_Int32_HarpEngine_Graphics_Color_"></a> PolygonShape\(float, int, Color\)
 
 ```csharp
-public Circle(Scene scene, float radius, Color color)
+public PolygonShape(float radius, int sideCount, Color color)
 ```
 
 #### Parameters
 
-`scene` [Scene](HarpEngine.Scene.md)
-
 `radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`sideCount` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
 ## Fields
 
-### <a id="HarpEngine_Shapes_Circle_Color"></a> Color
+### <a id="HarpEngine_Shapes_PolygonShape_Color"></a> Color
 
 ```csharp
 public Color Color
@@ -61,7 +66,7 @@ public Color Color
 
  [Color](HarpEngine.Graphics.Color.md)
 
-### <a id="HarpEngine_Shapes_Circle_Radius"></a> Radius
+### <a id="HarpEngine_Shapes_PolygonShape_Radius"></a> Radius
 
 ```csharp
 public float Radius
@@ -71,21 +76,33 @@ public float Radius
 
  [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-### <a id="HarpEngine_Shapes_Circle_Transform"></a> Transform
+### <a id="HarpEngine_Shapes_PolygonShape_SideCount"></a> SideCount
 
 ```csharp
-public Transform2D Transform
+public int SideCount
 ```
 
 #### Field Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+## Properties
+
+### <a id="HarpEngine_Shapes_PolygonShape_Transform"></a> Transform
+
+```csharp
+public Transform2D Transform { get; set; }
+```
+
+#### Property Value
 
  [Transform2D](HarpEngine.Utilities.Transform2D.md)
 
 ## Methods
 
-### <a id="HarpEngine_Shapes_Circle_Draw"></a> Draw\(\)
+### <a id="HarpEngine_Shapes_PolygonShape_OnDraw"></a> OnDraw\(\)
 
 ```csharp
-public override void Draw()
+public override void OnDraw()
 ```
 

@@ -24,6 +24,16 @@ public static class Engine
 
 ## Properties
 
+### <a id="HarpEngine_Engine_FrameTime"></a> FrameTime
+
+```csharp
+public static float FrameTime { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
 ### <a id="HarpEngine_Engine_GameHeight"></a> GameHeight
 
 ```csharp
@@ -33,6 +43,16 @@ public static int GameHeight { get; }
 #### Property Value
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="HarpEngine_Engine_GameSize"></a> GameSize
+
+```csharp
+public static Coordinate GameSize { get; set; }
+```
+
+#### Property Value
+
+ [Coordinate](HarpEngine.Utilities.Coordinate.md)
 
 ### <a id="HarpEngine_Engine_GameWidth"></a> GameWidth
 
@@ -66,15 +86,19 @@ public static int HalfGameWidth { get; }
 
 ## Methods
 
-### <a id="HarpEngine_Engine_Initialize_HarpEngine_EngineSettings_"></a> Initialize\(EngineSettings\)
+### <a id="HarpEngine_Engine_Initialize_System_String_System_Int32_System_Int32_"></a> Initialize\(string, int, int\)
 
 ```csharp
-public static void Initialize(EngineSettings engineSettings)
+public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
 ```
 
 #### Parameters
 
-`engineSettings` [EngineSettings](HarpEngine.EngineSettings.md)
+`windowTitle` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+`gameWidth` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`gameHeight` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 ### <a id="HarpEngine_Engine_SetTargetFPS_System_Int32_"></a> SetTargetFPS\(int\)
 

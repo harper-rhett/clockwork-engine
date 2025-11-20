@@ -69,7 +69,7 @@ public bool IsValid { get; }
 ### <a id="HarpEngine_Graphics_RenderTexture_BeginDrawing_HarpEngine_Graphics_RenderTexture_"></a> BeginDrawing\(RenderTexture\)
 
 ```csharp
-public static void BeginDrawing(RenderTexture renderTexture2D)
+public static extern void BeginDrawing(RenderTexture renderTexture2D)
 ```
 
 #### Parameters
@@ -87,13 +87,13 @@ public void Dispose()
 ### <a id="HarpEngine_Graphics_RenderTexture_EndDrawing"></a> EndDrawing\(\)
 
 ```csharp
-public static void EndDrawing()
+public static extern void EndDrawing()
 ```
 
 ### <a id="HarpEngine_Graphics_RenderTexture_Load_System_Int32_System_Int32_"></a> Load\(int, int\)
 
 ```csharp
-public static RenderTexture Load(int width, int height)
+public static extern RenderTexture Load(int width, int height)
 ```
 
 #### Parameters

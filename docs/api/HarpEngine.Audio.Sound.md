@@ -107,7 +107,7 @@ public void Dispose()
 ### <a id="HarpEngine_Audio_Sound_Load_System_String_"></a> Load\(string\)
 
 ```csharp
-public static Sound Load(string filePath)
+public static extern Sound Load(string filePath)
 ```
 
 #### Parameters

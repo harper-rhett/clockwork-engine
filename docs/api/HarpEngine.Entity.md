@@ -15,14 +15,18 @@ public abstract class Entity
 #### Derived
 
 [Camera](HarpEngine.Camera.md), 
-[Circle](HarpEngine.Shapes.Circle.md), 
+[CircleShape](HarpEngine.Shapes.CircleShape.md), 
 [Easer](HarpEngine.Animation.Easer.md), 
 [FireTimer](HarpEngine.Utilities.FireTimer.md), 
+[LineShape](HarpEngine.Shapes.LineShape.md), 
 [MusicPlayer](HarpEngine.Audio.MusicPlayer.md), 
 [MusicRepeater](HarpEngine.Audio.MusicRepeater.md), 
 [MusicRepeater2Part](HarpEngine.Audio.MusicRepeater2Part.md), 
 [ParticleEngine2D](HarpEngine.Particles.ParticleEngine2D.md), 
-[Polygon](HarpEngine.Shapes.Polygon.md), 
+[PointShape](HarpEngine.Shapes.PointShape.md), 
+[PolygonShape](HarpEngine.Shapes.PolygonShape.md), 
+[RectangleShape](HarpEngine.Shapes.RectangleShape.md), 
+[TiledWorld](HarpEngine.Tiles.TiledWorld.md), 
 [TriggerTimer](HarpEngine.Utilities.TriggerTimer.md)
 
 #### Inherited Members
@@ -34,18 +38,6 @@ public abstract class Entity
 [object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
-
-## Constructors
-
-### <a id="HarpEngine_Entity__ctor_HarpEngine_Scene_"></a> Entity\(Scene\)
-
-```csharp
-public Entity(Scene scene)
-```
-
-#### Parameters
-
-`scene` [Scene](HarpEngine.Scene.md)
 
 ## Fields
 
@@ -69,10 +61,10 @@ public bool IsUpdating
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="HarpEngine_Entity_scene"></a> scene
+### <a id="HarpEngine_Entity_Scene"></a> Scene
 
 ```csharp
-protected Scene scene
+public Scene Scene
 ```
 
 #### Field Value
@@ -103,22 +95,34 @@ public int UpdateLayer { get; set; }
 
 ## Methods
 
-### <a id="HarpEngine_Entity_Draw"></a> Draw\(\)
+### <a id="HarpEngine_Entity_OnAddedToScene"></a> OnAddedToScene\(\)
 
 ```csharp
-public virtual void Draw()
+public virtual void OnAddedToScene()
 ```
 
-### <a id="HarpEngine_Entity_DrawGUI"></a> DrawGUI\(\)
+### <a id="HarpEngine_Entity_OnDraw"></a> OnDraw\(\)
 
 ```csharp
-public virtual void DrawGUI()
+public virtual void OnDraw()
 ```
 
-### <a id="HarpEngine_Entity_OnRemove"></a> OnRemove\(\)
+### <a id="HarpEngine_Entity_OnDrawGUI"></a> OnDrawGUI\(\)
 
 ```csharp
-public virtual void OnRemove()
+public virtual void OnDrawGUI()
+```
+
+### <a id="HarpEngine_Entity_OnRemovedFromScene"></a> OnRemovedFromScene\(\)
+
+```csharp
+public virtual void OnRemovedFromScene()
+```
+
+### <a id="HarpEngine_Entity_OnUpdate"></a> OnUpdate\(\)
+
+```csharp
+public virtual void OnUpdate()
 ```
 
 ### <a id="HarpEngine_Entity_Remove"></a> Remove\(\)
@@ -126,14 +130,4 @@ public virtual void OnRemove()
 ```csharp
 public void Remove()
 ```
-
-### <a id="HarpEngine_Entity_Update_System_Single_"></a> Update\(float\)
-
-```csharp
-public virtual void Update(float frameTime)
-```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

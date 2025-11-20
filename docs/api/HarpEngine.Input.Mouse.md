@@ -34,6 +34,16 @@ public static Vector2 Delta { get; }
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
+### <a id="HarpEngine_Input_Mouse_GamePosition"></a> GamePosition
+
+```csharp
+public static Vector2 GamePosition { get; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="HarpEngine_Input_Mouse_GameX"></a> GameX
 
 ```csharp
@@ -99,7 +109,7 @@ public static int WindowY { get; }
 ### <a id="HarpEngine_Input_Mouse_IsButtonDown_HarpEngine_Input_MouseButton_"></a> IsButtonDown\(MouseButton\)
 
 ```csharp
-public static bool IsButtonDown(MouseButton mouseButton)
+public static extern bool IsButtonDown(MouseButton mouseButton)
 ```
 
 #### Parameters
@@ -113,7 +123,7 @@ public static bool IsButtonDown(MouseButton mouseButton)
 ### <a id="HarpEngine_Input_Mouse_IsButtonPressed_HarpEngine_Input_MouseButton_"></a> IsButtonPressed\(MouseButton\)
 
 ```csharp
-public static bool IsButtonPressed(MouseButton mouseButton)
+public static extern bool IsButtonPressed(MouseButton mouseButton)
 ```
 
 #### Parameters
@@ -127,7 +137,7 @@ public static bool IsButtonPressed(MouseButton mouseButton)
 ### <a id="HarpEngine_Input_Mouse_IsButtonReleased_HarpEngine_Input_MouseButton_"></a> IsButtonReleased\(MouseButton\)
 
 ```csharp
-public static bool IsButtonReleased(MouseButton mouseButton)
+public static extern bool IsButtonReleased(MouseButton mouseButton)
 ```
 
 #### Parameters
@@ -141,7 +151,7 @@ public static bool IsButtonReleased(MouseButton mouseButton)
 ### <a id="HarpEngine_Input_Mouse_SetCursor_HarpEngine_Input_MouseCursor_"></a> SetCursor\(MouseCursor\)
 
 ```csharp
-public static void SetCursor(MouseCursor mouseCursor)
+public static extern void SetCursor(MouseCursor mouseCursor)
 ```
 
 #### Parameters

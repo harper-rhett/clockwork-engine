@@ -97,7 +97,7 @@ public static void DrawLinear(Vector2[] positions, float thickness, Color color)
 ### <a id="HarpEngine_Graphics_Spline_DrawSegmentBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawSegmentBasis\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawSegmentBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
+public static extern void DrawSegmentBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
 ```
 
 #### Parameters
@@ -117,7 +117,7 @@ public static void DrawSegmentBasis(Vector2 positionOne, Vector2 positionTwo, Ve
 ### <a id="HarpEngine_Graphics_Spline_DrawSegmentBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawSegmentBezierCubic\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawSegmentBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float thickness, Color color)
+public static extern void DrawSegmentBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float thickness, Color color)
 ```
 
 #### Parameters
@@ -137,7 +137,7 @@ public static void DrawSegmentBezierCubic(Vector2 positionOne, Vector2 controlPo
 ### <a id="HarpEngine_Graphics_Spline_DrawSegmentBezierQuadratic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawSegmentBezierQuadratic\(Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawSegmentBezierQuadratic(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float thickness, Color color)
+public static extern void DrawSegmentBezierQuadratic(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float thickness, Color color)
 ```
 
 #### Parameters
@@ -155,7 +155,7 @@ public static void DrawSegmentBezierQuadratic(Vector2 positionOne, Vector2 contr
 ### <a id="HarpEngine_Graphics_Spline_DrawSegmentCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawSegmentCatmullRom\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawSegmentCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
+public static extern void DrawSegmentCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
 ```
 
 #### Parameters
@@ -175,7 +175,7 @@ public static void DrawSegmentCatmullRom(Vector2 positionOne, Vector2 positionTw
 ### <a id="HarpEngine_Graphics_Spline_DrawSegmentLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawSegmentLinear\(Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawSegmentLinear(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
+public static extern void DrawSegmentLinear(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
 ```
 
 #### Parameters
@@ -191,7 +191,7 @@ public static void DrawSegmentLinear(Vector2 startPosition, Vector2 endPosition,
 ### <a id="HarpEngine_Graphics_Spline_GetPointBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBasis\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
-public static Vector2 GetPointBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
+public static extern Vector2 GetPointBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
 ```
 
 #### Parameters
@@ -213,7 +213,7 @@ public static Vector2 GetPointBasis(Vector2 positionOne, Vector2 positionTwo, Ve
 ### <a id="HarpEngine_Graphics_Spline_GetPointBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierCubic\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
-public static Vector2 GetPointBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float progress)
+public static extern Vector2 GetPointBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float progress)
 ```
 
 #### Parameters
@@ -235,7 +235,7 @@ public static Vector2 GetPointBezierCubic(Vector2 positionOne, Vector2 controlPo
 ### <a id="HarpEngine_Graphics_Spline_GetPointBezierQuad_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierQuad\(Vector2, Vector2, Vector2, float\)
 
 ```csharp
-public static Vector2 GetPointBezierQuad(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float progress)
+public static extern Vector2 GetPointBezierQuad(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float progress)
 ```
 
 #### Parameters
@@ -255,7 +255,7 @@ public static Vector2 GetPointBezierQuad(Vector2 positionOne, Vector2 controlPos
 ### <a id="HarpEngine_Graphics_Spline_GetPointCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointCatmullRom\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
-public static Vector2 GetPointCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
+public static extern Vector2 GetPointCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
 ```
 
 #### Parameters
@@ -277,7 +277,7 @@ public static Vector2 GetPointCatmullRom(Vector2 positionOne, Vector2 positionTw
 ### <a id="HarpEngine_Graphics_Spline_GetPointLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointLinear\(Vector2, Vector2, float\)
 
 ```csharp
-public static Vector2 GetPointLinear(Vector2 startPosition, Vector2 endPosition, float progress)
+public static extern Vector2 GetPointLinear(Vector2 startPosition, Vector2 endPosition, float progress)
 ```
 
 #### Parameters

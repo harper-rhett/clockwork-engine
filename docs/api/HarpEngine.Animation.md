@@ -6,6 +6,12 @@
 
  [Easer](HarpEngine.Animation.Easer.md)
 
+ [TextureAnimation](HarpEngine.Animation.TextureAnimation.md)
+
+ [TextureAnimationManager<AnimationID\>](HarpEngine.Animation.TextureAnimationManager\-1.md)
+
+ [Transform2DEaser](HarpEngine.Animation.Transform2DEaser.md)
+
 ### Delegates
 
  [Curve](HarpEngine.Animation.Curve.md)

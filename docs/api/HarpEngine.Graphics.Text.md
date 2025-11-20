@@ -27,7 +27,7 @@ public static class Text
 ### <a id="HarpEngine_Graphics_Text_Draw_System_String_System_Int32_System_Int32_System_Int32_HarpEngine_Graphics_Color_"></a> Draw\(string, int, int, int, Color\)
 
 ```csharp
-public static void Draw(string text, int x, int y, int fontSize, Color color)
+public static extern void Draw(string text, int x, int y, int fontSize, Color color)
 ```
 
 #### Parameters
@@ -61,7 +61,7 @@ public static void Draw(string text, Vector2 position, int fontSize, Color color
 ### <a id="HarpEngine_Graphics_Text_Draw_HarpEngine_Graphics_Font_System_String_System_Numerics_Vector2_System_Single_System_Single_HarpEngine_Graphics_Color_"></a> Draw\(Font, string, Vector2, float, float, Color\)
 
 ```csharp
-public static void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color tint)
+public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color color)
 ```
 
 #### Parameters
@@ -76,12 +76,12 @@ public static void Draw(Font font, string text, Vector2 position, float fontSize
 
 `spacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Text_Draw_HarpEngine_Graphics_Font_System_String_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Single_System_Single_HarpEngine_Graphics_Color_"></a> Draw\(Font, string, Vector2, Vector2, float, float, float, Color\)
 
 ```csharp
-public static void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint)
+public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color color)
 ```
 
 #### Parameters
@@ -100,12 +100,12 @@ public static void Draw(Font font, string text, Vector2 position, Vector2 origin
 
 `spacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Text_MeasureSize_HarpEngine_Graphics_Font_System_String_System_Single_System_Single_"></a> MeasureSize\(Font, string, float, float\)
 
 ```csharp
-public static Vector2 MeasureSize(Font font, string text, float fontSize, float spacing)
+public static extern Vector2 MeasureSize(Font font, string text, float fontSize, float spacing)
 ```
 
 #### Parameters
@@ -125,7 +125,7 @@ public static Vector2 MeasureSize(Font font, string text, float fontSize, float 
 ### <a id="HarpEngine_Graphics_Text_MeasureWidth_System_String_System_Int32_"></a> MeasureWidth\(string, int\)
 
 ```csharp
-public static int MeasureWidth(string text, int fontSize)
+public static extern int MeasureWidth(string text, int fontSize)
 ```
 
 #### Parameters
@@ -141,7 +141,7 @@ public static int MeasureWidth(string text, int fontSize)
 ### <a id="HarpEngine_Graphics_Text_SetLineSpacing_System_Int32_"></a> SetLineSpacing\(int\)
 
 ```csharp
-public static void SetLineSpacing(int spacing)
+public static extern void SetLineSpacing(int spacing)
 ```
 
 #### Parameters

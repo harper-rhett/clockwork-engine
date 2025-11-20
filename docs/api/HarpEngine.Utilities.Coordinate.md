@@ -1,10 +1,10 @@
-# <a id="HarpEngine_EngineSettings"></a> Struct EngineSettings
+# <a id="HarpEngine_Utilities_Coordinate"></a> Struct Coordinate
 
-Namespace: [HarpEngine](HarpEngine.md)  
+Namespace: [HarpEngine.Utilities](HarpEngine.Utilities.md)  
 Assembly: HarpEngine.dll  
 
 ```csharp
-public struct EngineSettings
+public struct Coordinate
 ```
 
 #### Inherited Members
@@ -18,58 +18,34 @@ public struct EngineSettings
 
 ## Constructors
 
-### <a id="HarpEngine_EngineSettings__ctor"></a> EngineSettings\(\)
+### <a id="HarpEngine_Utilities_Coordinate__ctor_System_Int32_System_Int32_"></a> Coordinate\(int, int\)
 
 ```csharp
-public EngineSettings()
+public Coordinate(int x, int y)
 ```
+
+#### Parameters
+
+`x` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`y` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 ## Fields
 
-### <a id="HarpEngine_EngineSettings_GameHeight"></a> GameHeight
+### <a id="HarpEngine_Utilities_Coordinate_X"></a> X
 
 ```csharp
-public int GameHeight
+public int X
 ```
 
 #### Field Value
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="HarpEngine_EngineSettings_GameWidth"></a> GameWidth
+### <a id="HarpEngine_Utilities_Coordinate_Y"></a> Y
 
 ```csharp
-public int GameWidth
-```
-
-#### Field Value
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="HarpEngine_EngineSettings_WindowHeight"></a> WindowHeight
-
-```csharp
-public int WindowHeight
-```
-
-#### Field Value
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="HarpEngine_EngineSettings_WindowName"></a> WindowName
-
-```csharp
-public string WindowName
-```
-
-#### Field Value
-
- [string](https://learn.microsoft.com/dotnet/api/system.string)
-
-### <a id="HarpEngine_EngineSettings_WindowWidth"></a> WindowWidth
-
-```csharp
-public int WindowWidth
+public int Y
 ```
 
 #### Field Value

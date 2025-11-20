@@ -27,7 +27,7 @@ public static class Primitives
 ### <a id="HarpEngine_Graphics_Primitives_DrawArc_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_HarpEngine_Graphics_Color_"></a> DrawArc\(Vector2, float, float, float, int, Color\)
 
 ```csharp
-public static void DrawArc(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color)
+public static extern void DrawArc(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color)
 ```
 
 #### Parameters
@@ -47,7 +47,7 @@ public static void DrawArc(Vector2 position, float radius, float startAngle, flo
 ### <a id="HarpEngine_Graphics_Primitives_DrawArcLines_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_HarpEngine_Graphics_Color_"></a> DrawArcLines\(Vector2, float, float, float, int, Color\)
 
 ```csharp
-public static void DrawArcLines(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color)
+public static extern void DrawArcLines(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color)
 ```
 
 #### Parameters
@@ -67,7 +67,7 @@ public static void DrawArcLines(Vector2 position, float radius, float startAngle
 ### <a id="HarpEngine_Graphics_Primitives_DrawBezier_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawBezier\(Vector2, Vector2, float, Color\)
 
 ```csharp
-public static void DrawBezier(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
+public static extern void DrawBezier(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
 ```
 
 #### Parameters
@@ -99,7 +99,7 @@ public static extern void DrawCircle(int x, int y, float radius, Color color)
 ### <a id="HarpEngine_Graphics_Primitives_DrawCircle_System_Int32_System_Int32_System_Single_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_"></a> DrawCircle\(int, int, float, Color, Color\)
 
 ```csharp
-public static void DrawCircle(int x, int y, float radius, Color innerColor, Color outerColor)
+public static extern void DrawCircle(int x, int y, float radius, Color innerColor, Color outerColor)
 ```
 
 #### Parameters
@@ -117,7 +117,7 @@ public static void DrawCircle(int x, int y, float radius, Color innerColor, Colo
 ### <a id="HarpEngine_Graphics_Primitives_DrawCircle_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawCircle\(Vector2, float, Color\)
 
 ```csharp
-public static void DrawCircle(Vector2 position, float radius, Color color)
+public static extern void DrawCircle(Vector2 position, float radius, Color color)
 ```
 
 #### Parameters
@@ -147,7 +147,7 @@ public static extern void DrawCircleLines(int x, int y, float radius, Color colo
 ### <a id="HarpEngine_Graphics_Primitives_DrawCircleLines_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawCircleLines\(Vector2, float, Color\)
 
 ```csharp
-public static void DrawCircleLines(Vector2 position, float radius, Color color)
+public static extern void DrawCircleLines(Vector2 position, float radius, Color color)
 ```
 
 #### Parameters
@@ -215,7 +215,7 @@ public static extern void DrawLine(int startX, int startY, int endX, int endY, C
 ### <a id="HarpEngine_Graphics_Primitives_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> DrawLine\(Vector2, Vector2, Color\)
 
 ```csharp
-public static void DrawLine(Vector2 startPosition, Vector2 endPosition, Color color)
+public static extern void DrawLine(Vector2 startPosition, Vector2 endPosition, Color color)
 ```
 
 #### Parameters
@@ -223,6 +223,22 @@ public static void DrawLine(Vector2 startPosition, Vector2 endPosition, Color co
 `startPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
 `endPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`color` [Color](HarpEngine.Graphics.Color.md)
+
+### <a id="HarpEngine_Graphics_Primitives_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawLine\(Vector2, Vector2, float, Color\)
+
+```csharp
+public static extern void DrawLine(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`endPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`thickness` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
@@ -255,19 +271,7 @@ public static extern void DrawPixel(int x, int y, Color color)
 ### <a id="HarpEngine_Graphics_Primitives_DrawPixel_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> DrawPixel\(Vector2, Color\)
 
 ```csharp
-public static void DrawPixel(Vector2 position, Color color)
-```
-
-#### Parameters
-
-`position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
-`color` [Color](HarpEngine.Graphics.Color.md)
-
-### <a id="HarpEngine_Graphics_Primitives_DrawPixelV_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> DrawPixelV\(Vector2, Color\)
-
-```csharp
-public static extern void DrawPixelV(Vector2 position, Color color)
+public static extern void DrawPixel(Vector2 position, Color color)
 ```
 
 #### Parameters
@@ -279,7 +283,7 @@ public static extern void DrawPixelV(Vector2 position, Color color)
 ### <a id="HarpEngine_Graphics_Primitives_DrawPolygon_System_Numerics_Vector2_System_Int32_System_Single_System_Single_HarpEngine_Graphics_Color_"></a> DrawPolygon\(Vector2, int, float, float, Color\)
 
 ```csharp
-public static void DrawPolygon(Vector2 position, int sides, float radius, float rotation, Color color)
+public static extern void DrawPolygon(Vector2 position, int sides, float radius, float rotation, Color color)
 ```
 
 #### Parameters
@@ -297,7 +301,7 @@ public static void DrawPolygon(Vector2 position, int sides, float radius, float 
 ### <a id="HarpEngine_Graphics_Primitives_DrawPolygonLines_System_Numerics_Vector2_System_Int32_System_Single_System_Single_HarpEngine_Graphics_Color_"></a> DrawPolygonLines\(Vector2, int, float, float, Color\)
 
 ```csharp
-public static void DrawPolygonLines(Vector2 position, int sides, float radius, float rotation, Color color)
+public static extern void DrawPolygonLines(Vector2 position, int sides, float radius, float rotation, Color color)
 ```
 
 #### Parameters
@@ -315,7 +319,7 @@ public static void DrawPolygonLines(Vector2 position, int sides, float radius, f
 ### <a id="HarpEngine_Graphics_Primitives_DrawPolygonLines_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Single_HarpEngine_Graphics_Color_"></a> DrawPolygonLines\(Vector2, int, float, float, float, Color\)
 
 ```csharp
-public static void DrawPolygonLines(Vector2 position, int sides, float radius, float rotation, float lineThickness, Color color)
+public static extern void DrawPolygonLines(Vector2 position, int sides, float radius, float rotation, float lineThickness, Color color)
 ```
 
 #### Parameters
@@ -353,7 +357,7 @@ public static extern void DrawRectangle(int x, int y, int width, int height, Col
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangle_System_Numerics_Vector2_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> DrawRectangle\(Vector2, Vector2, Color\)
 
 ```csharp
-public static void DrawRectangle(Vector2 position, Vector2 size, Color color)
+public static extern void DrawRectangle(Vector2 position, Vector2 size, Color color)
 ```
 
 #### Parameters
@@ -367,7 +371,7 @@ public static void DrawRectangle(Vector2 position, Vector2 size, Color color)
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangle_HarpEngine_Graphics_Rectangle_HarpEngine_Graphics_Color_"></a> DrawRectangle\(Rectangle, Color\)
 
 ```csharp
-public static void DrawRectangle(Rectangle rectangle, Color color)
+public static extern void DrawRectangle(Rectangle rectangle, Color color)
 ```
 
 #### Parameters
@@ -379,7 +383,7 @@ public static void DrawRectangle(Rectangle rectangle, Color color)
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangle_HarpEngine_Graphics_Rectangle_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawRectangle\(Rectangle, Vector2, float, Color\)
 
 ```csharp
-public static void DrawRectangle(Rectangle rectangle, Vector2 origin, float rotation, Color color)
+public static extern void DrawRectangle(Rectangle rectangle, Vector2 origin, float rotation, Color color)
 ```
 
 #### Parameters
@@ -395,7 +399,7 @@ public static void DrawRectangle(Rectangle rectangle, Vector2 origin, float rota
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangleGradient_HarpEngine_Graphics_Rectangle_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_"></a> DrawRectangleGradient\(Rectangle, Color, Color, Color, Color\)
 
 ```csharp
-public static void DrawRectangleGradient(Rectangle rectangle, Color topLeftColor, Color bottomLeftColor, Color topRightColor, Color bottomRightColor)
+public static extern void DrawRectangleGradient(Rectangle rectangle, Color topLeftColor, Color bottomLeftColor, Color topRightColor, Color bottomRightColor)
 ```
 
 #### Parameters
@@ -413,7 +417,7 @@ public static void DrawRectangleGradient(Rectangle rectangle, Color topLeftColor
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangleGradientHorizontal_System_Int32_System_Int32_System_Int32_System_Int32_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_"></a> DrawRectangleGradientHorizontal\(int, int, int, int, Color, Color\)
 
 ```csharp
-public static void DrawRectangleGradientHorizontal(int x, int y, int width, int height, Color leftColor, Color rightColor)
+public static extern void DrawRectangleGradientHorizontal(int x, int y, int width, int height, Color leftColor, Color rightColor)
 ```
 
 #### Parameters
@@ -433,7 +437,7 @@ public static void DrawRectangleGradientHorizontal(int x, int y, int width, int 
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangleGradientVertical_System_Int32_System_Int32_System_Int32_System_Int32_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_"></a> DrawRectangleGradientVertical\(int, int, int, int, Color, Color\)
 
 ```csharp
-public static void DrawRectangleGradientVertical(int x, int y, int width, int height, Color topColor, Color bottomColor)
+public static extern void DrawRectangleGradientVertical(int x, int y, int width, int height, Color topColor, Color bottomColor)
 ```
 
 #### Parameters
@@ -471,7 +475,7 @@ public static extern void DrawRectangleLines(int x, int y, int width, int height
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangleLines_HarpEngine_Graphics_Rectangle_System_Single_HarpEngine_Graphics_Color_"></a> DrawRectangleLines\(Rectangle, float, Color\)
 
 ```csharp
-public static void DrawRectangleLines(Rectangle rectangle, float lineThickness, Color color)
+public static extern void DrawRectangleLines(Rectangle rectangle, float lineThickness, Color color)
 ```
 
 #### Parameters
@@ -517,7 +521,7 @@ public static extern void DrawRectangleRoundedLines(Rectangle rectangle, float r
 ### <a id="HarpEngine_Graphics_Primitives_DrawRectangleRoundedLines_HarpEngine_Graphics_Rectangle_System_Single_System_Int32_System_Single_HarpEngine_Graphics_Color_"></a> DrawRectangleRoundedLines\(Rectangle, float, int, float, Color\)
 
 ```csharp
-public static void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color)
+public static extern void DrawRectangleRoundedLines(Rectangle rectangle, float roundness, int segments, float lineThickness, Color color)
 ```
 
 #### Parameters
@@ -576,6 +580,22 @@ public static extern void DrawRingLines(Vector2 center, float innerRadius, float
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
+### <a id="HarpEngine_Graphics_Primitives_DrawSquare_System_Int32_System_Int32_System_Int32_HarpEngine_Graphics_Color_"></a> DrawSquare\(int, int, int, Color\)
+
+```csharp
+public static void DrawSquare(int x, int y, int size, Color color)
+```
+
+#### Parameters
+
+`x` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`y` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`size` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`color` [Color](HarpEngine.Graphics.Color.md)
+
 ### <a id="HarpEngine_Graphics_Primitives_DrawTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> DrawTriangle\(Vector2, Vector2, Vector2, Color\)
 
 ```csharp
@@ -592,17 +612,15 @@ public static extern void DrawTriangle(Vector2 cornerOne, Vector2 cornerTwo, Vec
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
-### <a id="HarpEngine_Graphics_Primitives_DrawTriangleFan_System_Numerics_Vector2___System_Int32_HarpEngine_Graphics_Color_"></a> DrawTriangleFan\(Vector2\[\], int, Color\)
+### <a id="HarpEngine_Graphics_Primitives_DrawTriangleFan_System_Numerics_Vector2___HarpEngine_Graphics_Color_"></a> DrawTriangleFan\(Vector2\[\], Color\)
 
 ```csharp
-public static extern void DrawTriangleFan(Vector2[] positions, int positionCount, Color color)
+public static void DrawTriangleFan(Vector2[] positions, Color color)
 ```
 
 #### Parameters
 
 `positions` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)\[\]
-
-`positionCount` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
@@ -622,17 +640,15 @@ public static extern void DrawTriangleLines(Vector2 cornerOne, Vector2 cornerTwo
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
-### <a id="HarpEngine_Graphics_Primitives_DrawTriangleStrip_System_Numerics_Vector2___System_Int32_HarpEngine_Graphics_Color_"></a> DrawTriangleStrip\(Vector2\[\], int, Color\)
+### <a id="HarpEngine_Graphics_Primitives_DrawTriangleStrip_System_Numerics_Vector2___HarpEngine_Graphics_Color_"></a> DrawTriangleStrip\(Vector2\[\], Color\)
 
 ```csharp
-public static extern void DrawTriangleStrip(Vector2[] positions, int positionCount, Color color)
+public static void DrawTriangleStrip(Vector2[] positions, Color color)
 ```
 
 #### Parameters
 
 `positions` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)\[\]
-
-`positionCount` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 

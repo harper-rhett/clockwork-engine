@@ -26,15 +26,15 @@ public Particle2D()
 
 ## Fields
 
-### <a id="HarpEngine_Particles_Particle2D_Color"></a> Color
+### <a id="HarpEngine_Particles_Particle2D_Gradient"></a> Gradient
 
 ```csharp
-public Color Color
+public Gradient Gradient
 ```
 
 #### Field Value
 
- [Color](HarpEngine.Graphics.Color.md)
+ [Gradient](HarpEngine.Graphics.Gradient.md)
 
 ### <a id="HarpEngine_Particles_Particle2D_Lifespan"></a> Lifespan
 

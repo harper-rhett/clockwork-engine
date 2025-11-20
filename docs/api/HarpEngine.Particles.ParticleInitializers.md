@@ -64,15 +64,15 @@ public static Particle2DInitializer ConicDirection(Vector2 direction, float half
 
  [Particle2DInitializer](HarpEngine.Particles.Particle2DInitializer.md)
 
-### <a id="HarpEngine_Particles_ParticleInitializers_OverrideColor_HarpEngine_Graphics_Color_"></a> OverrideColor\(Color\)
+### <a id="HarpEngine_Particles_ParticleInitializers_OverrideGradient_HarpEngine_Graphics_Gradient_"></a> OverrideGradient\(Gradient\)
 
 ```csharp
-public static Particle2DInitializer OverrideColor(Color color)
+public static Particle2DInitializer OverrideGradient(Gradient gradient)
 ```
 
 #### Parameters
 
-`color` [Color](HarpEngine.Graphics.Color.md)
+`gradient` [Gradient](HarpEngine.Graphics.Gradient.md)
 
 #### Returns
 
@@ -239,6 +239,34 @@ public static Particle2DInitializer ScatterByDirection(float maxRadius)
 #### Parameters
 
 `maxRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Particle2DInitializer](HarpEngine.Particles.Particle2DInitializer.md)
+
+### <a id="HarpEngine_Particles_ParticleInitializers_SetColor_HarpEngine_Graphics_Color_"></a> SetColor\(Color\)
+
+```csharp
+public static Particle2DInitializer SetColor(Color color)
+```
+
+#### Parameters
+
+`color` [Color](HarpEngine.Graphics.Color.md)
+
+#### Returns
+
+ [Particle2DInitializer](HarpEngine.Particles.Particle2DInitializer.md)
+
+### <a id="HarpEngine_Particles_ParticleInitializers_SetColors_HarpEngine_Graphics_Color___"></a> SetColors\(params Color\[\]\)
+
+```csharp
+public static Particle2DInitializer SetColors(params Color[] colors)
+```
+
+#### Parameters
+
+`colors` [Color](HarpEngine.Graphics.Color.md)\[\]
 
 #### Returns
 

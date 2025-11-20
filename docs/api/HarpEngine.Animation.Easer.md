@@ -13,18 +13,23 @@ public class Easer : Entity
 [Entity](HarpEngine.Entity.md) ← 
 [Easer](HarpEngine.Animation.Easer.md)
 
+#### Derived
+
+[Transform2DEaser](HarpEngine.Animation.Transform2DEaser.md)
+
 #### Inherited Members
 
-[Entity.scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_scene), 
+[Entity.Scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_Scene), 
 [Entity.IsUpdating](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsUpdating), 
 [Entity.IsRendering](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsRendering), 
 [Entity.UpdateLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawLayer), 
-[Entity.Update\(float\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Update\_System\_Single\_), 
-[Entity.Draw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Draw), 
-[Entity.DrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawGUI), 
+[Entity.OnUpdate\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnUpdate), 
+[Entity.OnDraw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDraw), 
+[Entity.OnDrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDrawGUI), 
 [Entity.Remove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Remove), 
-[Entity.OnRemove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemove), 
+[Entity.OnAddedToScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnAddedToScene), 
+[Entity.OnRemovedFromScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemovedFromScene), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -35,15 +40,13 @@ public class Easer : Entity
 
 ## Constructors
 
-### <a id="HarpEngine_Animation_Easer__ctor_HarpEngine_Scene_System_Single_"></a> Easer\(Scene, float\)
+### <a id="HarpEngine_Animation_Easer__ctor_System_Single_"></a> Easer\(float\)
 
 ```csharp
-public Easer(Scene scene, float easeSeconds)
+public Easer(float easeSeconds)
 ```
 
 #### Parameters
-
-`scene` [Scene](HarpEngine.Scene.md)
 
 `easeSeconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
@@ -112,12 +115,6 @@ public float Progress { get; }
  [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ## Methods
-
-### <a id="HarpEngine_Animation_Easer_Draw"></a> Draw\(\)
-
-```csharp
-public override void Draw()
-```
 
 ### <a id="HarpEngine_Animation_Easer_EaseColor_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_"></a> EaseColor\(Color, Color\)
 
@@ -199,10 +196,22 @@ public Vector3 EaseVector3(Vector3 from, Vector3 to)
 
  [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
 
+### <a id="HarpEngine_Animation_Easer_OnDraw"></a> OnDraw\(\)
+
+```csharp
+public override void OnDraw()
+```
+
 ### <a id="HarpEngine_Animation_Easer_OnEasing"></a> OnEasing\(\)
 
 ```csharp
 protected virtual void OnEasing()
+```
+
+### <a id="HarpEngine_Animation_Easer_OnUpdate"></a> OnUpdate\(\)
+
+```csharp
+public override void OnUpdate()
 ```
 
 ### <a id="HarpEngine_Animation_Easer_Skip"></a> Skip\(\)
@@ -216,16 +225,6 @@ public void Skip()
 ```csharp
 public void Start()
 ```
-
-### <a id="HarpEngine_Animation_Easer_Update_System_Single_"></a> Update\(float\)
-
-```csharp
-public override void Update(float frameTime)
-```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="HarpEngine_Animation_Easer_Easing"></a> Easing
 

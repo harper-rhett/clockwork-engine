@@ -15,16 +15,17 @@ public class TriggerTimer : Entity
 
 #### Inherited Members
 
-[Entity.scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_scene), 
+[Entity.Scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_Scene), 
 [Entity.IsUpdating](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsUpdating), 
 [Entity.IsRendering](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsRendering), 
 [Entity.UpdateLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawLayer), 
-[Entity.Update\(float\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Update\_System\_Single\_), 
-[Entity.Draw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Draw), 
-[Entity.DrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawGUI), 
+[Entity.OnUpdate\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnUpdate), 
+[Entity.OnDraw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDraw), 
+[Entity.OnDrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDrawGUI), 
 [Entity.Remove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Remove), 
-[Entity.OnRemove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemove), 
+[Entity.OnAddedToScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnAddedToScene), 
+[Entity.OnRemovedFromScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemovedFromScene), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -35,15 +36,13 @@ public class TriggerTimer : Entity
 
 ## Constructors
 
-### <a id="HarpEngine_Utilities_TriggerTimer__ctor_HarpEngine_Scene_System_Single_"></a> TriggerTimer\(Scene, float\)
+### <a id="HarpEngine_Utilities_TriggerTimer__ctor_System_Single_"></a> TriggerTimer\(float\)
 
 ```csharp
-public TriggerTimer(Scene scene, float triggerSeconds)
+public TriggerTimer(float triggerSeconds)
 ```
 
 #### Parameters
-
-`scene` [Scene](HarpEngine.Scene.md)
 
 `triggerSeconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
@@ -67,6 +66,12 @@ public bool RemoveOnTriggered
 public virtual void OnTriggered()
 ```
 
+### <a id="HarpEngine_Utilities_TriggerTimer_OnUpdate"></a> OnUpdate\(\)
+
+```csharp
+public override void OnUpdate()
+```
+
 ### <a id="HarpEngine_Utilities_TriggerTimer_Skip"></a> Skip\(\)
 
 ```csharp
@@ -84,16 +89,6 @@ public void Start()
 ```csharp
 protected void Trigger()
 ```
-
-### <a id="HarpEngine_Utilities_TriggerTimer_Update_System_Single_"></a> Update\(float\)
-
-```csharp
-public override void Update(float frameTime)
-```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="HarpEngine_Utilities_TriggerTimer_Triggered"></a> Triggered
 

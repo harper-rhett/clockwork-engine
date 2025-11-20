@@ -6,6 +6,8 @@
 
  [Drawing](HarpEngine.Graphics.Drawing.md)
 
+ [Gradient](HarpEngine.Graphics.Gradient.md)
+
  [Primitives](HarpEngine.Graphics.Primitives.md)
 
  [Spline](HarpEngine.Graphics.Spline.md)
@@ -39,6 +41,8 @@
  [NinePatchLayout](HarpEngine.Graphics.NinePatchLayout.md)
 
  [PixelFormat](HarpEngine.Graphics.PixelFormat.md)
+
+ [TextureFilter](HarpEngine.Graphics.TextureFilter.md)
 
  [UniformDataType](HarpEngine.Graphics.UniformDataType.md)
 

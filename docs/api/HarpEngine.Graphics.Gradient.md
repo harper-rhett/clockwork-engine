@@ -1,16 +1,16 @@
-# <a id="HarpEngine_Graphics_Drawing"></a> Class Drawing
+# <a id="HarpEngine_Graphics_Gradient"></a> Class Gradient
 
 Namespace: [HarpEngine.Graphics](HarpEngine.Graphics.md)  
 Assembly: HarpEngine.dll  
 
 ```csharp
-public static class Drawing
+public class Gradient
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[Drawing](HarpEngine.Graphics.Drawing.md)
+[Gradient](HarpEngine.Graphics.Gradient.md)
 
 #### Inherited Members
 
@@ -22,43 +22,43 @@ public static class Drawing
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
-## Methods
+## Constructors
 
-### <a id="HarpEngine_Graphics_Drawing_Begin"></a> Begin\(\)
-
-```csharp
-public static extern void Begin()
-```
-
-### <a id="HarpEngine_Graphics_Drawing_BeginBlending_HarpEngine_Graphics_BlendMode_"></a> BeginBlending\(BlendMode\)
+### <a id="HarpEngine_Graphics_Gradient__ctor_HarpEngine_Graphics_Color___"></a> Gradient\(params Color\[\]\)
 
 ```csharp
-public static extern void BeginBlending(BlendMode blendMode)
+public Gradient(params Color[] colors)
 ```
 
 #### Parameters
 
-`blendMode` [BlendMode](HarpEngine.Graphics.BlendMode.md)
+`colors` [Color](HarpEngine.Graphics.Color.md)\[\]
 
-### <a id="HarpEngine_Graphics_Drawing_Clear_HarpEngine_Graphics_Color_"></a> Clear\(Color\)
+## Methods
+
+### <a id="HarpEngine_Graphics_Gradient_AddColor_HarpEngine_Graphics_Color_System_Single_"></a> AddColor\(Color, float\)
 
 ```csharp
-public static extern void Clear(Color color)
+public void AddColor(Color color, float position)
 ```
 
 #### Parameters
 
 `color` [Color](HarpEngine.Graphics.Color.md)
 
-### <a id="HarpEngine_Graphics_Drawing_End"></a> End\(\)
+`position` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+### <a id="HarpEngine_Graphics_Gradient_Sample_System_Single_"></a> Sample\(float\)
 
 ```csharp
-public static extern void End()
+public Color Sample(float position)
 ```
 
-### <a id="HarpEngine_Graphics_Drawing_EndBlending"></a> EndBlending\(\)
+#### Parameters
 
-```csharp
-public static extern void EndBlending()
-```
+`position` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Color](HarpEngine.Graphics.Color.md)
 
