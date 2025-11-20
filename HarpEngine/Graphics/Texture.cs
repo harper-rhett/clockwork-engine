@@ -9,40 +9,43 @@ public unsafe struct Texture : IDisposable
 	public int Mipmaps;
 	public PixelFormat Format;
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Texture LoadTexture(string filePath);
-	public static Texture Load(string filePath) => LoadTexture(filePath);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadTexture")]
+	public extern static Texture Load(string filePath);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Texture LoadTextureFromImage(Image image);
-	public static Texture LoadFromImage(Image image) => LoadTextureFromImage(image);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadTextureFromImage")]
+	public static extern Texture Load(Image image);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsTextureValid(Texture texture);
-	public bool IsValid => IsTextureValid(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsTextureValid")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisValid(Texture texture);
+	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void UnloadTexture(Texture texture);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadTexture")]
+	private static extern void Unload(Texture texture);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void DrawTexture(Texture texture, int x, int y, Color tint);
-	public void Draw(int x, int y, Color tint) => DrawTexture(this, x, y, tint);
-	public void Draw(Vector2 position, Color tint) => DrawTexture(this, (int)float.Round(position.X), (int)float.Round(position.Y), tint);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTextureFilter")]
+	private static extern void SetFilter(Texture texture, TextureFilter textureFilter);
+	public void SetFilter(TextureFilter textureFilter) => SetFilter(this, textureFilter);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void DrawTextureRec(Texture texture, Rectangle source, Vector2 position, Color tint);
-	public void Draw(Rectangle source, Vector2 position, Color tint) => DrawTextureRec(this, source, position, tint);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTexture")]
+	private static extern void Draw(Texture texture, int x, int y, Color color);
+	public void Draw(int x, int y, Color color) => Draw(this, x, y, color);
+	public void Draw(Vector2 position, Color color) => Draw(this, (int)float.Round(position.X), (int)float.Round(position.Y), color);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void DrawTexturePro(Texture texture, Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color tint);
-	public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color tint) => DrawTexturePro(this, source, destination, origin, rotation, tint);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextureRec")]
+	private static extern void Draw(Texture texture, Rectangle source, Vector2 position, Color color);
+	public void Draw(Rectangle source, Vector2 position, Color color) => Draw(this, source, position, color);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void DrawTextureNPatch(Texture texture, NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color tint);
-	public static void DrawNinePatch(Texture texture, NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color tint) => DrawTextureNPatch(texture, ninePatch, destination, origin, rotation, tint);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTexturePro")]
+	private static extern void Draw(Texture texture, Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color color);
+	public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color color) => Draw(this, source, destination, origin, rotation, color);
+
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextureNPatch")]
+	private static extern void DrawNinePatch(Texture texture, NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color);
+	public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color) => DrawNinePatch(this, ninePatch, destination, origin, rotation, color);
 
 	public void Dispose()
 	{
-		UnloadTexture(this);
+		Unload(this);
 	}
 }

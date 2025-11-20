@@ -11,7 +11,7 @@ public class Monitor
 
 	public static Monitor GetCurrent()
 	{
-		return new Monitor(Current);
+		return new Monitor(CurrentIndex);
 	}
 
 	public static Monitor[] GetAll()
@@ -24,39 +24,39 @@ public class Monitor
 		return monitors;
 	}
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorCount();
-	public static int Count => GetMonitorCount();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorCount")]
+	private static extern int GetCount();
+	public static int Count => GetCount();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetCurrentMonitor();
-	public static int Current => GetCurrentMonitor();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetCurrentMonitor")]
+	private static extern int GetCurrentIndex();
+	public static int CurrentIndex => GetCurrentIndex();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Vector2 GetMonitorPosition(int monitor);
-	public Vector2 Position => GetMonitorPosition(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorPosition")]
+	private static extern Vector2 GetPosition(int monitor);
+	public Vector2 Position => GetPosition(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorWidth(int monitor);
-	public int Width => GetMonitorWidth(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorWidth")]
+	private static extern int GetWidth(int monitor);
+	public int Width => GetWidth(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorHeight(int monitor);
-	public int Height => GetMonitorHeight(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorHeight")]
+	private static extern int GetHeight(int monitor);
+	public int Height => GetHeight(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorPhysicalWidth(int monitor);
-	public int WidthInMillimeters => GetMonitorPhysicalWidth(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorPhysicalWidth")]
+	private static extern int GetPhysicalWidth(int monitor);
+	public int WidthInMillimeters => GetPhysicalWidth(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorPhysicalHeight(int monitor);
-	public int HeightInMillimeters => GetMonitorPhysicalHeight(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetPhysicalHeight")]
+	private static extern int GetPhysicalHeight(int monitor);
+	public int HeightInMillimeters => GetPhysicalHeight(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern int GetMonitorRefreshRate(int monitor);
-	public int RefreshRate => GetMonitorRefreshRate(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorRefreshRate")]
+	private static extern int GetRefreshRate(int monitor);
+	public int RefreshRate => GetRefreshRate(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern string GetMonitorName(int monitor);
-	public string Name => GetMonitorName(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMonitorName")]
+	private static extern string GetName(int monitor);
+	public string Name => GetName(index);
 }

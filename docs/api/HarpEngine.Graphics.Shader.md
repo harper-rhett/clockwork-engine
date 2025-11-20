@@ -37,7 +37,7 @@ public bool IsValid { get; }
 ### <a id="HarpEngine_Graphics_Shader_BeginUsing_HarpEngine_Graphics_Shader_"></a> BeginUsing\(Shader\)
 
 ```csharp
-public static void BeginUsing(Shader shader)
+public static extern void BeginUsing(Shader shader)
 ```
 
 #### Parameters
@@ -55,13 +55,13 @@ public void Dispose()
 ### <a id="HarpEngine_Graphics_Shader_EndUsing"></a> EndUsing\(\)
 
 ```csharp
-public static void EndUsing()
+public static extern void EndUsing()
 ```
 
 ### <a id="HarpEngine_Graphics_Shader_LoadFromCode_System_String_System_String_"></a> LoadFromCode\(string, string\)
 
 ```csharp
-public static Shader LoadFromCode(string vertexCode, string fragmentCode)
+public static extern Shader LoadFromCode(string vertexCode, string fragmentCode)
 ```
 
 #### Parameters
@@ -77,7 +77,7 @@ public static Shader LoadFromCode(string vertexCode, string fragmentCode)
 ### <a id="HarpEngine_Graphics_Shader_LoadFromFile_System_String_System_String_"></a> LoadFromFile\(string, string\)
 
 ```csharp
-public static Shader LoadFromFile(string vertexFileName, string fragmentFileName)
+public static extern Shader LoadFromFile(string vertexFileName, string fragmentFileName)
 ```
 
 #### Parameters

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace HarpEngine.Graphics;
+﻿namespace HarpEngine.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct Font : IDisposable
@@ -13,28 +10,27 @@ public unsafe struct Font : IDisposable
 	public Rectangle* Recs;
 	public GlyphInfo* Glyphs;
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Font GetFontDefault();
-	public static Font Default => GetFontDefault();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFontDefault")]
+	private static extern Font GetFont();
+	public static Font Default => GetFont();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Font LoadFont(string fileName);
-	public static Font Load(string fileName) => LoadFont(fileName);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFont")]
+	public static extern Font Load(string fileName);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Font LoadFontFromImage(Image image, Color key, int firstCharacter);
-	public static Font Load(Image image, Color key, int firstCharacter) => LoadFontFromImage(image, key, firstCharacter);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFontFromImage")]
+	public static extern Font Load(Image image, Color key, int firstCharacter);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsFontValid(Font font);
-	public bool IsValid => IsFontValid(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsFontValid")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisValid(Font font);
+	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void UnloadFont(Font font);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadFont")]
+	public static extern void Unload(Font font);
 
 	public void Dispose()
 	{
-		UnloadFont(this);
+		Unload(this);
 	}
 }
 

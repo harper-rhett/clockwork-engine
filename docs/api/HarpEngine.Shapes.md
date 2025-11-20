@@ -2,7 +2,25 @@
 
 ### Classes
 
- [Circle](HarpEngine.Shapes.Circle.md)
+ [CircleShape](HarpEngine.Shapes.CircleShape.md)
 
- [Polygon](HarpEngine.Shapes.Polygon.md)
+ [Intersection](HarpEngine.Shapes.Intersection.md)
+
+ [LineShape](HarpEngine.Shapes.LineShape.md)
+
+ [PointShape](HarpEngine.Shapes.PointShape.md)
+
+ [PolygonShape](HarpEngine.Shapes.PolygonShape.md)
+
+ [RectangleShape](HarpEngine.Shapes.RectangleShape.md)
+
+### Interfaces
+
+ [IIntersectsWithCircle](HarpEngine.Shapes.IIntersectsWithCircle.md)
+
+ [IIntersectsWithLine](HarpEngine.Shapes.IIntersectsWithLine.md)
+
+ [IIntersectsWithPoint](HarpEngine.Shapes.IIntersectsWithPoint.md)
+
+ [IIntersectsWithRectangle](HarpEngine.Shapes.IIntersectsWithRectangle.md)
 

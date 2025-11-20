@@ -180,6 +180,34 @@ public static Color Lerp(Color from, Color to, float amount)
 
  [Color](HarpEngine.Graphics.Color.md)
 
+### <a id="HarpEngine_Graphics_Color_SetAlpha_System_Byte_"></a> SetAlpha\(byte\)
+
+```csharp
+public Color SetAlpha(byte alpha)
+```
+
+#### Parameters
+
+`alpha` [byte](https://learn.microsoft.com/dotnet/api/system.byte)
+
+#### Returns
+
+ [Color](HarpEngine.Graphics.Color.md)
+
+### <a id="HarpEngine_Graphics_Color_SetAlpha_System_Single_"></a> SetAlpha\(float\)
+
+```csharp
+public Color SetAlpha(float alpha)
+```
+
+#### Parameters
+
+`alpha` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Color](HarpEngine.Graphics.Color.md)
+
 ### <a id="HarpEngine_Graphics_Color_ToString"></a> ToString\(\)
 
 Returns the fully qualified type name of this instance.

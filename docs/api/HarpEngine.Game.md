@@ -24,19 +24,15 @@ public abstract class Game
 
 ## Methods
 
-### <a id="HarpEngine_Game_Draw"></a> Draw\(\)
+### <a id="HarpEngine_Game_OnDraw"></a> OnDraw\(\)
 
 ```csharp
-public abstract void Draw()
+public abstract void OnDraw()
 ```
 
-### <a id="HarpEngine_Game_Update_System_Single_"></a> Update\(float\)
+### <a id="HarpEngine_Game_OnUpdate"></a> OnUpdate\(\)
 
 ```csharp
-public abstract void Update(float frameTime)
+public abstract void OnUpdate()
 ```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

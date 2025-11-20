@@ -38,24 +38,6 @@ public static Particle2DModifier AddVelocity(Vector2 velocity)
 
  [Particle2DModifier](HarpEngine.Particles.Particle2DModifier.md)
 
-### <a id="HarpEngine_Particles_ParticleModifiers_AdjustColor_HarpEngine_Graphics_Color_HarpEngine_Graphics_Color_HarpEngine_Animation_Curve_"></a> AdjustColor\(Color, Color, Curve\)
-
-```csharp
-public static Particle2DModifier AdjustColor(Color startColor, Color endColor, Curve curve)
-```
-
-#### Parameters
-
-`startColor` [Color](HarpEngine.Graphics.Color.md)
-
-`endColor` [Color](HarpEngine.Graphics.Color.md)
-
-`curve` [Curve](HarpEngine.Animation.Curve.md)
-
-#### Returns
-
- [Particle2DModifier](HarpEngine.Particles.Particle2DModifier.md)
-
 ### <a id="HarpEngine_Particles_ParticleModifiers_ApplyMovement"></a> ApplyMovement\(\)
 
 ```csharp

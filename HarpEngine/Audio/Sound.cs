@@ -6,51 +6,52 @@ public unsafe struct Sound : IDisposable
 	public AudioStream Stream;
 	public uint FrameCount;
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Sound LoadSound(string filePath);
-	public static Sound Load(string filePath) => LoadSound(filePath);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadSound")]
+	public static extern Sound Load(string filePath);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsSoundValid(Sound sound);
-	public bool IsValid => IsSoundValid(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsSoundValid")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisValid(Sound sound);
+	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void UnloadSound(Sound sound);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadSound")]
+	private static extern void Unload(Sound sound);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void PlaySound(Sound sound);
-	public void Play() => PlaySound(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "PlaySound")]
+	private static extern void Play(Sound sound);
+	public void Play() => Play(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void StopSound(Sound sound);
-	public void Stop() => StopSound(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "StopSound")]
+	private static extern void Stop(Sound sound);
+	public void Stop() => Stop(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void PauseSound(Sound sound);
-	public void Pause() => PauseSound(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "PauseSound")]
+	private static extern void Pause(Sound sound);
+	public void Pause() => Pause(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void ResumeSound(Sound sound);
-	public void Resume() => ResumeSound(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ResumeSound")]
+	private static extern void Resume(Sound sound);
+	public void Resume() => Resume(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsSoundPlaying(Sound sound);
-	public bool IsPlaying => IsSoundPlaying(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsSoundPlaying")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisPlaying(Sound sound);
+	public bool IsPlaying => IsThisPlaying(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetSoundVolume(Sound sound, float volume);
-	public float Volume { set => SetSoundVolume(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetSoundVolume")]
+	private static extern void SetVolume(Sound sound, float volume);
+	public float Volume { set => SetVolume(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetSoundPitch(Sound sound, float pitch);
-	public float Pitch { set => SetSoundPitch(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetSoundPitch")]
+	private static extern void SetPitch(Sound sound, float pitch);
+	public float Pitch { set => SetPitch(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetSoundPan(Sound sound, float pan);
-	public float StereoPan { set => SetSoundPan(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetSoundPan")]
+	private static extern void SetStereoPan(Sound sound, float pan);
+	public float StereoPan { set => SetStereoPan(this, value); }
 
 	public void Dispose()
 	{
-		UnloadSound(this);
+		Unload(this);
 	}
 }

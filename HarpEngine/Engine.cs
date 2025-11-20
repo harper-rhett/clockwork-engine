@@ -5,6 +5,7 @@ global using HarpEngine.Windowing;
 global using HarpEngine.Audio;
 global using HarpEngine.Input;
 global using HarpEngine.Shapes;
+global using HarpEngine.Tiles;
 global using System.Numerics;
 global using System.Runtime.InteropServices;
 
@@ -14,28 +15,41 @@ public static class Engine
 {
 	// Input
 	private static Game game;
-	private static EngineSettings settings;
 
 	// General
 	private static RenderTexture gameRenderTexture;
 
-	// Interface
-	public static int GameWidth => settings.GameWidth;
-	public static int GameHeight => settings.GameHeight;
+	// Game size
+	public static Coordinate GameSize
+	{
+		get => new(GameWidth, GameHeight);
+		set
+		{
+			GameWidth = value.X;
+			GameHeight = value.Y;
+			HalfGameWidth = GameWidth / 2;
+			HalfGameHeight = GameHeight / 2;
+			if (gameRenderTexture.IsValid) gameRenderTexture.Dispose();
+			gameRenderTexture = RenderTexture.Load(GameWidth, GameHeight);
+		}
+	}
+	public static int GameWidth { get; private set; }
+	public static int GameHeight { get; private set; }
 	public static int HalfGameWidth { get; private set; }
 	public static int HalfGameHeight { get; private set; }
 
-	public static void Initialize(EngineSettings engineSettings)
+	// Extra
+	public static float FrameTime {  get; private set; }
+
+	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
+	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
 	{
 		// Initialize window
-		settings = engineSettings;
-		Window.Initialize(settings.WindowWidth, settings.WindowHeight, settings.WindowName);
-		HalfGameWidth = GameWidth / 2;
-		HalfGameHeight = GameHeight / 2;
+		Window.Initialize(800, 800, windowTitle);
 
 		// Initialize game
 		AudioDevice.Initialize();
-		gameRenderTexture = RenderTexture.Load(settings.GameWidth, settings.GameHeight);
+		GameSize = new(gameWidth, gameHeight);
 	}
 
 	public static void Start(Game game)
@@ -53,16 +67,16 @@ public static class Engine
 
 	private static void MasterUpdate()
 	{
-		float frameTime = GetFrameTime();
-		if (frameTime > 0.1f) frameTime = 0.1f;
-		game.Update(frameTime);
+		FrameTime = GetFrameTime();
+		if (FrameTime > 0.1f) FrameTime = 0.1f;
+		game.OnUpdate();
 		Window.Renderer.Update(gameRenderTexture);
 	}
 
 	private static void MasterDraw()
 	{
 		RenderTexture.BeginDrawing(gameRenderTexture);
-		game.Draw();
+		game.OnDraw();
 		RenderTexture.EndDrawing();
 
 		Drawing.Begin();
@@ -70,12 +84,12 @@ public static class Engine
 		Drawing.End();
 	}
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
 	private static extern float GetFrameTime();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
 	public static extern void SetTargetFPS(int fps);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "TakeScreenshot")]
 	public static extern void TakeScreenshot(string fileName);
 }

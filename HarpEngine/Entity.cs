@@ -2,7 +2,7 @@
 
 public abstract class Entity
 {
-	protected Scene scene;
+	public Scene Scene;
 	public bool IsUpdating = true;
 	public bool IsRendering = true;
 
@@ -15,7 +15,7 @@ public abstract class Entity
 		{
 			lastUpdateLayer = updateLayer;
 			updateLayer = value;
-			scene.Entities.MoveUpdateLayer(this);
+			if (Scene is not null) Scene.Entities.MoveUpdateLayer(this);
 		}
 	}
 	internal int lastDrawLayer;
@@ -27,24 +27,19 @@ public abstract class Entity
 		{
 			lastDrawLayer = drawLayer;
 			drawLayer = value;
-			scene.Entities.MoveDrawLayer(this);
+			if (Scene is not null) Scene.Entities.MoveDrawLayer(this);
 		}
 	}
 
-	public Entity(Scene scene)
-	{
-		this.scene = scene;
-		scene.Entities.Add(this);
-	}
-
-	public virtual void Update(float frameTime) { }
-	public virtual void Draw() { }
-	public virtual void DrawGUI() { }
+	public virtual void OnUpdate() { }
+	public virtual void OnDraw() { }
+	public virtual void OnDrawGUI() { }
 
 	public void Remove()
 	{
-		scene.Entities.Remove(this);
+		Scene.Entities.Remove(this);
 	}
 
-	public virtual void OnRemove() { }
+	public virtual void OnAddedToScene() { }
+	public virtual void OnRemovedFromScene() { }
 }

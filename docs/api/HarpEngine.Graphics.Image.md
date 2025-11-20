@@ -109,7 +109,7 @@ public void Export(string fileName, out bool success)
 ### <a id="HarpEngine_Graphics_Image_Load_System_String_"></a> Load\(string\)
 
 ```csharp
-public static Image Load(string fileName)
+public static extern Image Load(string fileName)
 ```
 
 #### Parameters
@@ -120,10 +120,10 @@ public static Image Load(string fileName)
 
  [Image](HarpEngine.Graphics.Image.md)
 
-### <a id="HarpEngine_Graphics_Image_LoadFromTexture_HarpEngine_Graphics_Texture_"></a> LoadFromTexture\(Texture\)
+### <a id="HarpEngine_Graphics_Image_Load_HarpEngine_Graphics_Texture_"></a> Load\(Texture\)
 
 ```csharp
-public static Image LoadFromTexture(Texture texture)
+public static extern Image Load(Texture texture)
 ```
 
 #### Parameters
@@ -137,7 +137,7 @@ public static Image LoadFromTexture(Texture texture)
 ### <a id="HarpEngine_Graphics_Image_LoadRaw_System_String_System_Int32_System_Int32_HarpEngine_Graphics_PixelFormat_System_Int32_"></a> LoadRaw\(string, int, int, PixelFormat, int\)
 
 ```csharp
-public static Image LoadRaw(string fileName, int width, int height, PixelFormat pixelFormat, int headerSize)
+public static extern Image LoadRaw(string fileName, int width, int height, PixelFormat pixelFormat, int headerSize)
 ```
 
 #### Parameters

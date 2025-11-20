@@ -2,6 +2,6 @@
 
 public abstract class Game
 {
-	public abstract void Update(float frameTime);
-	public abstract void Draw();
+	public abstract void OnUpdate();
+	public abstract void OnDraw();
 }

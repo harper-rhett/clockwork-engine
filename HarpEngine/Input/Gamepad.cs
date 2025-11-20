@@ -11,38 +11,42 @@ public class Gamepad
 
 	public static Gamepad GetGamepad(int index)
 	{
-		if (IsGamepadAvailable(index)) return new(index);
+		if (IsAvailable(index)) return new(index);
 		else return null;
 	}
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsGamepadAvailable(int gamepadIndex);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadAvailable")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsAvailable(int gamepadIndex);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern string GetGamepadName(int gamepadIndex);
-	public string Name => GetGamepadName(index);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadName")]
+	private static extern string GetName(int gamepadIndex);
+	public string Name => GetName(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsGamepadButtonPressed(int gamepadIndex, GamepadButton button);
-	public bool IsButtonPressed(GamepadButton button) => IsGamepadButtonPressed(index, button);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonPressed")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsButtonPressed(int gamepadIndex, GamepadButton button);
+	public bool IsButtonPressed(GamepadButton button) => IsButtonPressed(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsGamepadButtonDown(int gamepadIndex, GamepadButton button);
-	public bool IsButtonDown(GamepadButton button) => IsGamepadButtonDown(index, button);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonDown")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsButtonDown(int gamepadIndex, GamepadButton button);
+	public bool IsButtonDown(GamepadButton button) => IsButtonDown(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsGamepadButtonReleased(int gamepadIndex, GamepadButton button);
-	public bool IsButtonReleased(GamepadButton button) => IsGamepadButtonReleased(index, button);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonReleased")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsButtonReleased(int gamepadIndex, GamepadButton button);
+	public bool IsButtonReleased(GamepadButton button) => IsButtonReleased(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern GamepadButton GetGamepadButtonPressed();
-	public GamepadButton LastButtonPressed => GetGamepadButtonPressed();
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadButtonPressed")]
+	private static extern GamepadButton GetButtonPressed();
+	public GamepadButton LastButtonPressed => GetButtonPressed();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern float GetGamepadAxisMovement(int gamepadIndex, GamepadAxis axis);
-	public float GetAxis(GamepadAxis axis) => GetGamepadAxisMovement(index, axis);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadAxisMovement")]
+	private static extern float GetAxisMovement(int gamepadIndex, GamepadAxis axis);
+	public float GetAxis(GamepadAxis axis) => GetAxisMovement(index, axis);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetGamepadVibration(int gamepadIndex, float leftMotor, float rightMotor, float duration);
-	public void Vibrate(float leftMotor, float rightMotor, float duration) => SetGamepadVibration(index, leftMotor, rightMotor, duration);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetGamepadVibration")]
+	private static extern void SetVibration(int gamepadIndex, float leftMotor, float rightMotor, float duration);
+	public void Vibrate(float leftMotor, float rightMotor, float duration) => SetVibration(index, leftMotor, rightMotor, duration);
 }

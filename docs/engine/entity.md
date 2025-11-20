@@ -1,4 +1,5 @@
 # Entity
+
 An entity is an object that exists physically in your game. Entities can be a player, or a wall, or a magic potion. The implementation is pretty simple, and leaves all of the fun work up to you:
 
 ```csharp
@@ -9,12 +10,12 @@ public class CustomEntity : Entity
 		// Initialize
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		// Movement, animation, input, etc.
 	}
 
-	public override void Draw()
+	public override void OnDraw()
 	{
 		// Shapes, textures, text, etc.
 	}
@@ -26,10 +27,10 @@ public class CustomEntity : Entity
 }
 ```
 
-It's important to note that the entities [scene](scene.md) can be accessed from inside the class. For instance:
+It's important to note that the entity's [scene](scene.md) can be accessed from inside the class. For instance:
 
 ```csharp
-public override void Update(float frameTime)
+public override void OnUpdate()
 {
 	if (scene.Time > 5) Explode();
 }
@@ -46,7 +47,7 @@ public CustomEntity(GameScene gameScene) : base(gameScene)
 	this.gameScene = gameScene;
 }
 
-public override void Update(float frameTime)
+public override void OnUpdate()
 {
 	if (health <= 0) gameScene.GameOver();
 }

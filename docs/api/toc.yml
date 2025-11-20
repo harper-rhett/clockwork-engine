@@ -17,9 +17,6 @@
     href: HarpEngine.Game.md
   - name: Scene
     href: HarpEngine.Scene.md
-  - name: Structs
-  - name: EngineSettings
-    href: HarpEngine.EngineSettings.md
 - name: HarpEngine.Animation
   href: HarpEngine.Animation.md
   items:
@@ -28,6 +25,12 @@
     href: HarpEngine.Animation.Curves.md
   - name: Easer
     href: HarpEngine.Animation.Easer.md
+  - name: TextureAnimation
+    href: HarpEngine.Animation.TextureAnimation.md
+  - name: TextureAnimationManager<AnimationID>
+    href: HarpEngine.Animation.TextureAnimationManager-1.md
+  - name: Transform2DEaser
+    href: HarpEngine.Animation.Transform2DEaser.md
   - name: Delegates
   - name: Curve
     href: HarpEngine.Animation.Curve.md
@@ -62,6 +65,8 @@
     href: HarpEngine.Graphics.Colors.md
   - name: Drawing
     href: HarpEngine.Graphics.Drawing.md
+  - name: Gradient
+    href: HarpEngine.Graphics.Gradient.md
   - name: Primitives
     href: HarpEngine.Graphics.Primitives.md
   - name: Spline
@@ -94,6 +99,8 @@
     href: HarpEngine.Graphics.NinePatchLayout.md
   - name: PixelFormat
     href: HarpEngine.Graphics.PixelFormat.md
+  - name: TextureFilter
+    href: HarpEngine.Graphics.TextureFilter.md
   - name: UniformDataType
     href: HarpEngine.Graphics.UniformDataType.md
 - name: HarpEngine.Input
@@ -147,24 +154,63 @@
   href: HarpEngine.Shapes.md
   items:
   - name: Classes
-  - name: Circle
-    href: HarpEngine.Shapes.Circle.md
-  - name: Polygon
-    href: HarpEngine.Shapes.Polygon.md
+  - name: CircleShape
+    href: HarpEngine.Shapes.CircleShape.md
+  - name: Intersection
+    href: HarpEngine.Shapes.Intersection.md
+  - name: LineShape
+    href: HarpEngine.Shapes.LineShape.md
+  - name: PointShape
+    href: HarpEngine.Shapes.PointShape.md
+  - name: PolygonShape
+    href: HarpEngine.Shapes.PolygonShape.md
+  - name: RectangleShape
+    href: HarpEngine.Shapes.RectangleShape.md
+  - name: Interfaces
+  - name: IIntersectsWithCircle
+    href: HarpEngine.Shapes.IIntersectsWithCircle.md
+  - name: IIntersectsWithLine
+    href: HarpEngine.Shapes.IIntersectsWithLine.md
+  - name: IIntersectsWithPoint
+    href: HarpEngine.Shapes.IIntersectsWithPoint.md
+  - name: IIntersectsWithRectangle
+    href: HarpEngine.Shapes.IIntersectsWithRectangle.md
+- name: HarpEngine.Tiles
+  href: HarpEngine.Tiles.md
+  items:
+  - name: Classes
+  - name: Tile
+    href: HarpEngine.Tiles.Tile.md
+  - name: TiledArea
+    href: HarpEngine.Tiles.TiledArea.md
+  - name: TiledCollider<TileType>
+    href: HarpEngine.Tiles.TiledCollider-1.md
+  - name: TiledWorld
+    href: HarpEngine.Tiles.TiledWorld.md
 - name: HarpEngine.Utilities
   href: HarpEngine.Utilities.md
   items:
   - name: Classes
-  - name: Collision
-    href: HarpEngine.Utilities.Collision.md
   - name: FireTimer
     href: HarpEngine.Utilities.FireTimer.md
-  - name: RandomExtensions
-    href: HarpEngine.Utilities.RandomExtensions.md
+  - name: FloatExtensions
+    href: HarpEngine.Utilities.FloatExtensions.md
+  - name: Generate
+    href: HarpEngine.Utilities.Generate.md
+  - name: Seed
+    href: HarpEngine.Utilities.Seed.md
   - name: Transform2D
     href: HarpEngine.Utilities.Transform2D.md
   - name: TriggerTimer
     href: HarpEngine.Utilities.TriggerTimer.md
+  - name: VectorExtensions
+    href: HarpEngine.Utilities.VectorExtensions.md
+  - name: Structs
+  - name: Coordinate
+    href: HarpEngine.Utilities.Coordinate.md
+  - name: Interfaces
+  - name: ITransform2D
+    href: HarpEngine.Utilities.ITransform2D.md
   - name: Delegates
   - name: FireTimer.FiredDelegate
     href: HarpEngine.Utilities.FireTimer.FiredDelegate.md

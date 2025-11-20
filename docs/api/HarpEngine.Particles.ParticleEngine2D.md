@@ -15,15 +15,17 @@ public sealed class ParticleEngine2D : Entity
 
 #### Inherited Members
 
+[Entity.Scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_Scene), 
 [Entity.IsUpdating](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsUpdating), 
 [Entity.IsRendering](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsRendering), 
 [Entity.UpdateLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawLayer), 
-[Entity.Update\(float\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Update\_System\_Single\_), 
-[Entity.Draw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Draw), 
-[Entity.DrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawGUI), 
+[Entity.OnUpdate\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnUpdate), 
+[Entity.OnDraw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDraw), 
+[Entity.OnDrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDrawGUI), 
 [Entity.Remove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Remove), 
-[Entity.OnRemove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemove), 
+[Entity.OnAddedToScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnAddedToScene), 
+[Entity.OnRemovedFromScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemovedFromScene), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -33,15 +35,13 @@ public sealed class ParticleEngine2D : Entity
 
 ## Constructors
 
-### <a id="HarpEngine_Particles_ParticleEngine2D__ctor_HarpEngine_Scene_System_Int32_System_Single_"></a> ParticleEngine2D\(Scene, int, float\)
+### <a id="HarpEngine_Particles_ParticleEngine2D__ctor_System_Int32_System_Single_"></a> ParticleEngine2D\(int, float\)
 
 ```csharp
-public ParticleEngine2D(Scene scene, int initialCount = 100, float streamCooldownTime = 0.1)
+public ParticleEngine2D(int initialCount = 100, float streamCooldownTime = 0.1)
 ```
 
 #### Parameters
-
-`scene` [Scene](HarpEngine.Scene.md)
 
 `initialCount` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
@@ -123,16 +123,28 @@ public void AddModifier(Particle2DModifier modifier)
 
 `modifier` [Particle2DModifier](HarpEngine.Particles.Particle2DModifier.md)
 
-### <a id="HarpEngine_Particles_ParticleEngine2D_Draw"></a> Draw\(\)
+### <a id="HarpEngine_Particles_ParticleEngine2D_OnAddedToScene"></a> OnAddedToScene\(\)
 
 ```csharp
-public override void Draw()
+public override void OnAddedToScene()
 ```
 
-### <a id="HarpEngine_Particles_ParticleEngine2D_OnRemove"></a> OnRemove\(\)
+### <a id="HarpEngine_Particles_ParticleEngine2D_OnDraw"></a> OnDraw\(\)
 
 ```csharp
-public override void OnRemove()
+public override void OnDraw()
+```
+
+### <a id="HarpEngine_Particles_ParticleEngine2D_OnRemovedFromScene"></a> OnRemovedFromScene\(\)
+
+```csharp
+public override void OnRemovedFromScene()
+```
+
+### <a id="HarpEngine_Particles_ParticleEngine2D_OnUpdate"></a> OnUpdate\(\)
+
+```csharp
+public override void OnUpdate()
 ```
 
 ### <a id="HarpEngine_Particles_ParticleEngine2D_RemoveParticle_System_Int32_"></a> RemoveParticle\(int\)
@@ -204,16 +216,6 @@ public void SpawnParticle(Particle2D particleTemplate)
 #### Parameters
 
 `particleTemplate` [Particle2D](HarpEngine.Particles.Particle2D.md)
-
-### <a id="HarpEngine_Particles_ParticleEngine2D_Update_System_Single_"></a> Update\(float\)
-
-```csharp
-public override void Update(float frameTime)
-```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="HarpEngine_Particles_ParticleEngine2D_StreamFired"></a> StreamFired
 

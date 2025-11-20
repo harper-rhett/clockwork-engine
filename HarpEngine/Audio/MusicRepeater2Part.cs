@@ -13,18 +13,18 @@ public class MusicRepeater2Part : Entity
 	private bool isPaused;
 	private bool playingInitial;
 
-	public MusicRepeater2Part(Scene scene, Music initialMusic, Music repeatedMusic) : base(scene)
+	public MusicRepeater2Part(Music initialMusic, Music repeatedMusic)
 	{
 		this.initialMusic = initialMusic;
 		initialMusicDuration = initialMusic.Duration;
 		this.repeatedMusic = repeatedMusic;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		if (isStarted && !isPaused)
 		{
-			timePlayed += frameTime;
+			timePlayed += Engine.FrameTime;
 			bool wasPlayingInitial = playingInitial;
 			playingInitial = timePlayed <= initialMusicEndTime;
 			if (wasPlayingInitial != playingInitial) repeatedMusic.Play();

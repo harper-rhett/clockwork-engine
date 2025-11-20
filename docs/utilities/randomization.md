@@ -1,15 +1,22 @@
 # Randomization
+
 > `using HarpEngine.Utilities;`
 
-C#'s random class is lacking in many features. Especially for a game engine. So, HarpEngine adds several extensions to this class. For example, to generate a random unit `Vector2`:
+C#'s random class is lacking in many features. Especially for a game engine. So, HarpEngine reinvents this system. For example, to generate a random unit `Vector2`:
 
 ```csharp
-Random random = new();
-Vector2 launchDirection = random.NextVector2();
+Vector2 launchDirection = Generate.UnitVector2();
 ```
 
 Or to generate random degrees from 0 to 360, which is almost silly but still saves enough boilerplate to be worth it:
 
 ```csharp
-float degrees = random.NextDegrees();
+float degrees = Generate.Degrees();
+```
+
+And if you need more control over the generation, you can either change the seed of the `Generate` class or use the `Seed` class:
+
+```csharp
+Seed seed = new(12345);
+bool isEvil = seed.NextBool();
 ```

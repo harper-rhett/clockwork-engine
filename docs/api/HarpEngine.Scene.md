@@ -110,19 +110,33 @@ public float Time { get; }
 
 ## Methods
 
+### <a id="HarpEngine_Scene_AddEntity__1___0_"></a> AddEntity<EntitySubclass\>\(EntitySubclass\)
+
+```csharp
+public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where EntitySubclass : Entity
+```
+
+#### Parameters
+
+`entity` EntitySubclass
+
+#### Returns
+
+ EntitySubclass
+
+#### Type Parameters
+
+`EntitySubclass` 
+
 ### <a id="HarpEngine_Scene_Draw"></a> Draw\(\)
 
 ```csharp
 public void Draw()
 ```
 
-### <a id="HarpEngine_Scene_Update_System_Single_"></a> Update\(float\)
+### <a id="HarpEngine_Scene_Update"></a> Update\(\)
 
 ```csharp
-public void Update(float frameTime)
+public void Update()
 ```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

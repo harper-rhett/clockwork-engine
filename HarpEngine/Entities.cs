@@ -21,14 +21,14 @@ public class Entities
 	internal void Add(Entity entity)
 	{
 		entitiesToAdd.Add(entity);
-		Register(entity);
+		Index(entity);
 	}
 
 	internal void Remove(Entity entity)
 	{
-		entity.OnRemove();
+		entity.OnRemovedFromScene();
 		entitiesToRemove.Add(entity);
-		Unregister(entity);
+		Unindex(entity);
 	}
 
 	internal void ProcessAdditions()
@@ -101,13 +101,13 @@ public class Entities
 		entitiesToMoveDraw.Add(entity);
 	}
 
-	internal void Register(Entity entity)
+	internal void Index(Entity entity)
 	{
 		// Get the entity list
 		Type type = entity.GetType();
 		bool setExists = entityLists.TryGetValue(type, out object entityListObject);
 
-		// Register as latest
+		// Index as latest
 		latestEntities[type] = entity;
 
 		// Create list if needed
@@ -122,7 +122,7 @@ public class Entities
 		((IList)entityListObject).Add(entity);
 	}
 
-	internal void Unregister(Entity entity)
+	internal void Unindex(Entity entity)
 	{
 		Type type = entity.GetType();
 		object entityListObject = entityLists[type];

@@ -6,12 +6,12 @@ public class MusicRepeater : Entity
 	private bool isStarted;
 	private bool isPaused;
 
-	public MusicRepeater(Scene scene, Music music) : base(scene)
+	public MusicRepeater(Music music)
 	{
 		this.music = music;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		if (isStarted && !isPaused) music.Update();
 	}

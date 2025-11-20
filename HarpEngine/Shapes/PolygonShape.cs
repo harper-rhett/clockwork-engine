@@ -1,21 +1,21 @@
 ﻿namespace HarpEngine.Shapes;
 
-public class Polygon : Entity
+public class PolygonShape : Entity, ITransform2D
 {
 	// General
-	public Transform2D Transform = new();
+	public Transform2D Transform { get; set; } = new();
 	public int SideCount;
 	public float Radius;
 	public Color Color;
 
-	public Polygon(Scene scene, float radius, int sideCount, Color color) : base(scene)
+	public PolygonShape(float radius, int sideCount, Color color)
 	{
 		Radius = radius;
 		SideCount = sideCount;
 		Color = color;
 	}
 
-	public override void Draw()
+	public override void OnDraw()
 	{
 		Primitives.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
 	}

@@ -16,16 +16,17 @@ public class Camera2D : Camera
 
 #### Inherited Members
 
-[Entity.scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_scene), 
+[Entity.Scene](HarpEngine.Entity.md\#HarpEngine\_Entity\_Scene), 
 [Entity.IsUpdating](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsUpdating), 
 [Entity.IsRendering](HarpEngine.Entity.md\#HarpEngine\_Entity\_IsRendering), 
 [Entity.UpdateLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawLayer), 
-[Entity.Update\(float\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Update\_System\_Single\_), 
-[Entity.Draw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Draw), 
-[Entity.DrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_DrawGUI), 
+[Entity.OnUpdate\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnUpdate), 
+[Entity.OnDraw\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDraw), 
+[Entity.OnDrawGUI\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnDrawGUI), 
 [Entity.Remove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_Remove), 
-[Entity.OnRemove\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemove), 
+[Entity.OnAddedToScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnAddedToScene), 
+[Entity.OnRemovedFromScene\(\)](HarpEngine.Entity.md\#HarpEngine\_Entity\_OnRemovedFromScene), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -36,15 +37,11 @@ public class Camera2D : Camera
 
 ## Constructors
 
-### <a id="HarpEngine_Camera2D__ctor_HarpEngine_Scene_"></a> Camera2D\(Scene\)
+### <a id="HarpEngine_Camera2D__ctor"></a> Camera2D\(\)
 
 ```csharp
-public Camera2D(Scene scene)
+public Camera2D()
 ```
-
-#### Parameters
-
-`scene` [Scene](HarpEngine.Scene.md)
 
 ## Fields
 
@@ -80,63 +77,21 @@ public float MouseWorldY { get; }
 
  [float](https://learn.microsoft.com/dotnet/api/system.single)
 
+### <a id="HarpEngine_Camera2D_Offset"></a> Offset
+
+```csharp
+public Vector2 Offset { get; set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ## Methods
 
-### <a id="HarpEngine_Camera2D_TransitionLocalPosition_System_Numerics_Vector2_System_Single_"></a> TransitionLocalPosition\(Vector2, float\)
+### <a id="HarpEngine_Camera2D_OnUpdate"></a> OnUpdate\(\)
 
 ```csharp
-public void TransitionLocalPosition(Vector2 targetPosition, float seconds)
+public override void OnUpdate()
 ```
-
-#### Parameters
-
-`targetPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
-`seconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-### <a id="HarpEngine_Camera2D_TransitionLocalRotation_System_Single_System_Single_"></a> TransitionLocalRotation\(float, float\)
-
-```csharp
-public void TransitionLocalRotation(float targetRotation, float seconds)
-```
-
-#### Parameters
-
-`targetRotation` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-`seconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-### <a id="HarpEngine_Camera2D_TransitionWorldPosition_System_Numerics_Vector2_System_Single_"></a> TransitionWorldPosition\(Vector2, float\)
-
-```csharp
-public void TransitionWorldPosition(Vector2 targetPosition, float seconds)
-```
-
-#### Parameters
-
-`targetPosition` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
-`seconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-### <a id="HarpEngine_Camera2D_TransitionWorldRotation_System_Single_System_Single_"></a> TransitionWorldRotation\(float, float\)
-
-```csharp
-public void TransitionWorldRotation(float targetRotation, float seconds)
-```
-
-#### Parameters
-
-`targetRotation` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-`seconds` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-### <a id="HarpEngine_Camera2D_Update_System_Single_"></a> Update\(float\)
-
-```csharp
-public override void Update(float frameTime)
-```
-
-#### Parameters
-
-`frameTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

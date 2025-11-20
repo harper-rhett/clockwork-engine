@@ -14,67 +14,68 @@ public unsafe struct Music : IDisposable
 	public int CtxType;
 	public void* CtxData;
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern Music LoadMusicStream(string filePath);
-	public static Music Load(string filePath) => LoadMusicStream(filePath);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadMusicStream")]
+	public static extern Music Load(string filePath);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsMusicValid(Music music);
-	public bool IsValid => IsMusicValid(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsMusicValid")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisValid(Music music);
+	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void UnloadMusicStream(Music music);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadMusicStream")]
+	private static extern void Unload(Music music);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void PlayMusicStream(Music music);
-	public void Play() => PlayMusicStream(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "PlayMusicStream")]
+	private static extern void Play(Music music);
+	public void Play() => Play(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern bool IsMusicStreamPlaying(Music music);
-	public bool IsPlaying => IsMusicStreamPlaying(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsMusicStreamPlaying")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsThisPlaying(Music music);
+	public bool IsPlaying => IsThisPlaying(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void UpdateMusicStream(Music music);
-	public void Update() => UpdateMusicStream(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UpdateMusicStream")]
+	private static extern void Update(Music music);
+	public void Update() => Update(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void StopMusicStream(Music music);
-	public void Stop() => StopMusicStream(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "StopMusicStream")]
+	private static extern void Stop(Music music);
+	public void Stop() => Stop(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void PauseMusicStream(Music music);
-	public void Pause() => PauseMusicStream(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "PauseMusicStream")]
+	private static extern void Pause(Music music);
+	public void Pause() => Pause(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void ResumeMusicStream(Music music);
-	public void Resume() => ResumeMusicStream(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ResumeMusicStream")]
+	private static extern void Resume(Music music);
+	public void Resume() => Resume(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SeekMusicStream(Music music, float seconds);
-	public float Position { set => SeekMusicStream(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SeekMusicStream")]
+	private static extern void SetPosition(Music music, float seconds);
+	public float Position { set => SetPosition(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetMusicVolume(Music music, float volume);
-	public float Volume { set => SetMusicVolume(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMusicVolume")]
+	private static extern void SetVolume(Music music, float volume);
+	public float Volume { set => SetVolume(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetMusicPitch(Music music, float pitch);
-	public float Pitch { set => SetMusicPitch(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMusicPitch")]
+	private static extern void SetPitch(Music music, float pitch);
+	public float Pitch { set => SetPitch(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern void SetMusicPan(Music music, float pan);
-	public float StereoPan { set => SetMusicPan(this, value); }
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMusicPan")]
+	private static extern void SetStereoPan(Music music, float pan);
+	public float StereoPan { set => SetStereoPan(this, value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern float GetMusicTimeLength(Music music);
-	public float Duration => GetMusicTimeLength(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMusicTimeLength")]
+	private static extern float GetDuration(Music music);
+	public float Duration => GetDuration(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-	private static extern float GetMusicTimePlayed(Music music);
-	public float TimePlayed => GetMusicTimePlayed(this);
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetMusicTimePlayed")]
+	private static extern float GetTimePlayed(Music music);
+	public float TimePlayed => GetTimePlayed(this);
 
 	public void Dispose()
 	{
-		UnloadMusicStream(this);
+		Unload(this);
 	}
 }

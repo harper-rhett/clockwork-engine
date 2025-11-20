@@ -33,17 +33,22 @@ public sealed class ParticleEngine2D : Entity
 	public delegate void StreamFiredDelegate(out Particle2D particleTemplate);
 	public event StreamFiredDelegate StreamFired;
 
-	public ParticleEngine2D(Scene scene, int initialCount = defaultInitialCount, float streamCooldownTime = defaultStreamCooldownTime) : base(scene)
+	public ParticleEngine2D(int initialCount = defaultInitialCount, float streamCooldownTime = defaultStreamCooldownTime)
 	{
 		particles = new Particle2D[initialCount];
 		Particles = particles.AsReadOnly();
-		fireTimer = new(scene, streamCooldownTime);
-		fireTimer.Fired += SpawnStream;
-		fireTimer.Start();
+		fireTimer = new(streamCooldownTime);
 		fireTimer.IsUpdating = false;
+		fireTimer.Fired += SpawnStream;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnAddedToScene()
+	{
+		Scene.AddEntity(fireTimer);
+		fireTimer.Start();
+	}
+
+	public override void OnUpdate()
 	{
 		for (int particleIndex = count - 1; particleIndex >= 0; particleIndex--)
 		{
@@ -51,19 +56,20 @@ public sealed class ParticleEngine2D : Entity
 			ref Particle2D particle = ref particles[particleIndex];
 
 			// Check if particle has died
-			if (scene.Time > particle.spawnTime + particle.Lifespan)
+			if (particle.timeToDeath <= 0)
 			{
 				foreach (Particle2DFinalizer finalizer in finalizers) finalizer(particle, this);
 				RemoveParticle(particleIndex);
 				continue;
 			}
+			particle.timeToDeath -= Engine.FrameTime;
 
 			// Apply modifiers
-			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, scene.Time, frameTime);
+			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, Scene.Time, Engine.FrameTime);
 		}
 	}
 
-	public override void Draw()
+	public override void OnDraw()
 	{
 		for (int particleIndex = 0; particleIndex < count; particleIndex++)
 		{
@@ -110,7 +116,7 @@ public sealed class ParticleEngine2D : Entity
 
 		// Array business
 		if (count == particles.Length) ResizeParticles();
-		particleTemplate.spawnTime = scene.Time;
+		particleTemplate.timeToDeath = particleTemplate.Lifespan;
 		particles[count++] = particleTemplate;
 	}
 
@@ -138,7 +144,7 @@ public sealed class ParticleEngine2D : Entity
 		particles[count] = default;
 	}
 
-	public override void OnRemove()
+	public override void OnRemovedFromScene()
 	{
 		fireTimer.Remove();
 	}

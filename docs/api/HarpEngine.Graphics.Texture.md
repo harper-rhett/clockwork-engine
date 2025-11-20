@@ -97,7 +97,7 @@ public void Dispose()
 ### <a id="HarpEngine_Graphics_Texture_Draw_System_Int32_System_Int32_HarpEngine_Graphics_Color_"></a> Draw\(int, int, Color\)
 
 ```csharp
-public void Draw(int x, int y, Color tint)
+public void Draw(int x, int y, Color color)
 ```
 
 #### Parameters
@@ -106,24 +106,24 @@ public void Draw(int x, int y, Color tint)
 
 `y` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Texture_Draw_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> Draw\(Vector2, Color\)
 
 ```csharp
-public void Draw(Vector2 position, Color tint)
+public void Draw(Vector2 position, Color color)
 ```
 
 #### Parameters
 
 `position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Texture_Draw_HarpEngine_Graphics_Rectangle_System_Numerics_Vector2_HarpEngine_Graphics_Color_"></a> Draw\(Rectangle, Vector2, Color\)
 
 ```csharp
-public void Draw(Rectangle source, Vector2 position, Color tint)
+public void Draw(Rectangle source, Vector2 position, Color color)
 ```
 
 #### Parameters
@@ -132,12 +132,12 @@ public void Draw(Rectangle source, Vector2 position, Color tint)
 
 `position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Texture_Draw_HarpEngine_Graphics_Rectangle_HarpEngine_Graphics_Rectangle_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> Draw\(Rectangle, Rectangle, Vector2, float, Color\)
 
 ```csharp
-public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color tint)
+public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float rotation, Color color)
 ```
 
 #### Parameters
@@ -150,17 +150,15 @@ public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float 
 
 `rotation` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
-### <a id="HarpEngine_Graphics_Texture_DrawNinePatch_HarpEngine_Graphics_Texture_HarpEngine_Graphics_NinePatch_HarpEngine_Graphics_Rectangle_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawNinePatch\(Texture, NinePatch, Rectangle, Vector2, float, Color\)
+### <a id="HarpEngine_Graphics_Texture_DrawNinePatch_HarpEngine_Graphics_NinePatch_HarpEngine_Graphics_Rectangle_System_Numerics_Vector2_System_Single_HarpEngine_Graphics_Color_"></a> DrawNinePatch\(NinePatch, Rectangle, Vector2, float, Color\)
 
 ```csharp
-public static void DrawNinePatch(Texture texture, NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color tint)
+public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color)
 ```
 
 #### Parameters
-
-`texture` [Texture](HarpEngine.Graphics.Texture.md)
 
 `ninePatch` [NinePatch](HarpEngine.Graphics.NinePatch.md)
 
@@ -170,12 +168,12 @@ public static void DrawNinePatch(Texture texture, NinePatch ninePatch, Rectangle
 
 `rotation` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`tint` [Color](HarpEngine.Graphics.Color.md)
+`color` [Color](HarpEngine.Graphics.Color.md)
 
 ### <a id="HarpEngine_Graphics_Texture_Load_System_String_"></a> Load\(string\)
 
 ```csharp
-public static Texture Load(string filePath)
+public static extern Texture Load(string filePath)
 ```
 
 #### Parameters
@@ -186,10 +184,10 @@ public static Texture Load(string filePath)
 
  [Texture](HarpEngine.Graphics.Texture.md)
 
-### <a id="HarpEngine_Graphics_Texture_LoadFromImage_HarpEngine_Graphics_Image_"></a> LoadFromImage\(Image\)
+### <a id="HarpEngine_Graphics_Texture_Load_HarpEngine_Graphics_Image_"></a> Load\(Image\)
 
 ```csharp
-public static Texture LoadFromImage(Image image)
+public static extern Texture Load(Image image)
 ```
 
 #### Parameters
@@ -199,4 +197,14 @@ public static Texture LoadFromImage(Image image)
 #### Returns
 
  [Texture](HarpEngine.Graphics.Texture.md)
+
+### <a id="HarpEngine_Graphics_Texture_SetFilter_HarpEngine_Graphics_TextureFilter_"></a> SetFilter\(TextureFilter\)
+
+```csharp
+public void SetFilter(TextureFilter textureFilter)
+```
+
+#### Parameters
+
+`textureFilter` [TextureFilter](HarpEngine.Graphics.TextureFilter.md)
 

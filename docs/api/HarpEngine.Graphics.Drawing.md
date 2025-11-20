@@ -27,13 +27,13 @@ public static class Drawing
 ### <a id="HarpEngine_Graphics_Drawing_Begin"></a> Begin\(\)
 
 ```csharp
-public static void Begin()
+public static extern void Begin()
 ```
 
 ### <a id="HarpEngine_Graphics_Drawing_BeginBlending_HarpEngine_Graphics_BlendMode_"></a> BeginBlending\(BlendMode\)
 
 ```csharp
-public static void BeginBlending(BlendMode blendMode)
+public static extern void BeginBlending(BlendMode blendMode)
 ```
 
 #### Parameters
@@ -43,7 +43,7 @@ public static void BeginBlending(BlendMode blendMode)
 ### <a id="HarpEngine_Graphics_Drawing_Clear_HarpEngine_Graphics_Color_"></a> Clear\(Color\)
 
 ```csharp
-public static void Clear(Color color)
+public static extern void Clear(Color color)
 ```
 
 #### Parameters
@@ -53,12 +53,12 @@ public static void Clear(Color color)
 ### <a id="HarpEngine_Graphics_Drawing_End"></a> End\(\)
 
 ```csharp
-public static void End()
+public static extern void End()
 ```
 
 ### <a id="HarpEngine_Graphics_Drawing_EndBlending"></a> EndBlending\(\)
 
 ```csharp
-public static void EndBlending()
+public static extern void EndBlending()
 ```
 

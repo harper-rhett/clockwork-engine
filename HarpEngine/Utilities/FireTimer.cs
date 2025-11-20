@@ -8,24 +8,24 @@ public class FireTimer : Entity
 	public delegate void FiredDelegate();
 	public event FiredDelegate Fired;
 
-	public FireTimer(Scene scene, float cooldownTime) : base(scene)
+	public FireTimer(float cooldownTime)
 	{
 		CooldownTime = cooldownTime;
 		backloggedTime = cooldownTime;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		if (!isStarted) return;
 
-		backloggedTime += frameTime;
+		backloggedTime += Engine.FrameTime;
 		int backloggedActions = (int)MathF.Floor(backloggedTime / CooldownTime);
 		backloggedTime -= backloggedActions * CooldownTime;
 
 		for (int actionNumber = 1; actionNumber <= backloggedActions; actionNumber++) Fire();
 	}
 
-	public override void Draw() { }
+	public override void OnDraw() { }
 
 	public void Start()
 	{

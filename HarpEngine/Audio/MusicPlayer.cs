@@ -11,17 +11,17 @@ public class MusicPlayer : Entity
 	public bool RemoveOnFinished = true;
 	private bool isPaused;
 
-	public MusicPlayer(Scene scene, Music music) : base(scene)
+	public MusicPlayer(Music music)
 	{
 		this.music = music;
 		musicDuration = music.Duration;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		if (isStarted && !isPaused)
 		{
-			timePlayed += frameTime;
+			timePlayed += Engine.FrameTime;
 			music.Update();
 			if (timePlayed > endTime) Finish();
 		}

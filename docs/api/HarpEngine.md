@@ -14,6 +14,8 @@
 
  [HarpEngine.Shapes](HarpEngine.Shapes.md)
 
+ [HarpEngine.Tiles](HarpEngine.Tiles.md)
+
  [HarpEngine.Utilities](HarpEngine.Utilities.md)
 
  [HarpEngine.Windowing](HarpEngine.Windowing.md)
@@ -33,8 +35,4 @@
  [Game](HarpEngine.Game.md)
 
  [Scene](HarpEngine.Scene.md)
-
-### Structs
-
- [EngineSettings](HarpEngine.EngineSettings.md)
 

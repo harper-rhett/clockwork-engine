@@ -1,4 +1,5 @@
 # Particles
+
 > `using HarpEngine.Particles`
 
 Particles themselves are simple, where each particle is a `struct` with the following fields:

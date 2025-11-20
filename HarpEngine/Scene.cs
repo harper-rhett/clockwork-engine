@@ -22,22 +22,22 @@ public class Scene
 		BackgroundColor = backgroundColor;
 	}
 
-	public void Update(float frameTime)
+	public void Update()
 	{
 		if (IsPaused) return;
-		Time += frameTime * TimeModifier;
+		Time += Engine.FrameTime * TimeModifier;
 
 		Entities.ProcessAdditions();
 		Entities.ProcessMoves();
-		UpdateEntities(frameTime);
+		UpdateEntities();
 		Entities.ProcessRemovals();
 	}
 
-	private void UpdateEntities(float frameTime)
+	private void UpdateEntities()
 	{
 		foreach (Entity entity in Entities.InUpdateOrder)
 		{
-			if (entity.IsUpdating) entity.Update(frameTime);
+			if (entity.IsUpdating) entity.OnUpdate();
 		}
 	}
 
@@ -53,7 +53,7 @@ public class Scene
 		if (Camera is not null) Camera.Begin();
 		foreach (Entity entity in Entities.InDrawOrder)
 		{
-			if (entity.IsRendering) entity.Draw();
+			if (entity.IsRendering) entity.OnDraw();
 		}
 		if (Camera is not null) Camera.End();
 	}
@@ -62,7 +62,15 @@ public class Scene
 	{
 		foreach (Entity entity in Entities.InDrawOrder)
 		{
-			if (entity.IsRendering) entity.DrawGUI();
+			if (entity.IsRendering) entity.OnDrawGUI();
 		}
+	}
+
+	public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where EntitySubclass : Entity
+	{
+		entity.Scene = this;
+		Entities.Add(entity);
+		entity.OnAddedToScene();
+		return entity;
 	}
 }

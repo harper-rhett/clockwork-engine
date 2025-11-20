@@ -37,7 +37,7 @@ public static extern KeyboardKey GetKeyPressed()
 ### <a id="HarpEngine_Input_Keyboard_GetUnicodePressed"></a> GetUnicodePressed\(\)
 
 ```csharp
-public static int GetUnicodePressed()
+public static extern int GetUnicodePressed()
 ```
 
 #### Returns

@@ -10,28 +10,28 @@ public class TriggerTimer : Entity
 	public delegate void TriggeredDelegate();
 	public event TriggeredDelegate Triggered;
 
-	public TriggerTimer(Scene scene, float triggerSeconds) : base(scene)
+	public TriggerTimer(float triggerSeconds)
 	{
 		this.triggerSeconds = triggerSeconds;
 	}
 
-	public override void Update(float frameTime)
+	public override void OnUpdate()
 	{
 		if (isTriggered) return;
 
-		if (scene.Time >= triggerTime) Trigger();
+		if (Scene.Time >= triggerTime) Trigger();
 	}
 
 	public void Start()
 	{
-		startTime = scene.Time;
+		startTime = Scene.Time;
 		triggerTime = startTime + triggerSeconds;
 		isTriggered = false;
 	}
 
 	public void Skip()
 	{
-		triggerTime = scene.Time;
+		triggerTime = Scene.Time;
 	}
 
 	protected void Trigger()

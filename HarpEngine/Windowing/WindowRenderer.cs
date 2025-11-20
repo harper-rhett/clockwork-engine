@@ -28,7 +28,7 @@ internal abstract class WindowRenderer
 	}
 
 	// Fetch new values
-	protected void RefreshValues(RenderTexture gameRenderTexture)
+	protected void RefreshDimensions(RenderTexture gameRenderTexture)
 	{
 		windowWidth = Window.Width;
 		windowHeight = Window.Height;

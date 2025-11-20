@@ -117,7 +117,7 @@ public void Dispose()
 ### <a id="HarpEngine_Graphics_Font_Load_System_String_"></a> Load\(string\)
 
 ```csharp
-public static Font Load(string fileName)
+public static extern Font Load(string fileName)
 ```
 
 #### Parameters
@@ -131,7 +131,7 @@ public static Font Load(string fileName)
 ### <a id="HarpEngine_Graphics_Font_Load_HarpEngine_Graphics_Image_HarpEngine_Graphics_Color_System_Int32_"></a> Load\(Image, Color, int\)
 
 ```csharp
-public static Font Load(Image image, Color key, int firstCharacter)
+public static extern Font Load(Image image, Color key, int firstCharacter)
 ```
 
 #### Parameters
@@ -145,4 +145,14 @@ public static Font Load(Image image, Color key, int firstCharacter)
 #### Returns
 
  [Font](HarpEngine.Graphics.Font.md)
+
+### <a id="HarpEngine_Graphics_Font_Unload_HarpEngine_Graphics_Font_"></a> Unload\(Font\)
+
+```csharp
+public static extern void Unload(Font font)
+```
+
+#### Parameters
+
+`font` [Font](HarpEngine.Graphics.Font.md)
 
