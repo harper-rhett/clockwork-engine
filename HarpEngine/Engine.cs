@@ -44,12 +44,20 @@ public static class Engine
 	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
 	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
 	{
+		// Create crash handler
+		AppDomain.CurrentDomain.UnhandledException += HandleCrash;
+
 		// Initialize window
 		Window.Initialize(800, 800, windowTitle);
 
 		// Initialize game
 		AudioDevice.Initialize();
 		GameSize = new(gameWidth, gameHeight);
+	}
+
+	private static void HandleCrash(object sender, UnhandledExceptionEventArgs arguments)
+	{
+		File.WriteAllText("crash-log.txt", arguments.ExceptionObject.ToString());
 	}
 
 	public static void Start(Game game)
