@@ -2,25 +2,25 @@
 
 public class TiledWorld : Entity
 {
-	private IEnumerable<TiledArea> areas;
+	private List<TiledArea> areas = new();
 	private Dictionary<Coordinate, TiledArea> areasByTile = new();
 	private int tileSize;
 
-	public TiledWorld(IEnumerable<TiledArea> areas, int tileSize)
+	public TiledWorld(int tileSize)
 	{
-		this.areas = areas;
 		this.tileSize = tileSize;
+	}
 
-		foreach (TiledArea area in areas)
-		{
-			Coordinate areaCoordinate = GetTileCoordinate(area.Position);
-			for (int xTile = areaCoordinate.X; xTile < areaCoordinate.X + area.WidthInTiles; xTile++)
-				for (int yTile = areaCoordinate.Y; yTile < areaCoordinate.Y + area.HeightInTiles; yTile++)
-				{
-					Coordinate currentCoordinate = new(xTile, yTile);
-					areasByTile[currentCoordinate] = area;
-				}
-		}
+	public void AddArea(TiledArea area)
+	{
+		areas.Add(area);
+		Coordinate areaCoordinate = GetTileCoordinate(area.Position);
+		for (int xTile = areaCoordinate.X; xTile < areaCoordinate.X + area.WidthInTiles; xTile++)
+			for (int yTile = areaCoordinate.Y; yTile < areaCoordinate.Y + area.HeightInTiles; yTile++)
+			{
+				Coordinate currentCoordinate = new(xTile, yTile);
+				areasByTile[currentCoordinate] = area;
+			}
 	}
 
 	public override void OnDraw()
