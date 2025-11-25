@@ -5,6 +5,16 @@ public class TiledWorld : Entity
 	private List<TiledArea> areas = new();
 	private Dictionary<Coordinate, TiledArea> areasByTile = new();
 	private int tileSize;
+	private TiledArea lastFocusArea;
+	private TiledArea focusArea;
+	public TiledArea FocusArea
+	{
+		set
+		{
+			lastFocusArea = focusArea;
+			focusArea = value;
+		}
+	}
 
 	public TiledWorld(int tileSize)
 	{
@@ -25,10 +35,9 @@ public class TiledWorld : Entity
 
 	public override void OnDraw()
 	{
-		foreach (TiledArea area in areas)
-		{
-			area.Draw();
-		}
+		if (focusArea is null) throw new InvalidOperationException("FocusArea must be set before attempting to draw.");
+		focusArea.Draw();
+		if (lastFocusArea is not null) lastFocusArea.Draw();
 	}
 
 	public bool DoesAreaExist(int pixelX, int pixelY)
