@@ -92,11 +92,21 @@ public static class Engine
 		Drawing.End();
 	}
 
+	public static void DrawDebug(int fontSize, int spacing)
+	{
+		Text.Draw(FPS.ToString(), spacing, spacing, fontSize, Colors.White);
+	}
+
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
 	private static extern float GetFrameTime();
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
-	public static extern void SetTargetFPS(int fps);
+	private static extern void SetTargetFPS(int fps);
+	public static int TargetFPS { set => SetTargetFPS(value); }
+
+	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
+	private static extern float GetFPS();
+	public static float FPS => GetFPS();
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "TakeScreenshot")]
 	public static extern void TakeScreenshot(string fileName);
