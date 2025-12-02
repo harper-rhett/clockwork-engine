@@ -21,22 +21,23 @@ public class TiledCollider<TileType> where TileType : Enum
 	public int TopY { get; private set; }
 	public int BottomY { get; private set; }
 
+	private HashSet<int> innerTiles = new();
 	private HashSet<int> leftTiles = new();
 	private HashSet<int> rightTiles = new();
 	private HashSet<int> topTiles = new();
 	private HashSet<int> bottomTiles = new();
 
-	private readonly int width;
-	private readonly int height;
-	private readonly int halfWidth;
-	private readonly int halfHeight;
+	public readonly int Width;
+	public readonly int Height;
+	public readonly int HalfWidth;
+	public readonly int HalfHeight;
 
 	public TiledCollider(int width, int height)
 	{
-		this.width = width;
-		this.height = height;
-		halfWidth = width / 2;
-		halfHeight = height / 2;
+		Width = width;
+		Height = height;
+		HalfWidth = width / 2;
+		HalfHeight = height / 2;
 	}
 
 	public void Update(TiledArea area, Vector2 position)
@@ -46,20 +47,24 @@ public class TiledCollider<TileType> where TileType : Enum
 		rightTiles.Clear();
 		topTiles.Clear();
 		bottomTiles.Clear();
+		innerTiles.Clear();
 
 		// Update collisions
-		CenterX = position.X.Floored() + halfWidth;
-		CenterY = position.Y.Floored() + halfHeight;
-		CheckCenter(area, position);
-		CheckLeftRight(area, position);
-		CheckTopBottom(area, position);
+		CenterX = position.X.Floored() + HalfWidth;
+		CenterY = position.Y.Floored() + HalfHeight;
+		UpdateCenter(area, position);
+		UpdateLeftRight(area, position);
+		UpdateTopBottom(area, position);
 	}
 
 	public void Draw(Vector2 position, Color color)
 	{
-		Primitives.DrawRectangle(position, new(width, height), color.SetAlpha(0.5f));
+		Primitives.DrawRectangle(position, new(Width, Height), color.SetAlpha(0.5f));
 		Primitives.DrawPixel(CenterX, CenterY, color);
 	}
+
+	public bool IsTileInner(int tileTypeID) => innerTiles.Contains(tileTypeID);
+	public bool IsTileInner(TileType tileType) => IsTileInner((int)(object)tileType);
 
 	public bool IsTileLeft(int tileTypeID) => leftTiles.Contains(tileTypeID);
 	public bool IsTileLeft(TileType tileType) => IsTileLeft((int)(object)tileType);
@@ -73,19 +78,34 @@ public class TiledCollider<TileType> where TileType : Enum
 	public bool IsTileBottom(int tileTypeID) => bottomTiles.Contains(tileTypeID);
 	public bool IsTileBottom(TileType tileType) => IsTileBottom((int)(object)tileType);
 
-	private void CheckCenter(TiledArea area, Vector2 position)
+	private void UpdateCenter(TiledArea area, Vector2 position)
 	{
 		CenterInBounds = area.InBounds(CenterX, CenterY);
-		if (!CenterInBounds) return;
-		CenterTile = area.GetTileType<TileType>(CenterX, CenterY);
+		if (CenterInBounds) CenterTile = area.GetTileType<TileType>(CenterX, CenterY);
+		CheckInner(area, position);
 	}
 
-	private void CheckTopBottom(TiledArea area, Vector2 position)
+	private void CheckInner(TiledArea area, Vector2 position)
+	{
+		int xPosition = position.X.Floored();
+		int yPosition = position.Y.Floored();
+		for (int xOffset = 0; xOffset < Width; xOffset++)
+			for (int yOffset = 0; yOffset < Height; yOffset++)
+			{
+				int x = xPosition + xOffset;
+				int y = yPosition + yOffset;
+				if (!area.InBounds(x, y)) continue;
+				int tileTypeID = area.GetTileTypeID(x, y);
+				innerTiles.Add(tileTypeID);
+			}
+	}
+
+	private void UpdateTopBottom(TiledArea area, Vector2 position)
 	{
 		int leftX = (position.X).Floored();
-		int rightX = (position.X + width - 1).Floored();
+		int rightX = (position.X + Width - 1).Floored();
 		TopY = (position.Y - 1).Floored();
-		BottomY = (position.Y + height).Floored();
+		BottomY = (position.Y + Height).Floored();
 
 		CheckTop(area, position, leftX, rightX);
 		CheckBottom(area, position, leftX, rightX);
@@ -115,12 +135,12 @@ public class TiledCollider<TileType> where TileType : Enum
 		}
 	}
 
-	private void CheckLeftRight(TiledArea area, Vector2 position)
+	private void UpdateLeftRight(TiledArea area, Vector2 position)
 	{
 		int topY = (position.Y).Floored();
-		int bottomY = (position.Y + height - 1).Floored();
+		int bottomY = (position.Y + Height - 1).Floored();
 		LeftX = (position.X - 1).Floored();
-		RightX = (position.X + width).Floored();
+		RightX = (position.X + Width).Floored();
 
 		CheckLeft(area, position, topY, bottomY);
 		CheckRight(area, position, topY, bottomY);
