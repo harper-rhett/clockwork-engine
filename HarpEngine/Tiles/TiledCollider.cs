@@ -21,11 +21,11 @@ public class TiledCollider<TileType> where TileType : Enum
 	public int TopY { get; private set; }
 	public int BottomY { get; private set; }
 
-	private HashSet<int> innerTiles = new();
-	private HashSet<int> leftTiles = new();
-	private HashSet<int> rightTiles = new();
-	private HashSet<int> topTiles = new();
-	private HashSet<int> bottomTiles = new();
+	private HashSet<TileType> innerTiles = new();
+	private HashSet<TileType> leftTiles = new();
+	private HashSet<TileType> rightTiles = new();
+	private HashSet<TileType> topTiles = new();
+	private HashSet<TileType> bottomTiles = new();
 
 	public readonly int Width;
 	public readonly int Height;
@@ -63,20 +63,11 @@ public class TiledCollider<TileType> where TileType : Enum
 		Primitives.DrawPixel(CenterX, CenterY, color);
 	}
 
-	public bool IsTileInner(int tileTypeID) => innerTiles.Contains(tileTypeID);
-	public bool IsTileInner(TileType tileType) => IsTileInner((int)(object)tileType);
-
-	public bool IsTileLeft(int tileTypeID) => leftTiles.Contains(tileTypeID);
-	public bool IsTileLeft(TileType tileType) => IsTileLeft((int)(object)tileType);
-
-	public bool IsTileRight(int tileTypeID) => rightTiles.Contains(tileTypeID);
-	public bool IsTileRight(TileType tileType) => IsTileRight((int)(object)tileType);
-
-	public bool IsTileTop(int tileTypeID) => topTiles.Contains(tileTypeID);
-	public bool IsTileTop(TileType tileType) => IsTileTop((int)(object)tileType);
-
-	public bool IsTileBottom(int tileTypeID) => bottomTiles.Contains(tileTypeID);
-	public bool IsTileBottom(TileType tileType) => IsTileBottom((int)(object)tileType);
+	public bool IsTileInner(TileType tileType) => innerTiles.Contains(tileType);
+	public bool IsTileLeft(TileType tileType) => leftTiles.Contains(tileType);
+	public bool IsTileRight(TileType tileType) => rightTiles.Contains(tileType);
+	public bool IsTileTop(TileType tileType) => topTiles.Contains(tileType);
+	public bool IsTileBottom(TileType tileType) => bottomTiles.Contains(tileType);
 
 	private void UpdateCenter(TiledArea area, Vector2 position)
 	{
@@ -95,8 +86,8 @@ public class TiledCollider<TileType> where TileType : Enum
 				int x = xPosition + xOffset;
 				int y = yPosition + yOffset;
 				if (!area.InBounds(x, y)) continue;
-				int tileTypeID = area.GetTileTypeID(x, y);
-				innerTiles.Add(tileTypeID);
+				TileType tileType = area.GetTileType<TileType>(x, y);
+				innerTiles.Add(tileType);
 			}
 	}
 
@@ -118,8 +109,8 @@ public class TiledCollider<TileType> where TileType : Enum
 		for (int x = leftX; x <= rightX; x++)
 		{
 			if (!area.InBounds(x, TopY)) continue;
-			int tileTypeID = area.GetTileTypeID(x, TopY);
-			topTiles.Add(tileTypeID);
+			TileType tileType = area.GetTileType<TileType>(x, TopY);
+			topTiles.Add(tileType);
 		}
 	}
 
@@ -130,8 +121,8 @@ public class TiledCollider<TileType> where TileType : Enum
 		for (int x = leftX; x <= rightX; x++)
 		{
 			if (!area.InBounds(x, BottomY)) continue;
-			int tileTypeID = area.GetTileTypeID(x, BottomY);
-			bottomTiles.Add(tileTypeID);
+			TileType tileType = area.GetTileType<TileType>(x, BottomY);
+			bottomTiles.Add(tileType);
 		}
 	}
 
@@ -153,8 +144,8 @@ public class TiledCollider<TileType> where TileType : Enum
 		for (int y = topY; y <= bottomY; y++)
 		{
 			if (!area.InBounds(LeftX, y)) continue;
-			int tileTypeID = area.GetTileTypeID(LeftX, y);
-			leftTiles.Add(tileTypeID);
+			TileType tileType = area.GetTileType<TileType>(LeftX, y);
+			leftTiles.Add(tileType);
 		}
 	}
 
@@ -165,8 +156,8 @@ public class TiledCollider<TileType> where TileType : Enum
 		for (int y = topY; y <= bottomY; y++)
 		{
 			if (!area.InBounds(RightX, y)) continue;
-			int tileTypeID = area.GetTileTypeID(RightX, y);
-			rightTiles.Add(tileTypeID);
+			TileType tileType = area.GetTileType<TileType>(RightX, y);
+			rightTiles.Add(tileType);
 		}
 	}
 }
