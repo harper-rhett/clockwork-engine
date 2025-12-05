@@ -40,6 +40,11 @@ public static class Engine
 
 	// Extra
 	public static float FrameTime {  get; private set; }
+	private static bool takeScreenshot;
+	private static string screenshotFolderPath;
+	public static bool IsScreenshotBursting { get; private set; }
+	private static string screenshotBurstFolderPath;
+	private static int screenshotBurstIndex;
 
 	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
 	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
@@ -87,6 +92,9 @@ public static class Engine
 		game.OnDraw();
 		RenderTexture.EndDrawing();
 
+		if (takeScreenshot) TakeScreenshot();
+		if (IsScreenshotBursting) BurstScreenshot();
+
 		Drawing.Begin();
 		Window.Renderer.Draw(gameRenderTexture);
 		Drawing.End();
@@ -95,6 +103,24 @@ public static class Engine
 	public static void DrawDebug(int fontSize, int spacing)
 	{
 		Text.Draw(FPS.ToString(), spacing, spacing, fontSize, Colors.White);
+	}
+
+	private static void TakeScreenshot()
+	{
+		Image gameImage = Image.Load(gameRenderTexture.Texture);
+		string fileName = $"{DateTime.Now.ToString("yy-MM-dd_HH-mm-ss")}.png";
+		string filePath = Path.Combine(screenshotFolderPath, fileName);
+		gameImage.Export(filePath, out bool success);
+		takeScreenshot = false;
+	}
+
+	private static void BurstScreenshot()
+	{
+		Image gameImage = Image.Load(gameRenderTexture.Texture);
+		string fileName = $"burst-{screenshotBurstIndex}.png";
+		string filePath = Path.Combine(screenshotBurstFolderPath, fileName);
+		gameImage.Export(filePath, out bool success);
+		screenshotBurstIndex++;
 	}
 
 	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
@@ -108,6 +134,24 @@ public static class Engine
 	private static extern float GetFPS();
 	public static float FPS => GetFPS();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "TakeScreenshot")]
-	public static extern void TakeScreenshot(string fileName);
+	public static void TakeScreenshot(string folderPath)
+	{
+		screenshotFolderPath = folderPath;
+		Directory.CreateDirectory(folderPath);
+		takeScreenshot = true;
+	}
+
+	public static void StartScreenshotBurst(string folderPath)
+	{
+		screenshotBurstFolderPath = folderPath;
+		Directory.CreateDirectory(folderPath);
+		screenshotBurstIndex = 0;
+		IsScreenshotBursting = true;
+	}
+
+	public static void StopScreenshotBurst()
+	{
+		screenshotBurstFolderPath = null;
+		IsScreenshotBursting = false;
+	}
 }
