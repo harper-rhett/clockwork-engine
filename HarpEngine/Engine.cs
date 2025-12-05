@@ -54,6 +54,7 @@ public static class Engine
 
 		// Initialize window
 		Window.Initialize(800, 800, windowTitle);
+		TargetFPS = 60;
 
 		// Initialize game
 		AudioDevice.Initialize();
