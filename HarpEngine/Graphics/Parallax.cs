@@ -5,11 +5,15 @@ namespace HarpEngine.Graphics;
 public class Parallax : Entity
 {
 	private Camera2D camera;
+	private Vector2 startPosition;
+	private Vector2 cameraOffset;
 	private List<Layer> layers = new();
 
-	public Parallax(Camera2D camera)
+	public Parallax(Camera2D camera, Vector2 startPosition)
 	{
 		this.camera = camera;
+		this.startPosition = startPosition;
+		cameraOffset = camera.Transform.WorldPosition - startPosition;
 	}
 
 	public void AddLayer(Texture backgroundTexture, Vector2 offset, float speed)
@@ -17,13 +21,15 @@ public class Parallax : Entity
 		layers.Add(new(backgroundTexture, offset, speed));
 	}
 
+	// Need to only draw what I need (right?)
+	// or at least I need to repeat the texture
 	public override void OnDraw()
 	{
 		foreach (Layer layer in layers)
 		{
-			Vector2 position = camera.Transform.WorldPosition * -layer.Speed + layer.Offset;
+			Vector2 movement = startPosition + cameraOffset - camera.Transform.WorldPosition;
+			Vector2 position = startPosition + movement * -layer.Speed + layer.Offset;
 			layer.Texture.Draw(position, Colors.White);
-			Console.WriteLine(position);
 		}
 	}
 
