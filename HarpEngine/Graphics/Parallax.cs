@@ -45,21 +45,22 @@ public class Parallax : Entity
 		int viewY = 0;
 
 		// Loop through rendering blocks
-		// TODO: width and height are not accurate when cut off by viewport
 		while (viewX < Engine.GameWidth && viewY < Engine.GameHeight)
 		{
 			// Adjust to texture space
 			int textureX = (textureStart.X.Floored() + viewX) % texture.Width;
 			int textureY = (textureStart.Y.Floored() + viewY) % texture.Height;
-			int xWidth = texture.Width - textureX;
-			int yWidth = texture.Height - textureY;
+
+			// Clip dimensions
+			int clipWidth = int.Min(texture.Width, Engine.GameWidth - viewX);
+			int clipHeight = int.Min(texture.Height, Engine.GameHeight - viewY);
 
 			// Draw texture
-			Rectangle sourceRectangle = new(textureX, textureY, xWidth, yWidth);
+			Rectangle sourceRectangle = new(textureX, textureY, clipWidth, clipHeight);
 			Vector2 drawPosition = cameraPosition + new Vector2(viewX, viewY);
 			texture.Draw(sourceRectangle, drawPosition, Colors.White);
-			viewX += xWidth;
-			viewY += yWidth;
+			viewX += clipWidth;
+			viewY += clipHeight;
 		}
 	}
 
