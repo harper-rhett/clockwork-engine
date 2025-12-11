@@ -10,4 +10,19 @@ public static class VectorExtensions
 		float scalar = bothDot / secondDot;
 		return basisVector * scalar;
 	}
+
+	public static Vector2 Rounded(this Vector2 vector)
+	{
+		return new(vector.X.Rounded(), vector.Y.Rounded());
+	}
+
+	public static Vector2 Floored(this Vector2 vector)
+	{
+		return new(vector.X.Floored(), vector.Y.Floored());
+	}
+
+	public static Vector2 Ceiled(this Vector2 vector)
+	{
+		return new(vector.X.Ceiled(), vector.Y.Ceiled());
+	}
 }

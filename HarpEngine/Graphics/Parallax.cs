@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static HarpEngine.Graphics.Parallax;
 
 namespace HarpEngine.Graphics;
 
@@ -29,7 +30,36 @@ public class Parallax : Entity
 		{
 			Vector2 movement = startPosition + cameraOffset - camera.Transform.WorldPosition;
 			Vector2 position = startPosition + movement * -layer.Speed + layer.Offset;
-			layer.Texture.Draw(position, Colors.White);
+			DrawParallaxTexture(position, layer.Texture);
+		}
+	}
+
+	private void DrawParallaxTexture(Vector2 parallaxPosition, Texture texture)
+	{
+		// Get texture start
+		Vector2 cameraPosition = camera.Transform.WorldPosition;
+		Vector2 textureStart = cameraPosition - parallaxPosition;
+
+		// Scope to camera view
+		int viewX = 0;
+		int viewY = 0;
+
+		// Loop through rendering blocks
+		// TODO: width and height are not accurate when cut off by viewport
+		while (viewX < Engine.GameWidth && viewY < Engine.GameHeight)
+		{
+			// Adjust to texture space
+			int textureX = (textureStart.X.Floored() + viewX) % texture.Width;
+			int textureY = (textureStart.Y.Floored() + viewY) % texture.Height;
+			int xWidth = texture.Width - textureX;
+			int yWidth = texture.Height - textureY;
+
+			// Draw texture
+			Rectangle sourceRectangle = new(textureX, textureY, xWidth, yWidth);
+			Vector2 drawPosition = cameraPosition + new Vector2(viewX, viewY);
+			texture.Draw(sourceRectangle, drawPosition, Colors.White);
+			viewX += xWidth;
+			viewY += yWidth;
 		}
 	}
 
