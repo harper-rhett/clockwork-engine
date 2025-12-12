@@ -22,8 +22,6 @@ public class Parallax : Entity
 		layers.Add(new(backgroundTexture, offset, speed));
 	}
 
-	// Need to only draw what I need (right?)
-	// or at least I need to repeat the texture
 	public override void OnDraw()
 	{
 		foreach (Layer layer in layers)
@@ -39,28 +37,31 @@ public class Parallax : Entity
 		// Get texture start
 		Vector2 cameraPosition = camera.Transform.WorldPosition;
 		Vector2 textureStart = cameraPosition - parallaxPosition;
+		int textureStartX = textureStart.X.Floored();
+		int textureStartY = textureStart.Y.Floored();
 
-		// Scope to camera view
-		int viewX = 0;
-		int viewY = 0;
-
-		// Loop through rendering blocks
-		while (viewX < Engine.GameWidth && viewY < Engine.GameHeight)
+		// Loop through x chunks
+		for (int viewX = 0; viewX < Engine.GameWidth;)
 		{
-			// Adjust to texture space
-			int textureX = (textureStart.X.Floored() + viewX) % texture.Width;
-			int textureY = (textureStart.Y.Floored() + viewY) % texture.Height;
+			// Adjust X texture and clip space
+			int textureX = (textureStartX + viewX).Wrapped(texture.Width);
+			int clipWidth = int.Min(texture.Width - textureX, Engine.GameWidth - viewX);
+			
+			// Loop through y chunks
+			for (int viewY = 0; viewY < Engine.GameHeight;)
+			{
+				// Adjust Y texture and clip space
+				int textureY = (textureStartY + viewY).Wrapped(texture.Height);
+				int clipHeight = int.Min(texture.Height - textureY, Engine.GameHeight - viewY);
 
-			// Clip dimensions
-			int clipWidth = int.Min(texture.Width, Engine.GameWidth - viewX);
-			int clipHeight = int.Min(texture.Height, Engine.GameHeight - viewY);
+				// Draw texture
+				Rectangle sourceRectangle = new(textureX, textureY, clipWidth, clipHeight);
+				Vector2 drawPosition = cameraPosition + new Vector2(viewX, viewY);
+				texture.Draw(sourceRectangle, drawPosition, Colors.White);
+				viewY += clipHeight;
+			}
 
-			// Draw texture
-			Rectangle sourceRectangle = new(textureX, textureY, clipWidth, clipHeight);
-			Vector2 drawPosition = cameraPosition + new Vector2(viewX, viewY);
-			texture.Draw(sourceRectangle, drawPosition, Colors.White);
 			viewX += clipWidth;
-			viewY += clipHeight;
 		}
 	}
 
