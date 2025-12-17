@@ -9,6 +9,8 @@ public class Parallax : Entity
 	private Vector2 startPosition;
 	private Vector2 cameraOffset;
 	private List<Layer> layers = new();
+	public bool RepeatX = true;
+	public bool RepeatY = true;
 
 	public Parallax(Camera2D camera, Vector2 startPosition)
 	{
@@ -44,24 +46,27 @@ public class Parallax : Entity
 		for (int viewX = 0; viewX < Engine.GameWidth;)
 		{
 			// Adjust X texture and clip space
-			int textureX = (textureStartX + viewX).Wrapped(texture.Width);
+			int textureX = (textureStartX + viewX).Wrapped(texture.Width, out int xWraps);
 			int clipWidth = int.Min(texture.Width - textureX, Engine.GameWidth - viewX);
+			int currentViewX = viewX;
+			viewX += clipWidth;
+			if (!RepeatX && xWraps != 0) continue;
 			
 			// Loop through y chunks
 			for (int viewY = 0; viewY < Engine.GameHeight;)
 			{
 				// Adjust Y texture and clip space
-				int textureY = (textureStartY + viewY).Wrapped(texture.Height);
+				int textureY = (textureStartY + viewY).Wrapped(texture.Height, out int yWraps);
 				int clipHeight = int.Min(texture.Height - textureY, Engine.GameHeight - viewY);
+				int currentViewY = viewY;
+				viewY += clipHeight;
+				if (!RepeatY && yWraps != 0) continue;
 
 				// Draw texture
 				Rectangle sourceRectangle = new(textureX, textureY, clipWidth, clipHeight);
-				Vector2 drawPosition = cameraPosition + new Vector2(viewX, viewY);
+				Vector2 drawPosition = cameraPosition + new Vector2(currentViewX, currentViewY);
 				texture.Draw(sourceRectangle, drawPosition, Colors.White);
-				viewY += clipHeight;
 			}
-
-			viewX += clipWidth;
 		}
 	}
 

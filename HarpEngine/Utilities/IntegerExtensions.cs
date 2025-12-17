@@ -6,4 +6,11 @@ public static class IntegerExtensions
 	{
 		return ((value % max) + max) % max;
 	}
+
+	public static int Wrapped(this int value, int max, out int wraps)
+	{
+		int result = value.Wrapped(max);
+		wraps = (value - result) / max;
+		return result;
+	}
 }
