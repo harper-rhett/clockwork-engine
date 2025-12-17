@@ -72,6 +72,11 @@ public class TiledWorld : Entity
 		return new(tilePixelX, tilePixelY);
 	}
 
+	public Vector2 SnapPosition(Vector2 pixelPosition)
+	{
+		return SnapPosition(pixelPosition.X.Floored(), pixelPosition.Y.Floored());
+	}
+
 	public void AddFocus(TiledArea focusArea)
 	{
 		focusAreas.Add(focusArea);
