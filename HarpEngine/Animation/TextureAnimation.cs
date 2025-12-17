@@ -52,7 +52,7 @@ public class TextureAnimation
 		Rectangle cell = frameCells[cellIndex];
 		cell.Width *= direction.X;
 		cell.Height *= direction.Y;
-		texture.Draw(cell, position, color);
+		texture.Draw(cell, position.Floored(), color);
 
 		if (!IsPaused) currentTime += Engine.FrameTime;
 		if (!PlayOnce) currentTime %= PlayTime;
