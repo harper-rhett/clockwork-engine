@@ -11,8 +11,21 @@ public class TiledWorld : Entity
 	{
 		set
 		{
+			if (lastFocusArea is not null)
+			{
+				foreach (Entity entity in lastFocusArea.RegisteredEntities)
+				{
+					entity.IsUpdating = false;
+					entity.IsRendering = false;
+				}
+			}
 			lastFocusArea = focusArea;
 			focusArea = value;
+			foreach (Entity entity in focusArea.RegisteredEntities)
+			{
+				entity.IsUpdating = true;
+				entity.IsRendering = true;
+			}
 		}
 	}
 

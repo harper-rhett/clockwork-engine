@@ -11,6 +11,8 @@ public class TiledArea
 	private readonly RenderTexture renderTexture;
 	private readonly Rectangle renderRectangle;
 	public int[,] TilesByID { private get; set; }
+	private List<Entity> registeredEntities = new();
+	public IReadOnlyList<Entity> RegisteredEntities => registeredEntities;
 
 	public Tile[] Tiles
 	{
@@ -66,5 +68,10 @@ public class TiledArea
 		bool xCheck = pixelX >= Position.X.Floored() && pixelX < Position.X.Floored() + WidthInPixels;
 		bool yCheck = pixelY >= Position.Y.Floored() && pixelY < Position.Y.Floored() + HeightInPixels;
 		return xCheck && yCheck;
+	}
+
+	public void RegisterEntity(Entity entity)
+	{
+		registeredEntities.Add(entity);
 	}
 }
