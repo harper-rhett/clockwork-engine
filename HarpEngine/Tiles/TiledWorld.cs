@@ -5,29 +5,7 @@ public class TiledWorld : Entity
 	private List<TiledArea> areas = new();
 	private Dictionary<Coordinate, TiledArea> areasByTile = new();
 	private int tileSize;
-	private TiledArea lastFocusArea;
-	private TiledArea focusArea;
-	public TiledArea FocusArea
-	{
-		set
-		{
-			if (lastFocusArea is not null)
-			{
-				foreach (Entity entity in lastFocusArea.RegisteredEntities)
-				{
-					entity.IsUpdating = false;
-					entity.IsRendering = false;
-				}
-			}
-			lastFocusArea = focusArea;
-			focusArea = value;
-			foreach (Entity entity in focusArea.RegisteredEntities)
-			{
-				entity.IsUpdating = true;
-				entity.IsRendering = true;
-			}
-		}
-	}
+	private HashSet<TiledArea> focusAreas = new();
 
 	public TiledWorld(int tileSize)
 	{
@@ -48,9 +26,8 @@ public class TiledWorld : Entity
 
 	public override void OnDraw()
 	{
-		if (focusArea is null) throw new InvalidOperationException("FocusArea must be set before attempting to draw.");
-		focusArea.Draw();
-		if (lastFocusArea is not null) lastFocusArea.Draw();
+		if (focusAreas.Count == 0) throw new InvalidOperationException("Focus must be set before attempting to draw.");
+		foreach (TiledArea focusArea in focusAreas) focusArea.Draw();
 	}
 
 	public bool DoesAreaExist(int pixelX, int pixelY)
@@ -93,5 +70,25 @@ public class TiledWorld : Entity
 		int tilePixelX = ((float)pixelX / tileSize).Floored() * tileSize;
 		int tilePixelY = ((float)pixelY / tileSize).Floored() * tileSize;
 		return new(tilePixelX, tilePixelY);
+	}
+
+	public void AddFocus(TiledArea focusArea)
+	{
+		focusAreas.Add(focusArea);
+		foreach (Entity entity in focusArea.RegisteredEntities)
+		{
+			entity.IsUpdating = true;
+			entity.IsRendering = true;
+		}
+	}
+
+	public void RemoveFocus(TiledArea focusArea)
+	{
+		focusAreas.Remove(focusArea);
+		foreach (Entity entity in focusArea.RegisteredEntities)
+		{
+			entity.IsUpdating = false;
+			entity.IsRendering = false;
+		}
 	}
 }

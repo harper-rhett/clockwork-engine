@@ -57,7 +57,7 @@ public class Easer : Entity
 		finishTime = Scene.Time;
 	}
 
-	private void Finish()
+	public void Finish()
 	{
 		IsEasing = false;
 		Finished?.Invoke();
