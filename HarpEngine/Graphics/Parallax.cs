@@ -12,11 +12,12 @@ public class Parallax : Entity
 	public bool RepeatX = true;
 	public bool RepeatY = true;
 
-	public Parallax(Camera2D camera, Vector2 startPosition)
+	// I fear this can be simplified... We probably do not need origin and start position. Just one.
+	public Parallax(Camera2D camera, Vector2 originPosition, Vector2 startPosition)
 	{
 		this.camera = camera;
 		this.startPosition = startPosition;
-		cameraOffset = camera.Transform.WorldPosition - startPosition;
+		cameraOffset = originPosition - startPosition;
 	}
 
 	public void AddLayer(Texture backgroundTexture, Vector2 offset, float speed)
