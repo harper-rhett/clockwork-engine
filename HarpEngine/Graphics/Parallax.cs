@@ -13,6 +13,7 @@ public class Parallax : Entity
 	public bool RepeatY = true;
 
 	// I fear this can be simplified... We probably do not need origin and start position. Just one.
+	// Scratch that. What I need is a cameraOrigin and startPosition. May have to tweak the math.
 	public Parallax(Camera2D camera, Vector2 originPosition, Vector2 startPosition)
 	{
 		this.camera = camera;
