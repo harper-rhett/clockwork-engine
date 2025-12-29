@@ -30,6 +30,9 @@ public sealed class ParticleEngine2D : Entity
 		get => fireTimer.IsUpdating;
 		set => fireTimer.IsUpdating = value;
 	}
+	public bool RemoveOnExhausted;
+	public delegate void ExhaustedDelegate();
+	public event ExhaustedDelegate Exhausted;
 	public delegate void StreamFiredDelegate(out Particle2D particleTemplate);
 	public event StreamFiredDelegate StreamFired;
 
@@ -50,6 +53,12 @@ public sealed class ParticleEngine2D : Entity
 
 	public override void OnUpdate()
 	{
+		if (RemoveOnExhausted && IsExhausted)
+		{
+			Exhausted?.Invoke();
+			Remove();
+		}
+
 		for (int particleIndex = count - 1; particleIndex >= 0; particleIndex--)
 		{
 			// Get reference
@@ -132,7 +141,7 @@ public sealed class ParticleEngine2D : Entity
 
 		foreach (StreamFiredDelegate streamFired in StreamFired.GetInvocationList())
 		{
-			streamFired(out Particle2D particleTemplate);
+			streamFired.Invoke(out Particle2D particleTemplate);
 			SpawnParticle(particleTemplate);
 		}
 	}
