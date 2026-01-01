@@ -1,0 +1,142 @@
+# <a id="Clockwork_Scene"></a> Class Scene
+
+Namespace: [Clockwork](Clockwork.md)  
+Assembly: ClockworkEngine.dll  
+
+```csharp
+public class Scene
+```
+
+#### Inheritance
+
+[object](https://learn.microsoft.com/dotnet/api/system.object) ← 
+[Scene](Clockwork.Scene.md)
+
+#### Inherited Members
+
+[object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
+[object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
+[object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
+[object.GetType\(\)](https://learn.microsoft.com/dotnet/api/system.object.gettype), 
+[object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
+[object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
+[object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
+
+## Constructors
+
+### <a id="Clockwork_Scene__ctor"></a> Scene\(\)
+
+```csharp
+public Scene()
+```
+
+### <a id="Clockwork_Scene__ctor_Clockwork_Graphics_Color_"></a> Scene\(Color\)
+
+```csharp
+public Scene(Color backgroundColor)
+```
+
+#### Parameters
+
+`backgroundColor` [Color](Clockwork.Graphics.Color.md)
+
+## Fields
+
+### <a id="Clockwork_Scene_BackgroundColor"></a> BackgroundColor
+
+```csharp
+public Color BackgroundColor
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Scene_Camera"></a> Camera
+
+```csharp
+public Camera Camera
+```
+
+#### Field Value
+
+ [Camera](Clockwork.Camera.md)
+
+### <a id="Clockwork_Scene_IsPaused"></a> IsPaused
+
+If the update loop is paused. The draw loop is unaffected/
+
+```csharp
+public bool IsPaused
+```
+
+#### Field Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Scene_TimeModifier"></a> TimeModifier
+
+```csharp
+public float TimeModifier
+```
+
+#### Field Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+## Properties
+
+### <a id="Clockwork_Scene_Entities"></a> Entities
+
+```csharp
+public Entities Entities { get; }
+```
+
+#### Property Value
+
+ [Entities](Clockwork.Entities.md)
+
+### <a id="Clockwork_Scene_Time"></a> Time
+
+Seconds since creation that this world has been unpaused.
+
+```csharp
+public float Time { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+## Methods
+
+### <a id="Clockwork_Scene_AddEntity__1___0_"></a> AddEntity<EntitySubclass\>\(EntitySubclass\)
+
+```csharp
+public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where EntitySubclass : Entity
+```
+
+#### Parameters
+
+`entity` EntitySubclass
+
+#### Returns
+
+ EntitySubclass
+
+#### Type Parameters
+
+`EntitySubclass` 
+
+### <a id="Clockwork_Scene_Draw"></a> Draw\(\)
+
+```csharp
+public void Draw()
+```
+
+### <a id="Clockwork_Scene_Update"></a> Update\(\)
+
+```csharp
+public void Update()
+```
+
