@@ -10,7 +10,7 @@
 
 	<PropertyGroup>
 		<PackageId>ClockworkEngine</PackageId>
-		<Version>0.2.4</Version>
+		<Version>0.2.5</Version>
 		<Authors>Harper Rhett</Authors>
 		<Description>A utility-packed game framework built on Raylib.</Description>
 		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
@@ -21,11 +21,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Update="runtimes/**/*.*" Pack="true" PackagePath="runtimes/" CopyToOutputDirectory="PreserveNewest"/>
+		<None Include="../logo.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="../logo.png" Pack="true" PackagePath="" />
+		<None Include="runtimes\win-x64\native\raylib.dll" Pack="true" PackagePath="runtimes/win-x64/native/">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="runtimes\linux-x64\native\libraylib.so" Pack="true" PackagePath="runtimes/linux-x64/native/">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="runtimes\osx-x64\native\libraylib.dylib" Pack="true" PackagePath="runtimes/osx-x64/native/">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="runtimes\osx-arm64\native\libraylib.dylib" Pack="true" PackagePath="runtimes/osx-arm64/native/">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>
