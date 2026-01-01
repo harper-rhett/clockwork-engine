@@ -10,12 +10,12 @@
 
 	<PropertyGroup>
 		<PackageId>ClockworkEngine</PackageId>
-		<Version>0.2.1</Version>
+		<Version>0.2.2</Version>
 		<Authors>Harper Rhett</Authors>
 		<Description>A utility-packed game framework built on Raylib.</Description>
 		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
-		<PackageProjectUrl>https://github.com/harper-rhett/harp-engine</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/harper-rhett/harp-engine</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/harper-rhett/clockwork-engine</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/harper-rhett/clockwork-engine</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>logo.png</PackageIcon>
 	</PropertyGroup>
