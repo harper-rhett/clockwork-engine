@@ -1,6 +1,6 @@
 # Tiled World
 
-> `using HarpEngine.Tiles`
+> `using Clockwork.Tiles`
 
 Let's say you're trying to make a Metroidvania. The first thing you would need is a world to manage your tiled areas or "levels" in. `TiledWorld` is an entity that does that. Add your tiled areas to the world, add the world to the scene, and viola! You now have a set of tools for managing your world.
 

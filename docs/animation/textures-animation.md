@@ -1,6 +1,6 @@
 # Texture Animation
 
-> `using HarpEngine.Animation`
+> `using Clockwork.Animation`
 
 Texture animation is pretty simple, and is done like so:
 

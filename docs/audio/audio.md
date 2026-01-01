@@ -1,6 +1,6 @@
 # Audio
 
-> `using HarpEngine.Audio;`
+> `using Clockwork.Audio;`
 
 Sounds are incredibly simple:
 

@@ -118,7 +118,7 @@ public static class Engine
 	private static void BurstScreenshot()
 	{
 		Image gameImage = Image.Load(gameRenderTexture.Texture);
-		string fileName = $"burst-{screenshotBurstIndex}.png";
+		string fileName = $"burst-{screenshotBurstIndex.ToString("D5")}.png";
 		string filePath = Path.Combine(screenshotBurstFolderPath, fileName);
 		gameImage.Export(filePath, out bool success);
 		screenshotBurstIndex++;

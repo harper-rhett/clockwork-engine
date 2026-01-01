@@ -1,6 +1,6 @@
 # Graphics
 
-> `using HarpEngine.Graphics;`
+> `using Clockwork.Graphics;`
 
 The graphics namespace contains everything needed to draw to the screen. A circle, drawn at (0, 0), with a radius of 8, is drawn like so:
 

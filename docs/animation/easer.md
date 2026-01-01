@@ -1,6 +1,6 @@
 # Easer
 
-> `using HarpEngine.Animation`
+> `using Clockwork.Animation`
 
 The Easer class was created to help with simple programatic animations, and uses the [Curves](curves.md) class to support it. Check it out:
 

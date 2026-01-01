@@ -1,6 +1,6 @@
 # Particles
 
-> `using HarpEngine.Particles`
+> `using Clockwork.Particles`
 
 Particles themselves are simple, where each particle is a `struct` with the following fields:
 
@@ -29,7 +29,7 @@ But what truly sets the engine apart is how the particle behavior is defined in 
 - Modifiers: Define the update loop of the particles.
 - Finalizers: Define what happens when particles die.
 
-HarpEngine comes with several pre-built particle customizations for convenience, which can be found in `ParticleInitializers`, `ParticleModifiers`, and `ParticleFinalizers`. Here is an example of a firework shell that launched into the air at a random angle and spawns a firework explosion on death:
+Clockwork comes with several pre-built particle customizations for convenience, which can be found in `ParticleInitializers`, `ParticleModifiers`, and `ParticleFinalizers`. Here is an example of a firework shell that launched into the air at a random angle and spawns a firework explosion on death:
 
 ```csharp
 ParticleEngine2D fireworks = new(scene);
