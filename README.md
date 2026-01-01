@@ -9,6 +9,7 @@ Currently there is only support for x64 systems, but that will change. Raylib ex
 - [Template](https://github.com/harper-rhett/clockwork-template)
 - [Examples](https://github.com/harper-rhett/clockwork-examples)
 - [Documentation](https://clockwork-engine.readthedocs.io/en/latest/)
+- [Discord](https://discord.gg/7qsRSKSYU8)
 
 ## Features
 - Scene management system (with entities, update loops, and layers)
