@@ -10,7 +10,7 @@
 
 	<PropertyGroup>
 		<PackageId>ClockworkEngine</PackageId>
-		<Version>0.2.2</Version>
+		<Version>0.2.4</Version>
 		<Authors>Harper Rhett</Authors>
 		<Description>A utility-packed game framework built on Raylib.</Description>
 		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
@@ -21,9 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Update="runtimes/**" Pack="true" PackagePath="runtimes/">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+		<None Update="runtimes/**/*.*" Pack="true" PackagePath="runtimes/" CopyToOutputDirectory="PreserveNewest"/>
 	</ItemGroup>
 
 	<ItemGroup>

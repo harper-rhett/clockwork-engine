@@ -1,14 +1,14 @@
 ![Logo](logo.png)
-# HarpEngine
-Harp Engine is a (currently) 2D C# game development framework built on the [Raylib Graphics Library](https://www.raylib.com/). It is outfitted with tools designed to make prototyping simple, projects scalable, and scope-creep manageable.
+# Clockwork Engine
+Clockwork Engine is a (currently) 2D C# game development framework built on the [Raylib Graphics Library](https://www.raylib.com/). It is outfitted with tools designed to make prototyping simple, projects scalable, and scope-creep manageable.
 
 Currently there is only support for x64 systems, but that will change. Raylib executables for other runtimes just need to be added to the project (so far as I understand).
 
 ## Resources
-- [NuGet Package](https://www.nuget.org/packages/HarpEngine)
-- [Template](https://github.com/harper-rhett/harp-engine-template)
-- [Examples](https://github.com/harper-rhett/harp-engine-examples)
-- [Documentation](https://harp-engine.readthedocs.io/en/latest/)
+- [NuGet Package](https://www.nuget.org/packages/ClockworkEngine)
+- [Template](https://github.com/harper-rhett/clockwork-template)
+- [Examples](https://github.com/harper-rhett/clockwork-examples)
+- [Documentation](https://clockwork-engine.readthedocs.io/en/latest/)
 
 ## Features
 - Scene management system (with entities, update loops, and layers)
@@ -28,15 +28,15 @@ Currently there is only support for x64 systems, but that will change. Raylib ex
 - 3D (1.5x more dimensions!)
 
 ## Raylib Bindings
-If you are familiar with Raylib, HarpEngine's Raylib bindings may feel somewhat alien to you. They have been carefully adapted to flow better with C#. Drawing a texture, for instance:
+If you are familiar with Raylib, Clockwork's Raylib bindings may feel somewhat alien to you. They have been carefully adapted to flow better with C#. Drawing a texture, for instance:
 ### In Raylib
 ```c
 Texture2D myTexture = LoadTexture(filePath);
 DrawTexture(myTexture, x, y, color);
 ```
-### In HarpEngine
+### In Clockwork
 ```csharp
-using HarpEngine.Graphics;
+using Clockwork.Graphics;
 Texture myTexture = Texture.Load(filePath);
 myTexture.Draw(x, y, color);
 ```
@@ -44,14 +44,14 @@ myTexture.Draw(x, y, color);
 Some bindings are less obvious than others. Not all bindings are implemented. Check the documenation and source code.
 
 ## Getting Started
-HarpEngine was created in Visual Studio, and so it is recommended you use Visual Studio. Other IDEs should work fine, but there is not a recommended set up process for them.
+Clockwork was created in Visual Studio, and so it is recommended you use Visual Studio. Other IDEs should work fine, but there is not a recommended set up process for them.
 
-The best way to start is probably with the [template](https://github.com/harper-rhett/harp-engine-template) to see a minimal project structure. Then, jump into the [documentation](https://app.readthedocs.org/projects/harp-engine/builds/29567953/) for more information. If you'd like to start a project from scratch, I promise you it's stupid simple. Install the [NuGet package](https://www.nuget.org/packages/HarpEngine) and take a look at the [examples](https://github.com/harper-rhett/harp-engine-examples). Ultimately, however, you will need the [documentation](https://harp-engine.readthedocs.io/en/latest/). The engine may currently be small, but the codebase is becoming quite large.
+The best way to start is probably with the [template](https://github.com/harper-rhett/clockwork-template) to see a minimal project structure. Then, jump into the [documentation](https://app.readthedocs.org/projects/harp-engine/builds/29567953/) for more information. If you'd like to start a project from scratch, I promise you it's stupid simple. Install the [NuGet package](https://www.nuget.org/packages/ClockworkEngine) and take a look at the [examples](https://github.com/harper-rhett/clockwork-examples). Ultimately, however, you will need the [documentation](https://harp-engine.readthedocs.io/en/latest/). The engine may currently be small, but the codebase is becoming quite large.
 
 ## Minimal Example
 In `Program.cs`:
 ```csharp
-using HarpEngine;
+using Clockwork;
 
 Engine.Initialize("My Game", 256, 256); // title, game width, game height
 MyGame myGame = new();
@@ -60,7 +60,7 @@ Engine.Start(myGame);
 
 In `MyGame.cs`:
 ```csharp
-using HarpEngine;
+using Clockwork;
 
 internal class MyGame : Game // the game class handles scenes
 {
