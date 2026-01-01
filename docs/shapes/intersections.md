@@ -6,7 +6,7 @@ If you want to check for collisions between two shapes, intersections might be a
 bool isGrounded = Intersection.RectangleOnRectangle(playerRectangle, groundRectangle);
 ```
 
-Additionally, HarpEngine provides interfaces such as `IIntersectsWithRectangle` which can be implemented in classes to create a collision system between objects. HarpEngine already has a few cases of this with [shapes](shapes.md).
+Additionally, Clockwork provides interfaces such as `IIntersectsWithRectangle` which can be implemented in classes to create a collision system between objects. Clockwork already has a few cases of this with [shapes](shapes.md).
 
 ```csharp
 LineShape laser = new(3, Colors.Red); // implements IIntersectsWithRectangle

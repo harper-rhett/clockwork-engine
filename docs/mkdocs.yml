@@ -1,5 +1,5 @@
 docs_dir: .
-site_name: HarpEngine
+site_name: ClockworkEngine
 nav:
   - Home: index.md
   - ...

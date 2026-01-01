@@ -1,8 +1,8 @@
 # Randomization
 
-> `using HarpEngine.Utilities;`
+> `using Clockwork.Utilities;`
 
-C#'s random class is lacking in many features. Especially for a game engine. So, HarpEngine reinvents this system. For example, to generate a random unit `Vector2`:
+C#'s random class is lacking in many features. Especially for a game engine. So, Clockwork reinvents this system. For example, to generate a random unit `Vector2`:
 
 ```csharp
 Vector2 launchDirection = Generate.UnitVector2();

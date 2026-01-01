@@ -1,6 +1,6 @@
 # Windowing
 
-> `using HarpEngine.Windowing;`
+> `using Clockwork.Windowing;`
 
 Use the static `Window` class to change several window properties. For instance:
 
@@ -21,7 +21,7 @@ Window.Close();
 
 # Window Rendering
 
-When creating a game in HarpEngine, you must decide what your game's resolution will be, regardless of the window's resolution. This is so that the resolution of the game may be scaled accordingly to the window's settings. There are currently 2 options for window rendering, and there will be more in the future.
+When creating a game in Clockwork, you must decide what your game's resolution will be, regardless of the window's resolution. This is so that the resolution of the game may be scaled accordingly to the window's settings. There are currently 2 options for window rendering, and there will be more in the future.
 
 ## Unclipped Renderer
 

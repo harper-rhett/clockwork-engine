@@ -1,8 +1,8 @@
 # Timers
 
-> `using HarpEngine.Utilities;`
+> `using Clockwork.Utilities;`
 
-There are so many ways a game framework can implement timers. HarpEngine takes a new, elegant approach. Timers act like entities, and sync with a scene's timing systems. Timers pause with the scene. Timers speed up and slow down with the scene. Timers are set and go, and then destroy themselves when they are finished. They can even be inherited from for when you need the same timer, over and over.
+There are so many ways a game framework can implement timers. Clockwork takes a new, elegant approach. Timers act like entities, and sync with a scene's timing systems. Timers pause with the scene. Timers speed up and slow down with the scene. Timers are set and go, and then destroy themselves when they are finished. They can even be inherited from for when you need the same timer, over and over.
 
 ## Trigger Timer
 

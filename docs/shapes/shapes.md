@@ -1,6 +1,6 @@
 # Shapes
 
-> `using HarpEngine.Shapes;`
+> `using Clockwork.Shapes;`
 
 Primitive shapes can be drawn from the `Primitives` namespace. Shape entities are similar, but different. They are pre-built entities useful for prototyping that draw themselves.
 

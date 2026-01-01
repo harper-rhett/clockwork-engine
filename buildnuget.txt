@@ -1,3 +1,1 @@
-dotnet nuget push bin/Release/HarpEngine.X.Y.Z.nupkg
-\ --api-key apikeygoeshere
-\ --source https://api.nuget.org/v3/index.json
+dotnet nuget push bin/Release/ClockworkEngine.X.Y.Z.nupkg --api-key apikeygoeshere --source https://api.nuget.org/v3/index.json

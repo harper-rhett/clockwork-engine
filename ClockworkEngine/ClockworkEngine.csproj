@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>ClockworkEngine</PackageId>
+		<Version>0.2.2</Version>
+		<Authors>Harper Rhett</Authors>
+		<Description>A utility-packed game framework built on Raylib.</Description>
+		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
+		<PackageProjectUrl>https://github.com/harper-rhett/clockwork-engine</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/harper-rhett/clockwork-engine</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>logo.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="runtimes/**" Pack="true" PackagePath="runtimes/">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="../logo.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>

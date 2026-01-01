@@ -1,6 +1,6 @@
 # Audio
 
-> `using HarpEngine.Audio;`
+> `using Clockwork.Audio;`
 
 Sounds are incredibly simple:
 
@@ -20,3 +20,8 @@ dreamMusic.Position = 10; // sets the position to 10 seconds
 ```
 
 Make sure to call `Dispose()` on these types when you are finished using them to release them from memory!
+
+Some music player entities are additionally included, such as:
+- `MusicPlayer`: Add to scene to play music.
+- `MusicRepeater`: Repeats music, over and over.
+- `MusicRepeater2Part`: Plays two audio files one after the other, and repeats the second one.
