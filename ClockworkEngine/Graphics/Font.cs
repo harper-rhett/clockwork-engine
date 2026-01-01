@@ -10,25 +10,25 @@ public unsafe struct Font : IDisposable
 	public Rectangle* Recs;
 	public GlyphInfo* Glyphs;
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFontDefault")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFontDefault")]
 	private static extern Font GetFont();
 	public static Font Default => GetFont();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFont")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFont")]
 	public static extern Font Load(string fileName);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFontFromImage")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFontFromImage")]
 	public static extern Font Load(Image image, Color key, int firstCharacter);
 
-	//[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFontEx")]
+	//[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFontEx")]
 	//public static extern Font Load(string fileName, int fontSize, int* codepoints, int codepointCount);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsFontValid")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsFontValid")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsThisValid(Font font);
 	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadFont")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadFont")]
 	public static extern void Unload(Font font);
 
 	public void Dispose()

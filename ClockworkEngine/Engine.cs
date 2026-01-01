@@ -124,14 +124,14 @@ public static class Engine
 		screenshotBurstIndex++;
 	}
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
 	private static extern float GetFrameTime();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
 	private static extern void SetTargetFPS(int fps);
 	public static int TargetFPS { set => SetTargetFPS(value); }
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
 	private static extern float GetFPS();
 	public static float FPS => GetFPS();
 

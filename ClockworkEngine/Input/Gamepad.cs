@@ -15,38 +15,38 @@ public class Gamepad
 		else return null;
 	}
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadAvailable")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadAvailable")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsAvailable(int gamepadIndex);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadName")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadName")]
 	private static extern string GetName(int gamepadIndex);
 	public string Name => GetName(index);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonPressed")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonPressed")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsButtonPressed(int gamepadIndex, GamepadButton button);
 	public bool IsButtonPressed(GamepadButton button) => IsButtonPressed(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonDown")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonDown")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsButtonDown(int gamepadIndex, GamepadButton button);
 	public bool IsButtonDown(GamepadButton button) => IsButtonDown(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonReleased")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsGamepadButtonReleased")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsButtonReleased(int gamepadIndex, GamepadButton button);
 	public bool IsButtonReleased(GamepadButton button) => IsButtonReleased(index, button);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadButtonPressed")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadButtonPressed")]
 	private static extern GamepadButton GetButtonPressed();
 	public GamepadButton LastButtonPressed => GetButtonPressed();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadAxisMovement")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetGamepadAxisMovement")]
 	private static extern float GetAxisMovement(int gamepadIndex, GamepadAxis axis);
 	public float GetAxis(GamepadAxis axis) => GetAxisMovement(index, axis);
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetGamepadVibration")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetGamepadVibration")]
 	private static extern void SetVibration(int gamepadIndex, float leftMotor, float rightMotor, float duration);
 	public void Vibrate(float leftMotor, float rightMotor, float duration) => SetVibration(index, leftMotor, rightMotor, duration);
 }

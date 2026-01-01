@@ -2,13 +2,13 @@
 
 public static class AudioDevice
 {
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "InitAudioDevice")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "InitAudioDevice")]
 	internal static extern void Initialize();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "CloseAudioDevice")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "CloseAudioDevice")]
 	internal static extern void Close();
 
-	[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMasterVolume")]
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMasterVolume")]
 	private static extern void SetVolume(float volume);
 	public static float Volume { set => SetVolume(value); }
 
