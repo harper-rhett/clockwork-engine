@@ -1,6 +1,6 @@
-﻿using HarpEngine.Utilities;
+﻿using Clockwork.Utilities;
 
-namespace HarpEngine.Particles;
+namespace Clockwork.Particles;
 
 public sealed class ParticleEngine2D : Entity
 {

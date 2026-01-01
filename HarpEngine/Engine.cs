@@ -1,15 +1,15 @@
-﻿global using HarpEngine.Animation;
-global using HarpEngine.Graphics;
-global using HarpEngine.Utilities;
-global using HarpEngine.Windowing;
-global using HarpEngine.Audio;
-global using HarpEngine.Input;
-global using HarpEngine.Shapes;
-global using HarpEngine.Tiles;
+﻿global using Clockwork.Animation;
+global using Clockwork.Graphics;
+global using Clockwork.Utilities;
+global using Clockwork.Windowing;
+global using Clockwork.Audio;
+global using Clockwork.Input;
+global using Clockwork.Shapes;
+global using Clockwork.Tiles;
 global using System.Numerics;
 global using System.Runtime.InteropServices;
 
-namespace HarpEngine;
+namespace Clockwork;
 
 public static class Engine
 {

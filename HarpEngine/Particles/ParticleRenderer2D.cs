@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Particles;
+﻿namespace Clockwork.Particles;
 
 internal abstract class ParticleRenderer2D
 {

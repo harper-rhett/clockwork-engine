@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Particles;
+﻿namespace Clockwork.Particles;
 
 public delegate void Particle2DInitializer(ref Particle2D particle);
 

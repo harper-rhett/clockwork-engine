@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Utilities;
+﻿namespace Clockwork.Utilities;
 
 public interface ITransform2D
 {

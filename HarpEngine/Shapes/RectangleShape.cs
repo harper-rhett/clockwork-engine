@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Shapes;
+﻿namespace Clockwork.Shapes;
 
 public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {

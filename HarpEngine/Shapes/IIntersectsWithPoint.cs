@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Shapes;
+﻿namespace Clockwork.Shapes;
 
 public interface IIntersectsWithPoint
 {

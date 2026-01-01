@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Audio;
+﻿namespace Clockwork.Audio;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct Sound : IDisposable

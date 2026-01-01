@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Windowing;
+﻿namespace Clockwork.Windowing;
 
 internal abstract class WindowRenderer
 {

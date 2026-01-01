@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace HarpEngine.Graphics;
+namespace Clockwork.Graphics;
 
 public class Gradient
 {

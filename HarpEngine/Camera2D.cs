@@ -1,4 +1,4 @@
-﻿namespace HarpEngine;
+﻿namespace Clockwork;
 
 public class Camera2D : Camera
 {

@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Particles;
+﻿namespace Clockwork.Particles;
 
 public static class Particle
 {

@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Input;
+﻿namespace Clockwork.Input;
 
 public static class Keyboard
 {

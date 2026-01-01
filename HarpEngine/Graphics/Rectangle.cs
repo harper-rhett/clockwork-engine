@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Graphics;
+﻿namespace Clockwork.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct Rectangle

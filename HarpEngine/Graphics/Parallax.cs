@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using static HarpEngine.Graphics.Parallax;
+using static Clockwork.Graphics.Parallax;
 
-namespace HarpEngine.Graphics;
+namespace Clockwork.Graphics;
 
 public class Parallax : Entity
 {

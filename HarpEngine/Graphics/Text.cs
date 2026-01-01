@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Graphics;
+﻿namespace Clockwork.Graphics;
 
 public static class Text
 {

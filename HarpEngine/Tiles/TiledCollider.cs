@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Tiles;
+﻿namespace Clockwork.Tiles;
 
 public class TiledCollider<TileType> where TileType : Enum
 {

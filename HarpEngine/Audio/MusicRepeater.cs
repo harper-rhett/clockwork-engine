@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Audio;
+﻿namespace Clockwork.Audio;
 
 public class MusicRepeater : Entity
 {

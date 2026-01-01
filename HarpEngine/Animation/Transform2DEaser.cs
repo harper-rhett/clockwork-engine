@@ -1,4 +1,4 @@
-﻿namespace HarpEngine.Animation;
+﻿namespace Clockwork.Animation;
 
 public class Transform2DEaser : Easer
 {
