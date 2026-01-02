@@ -14,7 +14,7 @@ public class CircleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersec
 
 	public override void OnDraw()
 	{
-		Primitives.DrawCircle(Transform.WorldPosition, Radius, Color);
+		Primitives2D.DrawCircle(Transform.WorldPosition, Radius, Color);
 	}
 
 	public bool IntersectsWithPoint(Vector2 position) => Intersection.PointInCircle(position, Transform.WorldPosition, Radius);

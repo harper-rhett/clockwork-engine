@@ -12,7 +12,7 @@ public class PointShape : Entity, IIntersectsWithCircle, IIntersectsWithRectangl
 
 	public override void OnDraw()
 	{
-		Primitives.DrawPixel(Transform.WorldPosition, Color);
+		Primitives2D.DrawPixel(Transform.WorldPosition, Color);
 	}
 
 	public bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius) => Intersection.PointInCircle(Transform.WorldPosition, circlePosition, circleRadius);

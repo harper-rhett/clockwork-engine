@@ -1,6 +1,6 @@
 ﻿namespace Clockwork.Graphics.Draw2D;
 
-public static class Primitives
+public static class Primitives2D
 {
 	// Pixels
 
@@ -106,10 +106,10 @@ public static class Primitives
 	// Triangles
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTriangle")]
-	public static extern void DrawTriangle(Vector2 cornerOne, Vector2 cornerTwo, Vector2 cornerThree, Color color);
+	public static extern void DrawTriangle(Vector2 corner1, Vector2 corner2, Vector2 corner3, Color color);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTriangleLines")]
-	public static extern void DrawTriangleLines(Vector2 cornerOne, Vector2 cornerTwo, Vector2 cornerThree, Color color);
+	public static extern void DrawTriangleLines(Vector2 corner1, Vector2 corner2, Vector2 corner3, Color color);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTriangleFan")]
 	private static extern void DrawTriangleFan(Vector2[] positions, int positionCount, Color color);
