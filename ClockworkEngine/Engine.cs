@@ -1,5 +1,7 @@
 ﻿global using Clockwork.Animation;
 global using Clockwork.Graphics;
+global using Clockwork.Graphics.Draw2D;
+global using Clockwork.Graphics.Text;
 global using Clockwork.Utilities;
 global using Clockwork.Windowing;
 global using Clockwork.Audio;

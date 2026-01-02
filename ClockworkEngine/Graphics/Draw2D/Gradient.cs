@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Clockwork.Graphics;
+﻿namespace Clockwork.Graphics.Draw2D;
 
 public class Gradient
 {

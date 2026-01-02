@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Graphics;
+﻿namespace Clockwork.Graphics.Text;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct Font : IDisposable

@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Graphics;
+﻿namespace Clockwork.Graphics.Draw2D;
 
 public static class Primitives
 {
