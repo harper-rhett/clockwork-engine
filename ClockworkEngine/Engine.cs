@@ -8,6 +8,7 @@ global using Clockwork.Shapes;
 global using Clockwork.Tiles;
 global using System.Numerics;
 global using System.Runtime.InteropServices;
+global using ClockworkEngine.Backend;
 
 namespace Clockwork;
 
@@ -17,6 +18,7 @@ public static class Engine
 	private static Game game;
 
 	// General
+	public static GraphicsBackend GraphicsBackend;
 	private static RenderTexture gameRenderTexture;
 
 	// Game size
