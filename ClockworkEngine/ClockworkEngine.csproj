@@ -10,7 +10,7 @@
 
 	<PropertyGroup>
 		<PackageId>ClockworkEngine</PackageId>
-		<Version>0.2.5</Version>
+		<Version>0.2.6</Version>
 		<Authors>Harper Rhett</Authors>
 		<Description>A utility-packed game framework built on Raylib.</Description>
 		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
