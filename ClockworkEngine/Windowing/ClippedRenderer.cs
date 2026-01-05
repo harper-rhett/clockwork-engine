@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Windowing;
+﻿using Clockwork.Graphics;
+using System.Numerics;
+using Clockwork.Input;
+
+namespace Clockwork.Windowing;
 
 internal class ClippedRenderer : WindowRenderer
 {

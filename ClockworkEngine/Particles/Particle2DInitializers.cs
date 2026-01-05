@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Particles;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+using Clockwork.Utilities;
+
+namespace Clockwork.Particles;
 
 public delegate void Particle2DInitializer(ref Particle2D particle);
 

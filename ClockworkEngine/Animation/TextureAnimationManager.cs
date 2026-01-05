@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Animation;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+
+namespace Clockwork.Animation;
 
 public class TextureAnimationManager<AnimationState> where AnimationState : Enum
 {

@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Particles;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+
+namespace Clockwork.Particles;
 
 public static class Particle
 {

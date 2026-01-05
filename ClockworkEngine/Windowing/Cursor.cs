@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Windowing;
+﻿using System.Runtime.InteropServices;
+
+namespace Clockwork.Windowing;
 
 internal class Cursor
 {

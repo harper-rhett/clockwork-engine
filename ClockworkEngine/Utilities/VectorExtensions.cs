@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Utilities;
+﻿using System.Numerics;
+
+namespace Clockwork.Utilities;
 
 public static class VectorExtensions
 {

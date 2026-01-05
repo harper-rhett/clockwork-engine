@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Shapes;
+﻿using System.Numerics;
+
+namespace Clockwork.Shapes;
 
 public interface IIntersectsWithCircle
 {

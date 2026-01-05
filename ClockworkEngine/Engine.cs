@@ -1,14 +1,10 @@
-﻿global using Clockwork.Animation;
-global using Clockwork.Graphics;
-global using Clockwork.Utilities;
-global using Clockwork.Windowing;
-global using Clockwork.Audio;
-global using Clockwork.Input;
-global using Clockwork.Shapes;
-global using Clockwork.Tiles;
-global using System.Numerics;
-global using System.Runtime.InteropServices;
-global using ClockworkEngine.Backend;
+﻿using Clockwork.Graphics;
+using Clockwork.Utilities;
+using Clockwork.Windowing;
+using Clockwork.Audio;
+using System.Runtime.InteropServices;
+using Clockwork.Backend;
+using Clockwork.Raylib.Graphics;
 
 namespace Clockwork;
 
@@ -18,7 +14,7 @@ public static class Engine
 	private static Game game;
 
 	// General
-	public static GraphicsBackend GraphicsBackend;
+	public static IGraphicsBackend GraphicsBackend = new ;
 	private static RenderTexture gameRenderTexture;
 
 	// Game size

@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Input;
+﻿using System.Numerics;
+using System.Windows;
+using System.Runtime.InteropServices;
+
+namespace Clockwork.Input;
 
 public static class Mouse
 {

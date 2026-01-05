@@ -1,12 +1,13 @@
 ﻿namespace Clockwork.Graphics;
 
-[StructLayout(LayoutKind.Sequential)]
-public struct Color
+public class Color
 {
 	public byte R;
 	public byte G;
 	public byte B;
 	public byte A;
+
+	public Color() { }
 
 	public Color(byte r, byte g, byte b, byte a)
 	{

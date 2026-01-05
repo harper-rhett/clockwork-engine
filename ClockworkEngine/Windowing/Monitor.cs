@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Windowing;
+﻿using System.Runtime.InteropServices;
+using System.Numerics;
+
+namespace Clockwork.Windowing;
 
 public class Monitor
 {

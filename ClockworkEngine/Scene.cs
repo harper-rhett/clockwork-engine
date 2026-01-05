@@ -1,4 +1,6 @@
-﻿namespace Clockwork;
+﻿using Clockwork.Graphics;
+
+namespace Clockwork;
 
 public class Scene
 {

@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Tiles;
+﻿using Clockwork.Utilities;
+using System.Numerics;
+
+namespace Clockwork.Tiles;
 
 public class TiledWorld : Entity
 {

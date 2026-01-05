@@ -1,4 +1,9 @@
-﻿namespace Clockwork.Windowing;
+﻿using System.Numerics;
+using Clockwork.Input;
+using Clockwork.Graphics;
+using System.Runtime.InteropServices;
+
+namespace Clockwork.Windowing;
 
 public unsafe static class Window
 {

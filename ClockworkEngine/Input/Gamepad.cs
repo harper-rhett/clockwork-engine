@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Input;
+﻿using System.Runtime.InteropServices;
+
+namespace Clockwork.Input;
 
 public class Gamepad
 {

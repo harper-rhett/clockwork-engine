@@ -1,4 +1,9 @@
-﻿namespace Clockwork;
+﻿using Clockwork.Graphics;
+using Clockwork.Input;
+using System.Numerics;
+using Clockwork.Utilities;
+
+namespace Clockwork;
 
 public class Camera2D : Camera
 {

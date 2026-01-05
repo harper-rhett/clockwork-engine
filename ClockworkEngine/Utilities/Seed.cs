@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Utilities
+﻿using System.Numerics;
+
+namespace Clockwork.Utilities
 {
 	public class Seed
 	{

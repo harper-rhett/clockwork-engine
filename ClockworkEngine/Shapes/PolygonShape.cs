@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Shapes;
+﻿using Clockwork.Utilities;
+using Clockwork.Graphics;
+
+namespace Clockwork.Shapes;
 
 public class PolygonShape : Entity, ITransform2D
 {

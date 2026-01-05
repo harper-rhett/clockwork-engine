@@ -1,12 +1,34 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Runtime.InteropServices;
+using System.Numerics;
 
-[StructLayout(LayoutKind.Sequential)]
+namespace Clockwork.Graphics;
+
 public struct Rectangle
 {
 	public float X;
 	public float Y;
 	public float Width;
 	public float Height;
+
+	public Vector2 Position
+	{
+		readonly get => new Vector2(X, Y);
+		set
+		{
+			X = value.X;
+			Y = value.Y;
+		}
+	}
+
+	public Vector2 Size
+	{
+		readonly get => new Vector2(Width, Height);
+		set
+		{
+			Width = value.X;
+			Height = value.Y;
+		}
+	}
 
 	public Rectangle(float x, float y, float width, float height)
 	{
@@ -38,26 +60,6 @@ public struct Rectangle
 		Y = position.Y;
 		Width = size.X;
 		Height = size.Y;
-	}
-
-	public Vector2 Position
-	{
-		readonly get => new Vector2(X, Y);
-		set
-		{
-			X = value.X;
-			Y = value.Y;
-		}
-	}
-
-	public Vector2 Size
-	{
-		readonly get => new Vector2(Width, Height);
-		set
-		{
-			Width = value.X;
-			Height = value.Y;
-		}
 	}
 
 	public override string ToString()

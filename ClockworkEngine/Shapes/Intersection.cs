@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Shapes;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+using Clockwork.Utilities;
+
+namespace Clockwork.Shapes;
 
 public static class Intersection
 {

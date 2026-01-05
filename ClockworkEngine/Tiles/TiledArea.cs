@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Tiles;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+using Clockwork.Utilities;
+
+namespace Clockwork.Tiles;
 
 public class TiledArea
 {

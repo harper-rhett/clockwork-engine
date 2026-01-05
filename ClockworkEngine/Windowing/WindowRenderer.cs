@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Windowing;
+﻿using Clockwork.Graphics;
+
+namespace Clockwork.Windowing;
 
 internal abstract class WindowRenderer
 {

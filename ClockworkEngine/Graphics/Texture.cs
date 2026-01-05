@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Runtime.InteropServices;
+using System.Numerics;
+
+namespace Clockwork.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct Texture : IDisposable

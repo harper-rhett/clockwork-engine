@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Audio;
+﻿using System.Runtime.InteropServices;
+
+namespace Clockwork.Audio;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct AudioStream : IDisposable

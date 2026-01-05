@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Runtime.InteropServices;
+
+namespace Clockwork.Graphics;
 
 public enum BlendMode
 {

@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Numerics;
+using System.Runtime.InteropServices;
+
+namespace Clockwork.Graphics;
 
 public static class Primitives
 {

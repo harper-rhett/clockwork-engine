@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Animation;
+﻿using System.Numerics;
+using Clockwork.Utilities;
+
+namespace Clockwork.Animation;
 
 public class Transform2DEaser : Easer
 {

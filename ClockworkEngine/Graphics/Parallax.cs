@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using static Clockwork.Graphics.Parallax;
+﻿using System.Numerics;
+using Clockwork.Utilities;
+using Clockwork.Graphics;
 
 namespace Clockwork.Graphics;
 

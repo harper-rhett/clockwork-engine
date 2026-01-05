@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Shapes;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+
+namespace Clockwork.Shapes;
 
 public class LineShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {

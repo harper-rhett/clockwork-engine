@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Shapes;
+﻿using System.Numerics;
+using Clockwork.Utilities;
+using Clockwork.Graphics;
+
+namespace Clockwork.Shapes;
 
 public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {

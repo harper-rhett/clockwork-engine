@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Runtime.InteropServices;
+using System.Numerics;
+
+namespace Clockwork.Graphics;
 
 public static class Text
 {

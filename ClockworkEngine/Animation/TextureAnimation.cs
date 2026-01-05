@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Animation;
+﻿using Clockwork.Graphics;
+using System.Numerics;
+using Clockwork.Utilities;
+
+namespace Clockwork.Animation;
 
 public class TextureAnimation
 {

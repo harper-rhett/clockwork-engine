@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Graphics;
+﻿using System.Runtime.InteropServices;
+
+namespace Clockwork.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct Image : IDisposable

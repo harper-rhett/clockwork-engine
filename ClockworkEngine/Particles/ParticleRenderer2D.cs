@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Particles;
+﻿using Clockwork.Graphics;
+using System.Numerics;
+
+namespace Clockwork.Particles;
 
 internal abstract class ParticleRenderer2D
 {

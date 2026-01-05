@@ -1,4 +1,7 @@
-﻿namespace Clockwork.Tiles;
+﻿using System.Numerics;
+using Clockwork.Graphics;
+
+namespace Clockwork.Tiles;
 
 public class Tile
 {
