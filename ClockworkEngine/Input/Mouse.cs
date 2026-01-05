@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using System.Windows;
+using Clockwork.Windowing;
 using System.Runtime.InteropServices;
 
 namespace Clockwork.Input;
