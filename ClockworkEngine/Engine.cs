@@ -2,9 +2,8 @@
 using Clockwork.Utilities;
 using Clockwork.Windowing;
 using Clockwork.Audio;
-using System.Runtime.InteropServices;
-using Clockwork.Backend;
 using Clockwork.Raylib.Graphics;
+using System.Runtime.InteropServices;
 
 namespace Clockwork;
 
@@ -14,8 +13,8 @@ public static class Engine
 	private static Game game;
 
 	// General
-	public static IGraphicsBackend GraphicsBackend = new ;
 	private static RenderTexture gameRenderTexture;
+	public static IGraphicsBackend Graphics = new RaylibGraphicsBackend();
 
 	// Game size
 	public static Coordinate GameSize
