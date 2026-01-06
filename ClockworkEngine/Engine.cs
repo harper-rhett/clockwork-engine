@@ -3,6 +3,7 @@ using Clockwork.Utilities;
 using Clockwork.Windowing;
 using Clockwork.Audio;
 using Clockwork.Raylib.Graphics;
+using Clockwork.Backend;
 using System.Runtime.InteropServices;
 
 namespace Clockwork;
@@ -14,7 +15,7 @@ public static class Engine
 
 	// General
 	private static RenderTexture gameRenderTexture;
-	public static IGraphicsBackend Graphics = new RaylibGraphicsBackend();
+	public static IRenderingBackend Rendering = new RaylibRenderingBackend();
 
 	// Game size
 	public static Coordinate GameSize
@@ -50,7 +51,7 @@ public static class Engine
 		AppDomain.CurrentDomain.UnhandledException += HandleCrash;
 
 		// Initialize window
-		Window.Initialize(800, 800, windowTitle);
+		Rendering.Window.Initialize(800, 800, windowTitle);
 		TargetFPS = 60;
 
 		// Initialize game
@@ -67,13 +68,9 @@ public static class Engine
 	{
 		// Initialization
 		Engine.game = game;
-
-		// Game loop
-		while (!Window.ShouldClose())
-		{
-			MasterUpdate();
-			MasterDraw();
-		}
+		Rendering.Update += MasterUpdate;
+		Rendering.Draw += MasterDraw;
+		Rendering.Start();
 	}
 
 	private static void MasterUpdate()
