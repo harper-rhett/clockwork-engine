@@ -7,4 +7,5 @@ public static class Image
 	private static IImages backend => Engine.Rendering.Images;
 
 	public static IImage Load(string fileName) => backend.Load(fileName);
+	public static IImage Load(ITexture texture) => backend.Load(texture);
 }
