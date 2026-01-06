@@ -68,9 +68,14 @@ public static class Engine
 	{
 		// Initialization
 		Engine.game = game;
-		Rendering.Update += MasterUpdate;
-		Rendering.Draw += MasterDraw;
+		Rendering.MasterLoop += MasterLoop;
 		Rendering.Start();
+	}
+
+	private static void MasterLoop()
+	{
+		MasterUpdate();
+		MasterDraw();
 	}
 
 	private static void MasterUpdate()
