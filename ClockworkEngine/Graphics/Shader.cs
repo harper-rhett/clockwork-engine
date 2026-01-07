@@ -82,13 +82,15 @@ public unsafe struct Shader : IDisposable
 		SetMatrix(this, location, matrix);
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetShaderValueTexture")]
-	private static extern void SetTexture(Shader shader, int location, Texture texture);
-	public void SetTexture(string variableName, Texture texture)
-	{
-		int location = GetCachedVariableLocation(variableName);
-		SetTexture(this, location, texture);
-	}
+	// TEMORARY COMMENT BELOW TO AVOID BUILD ERROR! SET BACK LATER.
+
+	//[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetShaderValueTexture")]
+	//private static extern void SetTexture(Shader shader, int location, Texture texture);
+	//public void SetTexture(string variableName, Texture texture)
+	//{
+	//	int location = GetCachedVariableLocation(variableName);
+	//	SetTexture(this, location, texture);
+	//}
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadShader")]
 	private static extern void Unload(Shader shader);

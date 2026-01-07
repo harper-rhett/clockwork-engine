@@ -12,7 +12,7 @@ public class TiledArea
 	public readonly int WidthInPixels;
 	public readonly int HeightInPixels;
 	public readonly int TileSize;
-	private readonly RenderTexture renderTexture;
+	private readonly IRenderTexture renderTexture;
 	private readonly Rectangle renderRectangle;
 	public int[,] TilesByID { private get; set; }
 	private List<Entity> registeredEntities = new();

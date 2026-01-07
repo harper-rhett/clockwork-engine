@@ -2,7 +2,7 @@
 
 namespace Clockwork.Windowing;
 
-internal abstract class WindowRenderer
+public abstract class WindowRenderer
 {
 	// Window fields
 	protected int windowWidth;
@@ -30,7 +30,7 @@ internal abstract class WindowRenderer
 	}
 
 	// Fetch new values
-	protected void RefreshDimensions(RenderTexture gameRenderTexture)
+	protected void RefreshDimensions(IRenderTexture gameRenderTexture)
 	{
 		windowWidth = Window.Width;
 		windowHeight = Window.Height;
@@ -39,6 +39,11 @@ internal abstract class WindowRenderer
 	}
 
 	// Custom implementation for game sizing
-	internal abstract void Update(RenderTexture gameRenderTexture);
-	internal abstract void Draw(RenderTexture gameRenderTexture);
+	internal abstract void Update(IRenderTexture gameRenderTexture);
+	internal abstract void Draw(IRenderTexture gameRenderTexture);
+
+	// Current
+	internal static WindowRenderer Current { get; private set; } = new UnclippedRenderer(Colors.Black);
+	public static void SetUnclipped(Color borderColor) => Current = new UnclippedRenderer(borderColor);
+	public static void SetClipped() => Current = new ClippedRenderer();
 }

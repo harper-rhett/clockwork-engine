@@ -22,7 +22,7 @@ public class Parallax : Entity
 		cameraOffset = originPosition - startPosition;
 	}
 
-	public void AddLayer(Texture backgroundTexture, Vector2 offset, float speed)
+	public void AddLayer(ITexture backgroundTexture, Vector2 offset, float speed)
 	{
 		layers.Add(new(backgroundTexture, offset, speed));
 	}
@@ -37,7 +37,7 @@ public class Parallax : Entity
 		}
 	}
 
-	private void DrawParallaxTexture(Vector2 parallaxPosition, Texture texture)
+	private void DrawParallaxTexture(Vector2 parallaxPosition, ITexture texture)
 	{
 		// Get texture start
 		Vector2 cameraPosition = camera.Transform.WorldPosition;
@@ -75,11 +75,11 @@ public class Parallax : Entity
 
 	public class Layer
 	{
-		public readonly Texture Texture;
+		public readonly ITexture Texture;
 		public readonly Vector2 Offset;
 		public readonly float Speed;
 
-		public Layer(Texture texture, Vector2 offset, float speed)
+		public Layer(ITexture texture, Vector2 offset, float speed)
 		{
 			Texture = texture;
 			Offset = offset;

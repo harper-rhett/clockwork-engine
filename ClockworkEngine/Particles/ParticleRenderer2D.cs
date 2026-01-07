@@ -58,11 +58,11 @@ internal abstract class ParticleRenderer2D
 
 	public class Texture : ParticleRenderer2D
 	{
-		private Graphics.Texture texture2D;
+		private ITexture texture2D;
 		private Rectangle particleRectangle;
 		private Vector2 textureOrigin;
 
-		public Texture(Graphics.Texture texture2D)
+		public Texture(ITexture texture2D)
 		{
 			this.texture2D = texture2D;
 			particleRectangle = new(0, 0, texture2D.Width, texture2D.Height);

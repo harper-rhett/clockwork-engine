@@ -15,7 +15,7 @@ internal class ClippedRenderer : WindowRenderer
 	private int mouseGameY;
 	internal override int MouseGameY => mouseGameY;
 
-	internal override void Update(RenderTexture gameRenderTexture)
+	internal override void Update(IRenderTexture gameRenderTexture)
 	{
 		// Initialize
 		RefreshDimensions(gameRenderTexture);
@@ -26,7 +26,7 @@ internal class ClippedRenderer : WindowRenderer
 		CalculateMouse();
 	}
 
-	internal override void Draw(RenderTexture gameRenderTexture)
+	internal override void Draw(IRenderTexture gameRenderTexture)
 	{
 		// Draw game clipped
 		gameRenderTexture.Texture.Draw(gameRectangle, viewportRectangle, Vector2.Zero, 0, Colors.White);
