@@ -32,8 +32,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\clockwork-backend\ClockworkBackend\ClockworkBackend\ClockworkBackend.csproj" />
 	  <ProjectReference Include="..\..\..\clockwork-raylib\ClockworkRaylib\ClockworkRaylib\ClockworkRaylib.csproj" />
+	  <ProjectReference Include="..\ClockworkBackend\ClockworkBackend.csproj" />
 	</ItemGroup>
 
 </Project>
