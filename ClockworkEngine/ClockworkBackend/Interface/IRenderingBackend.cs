@@ -1,7 +1,7 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Windowing;
 
-namespace Clockwork.Backend;
+namespace Clockwork.Interface;
 
 public abstract class IRenderingBackend
 {

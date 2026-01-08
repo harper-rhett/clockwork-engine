@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Backend;
+﻿namespace Clockwork.Interface;
 
 public static class BackendInterface
 {

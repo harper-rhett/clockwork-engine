@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using System.Runtime.InteropServices;
-using Clockwork.Backend;
+using Clockwork.Interface;
 
 namespace Clockwork.Graphics;
 
