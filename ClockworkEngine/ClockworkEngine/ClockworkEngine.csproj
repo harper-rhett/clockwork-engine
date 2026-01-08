@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="../logo.png" Pack="true" PackagePath="" />
+		<None Include="../../logo.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,8 +32,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\clockwork-backend\ClockworkBackend\ClockworkBackend\ClockworkBackend.csproj" />
-	  <ProjectReference Include="..\..\clockwork-raylib\ClockworkRaylib\ClockworkRaylib\ClockworkRaylib.csproj" />
+	  <ProjectReference Include="..\..\..\clockwork-backend\ClockworkBackend\ClockworkBackend\ClockworkBackend.csproj" />
+	  <ProjectReference Include="..\..\..\clockwork-raylib\ClockworkRaylib\ClockworkRaylib\ClockworkRaylib.csproj" />
 	</ItemGroup>
 
 </Project>
