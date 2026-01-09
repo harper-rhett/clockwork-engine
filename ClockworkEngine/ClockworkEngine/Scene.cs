@@ -10,7 +10,7 @@ public class Scene
 	public float Time { get; private set; }
 	/// <summary>If the update loop is paused. The draw loop is unaffected/</summary>
 	public bool IsPaused;
-	public Camera Camera;
+	public CameraEntity Camera;
 	public float TimeModifier = 1;
 	public Color BackgroundColor;
 

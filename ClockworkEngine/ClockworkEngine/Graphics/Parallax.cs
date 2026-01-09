@@ -6,7 +6,7 @@ namespace Clockwork.Graphics;
 
 public class Parallax : Entity
 {
-	private Camera2D camera;
+	private Camera2DEntity camera;
 	private Vector2 startPosition;
 	private Vector2 cameraOffset;
 	private List<Layer> layers = new();
@@ -15,7 +15,7 @@ public class Parallax : Entity
 
 	// I fear this can be simplified... We probably do not need origin and start position. Just one.
 	// Scratch that. What I need is a cameraOrigin and startPosition. May have to tweak the math.
-	public Parallax(Camera2D camera, Vector2 originPosition, Vector2 startPosition)
+	public Parallax(Camera2DEntity camera, Vector2 originPosition, Vector2 startPosition)
 	{
 		this.camera = camera;
 		this.startPosition = startPosition;

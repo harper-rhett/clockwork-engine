@@ -14,6 +14,7 @@ public abstract class IRenderingBackend
 	public abstract IRenderTextures RenderTextures { get; }
 	public abstract IShaders Shaders { get; }
 	public abstract IDrawing Drawing { get; }
+	public abstract ICameras Cameras { get; }
 
 	public Action MasterLoop;
 	public abstract void Start();

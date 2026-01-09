@@ -18,6 +18,7 @@
 		<RepositoryUrl>https://github.com/harper-rhett/clockwork-engine</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>logo.png</PackageIcon>
+		<RootNamespace>Clockwork</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
