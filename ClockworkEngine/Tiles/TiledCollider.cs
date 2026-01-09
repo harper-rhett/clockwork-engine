@@ -40,7 +40,7 @@ public class TiledCollider<TileType> where TileType : Enum
 		HalfHeight = height / 2;
 	}
 
-	public void Update(TiledArea area, Vector2 position)
+	public void CaptureState(TiledArea area, Vector2 position)
 	{
 		// Reset hash sets
 		leftTiles.Clear();
