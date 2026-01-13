@@ -29,6 +29,7 @@ public class Camera2D : Camera
 
 	internal override void Begin()
 	{
+		raylibCamera.Target = raylibCamera.Target.Floored();
 		RaylibCamera2D.BeginRendering(raylibCamera);
 	}
 
