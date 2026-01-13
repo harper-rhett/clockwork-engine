@@ -43,7 +43,7 @@ public class Parallax : Entity
 		Vector2 textureStart = cameraPosition - parallaxPosition;
 		int textureStartX = textureStart.X.Floored();
 		int textureStartY = textureStart.Y.Floored();
-
+		
 		// Loop through x chunks
 		for (int viewX = 0; viewX < Engine.GameWidth;)
 		{
@@ -67,7 +67,7 @@ public class Parallax : Entity
 				// Draw texture
 				Rectangle sourceRectangle = new(textureX, textureY, clipWidth, clipHeight);
 				Vector2 drawPosition = cameraPosition + new Vector2(currentViewX, currentViewY);
-				texture.Draw(sourceRectangle, drawPosition, Colors.White);
+				texture.Draw(sourceRectangle, drawPosition.Floored(), Colors.White);
 			}
 		}
 	}

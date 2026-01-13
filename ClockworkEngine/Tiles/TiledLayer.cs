@@ -1,13 +1,20 @@
 ﻿namespace Clockwork.Tiles;
 
-public class TiledWorld : Entity
+public class TiledLayer : TiledLayer<TiledArea>
+{
+	public TiledLayer(int tileSize) : base(tileSize)
+	{
+	}
+}
+
+public class TiledLayer<TiledAreaType> : Entity where TiledAreaType : TiledArea
 {
 	private List<TiledArea> areas = new();
 	private Dictionary<Coordinate, TiledArea> areasByTile = new();
 	private int tileSize;
 	private HashSet<TiledArea> focusAreas = new();
 
-	public TiledWorld(int tileSize)
+	public TiledLayer(int tileSize)
 	{
 		this.tileSize = tileSize;
 	}
@@ -41,15 +48,15 @@ public class TiledWorld : Entity
 		return DoesAreaExist(pixelPosition.X.Floored(), pixelPosition.Y.Floored());
 	}
 
-	public TiledArea GetArea(int pixelX, int pixelY)
+	public TiledAreaType GetArea(int pixelX, int pixelY)
 	{
 		Coordinate coordinate = GetTileCoordinate(pixelX, pixelY);
-		return areasByTile[coordinate];
+		return areasByTile[coordinate] as TiledAreaType;
 	}
 
-	public TiledArea GetArea(Vector2 pixelPosition)
+	public TiledAreaType GetArea(Vector2 pixelPosition)
 	{
-		return GetArea(pixelPosition.X.Floored(), pixelPosition.Y.Floored());
+		return GetArea(pixelPosition.X.Floored(), pixelPosition.Y.Floored()) as TiledAreaType;
 	}
 
 	private Coordinate GetTileCoordinate(int pixelX, int pixelY)
@@ -80,20 +87,12 @@ public class TiledWorld : Entity
 	public void AddFocus(TiledArea focusArea)
 	{
 		focusAreas.Add(focusArea);
-		foreach (Entity entity in focusArea.RegisteredEntities)
-		{
-			entity.IsUpdating = true;
-			entity.IsRendering = true;
-		}
+		focusArea.IsActive = true;
 	}
 
 	public void RemoveFocus(TiledArea focusArea)
 	{
 		focusAreas.Remove(focusArea);
-		foreach (Entity entity in focusArea.RegisteredEntities)
-		{
-			entity.IsUpdating = false;
-			entity.IsRendering = false;
-		}
+		focusArea.IsActive= false;
 	}
 }
