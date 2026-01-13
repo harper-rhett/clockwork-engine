@@ -5,6 +5,8 @@ public class TiledGameArea : TiledArea
 	public int[,] TilesByID { private get; set; }
 	private List<Entity> registeredEntities = new();
 	public IReadOnlyList<Entity> RegisteredEntities => registeredEntities;
+	private List<TiledArea> registeredAreas = new();
+	public IReadOnlyList<TiledArea> RegisteredAreas => registeredAreas;
 
 	private bool isActive;
 	public override bool IsActive
@@ -18,6 +20,7 @@ public class TiledGameArea : TiledArea
 				entity.IsUpdating = value;
 				entity.IsRendering = value;
 			}
+			foreach (TiledArea area in registeredAreas) area.IsActive = value;
 		}
 	}
 
@@ -57,5 +60,10 @@ public class TiledGameArea : TiledArea
 	public void RegisterEntity(Entity entity)
 	{
 		registeredEntities.Add(entity);
+		entity.Removed += () => UnregisterEntity(entity);
 	}
+	public void UnregisterEntity(Entity entity) => registeredEntities.Remove(entity);
+
+	public void RegisterArea(TiledArea area) => registeredAreas.Add(area);
+	public void UnregisterArea(TiledArea area) => registeredAreas.Remove(area);
 }

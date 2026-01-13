@@ -12,7 +12,6 @@ public class TiledLayer<TiledAreaType> : Entity where TiledAreaType : TiledArea
 	private List<TiledArea> areas = new();
 	private Dictionary<Coordinate, TiledArea> areasByTile = new();
 	private int tileSize;
-	private HashSet<TiledArea> focusAreas = new();
 
 	public TiledLayer(int tileSize)
 	{
@@ -33,8 +32,7 @@ public class TiledLayer<TiledAreaType> : Entity where TiledAreaType : TiledArea
 
 	public override void OnDraw()
 	{
-		if (focusAreas.Count == 0) throw new InvalidOperationException("Focus must be set before attempting to draw.");
-		foreach (TiledArea focusArea in focusAreas) focusArea.Draw();
+		foreach (TiledArea area in areas) area.Draw();
 	}
 
 	public bool DoesAreaExist(int pixelX, int pixelY)
@@ -82,17 +80,5 @@ public class TiledLayer<TiledAreaType> : Entity where TiledAreaType : TiledArea
 	public Vector2 SnapPosition(Vector2 pixelPosition)
 	{
 		return SnapPosition(pixelPosition.X.Floored(), pixelPosition.Y.Floored());
-	}
-
-	public void AddFocus(TiledArea focusArea)
-	{
-		focusAreas.Add(focusArea);
-		focusArea.IsActive = true;
-	}
-
-	public void RemoveFocus(TiledArea focusArea)
-	{
-		focusAreas.Remove(focusArea);
-		focusArea.IsActive= false;
 	}
 }

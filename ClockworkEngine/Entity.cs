@@ -5,6 +5,7 @@ public abstract class Entity
 	public Scene Scene;
 	public bool IsUpdating = true;
 	public bool IsRendering = true;
+	public event Action Removed;
 
 	internal int lastUpdateLayer;
 	private int updateLayer;
@@ -38,6 +39,7 @@ public abstract class Entity
 	public void Remove()
 	{
 		Scene.Entities.Remove(this);
+		Removed?.Invoke();
 	}
 
 	public virtual void OnAddedToScene() { }

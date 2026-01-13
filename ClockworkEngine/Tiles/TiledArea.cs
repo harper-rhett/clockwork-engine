@@ -32,6 +32,7 @@ public class TiledArea
 
 	public void Draw()
 	{
+		if (!IsActive) return;
 		renderTexture.Texture.Draw(renderRectangle, Position, Colors.White);
 	}
 
