@@ -4,8 +4,7 @@ namespace Clockwork.Graphics.Draw2D;
 
 public interface ICamera2D
 {
-	public abstract Vector2 Position { get; set; }
-	public abstract Vector2 Offset { get; set; }
-	public abstract float Rotation { get; set; }
-	public abstract float Zoom { get; set; }
+	public Vector2 Position { get; set; }
+	public float Rotation { get; set; }
+	public float Zoom { get; set; }
 }
