@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Clockwork.Graphics;
+using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Shapes;
 
@@ -18,7 +19,7 @@ public class LineShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, II
 
 	public override void OnDraw()
 	{
-		Primitives.DrawLine(StartPosition, EndPosition, Thickness, Color);
+		Primitives2D.DrawLine(StartPosition, EndPosition, Thickness, Color);
 	}
 
 	public bool IntersectsWithPoint(Vector2 pointPosition) => Intersection.PointOnLine(pointPosition, StartPosition, EndPosition, 0.1f);

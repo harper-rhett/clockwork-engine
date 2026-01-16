@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Draw2D;
 
-public interface IPrimitives
+public interface IPrimitives2D
 {
 	// Pixels
 	public void DrawPixel(int x, int y, Color color);

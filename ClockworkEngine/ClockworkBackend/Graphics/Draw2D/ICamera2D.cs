@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Draw2D;
 
 public interface ICamera2D
 {

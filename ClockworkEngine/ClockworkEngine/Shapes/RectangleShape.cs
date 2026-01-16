@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Clockwork.Utilities;
 using Clockwork.Graphics;
+using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Shapes;
 
@@ -22,7 +23,7 @@ public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IInter
 
 	public override void OnDraw()
 	{
-		Primitives.DrawRectangle(Rectangle, Vector2.Zero, Transform.WorldRotation, Color);
+		Primitives2D.DrawRectangle(Rectangle, Vector2.Zero, Transform.WorldRotation, Color);
 	}
 
 	public bool IntersectsWithPoint(Vector2 position) => Intersection.PointInRectangle(position, Rectangle);

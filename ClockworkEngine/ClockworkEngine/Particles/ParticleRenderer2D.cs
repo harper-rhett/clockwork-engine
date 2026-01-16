@@ -1,4 +1,5 @@
-﻿using Clockwork.Graphics;
+﻿using Clockwork.Graphics.Draw2D;
+using Clockwork.Graphics;
 using System.Numerics;
 
 namespace Clockwork.Particles;
@@ -18,7 +19,7 @@ internal abstract class ParticleRenderer2D
 		public override void Draw(Particle2D particle)
 		{
 			Color color = GetParticleColor(particle);
-			Primitives.DrawPixel(particle.Position, color);
+			Primitives2D.DrawPixel(particle.Position, color);
 		}
 	}
 
@@ -34,7 +35,7 @@ internal abstract class ParticleRenderer2D
 		public override void Draw(Particle2D particle)
 		{
 			Color color = GetParticleColor(particle);
-			Primitives.DrawCircle(particle.Position, radius, color);
+			Primitives2D.DrawCircle(particle.Position, radius, color);
 		}
 	}
 
@@ -52,7 +53,7 @@ internal abstract class ParticleRenderer2D
 		public override void Draw(Particle2D particle)
 		{
 			Color color = GetParticleColor(particle);
-			Primitives.DrawPolygon(particle.Position, sides, radius, particle.Rotation, color);
+			Primitives2D.DrawPolygon(particle.Position, sides, radius, particle.Rotation, color);
 		}
 	}
 

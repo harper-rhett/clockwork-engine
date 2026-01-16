@@ -1,6 +1,8 @@
 ﻿using Clockwork.Utilities;
 using Clockwork.Graphics;
 
+using Clockwork.Graphics.Draw2D;
+
 namespace Clockwork.Shapes;
 
 public class PolygonShape : Entity, ITransform2D
@@ -20,6 +22,6 @@ public class PolygonShape : Entity, ITransform2D
 
 	public override void OnDraw()
 	{
-		Primitives.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
+		Primitives2D.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
 	}
 }

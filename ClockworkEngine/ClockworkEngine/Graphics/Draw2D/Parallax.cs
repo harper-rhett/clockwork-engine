@@ -1,8 +1,7 @@
 ﻿using System.Numerics;
 using Clockwork.Utilities;
-using Clockwork.Graphics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Draw2D;
 
 public class Parallax : Entity
 {

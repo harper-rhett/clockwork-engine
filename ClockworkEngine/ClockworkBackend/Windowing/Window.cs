@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using Clockwork.Graphics;
-using System.Runtime.InteropServices;
 using Clockwork.Interface;
 
 namespace Clockwork.Windowing;

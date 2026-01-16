@@ -1,4 +1,4 @@
-﻿namespace Clockwork;
+﻿namespace Clockwork.Graphics;
 
 public abstract class CameraEntity : Entity
 {

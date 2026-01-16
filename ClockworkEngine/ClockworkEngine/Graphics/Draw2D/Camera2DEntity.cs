@@ -1,9 +1,8 @@
-﻿using Clockwork.Graphics;
-using Clockwork.Input;
+﻿using Clockwork.Input;
 using System.Numerics;
 using Clockwork.Utilities;
 
-namespace Clockwork;
+namespace Clockwork.Graphics.Draw2D;
 
 public class Camera2DEntity : CameraEntity
 {
@@ -23,7 +22,7 @@ public class Camera2DEntity : CameraEntity
 	public Camera2DEntity()
 	{
 		Vector2 centeredOffset = new(Engine.HalfGameWidth, Engine.HalfGameHeight);
-		InternalCamera = Camera.Create(Vector2.Zero, centeredOffset, 0, 1);
+		InternalCamera = Camera.Create2D(Vector2.Zero, centeredOffset, 0, 1);
 	}
 
 	public override void OnUpdate()

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Text;
 
 public interface IText
 {

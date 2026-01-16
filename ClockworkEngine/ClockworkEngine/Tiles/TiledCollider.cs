@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Clockwork.Utilities;
 using Clockwork.Graphics;
+using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Tiles;
 
@@ -63,8 +64,8 @@ public class TiledCollider<TileType> where TileType : Enum
 
 	public void Draw(Vector2 position, Color color)
 	{
-		Primitives.DrawRectangle(position, new(Width, Height), color.SetAlpha(0.5f));
-		Primitives.DrawPixel(CenterX, CenterY, color);
+		Primitives2D.DrawRectangle(position, new(Width, Height), color.SetAlpha(0.5f));
+		Primitives2D.DrawPixel(CenterX, CenterY, color);
 	}
 
 	public bool IsTileInner(TileType tileType) => innerTiles.Contains(tileType);

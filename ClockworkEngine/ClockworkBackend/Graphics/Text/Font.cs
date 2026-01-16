@@ -1,6 +1,6 @@
 ﻿using Clockwork.Interface;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Text;
 
 public static class Font
 {

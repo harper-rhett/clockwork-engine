@@ -2,9 +2,9 @@
 using Clockwork.Utilities;
 using Clockwork.Windowing;
 using Clockwork.Audio;
-using Clockwork.Raylib.Graphics;
 using Clockwork.Interface;
 using System.Runtime.InteropServices;
+using Clockwork.Graphics.Text;
 
 namespace Clockwork;
 
@@ -44,7 +44,7 @@ public static class Engine
 	private static int screenshotBurstIndex;
 
 	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
-	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
+	internal static void Initialize(string windowTitle, int gameWidth, int gameHeight)
 	{
 		// Create crash handler
 		AppDomain.CurrentDomain.UnhandledException += HandleCrash;

@@ -1,12 +1,11 @@
 ﻿using System.Numerics;
-using System.Runtime.InteropServices;
 using Clockwork.Interface;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Draw2D;
 
-public static class Primitives
+public static class Primitives2D
 {
-	private static IPrimitives backend => BackendInterface.Rendering.Primitives;
+	private static IPrimitives2D backend => BackendInterface.Rendering.Primitives2D;
 
 	// Pixels
 	public static void DrawPixel(int x, int y, Color color) => backend.DrawPixel(x, y, color);
