@@ -9,11 +9,6 @@ public class Camera2DEntity : CameraEntity
 	// General
 	public readonly ICamera2D InternalCamera;
 	public Transform2D Transform = new();
-	public Vector2 Offset
-	{
-		get => InternalCamera.Offset;
-		set => InternalCamera.Offset = value;
-	}
 
 	// Mouse
 	public float MouseWorldX => Mouse.GameX - Engine.HalfGameWidth + Transform.WorldPosition.X;
@@ -22,7 +17,7 @@ public class Camera2DEntity : CameraEntity
 	public Camera2DEntity()
 	{
 		Vector2 centeredOffset = new(Engine.HalfGameWidth, Engine.HalfGameHeight);
-		InternalCamera = Camera.Create2D(Vector2.Zero, centeredOffset, 0, 1);
+		InternalCamera = Camera.Create2D(Vector2.Zero - centeredOffset, 0, 1);
 	}
 
 	public override void OnUpdate()
