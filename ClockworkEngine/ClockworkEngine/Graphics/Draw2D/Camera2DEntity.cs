@@ -17,7 +17,7 @@ public class Camera2DEntity : CameraEntity
 	public Camera2DEntity()
 	{
 		Vector2 centeredOffset = new(Engine.HalfGameWidth, Engine.HalfGameHeight);
-		InternalCamera = Camera.Create2D(Vector2.Zero - centeredOffset, 0, 1);
+		InternalCamera = Cameras.Create2D(Vector2.Zero - centeredOffset, 0, 1);
 	}
 
 	public override void OnUpdate()
@@ -28,11 +28,11 @@ public class Camera2DEntity : CameraEntity
 
 	internal override void Begin()
 	{
-		Camera.BeginRendering2D(InternalCamera);
+		Cameras.BeginRendering2D(InternalCamera);
 	}
 
 	internal override void End()
 	{
-		Camera.EndRendering2D();
+		Cameras.EndRendering2D();
 	}
 }

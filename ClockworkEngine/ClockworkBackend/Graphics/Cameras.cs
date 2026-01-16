@@ -5,7 +5,7 @@ using Clockwork.Graphics.Draw3D;
 
 namespace Clockwork.Graphics;
 
-public static class Camera
+public static class Cameras
 {
 	private static ICameras backend => BackendInterface.Rendering.Cameras;
 
