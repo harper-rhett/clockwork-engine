@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace Clockwork.Graphics.Draw3D;
 
-public class Camera3DEntity : CameraEntity
+public class Camera3D : CameraEntity
 {
-	public readonly ICamera3D InternalCamera;
+	public readonly IInternalCamera3D InternalCamera;
 
 	// I may need to set up a transform!
 
-	public Camera3DEntity()
+	public Camera3D()
 	{
 		InternalCamera = Cameras.Create3D(Vector3.Zero, Quaternion.Identity, 45);
 	}

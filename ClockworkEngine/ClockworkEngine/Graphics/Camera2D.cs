@@ -2,19 +2,19 @@
 using System.Numerics;
 using Clockwork.Utilities;
 
-namespace Clockwork.Graphics.Draw2D;
+namespace Clockwork.Graphics;
 
-public class Camera2DEntity : CameraEntity
+public class Camera2D : CameraEntity
 {
 	// General
-	public readonly ICamera2D InternalCamera;
+	public readonly IInternalCamera2D InternalCamera;
 	public Transform2D Transform = new();
 
 	// Mouse
 	public float MouseWorldX => Mouse.GameX - Engine.HalfGameWidth + Transform.WorldPosition.X;
 	public float MouseWorldY => Mouse.GameY - Engine.HalfGameHeight + Transform.WorldPosition.Y;
 
-	public Camera2DEntity()
+	public Camera2D()
 	{
 		Vector2 centeredOffset = new(Engine.HalfGameWidth, Engine.HalfGameHeight);
 		InternalCamera = Cameras.Create2D(Vector2.Zero - centeredOffset, 0, 1);

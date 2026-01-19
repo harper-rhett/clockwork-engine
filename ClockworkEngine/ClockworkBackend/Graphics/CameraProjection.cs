@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Graphics.Draw3D;
+﻿namespace Clockwork.Graphics;
 
 public enum CameraProjection
 {

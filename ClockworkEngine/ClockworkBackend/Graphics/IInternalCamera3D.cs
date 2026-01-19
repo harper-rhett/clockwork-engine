@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 
-namespace Clockwork.Graphics.Draw3D;
+namespace Clockwork.Graphics;
 
-public interface ICamera3D
+public interface IInternalCamera3D
 {
 	public Vector3 Position { get; set; }
 	public Quaternion Rotation { get; set; }

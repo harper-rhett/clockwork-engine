@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 
-namespace Clockwork.Graphics.Draw2D;
+namespace Clockwork.Graphics;
 
-public interface ICamera2D
+public interface IInternalCamera2D
 {
 	public Vector2 Position { get; set; }
 	public float Rotation { get; set; }
