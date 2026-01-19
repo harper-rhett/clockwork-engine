@@ -5,7 +5,7 @@ using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Shapes;
 
-public class PolygonShape : Entity, ITransform2D
+public class PolygonShape : Entity
 {
 	// General
 	public Transform2D Transform { get; set; } = new();

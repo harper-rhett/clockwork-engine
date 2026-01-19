@@ -5,7 +5,7 @@ using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Shapes;
 
-public class CircleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
+public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {
 	public Transform2D Transform { get; set; } = new();
 	public float Radius;

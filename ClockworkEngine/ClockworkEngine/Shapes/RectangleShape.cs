@@ -5,7 +5,7 @@ using Clockwork.Graphics.Draw2D;
 
 namespace Clockwork.Shapes;
 
-public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
+public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {
 	public Transform2D Transform { get; set; } = new();
 	public Vector2 Origin = Vector2.Zero;

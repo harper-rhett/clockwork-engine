@@ -18,7 +18,7 @@ public static class Colors
 	public static readonly Color White = new Color(255, 255, 255, 255);
 
 	// Blues
-	public static readonly Color Cyan = new Color(0, 255, 255, 0);
+	public static readonly Color Cyan = new Color(0, 255, 255, 255);
 	public static readonly Color Navy = new Color(0, 0, 128, 255);
 	public static readonly Color Teal = new Color(0, 128, 128, 255);
 
