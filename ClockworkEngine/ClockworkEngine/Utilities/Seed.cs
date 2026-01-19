@@ -67,8 +67,18 @@ namespace Clockwork.Utilities
 			float radians = NextRadians();
 			float x = MathF.Cos(radians);
 			float y = MathF.Sin(radians);
-			Vector2 randomVector = new Vector2(x, y);
-			return Vector2.Normalize(randomVector);
+			return new Vector2(x, y);
+		}
+
+		public Vector3 NextUnitVector3()
+		{
+			float azimuth = NextRadians();
+			float z = NextFloat(-1f, 1f);
+			float radius = float.Sqrt(1f - z * z);
+
+			float x = radius * MathF.Cos(azimuth);
+			float y = radius * MathF.Sin(azimuth);
+			return new Vector3(x, y, z);
 		}
 	}
 }
