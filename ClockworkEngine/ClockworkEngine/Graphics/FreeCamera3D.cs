@@ -24,10 +24,14 @@ public class FreeCamera3D : Camera3D
 		if (Keyboard.IsKeyDown(KeyboardKey.A)) direction += Transform.Left;
 		else if (Keyboard.IsKeyDown(KeyboardKey.D)) direction += Transform.Right;
 
-		if (Keyboard.IsKeyDown(KeyboardKey.LeftShift)) direction += Transform.Up;
-		else if (Keyboard.IsKeyDown(KeyboardKey.LeftControl)) direction += Transform.Down;
+		if (Keyboard.IsKeyDown(KeyboardKey.E)) direction += Transform.Up;
+		else if (Keyboard.IsKeyDown(KeyboardKey.Q)) direction += Transform.Down;
 
-		if (direction.Length() > 0) Transform.WorldPosition += Vector3.Normalize(direction) * Engine.FrameTime * Speed;
+		if (direction.Length() > 0)
+		{
+			float finalSpeed = Keyboard.IsKeyDown(KeyboardKey.LeftShift) ? Speed * 3 : Speed;
+			Transform.WorldPosition += Vector3.Normalize(direction) * Engine.FrameTime * finalSpeed;
+		}
 			
 		base.OnUpdate();
 	}
