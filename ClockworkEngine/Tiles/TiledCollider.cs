@@ -1,5 +1,7 @@
 ﻿namespace Clockwork.Tiles;
 
+// TODO: Optimize this class so only the states queried are updated
+
 public class TiledCollider<TileType> where TileType : Enum
 {
 	public bool CenterInBounds { get; set; }
@@ -59,7 +61,7 @@ public class TiledCollider<TileType> where TileType : Enum
 
 	public void Draw(Vector2 position, Color color)
 	{
-		Primitives.DrawRectangle(position, new(Width, Height), color.SetAlpha(0.5f));
+		Primitives.DrawRectangle(position.Floored(), new(Width, Height), color.SetAlpha(0.5f));
 		Primitives.DrawPixel(CenterX, CenterY, color);
 	}
 

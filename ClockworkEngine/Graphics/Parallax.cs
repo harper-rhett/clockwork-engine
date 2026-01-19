@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using static Clockwork.Graphics.Parallax;
-
-namespace Clockwork.Graphics;
+﻿namespace Clockwork.Graphics;
 
 public class Parallax : Entity
 {
