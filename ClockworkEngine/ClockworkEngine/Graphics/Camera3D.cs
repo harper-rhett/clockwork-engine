@@ -1,16 +1,22 @@
-﻿using System.Numerics;
+﻿using Clockwork.Utilities;
+using System.Numerics;
 
 namespace Clockwork.Graphics.Draw3D;
 
 public class Camera3D : CameraEntity
 {
+	public Transform3D Transform = new();
 	public readonly IInternalCamera3D InternalCamera;
-
-	// I may need to set up a transform!
 
 	public Camera3D()
 	{
 		InternalCamera = Cameras.Create3D(Vector3.Zero, Quaternion.Identity, 45);
+	}
+
+	public override void OnUpdate()
+	{
+		InternalCamera.Position = Transform.WorldPosition;
+		InternalCamera.Rotation = Transform.WorldRotation;
 	}
 
 	internal override void Begin()

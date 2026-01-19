@@ -4,6 +4,8 @@ namespace Clockwork.Utilities;
 
 public class Transform2D
 {
+	public Transform2D Parent;
+
 	public Vector2 WorldPosition
 	{
 		get
@@ -18,6 +20,7 @@ public class Transform2D
 			else LocalPosition = Vector2.Transform(value, Parent.MatrixInverse);
 		}
 	}
+
 	public Vector2 LocalPosition;
 
 	public float WorldRotation
@@ -37,8 +40,6 @@ public class Transform2D
 
 	public float LocalRotation;
 
-	public Transform2D Parent;
-
 	public Matrix3x2 Matrix
 	{
 		get
@@ -50,6 +51,7 @@ public class Transform2D
 			else return Parent.Matrix * localToWorld;
 		}
 	}
+
 	public Matrix3x2 MatrixInverse
 	{
 		get
