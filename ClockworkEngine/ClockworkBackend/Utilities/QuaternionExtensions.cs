@@ -33,4 +33,32 @@ public static class QuaternionExtensions
 	{
 		return Vector3.Transform(-Vector3.UnitY, quaternion);
 	}
+
+	public static Quaternion CreateRotation(Vector3 axis, float radians)
+	{
+		float halfAngle = radians / 2f;
+		float sin = float.Sin(halfAngle);
+		float cos = float.Cos(halfAngle);
+
+		return new(
+			axis.X * sin,
+			axis.Y * sin,
+			axis.Z * sin,
+			cos
+		);
+	}
+
+	public static Quaternion RotateWorldAxis(this Quaternion quaternion, Vector3 worldAxis, float radians)
+	{
+		Quaternion rotation = CreateRotation(worldAxis, radians);
+		Quaternion rotatedQuaternion = rotation * quaternion;
+		return rotatedQuaternion;
+	}
+
+	public static Quaternion RotateLocalAxis(this Quaternion quaternion, Vector3 localAxis, float radians)
+	{
+		Quaternion rotation = CreateRotation(localAxis, radians);
+		Quaternion rotatedQuaternion = quaternion * rotation;
+		return rotatedQuaternion;
+	}
 }

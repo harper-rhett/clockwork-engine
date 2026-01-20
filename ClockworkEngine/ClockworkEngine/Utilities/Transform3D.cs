@@ -38,7 +38,7 @@ public class Transform3D
 		}
 	}
 
-	public Quaternion LocalRotation;
+	public Quaternion LocalRotation = Quaternion.Identity;
 
 	public Matrix4x4 Matrix
 	{
