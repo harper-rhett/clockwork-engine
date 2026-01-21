@@ -6,12 +6,12 @@ public static class QuaternionExtensions
 {
 	public static Vector3 GetForward(this Quaternion quaternion)
 	{
-		return Vector3.Transform(Vector3.UnitZ, quaternion);
+		return Vector3.Transform(-Vector3.UnitZ, quaternion);
 	}
 
 	public static Vector3 GetBack(this Quaternion quaternion)
 	{
-		return Vector3.Transform(-Vector3.UnitZ, quaternion);
+		return Vector3.Transform(Vector3.UnitZ, quaternion);
 	}
 
 	public static Vector3 GetRight(this Quaternion quaternion)
