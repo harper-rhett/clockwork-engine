@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>ClockworkEngine</PackageId>
+		<Version>0.2.6</Version>
+		<Authors>Harper Rhett</Authors>
+		<Description>A utility-packed game framework built on Raylib.</Description>
+		<PackageTags>game framework csharp raylib graphics utility tool</PackageTags>
+		<PackageProjectUrl>https://github.com/harper-rhett/clockwork-engine</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/harper-rhett/clockwork-engine</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>logo.png</PackageIcon>
+		<RootNamespace>Clockwork</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="../../logo.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="runtimes\win-x64\native\raylib.dll" Pack="true" PackagePath="runtimes/win-x64/native/" CopyToOutputDirectory="PreserveNewest" Link="raylib.dll" />
+		<None Include="runtimes\linux-x64\native\libraylib.so" Pack="true" PackagePath="runtimes/linux-x64/native/" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="runtimes\osx-x64\native\libraylib.dylib" Pack="true" PackagePath="runtimes/osx-x64/native/" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="runtimes\osx-arm64\native\libraylib.dylib" Pack="true" PackagePath="runtimes/osx-arm64/native/" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\clockwork-raylib\ClockworkRaylib\ClockworkRaylib\ClockworkRaylib.csproj" />
+	  <ProjectReference Include="..\ClockworkBackend\ClockworkBackend.csproj" />
+	</ItemGroup>
+
+</Project>
