@@ -8,9 +8,10 @@ public class Camera3D : CameraEntity
 	public Transform3D Transform = new();
 	public readonly IInternalCamera3D InternalCamera;
 
-	public Camera3D()
+	public Camera3D(Vector3 position)
 	{
-		InternalCamera = Cameras.Create3D(Vector3.Zero, Quaternion.Identity, 45);
+		Transform.WorldPosition = position;
+		InternalCamera = Cameras.Create3D(position, Quaternion.Identity, 45);
 	}
 
 	public override void OnUpdate()
