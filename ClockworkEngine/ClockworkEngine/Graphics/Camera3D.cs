@@ -13,14 +13,10 @@ public class Camera3D : CameraEntity
 		InternalCamera = Cameras.Create3D(Vector3.Zero, Quaternion.Identity, 45);
 	}
 
-	public override void OnUpdate()
+	internal override void Begin()
 	{
 		InternalCamera.Position = Transform.WorldPosition;
 		InternalCamera.Rotation = Transform.WorldRotation;
-	}
-
-	internal override void Begin()
-	{
 		Cameras.BeginRendering3D(InternalCamera);
 	}
 

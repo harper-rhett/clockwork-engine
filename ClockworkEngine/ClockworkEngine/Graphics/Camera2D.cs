@@ -20,14 +20,10 @@ public class Camera2D : CameraEntity
 		InternalCamera = Cameras.Create2D(Vector2.Zero - centeredOffset, 0, 1);
 	}
 
-	public override void OnUpdate()
+	internal override void Begin()
 	{
 		InternalCamera.Position = Transform.WorldPosition;
 		InternalCamera.Rotation = Transform.WorldRotation;
-	}
-
-	internal override void Begin()
-	{
 		Cameras.BeginRendering2D(InternalCamera);
 	}
 
