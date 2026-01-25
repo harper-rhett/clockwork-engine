@@ -1,6 +1,5 @@
 ﻿using Clockwork.Utilities;
 using System.Numerics;
-using static Clockwork.Particles.ParticleRenderer2D;
 
 namespace Clockwork.Graphics;
 

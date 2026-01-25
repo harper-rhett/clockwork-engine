@@ -64,8 +64,11 @@ public class Easer : Entity
 	{
 		IsEasing = false;
 		Finished?.Invoke();
+		OnFinished();
 		if (RemoveOnFinished) Remove();
 	}
+
+	protected virtual void OnFinished() { }
 
 	public float EaseFloat(float from, float to)
 	{

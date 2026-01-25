@@ -48,4 +48,20 @@ public class Transform2DEaser : Easer
 			transform.LocalRotation = EaseFloat(originalLocalRotation, TargetWorldRotation);
 		}
 	}
+
+	protected override void OnFinished()
+	{
+		if (transform.Parent is not null)
+		{
+			transform.WorldPosition = TargetWorldPosition;
+			transform.LocalPosition = TargetLocalPosition;
+			transform.WorldRotation = TargetWorldRotation;
+			transform.LocalRotation = TargetLocalRotation;
+		}
+		else
+		{
+			transform.LocalPosition = TargetWorldPosition;
+			transform.LocalRotation = TargetWorldRotation;
+		}
+	}
 }
