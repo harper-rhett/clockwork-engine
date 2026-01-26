@@ -59,22 +59,22 @@ internal abstract class ParticleRenderer2D
 
 	public class Texture : ParticleRenderer2D
 	{
-		private ITexture texture2D;
+		private Graphics.Texture texture;
 		private Rectangle particleRectangle;
 		private Vector2 textureOrigin;
 
-		public Texture(ITexture texture2D)
+		public Texture(Graphics.Texture texture)
 		{
-			this.texture2D = texture2D;
-			particleRectangle = new(0, 0, texture2D.Width, texture2D.Height);
-			textureOrigin = new(texture2D.Width / 2f, texture2D.Height / 2f);
+			this.texture = texture;
+			particleRectangle = new(0, 0, texture.Width, texture.Height);
+			textureOrigin = new(texture.Width / 2f, texture.Height / 2f);
 		}
 
 		public override void Draw(Particle2D particle)
 		{
-			Rectangle drawRectangle = new(particle.Position, texture2D.Width, texture2D.Height);
+			Rectangle drawRectangle = new(particle.Position, texture.Width, texture.Height);
 			Color color = GetParticleColor(particle);
-			texture2D.Draw(particleRectangle, drawRectangle, textureOrigin, particle.Rotation, color);
+			texture.Draw(particleRectangle, drawRectangle, textureOrigin, particle.Rotation, color);
 		}
 	}
 }

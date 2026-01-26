@@ -6,10 +6,10 @@ namespace Clockwork.Tiles;
 public class Tile
 {
 	private Vector2 localPosition;
-	private ITexture tilesetTexture;
+	private Texture tilesetTexture;
 	private Rectangle spriteRectangle;
 
-	public Tile(Vector2 localPosition, ITexture tilesetTexture, int tilesetX, int tilesetY, int size, bool xFlipped, bool yFlipped)
+	public Tile(Vector2 localPosition, Texture tilesetTexture, int tilesetX, int tilesetY, int size, bool xFlipped, bool yFlipped)
 	{
 		this.localPosition = localPosition;
 		this.tilesetTexture = tilesetTexture;

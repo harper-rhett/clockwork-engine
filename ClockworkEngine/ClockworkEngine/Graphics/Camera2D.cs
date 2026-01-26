@@ -7,8 +7,13 @@ namespace Clockwork.Graphics;
 public class Camera2D : CameraEntity
 {
 	// General
-	public readonly IInternalCamera2D InternalCamera;
 	public Transform2D Transform = new();
+	public RaylibCamera2D InternalCamera;
+	public Vector2 Offset
+	{
+		get => InternalCamera.Offset;
+		set => InternalCamera.Offset = value;
+	}
 
 	// Mouse
 	public float MouseWorldX => Mouse.GameX - Engine.HalfGameWidth + Transform.WorldPosition.X;
@@ -17,18 +22,19 @@ public class Camera2D : CameraEntity
 	public Camera2D()
 	{
 		Vector2 centeredOffset = new(Engine.HalfGameWidth, Engine.HalfGameHeight);
-		InternalCamera = Cameras.Create2D(Vector2.Zero - centeredOffset, 0, 1);
+		InternalCamera = new(Vector2.Zero, 0, 1);
+		InternalCamera.Offset = centeredOffset;
 	}
 
 	internal override void Begin()
 	{
 		InternalCamera.Position = Transform.WorldPosition;
 		InternalCamera.Rotation = Transform.WorldRotation;
-		Cameras.BeginRendering2D(InternalCamera);
+		RaylibCamera2D.BeginRendering(InternalCamera);
 	}
 
 	internal override void End()
 	{
-		Cameras.EndRendering2D();
+		RaylibCamera2D.EndRendering();
 	}
 }

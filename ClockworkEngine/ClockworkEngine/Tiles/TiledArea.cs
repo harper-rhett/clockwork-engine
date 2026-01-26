@@ -12,7 +12,7 @@ public class TiledArea
 	public readonly int WidthInPixels;
 	public readonly int HeightInPixels;
 	public readonly int TileSize;
-	private readonly IRenderTexture renderTexture;
+	private readonly RenderTexture renderTexture;
 	private readonly Rectangle renderRectangle;
 
 	public virtual bool IsActive { get; set; }

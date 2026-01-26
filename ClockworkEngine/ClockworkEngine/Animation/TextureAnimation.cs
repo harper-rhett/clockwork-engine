@@ -6,7 +6,7 @@ namespace Clockwork.Animation;
 
 public class TextureAnimation
 {
-	private ITexture texture;
+	private Texture texture;
 	private Rectangle[] frameCells;
 	public float PlayTime { get; private set; }
 	private float currentTime = 0;
@@ -19,7 +19,7 @@ public class TextureAnimation
 	public float TimePerFrame;
 	public bool IsPaused;
 
-	public TextureAnimation(ITexture texture, int frameCount, int frameWidth, int frameHeight, float timePerFrame)
+	public TextureAnimation(Texture texture, int frameCount, int frameWidth, int frameHeight, float timePerFrame)
 	{
 		this.texture = texture;
 		TimePerFrame = timePerFrame;

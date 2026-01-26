@@ -21,7 +21,7 @@ internal class UnclippedRenderer : WindowRenderer
 	private int mouseGameY;
 	internal override int MouseGameY => mouseGameY;
 
-	internal override void Update(IRenderTexture gameRenderTexture)
+	internal override void Update(RenderTexture gameRenderTexture)
 	{
 		// Initialize
 		RefreshDimensions(gameRenderTexture);
@@ -32,7 +32,7 @@ internal class UnclippedRenderer : WindowRenderer
 		CalculateMouse();
 	}
 
-	internal override void Draw(IRenderTexture gameRenderTexture)
+	internal override void Draw(RenderTexture gameRenderTexture)
 	{
 		// Clear background to draw border before drawing game
 		Drawing.Clear(borderColor);

@@ -30,7 +30,7 @@ public abstract class WindowRenderer
 	}
 
 	// Fetch new values
-	protected void RefreshDimensions(IRenderTexture gameRenderTexture)
+	protected void RefreshDimensions(RenderTexture gameRenderTexture)
 	{
 		windowWidth = Window.Width;
 		windowHeight = Window.Height;
@@ -39,8 +39,8 @@ public abstract class WindowRenderer
 	}
 
 	// Custom implementation for game sizing
-	internal abstract void Update(IRenderTexture gameRenderTexture);
-	internal abstract void Draw(IRenderTexture gameRenderTexture);
+	internal abstract void Update(RenderTexture gameRenderTexture);
+	internal abstract void Draw(RenderTexture gameRenderTexture);
 
 	// Current
 	internal static WindowRenderer Current { get; private set; } = new UnclippedRenderer(Colors.Black);

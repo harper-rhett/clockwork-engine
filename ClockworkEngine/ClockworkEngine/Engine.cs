@@ -2,7 +2,6 @@
 using Clockwork.Utilities;
 using Clockwork.Windowing;
 using Clockwork.Audio;
-using Clockwork.Interface;
 using System.Runtime.InteropServices;
 using Clockwork.Graphics.Text;
 
@@ -14,7 +13,7 @@ public static class Engine
 	private static Game game;
 
 	// General
-	private static IRenderTexture gameRenderTexture;
+	private static RenderTexture gameRenderTexture;
 
 	// Game size
 	public static Coordinate GameSize
@@ -26,7 +25,7 @@ public static class Engine
 			GameHeight = value.Y;
 			HalfGameWidth = GameWidth / 2;
 			HalfGameHeight = GameHeight / 2;
-			if (gameRenderTexture is not null) gameRenderTexture.Dispose();
+			if (gameRenderTexture.IsValid) gameRenderTexture.Dispose();
 			gameRenderTexture = RenderTexture.Load(GameWidth, GameHeight);
 		}
 	}
@@ -50,7 +49,6 @@ public static class Engine
 		AppDomain.CurrentDomain.UnhandledException += HandleCrash;
 
 		// Initialize window
-		BackendInterface.Initialize(new RaylibRenderingBackend());
 		Window.Initialize(800, 800, windowTitle);
 		TargetFPS = 60;
 
@@ -68,8 +66,7 @@ public static class Engine
 	{
 		// Initialization
 		Engine.game = game;
-		BackendInterface.Rendering.MasterLoop += MasterLoop;
-		BackendInterface.Rendering.Start();
+		while (!Window.ShouldClose()) MasterLoop();
 	}
 
 	private static void MasterLoop()
@@ -108,7 +105,7 @@ public static class Engine
 
 	private static void TakeScreenshot()
 	{
-		IImage gameImage = Image.Load(gameRenderTexture.Texture);
+		Image gameImage = Image.Load(gameRenderTexture.Texture);
 		string fileName = $"{DateTime.Now.ToString("yy-MM-dd_HH-mm-ss")}.png";
 		string filePath = Path.Combine(screenshotFolderPath, fileName);
 		gameImage.Export(filePath, out bool success);
@@ -117,7 +114,7 @@ public static class Engine
 
 	private static void BurstScreenshot()
 	{
-		IImage gameImage = Image.Load(gameRenderTexture.Texture);
+		Image gameImage = Image.Load(gameRenderTexture.Texture);
 		string fileName = $"burst-{screenshotBurstIndex.ToString("D5")}.png";
 		string filePath = Path.Combine(screenshotBurstFolderPath, fileName);
 		gameImage.Export(filePath, out bool success);

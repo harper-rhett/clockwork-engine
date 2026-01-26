@@ -103,9 +103,9 @@ public sealed class ParticleEngine2D : Entity
 		particleRenderer = new ParticleRenderer2D.Polygon(sides, radius);
 	}
 
-	public void RenderAsTexture(ITexture texture2D)
+	public void RenderAsTexture(Texture texture)
 	{
-		particleRenderer = new ParticleRenderer2D.Texture(texture2D);
+		particleRenderer = new ParticleRenderer2D.Texture(texture);
 	}
 
 	public void AddInitializer(Particle2DInitializer initializer) => initializers.Add(initializer);
