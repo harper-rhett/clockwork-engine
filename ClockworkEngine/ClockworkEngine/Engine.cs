@@ -97,6 +97,7 @@ public static class Engine
 
 		Drawing.Begin();
 		WindowRenderer.Current.Draw(gameRenderTexture);
+		game.OnDrawGUI();
 		Drawing.End();
 	}
 

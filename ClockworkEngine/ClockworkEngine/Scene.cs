@@ -45,12 +45,6 @@ public class Scene
 
 	public void Draw()
 	{
-		DrawGame();
-		DrawGUI();
-	}
-
-	private void DrawGame()
-	{
 		Drawing.Clear(BackgroundColor);
 		if (Camera is not null) Camera.Begin();
 		foreach (Entity entity in Entities.InDrawOrder)
@@ -60,7 +54,7 @@ public class Scene
 		if (Camera is not null) Camera.End();
 	}
 
-	private void DrawGUI()
+	public void DrawGUI()
 	{
 		foreach (Entity entity in Entities.InDrawOrder)
 		{
