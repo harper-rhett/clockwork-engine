@@ -9,8 +9,8 @@ public unsafe struct Model : IDisposable
 	public Matrix4x4 Transform;
 	public int MeshCount;
 	public int MaterialCount;
-	public Mesh* Meshes;
-	public Material* Materials;
+	public MeshData* Meshes;
+	public MaterialData* Materials;
 	public int* MeshMaterial;
 	public int BoneCount;
 	public BoneInfo* Bones;
@@ -20,7 +20,7 @@ public unsafe struct Model : IDisposable
 	public static extern Model Load(string fileName);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModelFromMesh")]
-	public static extern Model LoadModel(Mesh mesh);
+	public static extern Model LoadModel(MeshData mesh);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsModelValid")]
 	[return: MarshalAs(UnmanagedType.I1)]

@@ -8,8 +8,8 @@ namespace Clockwork.Graphics;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ShaderData : IDisposable
 {
-	private uint ID;
-	private int* Locations;
+	public uint ID;
+	public int* Locations;
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginShaderMode")]
 	public static extern void BeginUsing(ShaderData shaderData);
