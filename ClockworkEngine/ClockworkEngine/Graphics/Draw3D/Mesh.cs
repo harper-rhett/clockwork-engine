@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Numerics;
+using Clockwork.Utilities;
 
 namespace Clockwork.Graphics.Draw3D;
 
@@ -118,6 +119,16 @@ public unsafe struct Mesh : IDisposable
 	{
 		return new Span<T>(Indices, 3 * TriangleCount * sizeof(ushort) / sizeof(T));
 	}
+
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawMesh")]
+	private static extern void Draw(Mesh mesh, Material material, Matrix4x4 matrix);
+	public static void Draw(Mesh mesh, Material material, Transform3D transform) => Draw(mesh, material, transform.Matrix);
+
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshCube")]
+	public static extern Mesh GenerateBox(float width, float height, float length);
+
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshSphere")]
+	public static extern Mesh GenerateSphere(float radius, int rings, int slices);
 
 	public unsafe void Dispose()
 	{

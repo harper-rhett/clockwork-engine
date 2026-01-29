@@ -67,4 +67,12 @@ public class Transform3D
 	public Vector3 Left => WorldRotation.GetLeft();
 	public Vector3 Up => WorldRotation.GetUp();
 	public Vector3 Down => WorldRotation.GetDown();
+
+	public Transform3D() { }
+
+	public Transform3D(Vector3 position, Quaternion rotation)
+	{
+		WorldPosition = position;
+		WorldRotation = rotation;
+	}
 }

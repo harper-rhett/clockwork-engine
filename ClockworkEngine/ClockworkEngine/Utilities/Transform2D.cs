@@ -60,4 +60,12 @@ public class Transform2D
 			return WorldToLocalMatrix;
 		}
 	}
+
+	public Transform2D() { }
+
+	public Transform2D(Vector2 position, float rotation)
+	{
+		WorldPosition = position;
+		WorldRotation = rotation;
+	}
 }
