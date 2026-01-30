@@ -6,7 +6,7 @@ namespace Clockwork.Graphics.Draw3D;
 public class Camera3D : CameraEntity
 {
 	public Transform3D Transform = new();
-	public RaylibCamera3D InternalCamera;
+	public Camera3DInternal InternalCamera;
 
 	public Camera3D(Vector3 position)
 	{
@@ -18,11 +18,11 @@ public class Camera3D : CameraEntity
 	{
 		InternalCamera.Position = Transform.WorldPosition;
 		InternalCamera.Rotation = Transform.WorldRotation;
-		RaylibCamera3D.BeginRendering(InternalCamera);
+		Camera3DInternal.BeginRendering(InternalCamera);
 	}
 
 	internal override void End()
 	{
-		RaylibCamera3D.EndRendering();
+		Camera3DInternal.EndRendering();
 	}
 }

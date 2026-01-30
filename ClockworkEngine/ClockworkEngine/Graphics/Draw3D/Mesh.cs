@@ -26,7 +26,7 @@ public class Mesh : IDisposable
 	public static Mesh GenerateSphere(float radius, int rings, int slices)
 	{
 		MeshData sphereMesh = MeshData.GenerateSphere(radius, rings, slices);
-		return new(sphereMesh);
+		return new Mesh(sphereMesh);
 	}
 
 	public void Dispose()

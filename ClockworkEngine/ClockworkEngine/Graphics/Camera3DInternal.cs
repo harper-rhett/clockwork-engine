@@ -1,12 +1,11 @@
 ﻿using System.Runtime.InteropServices;
 using System.Numerics;
-using Clockwork.Graphics;
 using Clockwork.Utilities;
 
 namespace Clockwork.Graphics;
 
 [StructLayout(LayoutKind.Sequential)]
-public struct RaylibCamera3D
+public struct Camera3DInternal
 {
 	public Vector3 Position;
 	public Vector3 Target;
@@ -14,7 +13,7 @@ public struct RaylibCamera3D
 	public float FOVY;
 	public CameraProjection Projection;
 
-	public RaylibCamera3D(Vector3 position, Vector3 target, Vector3 up, float fovy, CameraProjection projection)
+	public Camera3DInternal(Vector3 position, Vector3 target, Vector3 up, float fovy, CameraProjection projection)
 	{
 		Position = position;
 		Target = target;
@@ -25,7 +24,7 @@ public struct RaylibCamera3D
 		direction = Vector3.Normalize(target - position);
 	}
 
-	public RaylibCamera3D(Vector3 position, Quaternion rotation, float fovy, CameraProjection projection)
+	public Camera3DInternal(Vector3 position, Quaternion rotation, float fovy, CameraProjection projection)
 	{
 		Position = position;
 		Rotation = rotation;
@@ -34,7 +33,7 @@ public struct RaylibCamera3D
 	}
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginMode3D")]
-	public static extern void BeginRendering(RaylibCamera3D camera3D);
+	public static extern void BeginRendering(Camera3DInternal camera3D);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndMode3D")]
 	public static extern void EndRendering();

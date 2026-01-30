@@ -8,7 +8,7 @@ public class Camera2D : CameraEntity
 {
 	// General
 	public Transform2D Transform = new();
-	public RaylibCamera2D InternalCamera;
+	public Camera2DInternal InternalCamera;
 	public Vector2 Offset
 	{
 		get => InternalCamera.Offset;
@@ -30,11 +30,11 @@ public class Camera2D : CameraEntity
 	{
 		InternalCamera.Position = Transform.WorldPosition;
 		InternalCamera.Rotation = Transform.WorldRotation;
-		RaylibCamera2D.BeginRendering(InternalCamera);
+		Camera2DInternal.BeginRendering(InternalCamera);
 	}
 
 	internal override void End()
 	{
-		RaylibCamera2D.EndRendering();
+		Camera2DInternal.EndRendering();
 	}
 }
