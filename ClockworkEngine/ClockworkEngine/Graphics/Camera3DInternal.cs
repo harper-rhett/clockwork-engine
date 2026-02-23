@@ -39,7 +39,12 @@ public struct Camera3DInternal
 	public static extern void EndRendering();
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenToWorldRay")]
-	public static extern Ray GetScreenToWorldRay(Vector2 screenPosition, Camera3DInternal camera3D);
+	private static extern Ray ScreenToWorldRay(Vector2 screenPosition, Camera3DInternal camera3D);
+	public Ray ScreenToWorldRay(Vector2 screenPosition) => ScreenToWorldRay(screenPosition, this);
+
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetWorldToScreen")]
+	private static extern Vector2 WorldToScreenPosition(Vector3 position, Camera3DInternal camera3D);
+	public Vector2 WorldToScreenPosition(Vector3 position) => WorldToScreenPosition(position, this);
 
 	private Vector3 direction;
 	public Quaternion Rotation
