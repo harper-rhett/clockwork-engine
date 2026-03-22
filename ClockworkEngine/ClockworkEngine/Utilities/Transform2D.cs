@@ -61,6 +61,11 @@ public class Transform2D
 		}
 	}
 
+	public readonly Vector2 Up = new(0, -1);
+	public readonly Vector2 Down = new(0, 1);
+	public readonly Vector2 Left = new(-1, 0);
+	public readonly Vector2 Right = new(1, 0);
+
 	public Transform2D() { }
 
 	public Transform2D(Vector2 position, float rotation)
