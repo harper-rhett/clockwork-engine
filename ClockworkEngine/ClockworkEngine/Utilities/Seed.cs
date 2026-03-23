@@ -80,5 +80,14 @@ namespace Clockwork.Utilities
 			float y = radius * MathF.Sin(azimuth);
 			return new Vector3(x, y, z);
 		}
+
+		public void Shuffle<ListType>(IList<ListType> list)
+		{
+			for (int index = list.Count - 1; index > 0; index--)
+			{
+				int randomIndex = NextInteger(index + 1);
+				(list[index], list[randomIndex]) = (list[randomIndex], list[index]);
+			}
+		}
 	}
 }

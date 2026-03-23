@@ -27,4 +27,9 @@ public static class VectorExtensions
 	{
 		return new(vector.X.Ceiled(), vector.Y.Ceiled());
 	}
+
+	public static Vector2 Average(Vector2 firstVector, Vector2 secondVector)
+	{
+		return (firstVector + secondVector) / 2f;
+	}
 }

@@ -23,4 +23,5 @@ public static class Generate
 	public static float Degrees() => seed.NextDegrees();
 	public static Vector2 UnitVector2() => seed.NextUnitVector2();
 	public static Vector3 UnitVector3() => seed.NextUnitVector3();
+	public static void Shuffle<ListType>(IList<ListType> list) => seed.Shuffle(list);
 }
