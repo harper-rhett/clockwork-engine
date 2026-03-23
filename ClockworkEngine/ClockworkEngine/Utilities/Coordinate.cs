@@ -1,6 +1,6 @@
 ﻿namespace Clockwork.Utilities;
 
-public struct Coordinate
+public record struct Coordinate
 {
 	public int X;
 	public int Y;
