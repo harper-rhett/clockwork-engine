@@ -10,7 +10,7 @@ public class Entities
 	private List<Entity> entitiesToAdd = new();
 	private List<Entity> entitiesToMoveUpdate = new();
 	private List<Entity> entitiesToMoveDraw = new();
-	private HashSet<Entity> entitiesToRemove = new();
+	private List<Entity> entitiesToRemove = new();
 
 	// Layers
 	private SortedList<int, List<Entity>> updateLayers = new();
@@ -47,29 +47,51 @@ public class Entities
 	{
 		List<Entity> updateLayer = GetLayerEntities(updateLayers, entityToAdd.UpdateLayer);
 		updateLayer.Add(entityToAdd);
+		entityToAdd.lastUpdateLayer = entityToAdd.UpdateLayer;
 	}
 
 	private void AddToDrawLayer(Entity entityToAdd)
 	{
 		List<Entity> drawLayer = GetLayerEntities(drawLayers, entityToAdd.DrawLayer);
 		drawLayer.Add(entityToAdd);
+		entityToAdd.lastDrawLayer = entityToAdd.DrawLayer;
 	}
 
 	internal void ProcessMoves()
 	{
 		foreach (Entity entity in entitiesToMoveUpdate)
 		{
-			List<Entity> updateLayer = GetLayerEntities(updateLayers, entity.lastUpdateLayer);
-			bool removedFromUpdateLayer = updateLayer.Remove(entity);
-			updateLayers[entity.UpdateLayer].Add(entity);
+			// Check if it has already been added
+			if (entity.UpdateLayer == entity.lastUpdateLayer) continue;
+
+			// Remove from last layer
+			List<Entity> lastUpdateLayer = GetLayerEntities(updateLayers, entity.lastUpdateLayer);
+			bool removedFromUpdateLayer = lastUpdateLayer.Remove(entity);
+
+			// Add to new layer
+			List<Entity> newUpdateLayer = GetLayerEntities(updateLayers, entity.UpdateLayer);
+			newUpdateLayer.Add(entity);
+
+			// Mark as added
+			entity.lastUpdateLayer = entity.UpdateLayer;
 		}
 		entitiesToMoveUpdate.Clear();
 
 		foreach (Entity entity in entitiesToMoveDraw)
 		{
-			List<Entity> drawLayer = GetLayerEntities(drawLayers, entity.lastDrawLayer);
-			bool removedFromDrawLayer = drawLayer.Remove(entity);
-			drawLayers[entity.DrawLayer].Add(entity);
+			// Check if it has already been added
+			if (entity.DrawLayer == entity.lastDrawLayer) continue;
+
+			// Remove from last layer
+			List<Entity> lastDrawLayer = GetLayerEntities(drawLayers, entity.lastDrawLayer);
+			bool removedFromDrawLayer = lastDrawLayer.Remove(entity);
+
+			// Add to new layer
+			List<Entity> newDrawLayer = GetLayerEntities(drawLayers, entity.DrawLayer);
+			newDrawLayer.Add(entity);
+
+			// Mark as added
+			entity.lastDrawLayer = entity.DrawLayer;
 		}
 		entitiesToMoveDraw.Clear();
 	}
