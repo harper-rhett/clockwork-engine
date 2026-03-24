@@ -43,18 +43,32 @@ public class Entities
 		entitiesToAdd.Clear();
 	}
 
+	private void AddToUpdateLayer(Entity entityToAdd)
+	{
+		List<Entity> updateLayer = GetLayerEntities(updateLayers, entityToAdd.UpdateLayer);
+		updateLayer.Add(entityToAdd);
+	}
+
+	private void AddToDrawLayer(Entity entityToAdd)
+	{
+		List<Entity> drawLayer = GetLayerEntities(drawLayers, entityToAdd.DrawLayer);
+		drawLayer.Add(entityToAdd);
+	}
+
 	internal void ProcessMoves()
 	{
 		foreach (Entity entity in entitiesToMoveUpdate)
 		{
-			updateLayers[entity.lastUpdateLayer].Remove(entity);
+			List<Entity> updateLayer = GetLayerEntities(updateLayers, entity.lastUpdateLayer);
+			bool removedFromUpdateLayer = updateLayer.Remove(entity);
 			updateLayers[entity.UpdateLayer].Add(entity);
 		}
 		entitiesToMoveUpdate.Clear();
 
 		foreach (Entity entity in entitiesToMoveDraw)
 		{
-			drawLayers[entity.lastDrawLayer].Remove(entity);
+			List<Entity> drawLayer = GetLayerEntities(drawLayers, entity.lastDrawLayer);
+			bool removedFromDrawLayer = drawLayer.Remove(entity);
 			drawLayers[entity.DrawLayer].Add(entity);
 		}
 		entitiesToMoveDraw.Clear();
@@ -73,24 +87,8 @@ public class Entities
 	private List<Entity> GetLayerEntities(SortedList<int, List<Entity>> layers, int layer)
 	{
 		bool layerExists = layers.TryGetValue(layer, out List<Entity> layerEntities);
-		if (!layerExists)
-		{
-			layerEntities = new();
-			layers[layer] = layerEntities;
-		}
+		if (!layerExists) layers[layer] = layerEntities = new();
 		return layerEntities;
-	}
-
-	private void AddToUpdateLayer(Entity entityToAdd)
-	{
-		List<Entity> updateLayerEntities = GetLayerEntities(updateLayers, entityToAdd.UpdateLayer);
-		updateLayerEntities.Add(entityToAdd);
-	}
-
-	private void AddToDrawLayer(Entity entityToAdd)
-	{
-		List<Entity> drawLayerEntities = GetLayerEntities(drawLayers, entityToAdd.DrawLayer);
-		drawLayerEntities.Add(entityToAdd);
 	}
 
 	public void MoveUpdateLayer(Entity entity)

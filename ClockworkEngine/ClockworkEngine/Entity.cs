@@ -9,8 +9,8 @@ public abstract class Entity
 	public event Action Removed;
 
 	// Update layer
-	internal int lastUpdateLayer;
-	private int updateLayer;
+	internal int lastUpdateLayer = 0;
+	private int updateLayer = 0;
 	public int UpdateLayer
 	{
 		get => updateLayer;
@@ -23,8 +23,8 @@ public abstract class Entity
 	}
 
 	// Draw layer
-	internal int lastDrawLayer;
-	private int drawLayer;
+	internal int lastDrawLayer = 0;
+	private int drawLayer = 0;
 	public int DrawLayer
 	{
 		get => drawLayer;
