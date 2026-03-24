@@ -57,7 +57,7 @@ public sealed class ParticleEngine2D : Entity
 		if (RemoveOnExhausted && IsExhausted)
 		{
 			Exhausted?.Invoke();
-			Remove();
+			RemoveFromScene();
 		}
 
 		for (int particleIndex = count - 1; particleIndex >= 0; particleIndex--)
@@ -156,6 +156,6 @@ public sealed class ParticleEngine2D : Entity
 
 	public override void OnRemovedFromScene()
 	{
-		fireTimer.Remove();
+		fireTimer.RemoveFromScene();
 	}
 }

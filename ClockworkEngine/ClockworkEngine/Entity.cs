@@ -2,11 +2,13 @@
 
 public abstract class Entity
 {
+	// Scene
 	public Scene Scene;
 	public bool IsUpdating = true;
 	public bool IsRendering = true;
 	public event Action Removed;
 
+	// Update layer
 	internal int lastUpdateLayer;
 	private int updateLayer;
 	public int UpdateLayer
@@ -19,6 +21,8 @@ public abstract class Entity
 			if (Scene is not null) Scene.Entities.MoveUpdateLayer(this);
 		}
 	}
+
+	// Draw layer
 	internal int lastDrawLayer;
 	private int drawLayer;
 	public int DrawLayer
@@ -32,16 +36,19 @@ public abstract class Entity
 		}
 	}
 
+	// Update loops
 	public virtual void OnUpdate() { }
 	public virtual void OnDraw() { }
 	public virtual void OnDrawGUI() { }
 
-	public void Remove()
+	// Scene removal
+	public void RemoveFromScene()
 	{
 		Scene.Entities.Remove(this);
 		Removed?.Invoke();
 	}
 
+	// Callbacks
 	public virtual void OnAddedToScene() { }
 	public virtual void OnRemovedFromScene() { }
 }

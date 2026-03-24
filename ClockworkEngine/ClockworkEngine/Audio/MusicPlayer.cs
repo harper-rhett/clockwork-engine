@@ -55,6 +55,6 @@ public class MusicPlayer : Entity
 	private void Finish()
 	{
 		Stop();
-		if (RemoveOnFinished) Remove();
+		if (RemoveOnFinished) RemoveFromScene();
 	}
 }
