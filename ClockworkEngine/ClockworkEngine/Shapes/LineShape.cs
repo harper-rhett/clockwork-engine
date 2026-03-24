@@ -6,8 +6,8 @@ namespace Clockwork.Shapes;
 
 public class LineShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {
-	public Vector2 StartPosition;
-	public Vector2 EndPosition;
+	public virtual Vector2 StartPosition { get; protected set; }
+	public virtual Vector2 EndPosition { get; protected set; }
 	public float Thickness;
 	public Color Color;
 
