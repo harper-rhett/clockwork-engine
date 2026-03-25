@@ -66,7 +66,6 @@ public class Scene
 	{
 		entity.Scene = this;
 		Entities.Add(entity);
-		entity.OnAddedToScene();
 		return entity;
 	}
 }

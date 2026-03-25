@@ -28,7 +28,6 @@ public class Entities
 
 	internal void Remove(Entity entity)
 	{
-		entity.OnRemovedFromScene();
 		entitiesToRemove.Add(entity);
 		Unindex(entity);
 	}
@@ -39,6 +38,7 @@ public class Entities
 		{
 			AddToUpdateLayer(entity);
 			AddToDrawLayer(entity);
+			entity.OnAddedToScene();
 		}
 		entitiesToAdd.Clear();
 	}
@@ -102,6 +102,7 @@ public class Entities
 		{
 			updateLayers[entity.UpdateLayer].Remove(entity);
 			drawLayers[entity.DrawLayer].Remove(entity);
+			entity.OnRemovedFromScene();
 		}
 		entitiesToRemove.Clear();
 	}
