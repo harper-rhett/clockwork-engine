@@ -19,6 +19,7 @@ public static class Generate
 	public static double Double() => seed.NextDouble();
 	public static long Long() => seed.NextLong();
 	public static bool Bool() => seed.NextBool();
+	public static bool Bool(float trueChance) => seed.NextBool(trueChance);
 	public static float Radians() => seed.NextRadians();
 	public static float Degrees() => seed.NextDegrees();
 	public static Vector2 UnitVector2() => seed.NextUnitVector2();

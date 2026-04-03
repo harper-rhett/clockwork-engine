@@ -49,7 +49,12 @@ namespace Clockwork.Utilities
 
 		public bool NextBool()
 		{
-			return NextDouble() > 0.5;
+			return NextBool(0.5f);
+		}
+
+		public bool NextBool(float trueChance)
+		{
+			return NextDouble() < trueChance;
 		}
 
 		public float NextRadians()
