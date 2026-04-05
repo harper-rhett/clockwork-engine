@@ -6,6 +6,7 @@ namespace Clockwork.Graphics;
 public class FreeCamera2D : Camera2D
 {
 	public float MovementSpeed = 50f;
+	public float ZoomSpeed = 1.0f;
 
 	public FreeCamera2D() : base()
 	{
@@ -17,6 +18,7 @@ public class FreeCamera2D : Camera2D
 		bool isSprinting = Keyboard.IsKeyDown(KeyboardKey.LeftShift);
 
 		Move(isSprinting);
+		Zoom();
 
 		base.OnUpdate();
 	}
@@ -37,5 +39,12 @@ public class FreeCamera2D : Camera2D
 			Vector2 normalizedDirection = Vector2.Normalize(direction);
 			Transform.WorldPosition += normalizedDirection * finalMovementSpeed * Engine.FrameTime;
 		}
+	}
+
+	private void Zoom()
+	{
+		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * Engine.FrameTime;
+		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * Engine.FrameTime;
+		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, 0.25f, 10);
 	}
 }
