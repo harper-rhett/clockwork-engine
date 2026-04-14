@@ -67,6 +67,7 @@ public static class Engine
 		// Initialization
 		Engine.game = game;
 		while (!Window.ShouldClose()) MasterLoop();
+		Window.Close();
 	}
 
 	private static void MasterLoop()

@@ -25,4 +25,7 @@ public class Camera3D : CameraEntity
 	{
 		Camera3DInternal.EndRendering();
 	}
+
+	public Ray ScreenToWorldRay(Vector2 screenPosition) => InternalCamera.ScreenToWorldRay(screenPosition);
+	public Vector2 WorldToScreenPosition(Vector3 position) => InternalCamera.WorldToScreenPosition(position);
 }

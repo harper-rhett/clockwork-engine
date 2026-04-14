@@ -1,4 +1,5 @@
-﻿using Clockwork.Graphics.Draw3D;
+﻿using Clockwork.Graphics;
+using Clockwork.Graphics.Draw3D;
 using Clockwork.Utilities;
 using System.Numerics;
 
@@ -8,18 +9,17 @@ public class SphereShape : Entity
 {
 	public Transform3D Transform;
 	public float Radius;
-	private Mesh mesh;
-	public Material Material;
+	public Color Color;
 
-	public SphereShape(Vector3 position, float radius)
+	public unsafe SphereShape(Vector3 position, float radius, Color color)
 	{
 		Transform = new(position, Quaternion.Identity);
-		mesh = Mesh.GenerateSphere(radius, 12, 12);
-		Material = new();
+		Radius = radius;
+		Color = color;
 	}
 
 	public override void OnDraw()
 	{
-		mesh.Draw(Material, Transform);
+		Primitives3D.DrawSphere(Transform.WorldPosition, Radius, Color);
 	}
 }
