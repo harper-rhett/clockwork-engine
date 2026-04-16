@@ -4,7 +4,7 @@ using Clockwork.Utilities;
 
 namespace Clockwork.Shapes;
 
-public static class Intersection
+public static class Intersection2D
 {
 	public static bool PointInCircle(Vector2 pointPosition, Vector2 circlePosition, float radius)
 	{

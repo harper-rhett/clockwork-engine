@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace Clockwork.Shapes;
 
-public class SphereShape : Entity
+public class SphereShape : Entity, IIntersectsWithRay
 {
 	public Transform3D Transform;
 	public float Radius;
@@ -21,5 +21,10 @@ public class SphereShape : Entity
 	public override void OnDraw()
 	{
 		Primitives3D.DrawSphere(Transform.WorldPosition, Radius, Color);
+	}
+
+	public bool IntersectsWithRay(Ray ray)
+	{
+		return Intersection3D.RayInSphere(ray, Transform.WorldPosition, Radius);
 	}
 }

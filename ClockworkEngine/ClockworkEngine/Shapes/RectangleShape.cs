@@ -26,8 +26,8 @@ public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircl
 		Primitives2D.DrawRectangle(Rectangle, Vector2.Zero, Transform.WorldRotation, Color);
 	}
 
-	public bool IntersectsWithPoint(Vector2 position) => Intersection.PointInRectangle(position, Rectangle);
-	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection.RectangleOnRectangle(Rectangle, rectangle);
-	public bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius) => Intersection.CircleOnRectangle(circlePosition, circleRadius, Rectangle);
-	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection.LineOnRectangle(lineStartPosition, lineEndPosition, Rectangle);
+	public bool IntersectsWithPoint(Vector2 position) => Intersection2D.PointInRectangle(position, Rectangle);
+	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection2D.RectangleOnRectangle(Rectangle, rectangle);
+	public bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius) => Intersection2D.CircleOnRectangle(circlePosition, circleRadius, Rectangle);
+	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection2D.LineOnRectangle(lineStartPosition, lineEndPosition, Rectangle);
 }

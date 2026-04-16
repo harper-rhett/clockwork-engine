@@ -15,11 +15,11 @@ internal class UnclippedRenderer : WindowRenderer
 		this.borderColor = borderColor;
 	}
 
-	private int mouseGameX;
-	internal override int MouseGameX => mouseGameX;
+	internal override int mouseGameX { get; set; }
+	internal override int mouseGameY { get; set; }
 
-	private int mouseGameY;
-	internal override int MouseGameY => mouseGameY;
+	internal override int mouseRenderX { get; set; }
+	internal override int mouseRenderY { get; set; }
 
 	internal override void Update(RenderTexture gameRenderTexture)
 	{
