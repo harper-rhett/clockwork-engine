@@ -17,8 +17,6 @@ public abstract class WindowRenderer
 	// Mouse fields
 	internal abstract int mouseGameX { get; set; }
 	internal abstract int mouseGameY { get; set; }
-	internal abstract int mouseRenderX { get; set; }
-	internal abstract int mouseRenderY { get; set; }
 
 	protected bool DidResize
 	{

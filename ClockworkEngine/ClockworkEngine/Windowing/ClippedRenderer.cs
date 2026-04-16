@@ -12,9 +12,6 @@ internal class ClippedRenderer : WindowRenderer
 	internal override int mouseGameX { get; set; }
 	internal override int mouseGameY { get; set; }
 
-	internal override int mouseRenderX { get; set; }
-	internal override int mouseRenderY { get; set; }
-
 	internal override void Update(RenderTexture gameRenderTexture)
 	{
 		// Initialize
