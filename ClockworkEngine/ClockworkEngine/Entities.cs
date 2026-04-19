@@ -34,12 +34,13 @@ public class Entities
 
 	internal void ProcessAdditions()
 	{
+		List<Entity> entitiesToAddCopy = new(entitiesToAdd);
 		foreach (Entity entity in entitiesToAdd)
 		{
 			AddToUpdateLayer(entity);
 			AddToDrawLayer(entity);
-			entity.OnAddedToScene();
 		}
+		foreach (Entity entity in entitiesToAddCopy) entity.OnAddedToScene();
 		entitiesToAdd.Clear();
 	}
 
@@ -98,12 +99,13 @@ public class Entities
 
 	internal void ProcessRemovals()
 	{
+		List<Entity> entitiesToRemoveCopy = new(entitiesToRemove);
 		foreach (Entity entity in entitiesToRemove)
 		{
 			updateLayers[entity.UpdateLayer].Remove(entity);
-			drawLayers[entity.DrawLayer].Remove(entity);
-			entity.OnRemovedFromScene();
+			drawLayers[entity.DrawLayer].Remove(entity);	
 		}
+		foreach (Entity entity in entitiesToRemoveCopy) entity.OnRemovedFromScene();
 		entitiesToRemove.Clear();
 	}
 

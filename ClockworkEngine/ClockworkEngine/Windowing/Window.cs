@@ -79,7 +79,7 @@ public unsafe static class Window
 	public static extern void SetTitle(string title);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowPosition")]
-	public static extern void SetPosition(int x, int y);
+	private static extern void SetPosition(int x, int y);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowMonitor")]
 	private static extern void SetMonitor(int monitor);
@@ -93,7 +93,11 @@ public unsafe static class Window
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetWindowPosition")]
 	private static extern Vector2 GetPosition();
-	public static Vector2 Position => GetPosition();
+	public static Vector2 Position
+	{
+		get => GetPosition();
+		set => SetPosition((int)value.X, (int)value.Y);
+	}
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetExitKey")]
 	public static extern void SetExitKey(KeyboardKey key);
