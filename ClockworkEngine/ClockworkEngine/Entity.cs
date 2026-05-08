@@ -7,6 +7,7 @@ public abstract class Entity
 	public bool IsUpdating = true;
 	public bool IsRendering = true;
 	public event Action Removed;
+	public bool IsInScene;
 
 	// Update layer
 	internal int lastUpdateLayer = 0;
@@ -41,10 +42,20 @@ public abstract class Entity
 	public virtual void OnDraw() { }
 	public virtual void OnDrawGUI() { }
 
-	// Scene removal
-	public void RemoveFromScene()
+	// Scene addition
+	public void AddToScene(Scene scene) => scene.AddEntity(this);
+	internal void RegisterScene(Scene scene)
 	{
-		Scene.Entities.Remove(this);
+		Scene = scene;
+		IsInScene = true;
+	}
+
+	// Scene removal
+	public void RemoveFromScene() => Scene.RemoveEntity(this);
+	internal void UnregisterScene()
+	{
+		Scene = null;
+		IsInScene = false;
 		Removed?.Invoke();
 	}
 

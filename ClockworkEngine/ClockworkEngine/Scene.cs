@@ -64,8 +64,14 @@ public class Scene
 
 	public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where EntitySubclass : Entity
 	{
-		entity.Scene = this;
+		entity.RegisterScene(this);
 		Entities.Add(entity);
 		return entity;
+	}
+
+	public void RemoveEntity(Entity entity)
+	{
+		entity.UnregisterScene();
+		Entities.Remove(entity);
 	}
 }

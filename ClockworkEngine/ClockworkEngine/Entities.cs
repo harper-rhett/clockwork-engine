@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using Clockwork.Graphics;
-using Clockwork.Graphics.Text;
-
-namespace Clockwork;
+﻿namespace Clockwork;
 
 public class Entities
 {
@@ -16,20 +12,14 @@ public class Entities
 	private SortedList<int, List<Entity>> updateLayers = new();
 	private SortedList<int, List<Entity>> drawLayers = new();
 
-	// Registry
-	private Dictionary<Type, object> entityLists = new();
-	private Dictionary<Type, Entity> latestEntities = new();
-
 	internal void Add(Entity entity)
 	{
 		entitiesToAdd.Add(entity);
-		Index(entity);
 	}
 
 	internal void Remove(Entity entity)
 	{
 		entitiesToRemove.Add(entity);
-		Unindex(entity);
 	}
 
 	internal void ProcessAdditions()
@@ -124,76 +114,6 @@ public class Entities
 	public void MoveDrawLayer(Entity entity)
 	{
 		entitiesToMoveDraw.Add(entity);
-	}
-
-	internal void Index(Entity entity)
-	{
-		// Get the entity list
-		Type type = entity.GetType();
-		bool setExists = entityLists.TryGetValue(type, out object entityListObject);
-
-		// Index as latest
-		latestEntities[type] = entity;
-
-		// Create list if needed
-		if (!setExists)
-		{
-			Type listType = typeof(List<>).MakeGenericType(type);
-			entityListObject = (IList)Activator.CreateInstance(listType);
-			entityLists[type] = entityListObject;
-		}
-
-		// Add entity to list
-		((IList)entityListObject).Add(entity);
-	}
-
-	internal void Unindex(Entity entity)
-	{
-		Type type = entity.GetType();
-		object entityListObject = entityLists[type];
-		IList entityList = (IList)entityListObject;
-		entityList.Remove(entity);
-		if (entityList.Count > 0) latestEntities[type] = (Entity)entityList[entityList.Count - 1];
-		else latestEntities.Remove(type);
-	}
-
-	public IReadOnlyList<EntityType> GetEntities<EntityType>() where EntityType : Entity
-	{
-		// Get the entity list
-		Type type = typeof(EntityType);
-		bool setExists = entityLists.TryGetValue(type, out object entityListObject);
-
-		// Return
-		if (setExists) return (List<EntityType>)entityListObject;
-		else return Array.Empty<EntityType>();
-	}
-
-	public EntityType GetEntity<EntityType>() where EntityType : Entity
-	{
-		Type type = typeof(EntityType);
-		return (EntityType)latestEntities[type];
-	}
-
-	public void DrawDebug(int fontSize, int spacing)
-	{
-		int index = 0;
-		foreach (KeyValuePair<Type, object> entityListPair in entityLists)
-		{
-			// Get type
-			Type type = entityListPair.Key;
-			string typeString = type.ToString();
-
-			// Convert to list
-			IList entityList = (IList)entityListPair.Value;
-			int typeCount = entityList.Count;
-			if (typeCount == 0) continue;
-
-			// Draw type
-			string text = $"{typeString}: {typeCount}";
-			int y = spacing + index * (fontSize + spacing);
-			Text.Draw(text, spacing, y, fontSize, Colors.White);
-			index++;
-		}
 	}
 
 	public IEnumerable<Entity> InUpdateOrder
