@@ -11,6 +11,18 @@ public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, 
 	public float Radius;
 	public Color Color;
 
+	// Transform shortcuts
+	public Vector2 Position
+	{
+		get => Transform.WorldPosition;
+		set => Transform.WorldPosition = value;
+	}
+	public float Rotation
+	{
+		get => Transform.WorldRotation;
+		set => Transform.WorldRotation = value;
+	}
+
 	public CircleShape(float radius, Color color)
 	{
 		Radius = radius;
@@ -19,11 +31,11 @@ public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, 
 
 	public override void OnDraw()
 	{
-		Primitives2D.DrawCircle(Transform.WorldPosition, Radius, Color);
+		Primitives2D.DrawCircle(Position, Radius, Color);
 	}
 
-	public bool IntersectsWithPoint(Vector2 position) => Intersection2D.PointInCircle(position, Transform.WorldPosition, Radius);
-	public bool IntersectsWithCircle(Vector2 position, float radius) => Intersection2D.CircleOnCircle(Transform.WorldPosition, Radius, position, radius);
-	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection2D.CircleOnRectangle(Transform.WorldPosition, Radius, rectangle);
-	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection2D.CircleOnLine(Transform.WorldPosition, Radius, lineStartPosition, lineEndPosition);
+	public bool IntersectsWithPoint(Vector2 position) => Intersection2D.PointInCircle(position, Position, Radius);
+	public bool IntersectsWithCircle(Vector2 position, float radius) => Intersection2D.CircleOnCircle(Position, Radius, position, radius);
+	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection2D.CircleOnRectangle(Position, Radius, rectangle);
+	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection2D.CircleOnLine(Position, Radius, lineStartPosition, lineEndPosition);
 }
