@@ -18,7 +18,7 @@ public class FreeCamera2D : Camera2D
 		bool isSprinting = Keyboard.IsKeyDown(KeyboardKey.LeftShift);
 
 		Move(isSprinting);
-		Zoom();
+		Zoom(isSprinting);
 
 		base.OnUpdate();
 	}
@@ -41,10 +41,11 @@ public class FreeCamera2D : Camera2D
 		}
 	}
 
-	private void Zoom()
+	private void Zoom(bool isSprinting)
 	{
-		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * Engine.FrameTime;
-		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * Engine.FrameTime;
+		float finalZoomSpeed = isSprinting ? ZoomSpeed * 2 : ZoomSpeed;
+		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += finalZoomSpeed * Engine.FrameTime;
+		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= finalZoomSpeed * Engine.FrameTime;
 		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, 0.25f, 10);
 	}
 }
