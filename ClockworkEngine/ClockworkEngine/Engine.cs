@@ -14,6 +14,8 @@ public static class Engine
 
 	// General
 	private static RenderTexture gameRenderTexture;
+	public static float FrameTime {  get; private set; }
+	private static bool isInitialized;
 
 	// Game size
 	public static Coordinate GameSize
@@ -34,27 +36,30 @@ public static class Engine
 	public static int HalfGameWidth { get; private set; }
 	public static int HalfGameHeight { get; private set; }
 
-	// Extra
-	public static float FrameTime {  get; private set; }
+	// Screen shots
 	private static bool takeScreenshot;
 	private static string screenshotFolderPath;
 	public static bool IsScreenshotBursting { get; private set; }
 	private static string screenshotBurstFolderPath;
 	private static int screenshotBurstIndex;
 
-	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
-	internal static void Initialize(string windowTitle, int gameWidth, int gameHeight)
+	static Engine()
 	{
 		// Create crash handler
 		AppDomain.CurrentDomain.UnhandledException += HandleCrash;
-
-		// Initialize window
-		Window.Initialize(800, 800, windowTitle);
 		TargetFPS = 60;
+	}
+
+	// Intialization is a separate step from "starting" because the game may require Engine initialization in its constructor
+	public static void Initialize(string windowTitle, int gameWidth, int gameHeight)
+	{
+		// Initialize window
+		Window.Initialize(gameWidth, gameHeight, windowTitle);
 
 		// Initialize game
 		AudioDevice.Initialize();
 		GameSize = new(gameWidth, gameHeight);
+		isInitialized = true;
 	}
 
 	private static void HandleCrash(object sender, UnhandledExceptionEventArgs arguments)
@@ -64,10 +69,22 @@ public static class Engine
 
 	public static void Start(Game game)
 	{
-		// Initialization
+		if (!isInitialized) throw new Exception("Initialize must be called before Start.");
 		Engine.game = game;
 		while (!Window.ShouldClose()) MasterLoop();
 		Window.Close();
+		AudioDevice.Close();
+		isInitialized = false;
+	}
+
+	public static void Start(Scene scene)
+	{
+		Start(new SimpleGame(scene));
+	}
+
+	public static void Start(IEnumerable<Entity> entities)
+	{
+		Start(new SimpleScene(entities));
 	}
 
 	private static void MasterLoop()

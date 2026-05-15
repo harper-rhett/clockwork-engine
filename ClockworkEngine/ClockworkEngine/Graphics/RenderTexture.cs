@@ -10,7 +10,7 @@ public struct RenderTexture : IDisposable
 	public Texture Depth;
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginTextureMode")]
-	public static extern void BeginDrawing(RenderTexture renderTexture2D);
+	public static extern void BeginDrawing(RenderTexture renderTexture);
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndTextureMode")]
 	public static extern void EndDrawing();

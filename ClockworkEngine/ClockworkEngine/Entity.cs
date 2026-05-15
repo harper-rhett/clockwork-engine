@@ -7,7 +7,7 @@ public abstract class Entity
 	public bool IsUpdating = true;
 	public bool IsRendering = true;
 	public event Action Removed;
-	public bool IsInScene;
+	public bool IsInScene { get; private set; }
 
 	// Update layer
 	internal int lastUpdateLayer = 0;
