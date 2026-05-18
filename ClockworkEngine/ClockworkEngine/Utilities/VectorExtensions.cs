@@ -32,4 +32,24 @@ public static class VectorExtensions
 	{
 		return (firstVector + secondVector) / 2f;
 	}
+
+	public static Vector2 SetX(this Vector2 vector, float x)
+	{
+		return new Vector2(x, vector.Y);
+	}
+
+	public static Vector2 SetY(this Vector2 vector, float y)
+	{
+		return new Vector2(vector.X, y);
+	}
+
+	public static Vector2 NegateX(this Vector2 vector)
+	{
+		return vector.SetX(-vector.X);
+	}
+
+	public static Vector2 NegateY(this Vector2 vector)
+	{
+		return vector.SetY(-vector.Y);
+	}
 }
