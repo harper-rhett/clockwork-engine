@@ -114,7 +114,7 @@ public static class Intersection2D
 	{
 		Vector2 lineStartToCircle = circlePosition - lineStartPosition; // AC
 		Vector2 lineStartToEnd = lineEndPosition - lineStartPosition; // AB
-		Vector2 projectedPosition = lineStartPosition + lineStartToCircle.Project(lineStartToEnd); // D
+		Vector2 projectedPosition = lineStartPosition + lineStartToCircle.Projected(lineStartToEnd); // D
 
 		float distanceToLine = Vector2.Distance(circlePosition, projectedPosition); // CD
 		if (distanceToLine > radius) return false;

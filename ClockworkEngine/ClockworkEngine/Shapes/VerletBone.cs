@@ -32,7 +32,7 @@ public class VerletBone : LineShape
 		}
 	}
 	public float HalfDesiredLength;
-	public Vector2 CenterPosition => VectorExtensions.Average(StartPosition, EndPosition);
+	public Vector2 CenterPosition => VectorExtensions.Averaged(StartPosition, EndPosition);
 	private float tolerance;
 
 	public VerletBone(VerletJoint firstJoint, VerletJoint secondJoint, float tolerance, float thickness, Color color) : base(thickness, color)
@@ -56,7 +56,7 @@ public class VerletBone : LineShape
 		Vector2 desiredEndPosition = centerPosition + direction * HalfDesiredLength;
 
 		// Apply
-		StartPosition = VectorExtensions.Average(StartPosition, desiredStartPosition);
-		EndPosition = VectorExtensions.Average(EndPosition, desiredEndPosition);
+		StartPosition = VectorExtensions.Averaged(StartPosition, desiredStartPosition);
+		EndPosition = VectorExtensions.Averaged(EndPosition, desiredEndPosition);
 	}
 }
