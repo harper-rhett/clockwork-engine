@@ -120,15 +120,15 @@ public unsafe struct MeshData : IDisposable
 		return new Span<T>(Indices, 3 * TriangleCount * sizeof(ushort) / sizeof(T));
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawMesh")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawMesh")]
 	private static extern void Draw(MeshData mesh, MaterialData materialData, Matrix4x4 matrix);
 	public void Draw(MaterialData materialData, Matrix4x4 matrix) => Draw(this, materialData, matrix);
 	public void Draw(MaterialData materialData, Transform3D transform) => Draw(this, materialData, transform.Matrix);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshCube")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshCube")]
 	public static extern MeshData GenerateBox(float width, float height, float length);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshSphere")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GenMeshSphere")]
 	public static extern MeshData GenerateSphere(float radius, int rings, int slices);
 
 	public unsafe void Dispose()

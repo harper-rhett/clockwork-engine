@@ -16,6 +16,7 @@ public static class Engine
 	private static RenderTexture gameRenderTexture;
 	public static float FrameTime {  get; private set; }
 	private static bool isInitialized;
+	internal const string raylibLibraryName = "raylib";
 
 	// Game size
 	public static Coordinate GameSize
@@ -139,14 +140,14 @@ public static class Engine
 		screenshotBurstIndex++;
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
 	private static extern float GetFrameTime();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
 	private static extern void SetTargetFPS(int fps);
 	public static int TargetFPS { set => SetTargetFPS(value); }
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
 	private static extern float GetFPS();
 	public static float FPS => GetFPS();
 

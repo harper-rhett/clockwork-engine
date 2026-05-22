@@ -9,13 +9,13 @@ public unsafe struct MaterialData : IDisposable
 	public MaterialMap* Maps;
 	public fixed float Param[4];
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadMaterialDefault")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadMaterialDefault")]
 	public static extern MaterialData LoadDefault();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadMaterial")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadMaterial")]
 	private static extern void Unload(MaterialData materialData);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsMaterialValid")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsMaterialValid")]
 	private static extern bool IsThisValid(MaterialData materialData);
 	public bool IsValid => IsThisValid(this);
 

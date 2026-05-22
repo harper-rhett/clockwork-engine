@@ -16,18 +16,18 @@ public unsafe struct Model : IDisposable
 	public BoneInfo* Bones;
 	public RaylibTransform* BindPose;
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModel")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModel")]
 	public static extern Model Load(string fileName);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModelFromMesh")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModelFromMesh")]
 	public static extern Model LoadModel(MeshData mesh);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsModelValid")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsModelValid")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsThisValid(Model model);
 	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadModel")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadModel")]
 	private static extern void Unload(Model model);
 
 	public void Dispose()

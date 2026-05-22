@@ -18,13 +18,13 @@ public struct Camera2DInternal
 		Zoom = zoom;
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginMode2D")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginMode2D")]
 	public static extern void BeginRendering(Camera2DInternal camera2D);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndMode2D")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndMode2D")]
 	public static extern void EndRendering();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetCameraMatrix2D")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetCameraMatrix2D")]
 	private static extern Matrix4x4 GetMatrix(Camera2DInternal camera2D);
 	public Matrix4x4 Matrix => GetMatrix(this);
 }

@@ -27,20 +27,20 @@ public unsafe static class Window
 		Interlaced = 0x00010000,
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "InitWindow")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "InitWindow")]
 	public static extern void Initialize(int width, int height, string title);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "CloseWindow")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CloseWindow")]
 	public static extern void Close();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "WindowShouldClose")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "WindowShouldClose")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	internal static extern bool ShouldClose();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowState")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowState")]
 	private static extern void SetState(WindowFlags flags);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ClearWindowState")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ClearWindowState")]
 	private static extern void ClearState(WindowFlags flags);
 
 	private static void SetState(WindowFlags flags, bool isEnabled)
@@ -58,40 +58,40 @@ public unsafe static class Window
 	public static void SetBorderless(bool isBorderless) => SetState(WindowFlags.Borderless, isBorderless);
 	public static void SetMSAA4x(bool isEnabled) => SetState(WindowFlags.MSAA4x, isEnabled);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenWidth")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenWidth")]
 	private static extern int GetWidth();
 	public static int Width => GetWidth();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenHeight")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenHeight")]
 	private static extern int GetHeight();
 	public static int Height => GetHeight();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowSize")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowSize")]
 	public static extern void Resize(int width, int height);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowIcon")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowIcon")]
 	public static extern void SetIcon(Image image);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowIcons")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowIcons")]
 	public static extern void SetIcons(Image* images, int count);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowTitle")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowTitle")]
 	public static extern void SetTitle(string title);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowPosition")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowPosition")]
 	private static extern void SetPosition(int x, int y);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowMonitor")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowMonitor")]
 	private static extern void SetMonitor(int monitor);
 	public static int Monitor
 	{
 		set => SetMonitor(value);
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowFocused")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowFocused")]
 	public static extern void Focus();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetWindowPosition")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetWindowPosition")]
 	private static extern Vector2 GetPosition();
 	public static Vector2 Position
 	{
@@ -99,6 +99,6 @@ public unsafe static class Window
 		set => SetPosition((int)value.X, (int)value.Y);
 	}
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetExitKey")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetExitKey")]
 	public static extern void SetExitKey(KeyboardKey key);
 }

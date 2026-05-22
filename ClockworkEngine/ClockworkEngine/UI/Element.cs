@@ -11,7 +11,7 @@ public class Element : Entity
 	public Rectangle Rectangle;
 	public Color BackgroundColor = Colors.White;
 	public Color BorderColor = Colors.Clear;
-	public int BorderThickness = 0;
+	public int BorderThickness;
 	private int rightBound => (int)(Rectangle.X + Rectangle.Width);
 	private int lowerBound => (int)(Rectangle.Y + Rectangle.Height);
 
