@@ -105,5 +105,10 @@ namespace Clockwork.Utilities
 			int randomIndex = NextIndex(list);
 			return list[randomIndex];
 		}
+
+		public void RemoveNextItem<Type>(IList<Type> list)
+		{
+			list.RemoveAt(NextIndex(list));
+		}
 	}
 }
