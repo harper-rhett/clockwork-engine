@@ -9,7 +9,7 @@ There are so many ways a game framework can implement timers. Clockwork takes a 
 The trigger timer is simply a timer. It runs for a given amount of time, and then it triggers an event and destroys itself:
 
 ```csharp
-TriggerTimer waveTimer = scene.AddEntity(new(waveSeconds));
+TriggerTimer waveTimer = scene.AddEntity(new TriggerTimer(waveSeconds));
 waveTimer.Triggered += NextWave;
 waveTimer.RemoveOnTriggered = false;
 waveTimer.Start();
@@ -21,12 +21,14 @@ void NextWave()
 }
 ```
 
+You can also call `Skip()` to immediately trigger the timer. The `OnTriggered()` method is virtual, so subclasses can override it instead of subscribing to the event.
+
 ## Fire Timer
 
 The fire timer is a timer that fires over and over and over. They keep track of sub-frame time, in case your timer is ever faster than your frame rate. It's great for repetitive tasks, like shooting projectiles from a weapon:
 
 ```csharp
-FireTimer fireTimer = scene.AddEntity(new(cooldownSeconds));
+FireTimer fireTimer = scene.AddEntity(new FireTimer(cooldownSeconds));
 fireTimer.Fired += ShootProjectile;
 fireTimer.Start();
 
@@ -35,3 +37,5 @@ void ShootProjectile()
 	// create a projectile here!
 }
 ```
+
+The cooldown time can be changed at runtime through `fireTimer.CooldownTime`. The `OnFired()` method is virtual for subclassing.

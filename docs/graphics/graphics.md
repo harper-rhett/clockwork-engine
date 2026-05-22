@@ -2,24 +2,49 @@
 
 > `using Clockwork.Graphics;`
 
-The graphics namespace contains everything needed to draw to the screen. A circle, drawn at (0, 0), with a radius of 8, is drawn like so:
+The graphics namespace contains everything needed to draw to the screen.
+
+## 2D Primitives
+
+> `using Clockwork.Graphics.Draw2D;`
+
+A circle, drawn at (0, 0), with a radius of 8, is drawn like so:
 
 ```csharp
-Primitives.DrawCircle(0, 0, 8, Colors.Blue)
+Primitives2D.DrawCircle(0, 0, 8, Colors.Blue);
 ```
 
 or as the following:
 
 ```csharp
-Primitives.DrawCircle(Vector2.Zero, 8, Colors.Blue);
+Primitives2D.DrawCircle(Vector2.Zero, 8, Colors.Blue);
 ```
 
-Many draw methods have overloads that allow for additional options. Some are more complicated than others, and can be found in different places. Basic shapes are found in the static `Primitives` class, but splines have their own class:
+Many draw methods have overloads that allow for additional options. `Primitives2D` covers lines, circles, rectangles, triangles, polygons, and more. Splines have their own class:
 
 ```csharp
-// splines have a slightly different syntax in the current version
 Spline.DrawLinear(splinePositions, splineThickness, splineColor);
 ```
+
+## 3D Primitives
+
+> `using Clockwork.Graphics.Draw3D;`
+
+For 3D rendering, `Primitives3D` provides spheres, cubes, capsules, and other shapes:
+
+```csharp
+Primitives3D.DrawSphere(position, radius, Colors.White);
+Primitives3D.DrawCapsule(start, end, radius, slices, rings, color);
+```
+
+3D models can also be loaded and drawn:
+
+```csharp
+Model model = Model.Load("spaceship.obj");
+model.Draw(position, scale, Colors.White);
+```
+
+## Text
 
 Text has its own class as well. Drawing horizontally centered text might look like this:
 
@@ -30,7 +55,9 @@ int textX = Engine.HalfGameWidth - textWidth / 2;
 Text.Draw(text, textX, textY, fontSize, Colors.White);
 ```
 
-But, of course, you will need to be able to draw textures as well. That process is as follows:
+## Textures
+
+Of course, you will need to be able to draw textures as well. That process is as follows:
 
 ```csharp
 Texture alligatorTexture = Texture.Load("alligator.png");
@@ -42,21 +69,54 @@ It is recommended textures be loaded at the beginning of a scene or at the launc
 There is such a thing as a `RenderTexture` as well, which can be drawn to and has a texture of its own:
 
 ```csharp
-// Recommended to do this in update
 RenderTexture.BeginDrawing(myRenderTexture);
-Primitives.DrawPolygon(position, sides, radius, rotation, color);
+Primitives2D.DrawPolygon(position, sides, radius, rotation, color);
 RenderTexture.EndDrawing();
 
-// And this of course in draw
 myRenderTexture.Texture.Draw(x, y, Colors.White);
 ```
 
 When textures are no longer needed, they should be cleaned up with `texture.Dispose()` to release them from memory. This is not necessary if you are okay with your textures persisting in memory until the game exits.
 
+## Colors
+
+The `Color` struct supports multiple constructor formats:
+
+```csharp
+Color red = new(255, 0, 0);         // byte RGB
+Color blue = new(0, 0, 255, 128);   // byte RGBA
+Color green = new(0f, 1f, 0f);      // float RGB (0.0 to 1.0)
+```
+
+Colors have some useful methods for manipulation:
+
+```csharp
+Color transparent = color.SetAlpha(0.5f);
+Color invisible = color.DropAlpha();
+Color blended = Color.Lerp(Colors.Red, Colors.Blue, 0.5f);
+```
+
+The `Colors` class contains a large set of predefined colors like `Colors.White`, `Colors.Red`, and so on.
+
+## Parallax
+
+The `Parallax` entity creates multi-layered scrolling backgrounds that move relative to a camera:
+
+```csharp
+Parallax parallax = scene.AddEntity(new Parallax(camera, originPosition, startPosition));
+parallax.AddLayer(skyTexture, Vector2.Zero, 0.1f, 0.1f);
+parallax.AddLayer(mountainTexture, Vector2.Zero, 0.3f, 0.3f);
+parallax.AddLayer(treesTexture, Vector2.Zero, 0.6f, 0.6f);
+```
+
+Each layer has its own speed multiplier for horizontal and vertical scrolling. Set `RepeatX` or `RepeatY` to `false` if you don't want the layer to tile in that direction.
+
+## Other Features
+
 Check out the source code to find out more information about this namespace. Other features include:
 
-- Shaders
-- Images
+- Shaders and shader data
+- Images (bitmap manipulation)
 - Blend modes
-
-More detailed information will be added to this page in the future about such topics.
+- Gradients
+- Nine-patch sprites

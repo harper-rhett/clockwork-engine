@@ -7,11 +7,11 @@ The [game](game.md) class should be used to manage scenes. If you are prototypin
 ```csharp
 internal class MyGame : Game
 {
-	Scene scene = new();
+	private Scene scene = new();
 
 	public MyGame()
 	{
-		scene.AddEntity(new CustomEntity()); // inherits from entity and is added to scene
+		scene.AddEntity(new CustomEntity());
 	}
 
 	public override void OnUpdate()
@@ -33,14 +33,35 @@ internal class GameScene : Scene
 {
 	public GameScene()
 	{
-		AddEntity(new GameManager()); // inherits from Entity
+		AddEntity(new GameManager());
 	}
 }
 ```
 
 Then those scenes are managed in `Game` but all of the game logic exists within the scene nested in entities.
 
+A scene can also be constructed with a background color:
+
+```csharp
+Scene scene = new(Colors.Black);
+```
+
 P.S. Scenes also contain a field for a camera, if your game uses one. More on this in the [camera](camera.md) docs.
+
+## SimpleScene
+
+If you have a collection of entities and don't need a custom scene class, `SimpleScene` has you covered:
+
+```csharp
+Entity[] entities = { new Player(), new Enemy(), new Ground() };
+SimpleScene scene = new(entities);
+```
+
+This is especially handy when combined with `Engine.Start`:
+
+```csharp
+Engine.Start(new Entity[] { new Player(), new Enemy() });
+```
 
 ## Timing
 
@@ -52,15 +73,33 @@ scene.IsPaused = true;
 scene.TimeModifier = 2;
 ```
 
-This means if a game scene and a pause menu are required, both can be run at once and the game scene game be paused with leisure. Unpausing will pick up right where it left off. No time passes for a scene when it is paused. And, of course all entities are paused and live in this system, but they also all have a reference to scene. So, they can use that reference for any time related needs. Check out the [timers](../utilities/timers.md) for an example of this.
+This means if a game scene and a pause menu are required, both can be run at once and the game scene can be paused with leisure. Unpausing will pick up right where it left off. No time passes for a scene when it is paused. And, of course all entities are paused and live in this system, but they also all have a reference to scene. So, they can use that reference for any time related needs. Check out the [timers](../utilities/timers.md) for an example of this.
 
-# Entities
+## DrawGUI
 
-`Entities` is an actual class that each scene contains a public instance of. It's the actual collection of entities and handles update and draw order, as well as a registry for fast lookups.
-
-The registry can be used like so:
+Scenes have an additional `DrawGUI()` method, which can be called alongside `Draw()`. This loop is separate from the camera-transformed draw loop and is intended for HUD elements, debug text, and overlays:
 
 ```csharp
-CustomEntity myEntity = scene.Entities.GetEntity<CustomEntity>(); // returns the last CustomEntity added to the scene
-CustomEntity[] myEntities = scene.Entities.GetEntities<CustomEntity>(); // returns every CustomEntity in the scene
+public override void OnDraw()
+{
+	scene.Draw();
+}
+
+public override void OnDrawGUI()
+{
+	scene.DrawGUI();
+}
+```
+
+Entities that override `OnDrawGUI()` will have their GUI drawing called in this loop.
+
+## Entities
+
+`Entities` is an actual class that each scene contains a public instance of. It's the actual collection of entities and handles update and draw order.
+
+You can iterate through the entities in their update or draw order:
+
+```csharp
+foreach (Entity entity in scene.Entities.InUpdateOrder) { }
+foreach (Entity entity in scene.Entities.InDrawOrder) { }
 ```

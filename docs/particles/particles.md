@@ -5,10 +5,11 @@
 Particles themselves are simple, where each particle is a `struct` with the following fields:
 
 - Position
+- Velocity
 - Rotation
 - Rotation speed
 - Lifespan
-- Color (soon to be replaced with `ColorGradient` to allow more controlled transitions)
+- Color
 
 This is probably no surprise to you if you have used particles in other engines. What makes particles special is the system that controls them. `ParticleEngine2D` has several rendering options:
 
@@ -29,10 +30,10 @@ But what truly sets the engine apart is how the particle behavior is defined in 
 - Modifiers: Define the update loop of the particles.
 - Finalizers: Define what happens when particles die.
 
-Clockwork comes with several pre-built particle customizations for convenience, which can be found in `ParticleInitializers`, `ParticleModifiers`, and `ParticleFinalizers`. Here is an example of a firework shell that launched into the air at a random angle and spawns a firework explosion on death:
+Clockwork comes with several pre-built particle customizations for convenience, which can be found in `ParticleInitializers`, `ParticleModifiers`, and `ParticleFinalizers`. Here is an example of a firework shell that launches into the air at a random angle and spawns a firework explosion on death:
 
 ```csharp
-ParticleEngine2D fireworks = new(scene);
+ParticleEngine2D fireworks = scene.AddEntity(new ParticleEngine2D());
 fireworks.RenderAsCircle(fireworkRadius);
 fireworks.AddInitializer(ParticleInitializers.ConicDirection(Vector2.UnitY, 15));
 fireworks.AddInitializer(ParticleInitializers.SetSpeed(launchForce));
@@ -55,13 +56,39 @@ fireworks.SpawnParticle(firework);
 
 This example is ripped directly from one of the examples hosted on GitHub. Let's break it down step-by-step:
 
-- `ConicDirection` Initializer: Perhaps in need of a name revision, this sets the direction of particles to a upwards cone with an arc of 30 degrees.
+- `ConicDirection` Initializer: Perhaps in need of a name revision, this sets the direction of particles to an upwards cone with an arc of 30 degrees.
 - `SetSpeed` Initializer: Having the direction set in the previous step, this initializer launches the particles in their existing direction.
 - `OverrideLifespan` Initializer: Particle properties like lifespan can be set when the particle is created, but sometimes it is more readable to do so with initializers.
 - `AddVelocity` Modifier: Adds gravity to the particles.
 - `ApplyMovement` Modifier: Tells the particle to move according to its position and velocity. Otherwise, particles will be static.
-- `AdjustColor` Modifier: To be updated when `ColorGradient` is introduced, this modifier changes the particles color from one to another over its lifetime.
+- `AdjustColor` Modifier: Changes the particle's color from one to another over its lifetime.
 - `CreateBurst` Finalizer: Creates a burst of particles from another particle engine at death.
+
+## Streaming
+
+Particle engines have a built-in streaming system driven by a `FireTimer`. You can configure the stream cooldown and toggle streaming on and off:
+
+```csharp
+ParticleEngine2D emitter = scene.AddEntity(new ParticleEngine2D(streamCooldownTime: 0.05f));
+emitter.IsStreaming = true;
+emitter.StreamFired += (out Particle2D particle) =>
+{
+	particle = new() { Position = emitterPosition };
+};
+```
+
+The `StreamFired` event asks you to provide a particle template each time the stream fires. You can also adjust `StreamCooldownTime` at runtime.
+
+## Exhaustion
+
+When all particles have died, `IsExhausted` becomes `true`. Set `RemoveOnExhausted` to have the engine remove itself from the scene automatically, and subscribe to the `Exhausted` event if you need to react:
+
+```csharp
+fireworks.RemoveOnExhausted = true;
+fireworks.Exhausted += OnFireworksFinished;
+```
+
+## Custom Behaviors
 
 The included customizations were not designed to be thorough, because the particle system is intended to be customized by the scripter. Customizations are based on delegates which are easy enough to design. Here's what the included velocity modifier looks like:
 
@@ -74,5 +101,3 @@ public static Particle2DModifier AddVelocity(Vector2 velocity)
 	};
 }
 ```
-
-More included particle customizations will be added in the future.
