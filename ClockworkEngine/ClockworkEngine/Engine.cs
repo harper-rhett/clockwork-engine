@@ -4,6 +4,9 @@ using Clockwork.Windowing;
 using Clockwork.Audio;
 using System.Runtime.InteropServices;
 using Clockwork.Graphics.Text;
+using System.Collections.Generic;
+using System;
+using System.IO;
 
 namespace Clockwork;
 

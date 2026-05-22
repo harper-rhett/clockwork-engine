@@ -2,6 +2,8 @@
 using Clockwork.Graphics.Draw2D;
 using Clockwork.Graphics.Text;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace Clockwork.Graphs;

@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Numerics;
 using Clockwork.Utilities;
+using System;
 
 namespace Clockwork.Graphics.Cameras;
 

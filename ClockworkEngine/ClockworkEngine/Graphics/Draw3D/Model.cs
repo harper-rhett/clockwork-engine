@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Numerics;
+using System;
 
 namespace Clockwork.Graphics.Draw3D;
 

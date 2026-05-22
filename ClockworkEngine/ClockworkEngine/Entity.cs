@@ -1,4 +1,6 @@
-﻿namespace Clockwork;
+﻿using System;
+
+namespace Clockwork;
 
 public abstract class Entity
 {

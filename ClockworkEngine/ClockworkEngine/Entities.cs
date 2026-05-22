@@ -1,4 +1,6 @@
-﻿namespace Clockwork;
+﻿using System.Collections.Generic;
+
+namespace Clockwork;
 
 public class Entities
 {

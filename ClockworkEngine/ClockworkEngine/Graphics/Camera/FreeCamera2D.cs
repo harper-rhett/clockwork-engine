@@ -1,4 +1,5 @@
 ﻿using Clockwork.Input;
+using System;
 using System.Numerics;
 
 namespace Clockwork.Graphics.Cameras;
@@ -15,15 +16,17 @@ public class FreeCamera2D : Camera2D
 
 	public override void OnUpdate()
 	{
-		bool isSprinting = Keyboard.IsKeyDown(KeyboardKey.LeftShift);
+		float speedModifier = 1;
+		if (Keyboard.IsKeyDown(KeyboardKey.LeftShift)) speedModifier = 3;
+		else if (Keyboard.IsKeyDown(KeyboardKey.LeftControl)) speedModifier = 0.25f;
 
-		Move(isSprinting);
-		Zoom(isSprinting);
+		Move(speedModifier);
+		Zoom(speedModifier);
 
 		base.OnUpdate();
 	}
 
-	private void Move(bool isSprinting)
+	private void Move(float speedModifier)
 	{
 		Vector2 direction = Vector2.Zero;
 
@@ -35,17 +38,15 @@ public class FreeCamera2D : Camera2D
 
 		if (direction.Length() > 0)
 		{
-			float finalMovementSpeed = isSprinting ? MovementSpeed * 3 : MovementSpeed;
 			Vector2 normalizedDirection = Vector2.Normalize(direction);
-			Transform.WorldPosition += normalizedDirection * finalMovementSpeed * Engine.FrameTime;
+			Transform.WorldPosition += normalizedDirection * MovementSpeed * speedModifier * Engine.FrameTime;
 		}
 	}
 
-	private void Zoom(bool isSprinting)
+	private void Zoom(float speedModifier)
 	{
-		float finalZoomSpeed = isSprinting ? ZoomSpeed * 2 : ZoomSpeed;
-		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += finalZoomSpeed * Engine.FrameTime;
-		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= finalZoomSpeed * Engine.FrameTime;
+		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * speedModifier * Engine.FrameTime;
+		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * speedModifier * Engine.FrameTime;
 		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, 0.25f, 10);
 	}
 }

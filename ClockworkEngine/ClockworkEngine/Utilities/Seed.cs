@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Clockwork.Utilities
 {
@@ -59,7 +61,7 @@ namespace Clockwork.Utilities
 
 		public float NextRadians()
 		{
-			return NextFloat() * MathF.Tau;
+			return NextFloat() * float.Tau;
 		}
 
 		public float NextDegrees()
@@ -70,8 +72,8 @@ namespace Clockwork.Utilities
 		public Vector2 NextUnitVector2()
 		{
 			float radians = NextRadians();
-			float x = MathF.Cos(radians);
-			float y = MathF.Sin(radians);
+			float x = float.Cos(radians);
+			float y = float.Sin(radians);
 			return new Vector2(x, y);
 		}
 
@@ -81,18 +83,25 @@ namespace Clockwork.Utilities
 			float z = NextFloat(-1f, 1f);
 			float radius = float.Sqrt(1f - z * z);
 
-			float x = radius * MathF.Cos(azimuth);
-			float y = radius * MathF.Sin(azimuth);
+			float x = radius * float.Cos(azimuth);
+			float y = radius * float.Sin(azimuth);
 			return new Vector3(x, y, z);
 		}
 
-		public void Shuffle<Type>(IList<Type> list)
+		public void ShuffleNextList<Type>(IList<Type> list)
 		{
 			for (int index = list.Count - 1; index > 0; index--)
 			{
 				int randomIndex = NextInteger(index + 1);
 				(list[index], list[randomIndex]) = (list[randomIndex], list[index]);
 			}
+		}
+
+		public List<Type> GetNextShuffledList<Type>(IList<Type> list)
+		{
+			List<Type> shuffledList = new(list);
+			ShuffleNextList(shuffledList);
+			return shuffledList;
 		}
 
 		public int NextIndex<Type>(ICollection<Type> collection)

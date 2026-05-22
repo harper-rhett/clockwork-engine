@@ -1,4 +1,6 @@
-﻿namespace Clockwork.Graphics.Draw3D;
+﻿using System;
+
+namespace Clockwork.Graphics.Draw3D;
 
 public class Material : IDisposable
 {
