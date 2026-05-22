@@ -2,9 +2,9 @@
 
 namespace Clockwork.Utilities;
 
-public class RotationTransform2D
+public class Rotation2D : IRotation2D
 {
-	public RotationTransform2D Parent;
+	public Rotation2D Parent;
 
 	public float WorldRotation
 	{
@@ -12,13 +12,14 @@ public class RotationTransform2D
 		set => LocalRotation = Parent is null ? value : value - Parent.WorldRotation;
 	}
 
-	public float LocalRotation;
+	public float LocalRotation { get; set; }
 
+	public static Matrix3x2 GetRotation(float localRotation) => Matrix3x2.CreateRotation(float.DegreesToRadians(localRotation));
 	public Matrix3x2 Matrix
 	{
 		get
 		{
-			Matrix3x2 rotationMatrix = Matrix3x2.CreateRotation(float.DegreesToRadians(LocalRotation));
+			Matrix3x2 rotationMatrix = GetRotation(LocalRotation);
 			if (Parent is null) return rotationMatrix;
 			else return rotationMatrix * Parent.Matrix;
 		}

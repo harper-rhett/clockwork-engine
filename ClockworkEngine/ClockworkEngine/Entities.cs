@@ -24,14 +24,17 @@ public class Entities
 
 	internal void ProcessAdditions()
 	{
-		List<Entity> entitiesToAddCopy = new(entitiesToAdd);
+		// Loop through entities to add
 		foreach (Entity entity in entitiesToAdd)
 		{
 			AddToUpdateLayer(entity);
 			AddToDrawLayer(entity);
 		}
-		foreach (Entity entity in entitiesToAddCopy) entity.OnAddedToScene();
+
+		// Reset
+		List<Entity> entitiesToAddCopy = new(entitiesToAdd);
 		entitiesToAdd.Clear();
+		foreach (Entity entity in entitiesToAddCopy) entity.OnAddedToScene();
 	}
 
 	private void AddToUpdateLayer(Entity entityToAdd)
@@ -89,14 +92,17 @@ public class Entities
 
 	internal void ProcessRemovals()
 	{
-		List<Entity> entitiesToRemoveCopy = new(entitiesToRemove);
+		// Loop through entities to remove
 		foreach (Entity entity in entitiesToRemove)
 		{
 			updateLayers[entity.UpdateLayer].Remove(entity);
 			drawLayers[entity.DrawLayer].Remove(entity);	
 		}
-		foreach (Entity entity in entitiesToRemoveCopy) entity.OnRemovedFromScene();
+
+		// Reset
+		List<Entity> entitiesToRemoveCopy = new(entitiesToRemove);
 		entitiesToRemove.Clear();
+		foreach (Entity entity in entitiesToRemoveCopy) entity.OnRemovedFromScene();
 	}
 
 	private List<Entity> GetLayerEntities(SortedList<int, List<Entity>> layers, int layer)

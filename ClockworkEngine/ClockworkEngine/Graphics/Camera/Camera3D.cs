@@ -1,7 +1,7 @@
 ﻿using Clockwork.Utilities;
 using System.Numerics;
 
-namespace Clockwork.Graphics.Camera;
+namespace Clockwork.Graphics.Cameras;
 
 public class Camera3D : CameraEntity
 {

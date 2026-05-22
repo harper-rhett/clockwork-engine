@@ -1,5 +1,5 @@
 ﻿using Clockwork.Graphics;
-using Clockwork.Graphics.Camera;
+using Clockwork.Graphics.Cameras;
 
 namespace Clockwork;
 

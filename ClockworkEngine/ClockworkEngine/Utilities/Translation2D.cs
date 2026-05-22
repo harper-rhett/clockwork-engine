@@ -2,9 +2,9 @@
 
 namespace Clockwork.Utilities;
 
-public class TranslationTransform2D
+public class Translation2D : ITranslation2D
 {
-	public TranslationTransform2D Parent;
+	public Translation2D Parent;
 
 	public Vector2 WorldPosition
 	{
@@ -12,13 +12,14 @@ public class TranslationTransform2D
 		set => LocalPosition = Parent is null ? value : Vector2.Transform(value, Parent.MatrixInverse);
 	}
 
-	public Vector2 LocalPosition;
+	public Vector2 LocalPosition { get; set; }
 
+	public static Matrix3x2 GetTranslation(Vector2 localPosition) => Matrix3x2.CreateTranslation(localPosition);
 	public Matrix3x2 Matrix
 	{
 		get
 		{
-			Matrix3x2 translationMatrix = Matrix3x2.CreateTranslation(LocalPosition);
+			Matrix3x2 translationMatrix = GetTranslation(LocalPosition);
 			if (Parent is null) return translationMatrix;
 			else return translationMatrix * Parent.Matrix;
 		}
