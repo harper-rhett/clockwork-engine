@@ -44,4 +44,9 @@ public static class Mouse
 
 	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetMouseCursor")]
 	public static extern void SetCursor(MouseCursor mouseCursor);
+
+	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsCursorOnScreen")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsMouseOnScreen();
+	public static bool IsOnScreen => IsMouseOnScreen();
 }
