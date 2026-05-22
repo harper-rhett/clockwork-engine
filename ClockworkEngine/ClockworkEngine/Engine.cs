@@ -122,7 +122,7 @@ public static class Engine
 
 	public static void DrawDebug(int fontSize, int spacing)
 	{
-		Text.Draw(FPS.ToString(), spacing, spacing, fontSize, Colors.White);
+		Text.Draw(ActualFPS.ToString(), spacing, spacing, fontSize, Colors.White);
 	}
 
 	private static void TakeScreenshot()
@@ -152,7 +152,7 @@ public static class Engine
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
 	private static extern float GetFPS();
-	public static float FPS => GetFPS();
+	public static float ActualFPS => GetFPS();
 
 	public static void TakeScreenshot(string folderPath)
 	{
