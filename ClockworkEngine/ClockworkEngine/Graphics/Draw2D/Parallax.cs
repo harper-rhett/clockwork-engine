@@ -1,5 +1,6 @@
 ﻿using Clockwork.Utilities;
 using System.Numerics;
+using Clockwork.Graphics.Camera;
 
 namespace Clockwork.Graphics;
 

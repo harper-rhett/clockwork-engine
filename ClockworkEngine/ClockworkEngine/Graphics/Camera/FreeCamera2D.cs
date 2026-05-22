@@ -1,7 +1,7 @@
 ﻿using Clockwork.Input;
 using System.Numerics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Camera;
 
 public class FreeCamera2D : Camera2D
 {

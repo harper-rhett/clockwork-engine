@@ -2,7 +2,7 @@
 using Clockwork.Utilities;
 using System.Numerics;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Camera;
 
 public class FreeCamera3D : Camera3D
 {

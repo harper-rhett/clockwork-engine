@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Clockwork.Graphics;
+namespace Clockwork.Graphics.Camera;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct Camera2DInternal
