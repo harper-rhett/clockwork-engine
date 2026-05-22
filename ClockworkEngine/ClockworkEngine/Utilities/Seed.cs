@@ -95,14 +95,14 @@ namespace Clockwork.Utilities
 			}
 		}
 
-		public int Index<Type>(ICollection<Type> collection)
+		public int NextIndex<Type>(ICollection<Type> collection)
 		{
 			return NextInteger(collection.Count);
 		}
 
-		public Type Item<Type>(IList<Type> list)
+		public Type NextItem<Type>(IList<Type> list)
 		{
-			int randomIndex = Index(list);
+			int randomIndex = NextIndex(list);
 			return list[randomIndex];
 		}
 	}
