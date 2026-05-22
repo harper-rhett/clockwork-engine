@@ -21,7 +21,7 @@ public class MusicPlayer : Entity
 	{
 		if (isStarted && !isPaused)
 		{
-			timePlayed += Engine.FrameTime;
+			timePlayed += FrameTime;
 			music.Update();
 			if (timePlayed > endTime) Finish();
 		}

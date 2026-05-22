@@ -74,10 +74,10 @@ public sealed class ParticleEngine2D : Entity
 				RemoveParticle(particleIndex);
 				continue;
 			}
-			particle.timeToDeath -= Engine.FrameTime;
+			particle.timeToDeath -= FrameTime;
 
 			// Apply modifiers
-			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, Scene.Time, Engine.FrameTime);
+			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, Scene.Time, FrameTime);
 		}
 	}
 

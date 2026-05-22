@@ -18,7 +18,7 @@ public class FireTimer : Entity
 	{
 		if (!isStarted) return;
 
-		backloggedTime += Engine.FrameTime;
+		backloggedTime += FrameTime;
 		int backloggedActions = (int)float.Floor(backloggedTime / CooldownTime);
 		backloggedTime -= backloggedActions * CooldownTime;
 

@@ -10,6 +10,8 @@ public abstract class Entity
 	public bool IsRendering = true;
 	public event Action Removed;
 	public bool IsInScene { get; private set; }
+	public float FrameTime => Scene is null ? Engine.GlobalFrameTime : Scene.FrameTime;
+	public float Time => Scene is null ? 0 : Scene.Time;
 
 	// Update layer
 	internal int lastUpdateLayer = 0;

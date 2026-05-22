@@ -9,8 +9,8 @@ public class VerletJoint : CircleShape
 
 	public Vector2 Velocity
 	{
-		get => (Position - lastPosition) / Engine.FrameTime;
-		set => lastPosition = Position - value * Engine.FrameTime;
+		get => (Position - lastPosition) / FrameTime;
+		set => lastPosition = Position - value * FrameTime;
 	}
 
 	public VerletJoint(float radius, Color color) : base(radius, color)
@@ -21,11 +21,11 @@ public class VerletJoint : CircleShape
 	public override void OnUpdate()
 	{
 		base.OnUpdate();
-		if (Engine.FrameTime == 0) return;
+		if (FrameTime == 0) return;
 
 		Vector2 velocity = Velocity;
 		lastPosition = Position;
-		Position = Position + velocity * Engine.FrameTime;
+		Position = Position + velocity * FrameTime;
 	}
 
 	public override void OnAddedToScene()
@@ -35,6 +35,6 @@ public class VerletJoint : CircleShape
 
 	public void AddVelocity(Vector2 velocity)
 	{
-		lastPosition -= velocity * Engine.FrameTime;
+		lastPosition -= velocity * FrameTime;
 	}
 }

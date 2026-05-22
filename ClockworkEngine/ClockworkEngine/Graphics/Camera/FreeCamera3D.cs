@@ -41,7 +41,7 @@ public class FreeCamera3D : Camera3D
 		{
 			float finalMovementSpeed = isSprinting ? MovementSpeed * 3 : MovementSpeed;
 			Vector3 normalizedDirection = Vector3.Normalize(direction);
-			Transform.WorldPosition += normalizedDirection * finalMovementSpeed * Engine.FrameTime;
+			Transform.WorldPosition += normalizedDirection * finalMovementSpeed * FrameTime;
 		}
 	}
 
@@ -57,7 +57,7 @@ public class FreeCamera3D : Camera3D
 		if (yAxis.Length() > 0)
 		{
 			Vector3 normalizedAxis = Vector3.Normalize(yAxis);
-			Transform.WorldRotation = Transform.WorldRotation.RotateWorldAxis(normalizedAxis, finalTurnSpeed * Engine.FrameTime);
+			Transform.WorldRotation = Transform.WorldRotation.RotateWorldAxis(normalizedAxis, finalTurnSpeed * FrameTime);
 		}
 
 		Vector3 localXAxis = Vector3.Zero;
@@ -68,7 +68,7 @@ public class FreeCamera3D : Camera3D
 		if (localXAxis.Length() > 0)
 		{
 			Vector3 normalizedAxis = Vector3.Normalize(localXAxis);
-			Transform.WorldRotation = Transform.WorldRotation.RotateLocalAxis(normalizedAxis, finalTurnSpeed * Engine.FrameTime);
+			Transform.WorldRotation = Transform.WorldRotation.RotateLocalAxis(normalizedAxis, finalTurnSpeed * FrameTime);
 		}
 	}
 }

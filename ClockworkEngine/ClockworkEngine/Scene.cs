@@ -15,6 +15,8 @@ public class Scene
 	public float TimeModifier = 1;
 	public Color BackgroundColor;
 
+	public float FrameTime => Engine.GlobalFrameTime * TimeModifier;
+
 	public Scene()
 	{
 		BackgroundColor = Colors.Black;
@@ -28,7 +30,7 @@ public class Scene
 	public void Update()
 	{
 		if (IsPaused) return;
-		Time += Engine.FrameTime * TimeModifier;
+		Time += FrameTime;
 
 		Entities.ProcessAdditions();
 		Entities.ProcessMoves();

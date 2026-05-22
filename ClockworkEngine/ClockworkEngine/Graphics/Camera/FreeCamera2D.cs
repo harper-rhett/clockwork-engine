@@ -39,14 +39,14 @@ public class FreeCamera2D : Camera2D
 		if (direction.Length() > 0)
 		{
 			Vector2 normalizedDirection = Vector2.Normalize(direction);
-			Transform.WorldPosition += normalizedDirection * MovementSpeed * speedModifier * Engine.FrameTime;
+			Transform.WorldPosition += normalizedDirection * MovementSpeed * speedModifier * FrameTime;
 		}
 	}
 
 	private void Zoom(float speedModifier)
 	{
-		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * speedModifier * Engine.FrameTime;
-		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * speedModifier * Engine.FrameTime;
+		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * speedModifier * FrameTime;
+		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * speedModifier * FrameTime;
 		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, 0.25f, 10);
 	}
 }

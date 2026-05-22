@@ -17,7 +17,7 @@ public static class Engine
 
 	// General
 	private static RenderTexture gameRenderTexture;
-	public static float FrameTime {  get; private set; }
+	public static float GlobalFrameTime {  get; private set; }
 	private static bool isInitialized;
 	internal const string raylibLibraryName = "raylib";
 
@@ -99,8 +99,8 @@ public static class Engine
 
 	private static void MasterUpdate()
 	{
-		FrameTime = GetFrameTime();
-		if (FrameTime > 0.1f) FrameTime = 0.1f;
+		GlobalFrameTime = GetFrameTime();
+		if (GlobalFrameTime > 0.1f) GlobalFrameTime = 0.1f;
 		game.OnUpdate();
 		WindowRenderer.Current.Update(gameRenderTexture);
 	}
