@@ -122,7 +122,7 @@ public static class Engine
 
 	public static void DrawDebug(int fontSize, int spacing)
 	{
-		Text.Draw(ActualFPS.ToString(), spacing, spacing, fontSize, Colors.White);
+		Text.Draw($"{ActualFPS} FPS", spacing, spacing, fontSize, Colors.White);
 	}
 
 	private static void TakeScreenshot()

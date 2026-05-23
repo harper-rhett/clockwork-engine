@@ -12,6 +12,12 @@ public class VerletJoint : CircleShape
 		get => (Position - lastPosition) / FrameTime;
 		set => lastPosition = Position - value * FrameTime;
 	}
+	private float inverseDamping = 1;
+	public float Damping
+	{
+		get => 1f - inverseDamping;
+		set => inverseDamping = float.Clamp(1f - value, 0f, 1f);
+	}
 
 	public VerletJoint(float radius, Color color) : base(radius, color)
 	{
@@ -20,10 +26,17 @@ public class VerletJoint : CircleShape
 
 	public override void OnUpdate()
 	{
+		// Update base
 		base.OnUpdate();
 		if (FrameTime == 0) return;
 
+		// Cache velocity
 		Vector2 velocity = Velocity;
+
+		// Damping
+		if (inverseDamping < 1f) velocity *= float.Pow(inverseDamping, FrameTime);
+
+		// Update position
 		lastPosition = Position;
 		Position = Position + velocity * FrameTime;
 	}
