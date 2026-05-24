@@ -8,6 +8,8 @@ public class FreeCamera2D : Camera2D
 {
 	public float MovementSpeed = 50f;
 	public float ZoomSpeed = 1.0f;
+	public float MinZoomOut = 0.25f;
+	public float MaxZoomIn = 10f;
 
 	public FreeCamera2D() : base()
 	{
@@ -47,6 +49,6 @@ public class FreeCamera2D : Camera2D
 	{
 		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * speedModifier * FrameTime;
 		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * speedModifier * FrameTime;
-		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, 0.25f, 10);
+		InternalCamera.Zoom = float.Clamp(InternalCamera.Zoom, MinZoomOut, MaxZoomIn);
 	}
 }

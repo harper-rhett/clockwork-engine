@@ -14,6 +14,11 @@ public class Camera2D : CameraEntity
 		get => InternalCamera.Offset;
 		set => InternalCamera.Offset = value;
 	}
+	public float Zoom
+	{
+		get => InternalCamera.Zoom;
+		set => InternalCamera.Zoom = value;
+	}
 
 	// Mouse
 	public float MouseWorldX => Mouse.GameX - Engine.HalfGameWidth + Transform.WorldPosition.X;
