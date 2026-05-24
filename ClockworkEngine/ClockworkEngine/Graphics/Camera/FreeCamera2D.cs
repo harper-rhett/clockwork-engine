@@ -8,7 +8,7 @@ public class FreeCamera2D : Camera2D
 {
 	public float MovementSpeed = 50f;
 	public float ZoomSpeed = 1.0f;
-	public float MinZoomOut = 0.25f;
+	public float MinZoomOut = 0.1f;
 	public float MaxZoomIn = 10f;
 
 	public FreeCamera2D() : base()
