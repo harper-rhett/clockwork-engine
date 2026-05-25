@@ -21,8 +21,8 @@ public class Camera2D : CameraEntity
 	}
 
 	// Mouse
-	public float MouseWorldX => Mouse.GameX - Engine.HalfGameWidth + Transform.WorldPosition.X;
-	public float MouseWorldY => Mouse.GameY - Engine.HalfGameHeight + Transform.WorldPosition.Y;
+	public float MouseWorldX => (Mouse.GameX - Engine.HalfGameWidth) / Zoom + Transform.WorldPosition.X;
+	public float MouseWorldY => (Mouse.GameY - Engine.HalfGameHeight) / Zoom + Transform.WorldPosition.Y;
 
 	public Camera2D()
 	{

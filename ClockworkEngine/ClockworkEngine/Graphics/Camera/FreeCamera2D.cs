@@ -22,13 +22,13 @@ public class FreeCamera2D : Camera2D
 		if (Keyboard.IsKeyDown(KeyboardKey.LeftShift)) speedModifier = 3;
 		else if (Keyboard.IsKeyDown(KeyboardKey.LeftControl)) speedModifier = 0.25f;
 
-		Move(speedModifier);
-		Zoom(speedModifier);
+		ControlMovement(speedModifier);
+		ControlZoom(speedModifier);
 
 		base.OnUpdate();
 	}
 
-	private void Move(float speedModifier)
+	private void ControlMovement(float speedModifier)
 	{
 		Vector2 direction = Vector2.Zero;
 
@@ -45,7 +45,7 @@ public class FreeCamera2D : Camera2D
 		}
 	}
 
-	private void Zoom(float speedModifier)
+	private void ControlZoom(float speedModifier)
 	{
 		if (Keyboard.IsKeyDown(KeyboardKey.Up)) InternalCamera.Zoom += ZoomSpeed * speedModifier * FrameTime;
 		else if (Keyboard.IsKeyDown(KeyboardKey.Down)) InternalCamera.Zoom -= ZoomSpeed * speedModifier * FrameTime;
