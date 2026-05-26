@@ -9,6 +9,8 @@ public unsafe struct Sound : IDisposable
 	public AudioStream Stream;
 	public uint FrameCount;
 
+	public Sound() => throw new InvalidOperationException("Sound must be instantiated from Sound.Load.");
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadSound")]
 	public static extern Sound Load(string filePath);
 

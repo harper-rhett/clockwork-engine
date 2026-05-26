@@ -14,6 +14,8 @@ public unsafe struct Texture : IDisposable
 	public int Mipmaps;
 	public PixelFormat Format;
 
+	public Texture() => throw new InvalidOperationException("Texture must be instantiated from Texture.Load.");
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadTexture")]
 	public extern static Texture Load(string filePath);
 

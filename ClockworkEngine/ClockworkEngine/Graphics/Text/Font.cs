@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Clockwork.Graphics.Text;
 
@@ -11,6 +12,8 @@ public unsafe struct Font
 	public Texture Texture;
 	public Rectangle* Recs;
 	public GlyphInfo* Glyphs;
+
+	public Font() => throw new InvalidOperationException("Font must be instantiated from Font.Load.");
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFontDefault")]
 	private static extern Font GetFont();

@@ -17,6 +17,8 @@ public unsafe struct Model : IDisposable
 	public BoneInfo* Bones;
 	public RaylibTransform* BindPose;
 
+	public Model() => throw new InvalidOperationException("Model must be instantiated from Model.Load.");
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadModel")]
 	public static extern Model Load(string fileName);
 

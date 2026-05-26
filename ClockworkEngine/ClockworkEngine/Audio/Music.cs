@@ -17,6 +17,8 @@ public unsafe struct Music : IDisposable
 	public int CtxType;
 	public void* CtxData;
 
+	public Music() => throw new InvalidOperationException("Music must be instantiated from Music.Load.");
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadMusicStream")]
 	public static extern Music Load(string filePath);
 

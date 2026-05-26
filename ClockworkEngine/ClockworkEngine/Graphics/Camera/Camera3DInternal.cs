@@ -33,8 +33,11 @@ public struct Camera3DInternal
 		Projection = projection;
 	}
 
+	public Scope GetRenderScope() => new Scope(BeginRendering, EndRendering);
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginMode3D")]
 	public static extern void BeginRendering(Camera3DInternal camera3D);
+	internal void BeginRendering() => BeginRendering(this);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndMode3D")]
 	public static extern void EndRendering();

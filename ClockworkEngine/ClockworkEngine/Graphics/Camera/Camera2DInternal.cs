@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using Clockwork.Utilities;
+using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace Clockwork.Graphics.Cameras;
@@ -18,8 +19,11 @@ public struct Camera2DInternal
 		Zoom = zoom;
 	}
 
+	public Scope GetRenderScope() => new Scope(BeginRendering, EndRendering);
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginMode2D")]
 	public static extern void BeginRendering(Camera2DInternal camera2D);
+	internal void BeginRendering() => BeginRendering(this);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndMode2D")]
 	public static extern void EndRendering();

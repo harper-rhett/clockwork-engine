@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clockwork.Utilities;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Clockwork.Graphics;
@@ -10,8 +11,11 @@ public struct RenderTexture : IDisposable
 	public Texture Texture;
 	public Texture Depth;
 
+	public RenderTexture() => throw new InvalidOperationException("RenderTexture must be instantiated from RenderTexture.Load.");
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginTextureMode")]
 	public static extern void BeginDrawing(RenderTexture renderTexture);
+	internal void BeginDrawing() => BeginDrawing(this);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndTextureMode")]
 	public static extern void EndDrawing();
@@ -27,6 +31,7 @@ public struct RenderTexture : IDisposable
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadRenderTexture")]
 	private static extern void Unload(RenderTexture renderTexture);
 
+	public Scope GetDrawScope() => new Scope(BeginDrawing, EndDrawing);
 	public void Dispose()
 	{
 		Unload(this);
