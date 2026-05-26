@@ -9,7 +9,7 @@ public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, 
 {
 	public Transform2D Transform { get; set; } = new();
 	public float Radius;
-
+	public int Segments = 36;
 	public Color Color;
 
 	// Transform shortcuts
@@ -32,7 +32,7 @@ public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, 
 
 	public override void OnDraw()
 	{
-		Primitives2D.DrawCircle(Position, Radius, Color);
+		Primitives2D.DrawCircle(Position, Radius, Segments, Color);
 	}
 
 	public bool IntersectsWithPoint(Vector2 position) => Intersection2D.PointInCircle(position, Position, Radius);

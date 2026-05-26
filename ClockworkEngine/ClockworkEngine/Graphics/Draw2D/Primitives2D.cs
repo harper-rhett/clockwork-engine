@@ -39,6 +39,7 @@ public static class Primitives2D
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawCircleSector")]
 	public static extern void DrawArc(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color);
+	public static void DrawCircle(Vector2 position, float radius, int segments, Color color) => DrawArc(position, radius, 0f, 360f, segments, color);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawCircleSectorLines")]
 	public static extern void DrawArcLines(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color color);
@@ -62,11 +63,18 @@ public static class Primitives2D
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawEllipseLines")]
 	public static extern void DrawEllipseLines(int x, int y, float horizontalRadius, float verticalRadius, Color color);
 
-	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRings")]
-	public static extern void DrawRing(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRing")]
+	public static extern void DrawRingArc(Vector2 position, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
+	public static void DrawRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color color) => DrawRingArc(position, innerRadius, outerRadius, 0f, 360f, segments, color);
+	public static void DrawCircle(Vector2 position, float radius, int segments, float thickness, Color color)
+	{
+		float halfThickness = thickness / 2f;
+		DrawRing(position, radius - halfThickness, radius + halfThickness, segments, color);
+	}
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRingLines")]
-	public static extern void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
+	public static extern void DrawRingArcLines(Vector2 position, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
+	public static void DrawRingLines(Vector2 position, float innerRadius, float outerRadius, int segments, Color color) => DrawRingArcLines(position, innerRadius, outerRadius, 0f, 360f, segments, color);
 
 	// Rectangles
 
