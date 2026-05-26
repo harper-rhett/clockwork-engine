@@ -8,26 +8,8 @@ namespace Clockwork.Shapes;
 public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 {
 	public Transform2D Transform { get; set; } = new();
-	private float radius;
-	public float Radius
-	{
-		get => radius;
-		set
-		{
-			radius = value;
-			diameter = radius * 2f;
-		}
-	}
-	private float diameter;
-	public float Diameter
-	{
-		get => diameter;
-		set
-		{
-			diameter = value;
-			radius = diameter * 0.5f;
-		}
-	}
+	public float Radius;
+
 	public Color Color;
 
 	// Transform shortcuts

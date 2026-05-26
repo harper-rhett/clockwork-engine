@@ -1,8 +1,9 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Utilities;
 using System.Numerics;
+using Clockwork.Shapes;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Simulation;
 
 public class VerletBone : LineShape
 {

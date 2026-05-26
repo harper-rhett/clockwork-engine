@@ -1,7 +1,8 @@
 ﻿using Clockwork.Graphics;
 using System.Numerics;
+using Clockwork.Shapes;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Simulation;
 
 public class VerletJoint : CircleShape
 {
