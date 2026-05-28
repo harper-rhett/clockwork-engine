@@ -2,7 +2,7 @@
 
 namespace Clockwork.Utilities;
 
-internal class QuadtreePoint<Type>
+internal struct QuadtreePoint<Type>
 {
 	public readonly Type Item;
 	public readonly Vector2 Position;

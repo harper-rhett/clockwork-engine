@@ -57,9 +57,9 @@ internal class QuadtreeNode<ItemType>
 	private void Split()
 	{
 		// Initialize positional values
-		centerX = x + (eastX - westX) / 2f;
-		centerY = y + (southY - northY) / 2f;
 		float halfSize = size / 2f;
+		centerX = x + halfSize;
+		centerY = y + halfSize;
 
 		// Create sub nodes
 		northWest = new(new Vector2(x, y), halfSize, nodeCapacity);
