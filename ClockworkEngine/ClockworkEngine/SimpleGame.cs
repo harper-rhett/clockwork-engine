@@ -9,7 +9,6 @@ public class SimpleGame : Game
 	public SimpleGame(Scene scene)
 	{
 		Scene = scene;
-		Window.SetResizable(false);
 	}
 
 	public override void OnUpdate()

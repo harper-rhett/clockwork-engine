@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clockwork.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -75,6 +76,18 @@ namespace Clockwork.Utilities
 			float x = float.Cos(radians);
 			float y = float.Sin(radians);
 			return new Vector2(x, y);
+		}
+
+		public Vector2 NextVector2(float westX, float northY, float eastX, float southY)
+		{
+			float x = NextFloat(westX, eastX);
+			float y = NextFloat(northY, southY);
+			return new Vector2(x, y);
+		}
+
+		public Vector2 NextVector2(Rectangle bounds)
+		{
+			return NextVector2(bounds.X, bounds.X + bounds.Width, bounds.Y, bounds.Y + bounds.Height);
 		}
 
 		public Vector3 NextUnitVector3()

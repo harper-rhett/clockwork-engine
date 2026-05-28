@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clockwork.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -28,6 +29,8 @@ public static class Generate
 	public static float Radians() => seed.NextRadians();
 	public static float Degrees() => seed.NextDegrees();
 	public static Vector2 UnitVector2() => seed.NextUnitVector2();
+	public static Vector2 Vector2(float westX, float northY, float eastX, float southY) => seed.NextVector2(westX, northY, eastX, southY);
+	public static Vector2 Vector2(Rectangle bounds) => seed.NextVector2(bounds);
 	public static Vector3 UnitVector3() => seed.NextUnitVector3();
 
 	// Shuffling

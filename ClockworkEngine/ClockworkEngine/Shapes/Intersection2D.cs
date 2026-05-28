@@ -86,10 +86,9 @@ public static class Intersection2D
 		// Get distance
 		float xDistance = circlePosition.X - xEdge;
 		float yDistance = circlePosition.Y - yEdge;
-		float distance = float.Sqrt(xDistance * xDistance + yDistance * yDistance);
 
 		// Check for intersection
-		return distance <= circleRadius;
+		return (xDistance * xDistance + yDistance * yDistance) <= (circleRadius * circleRadius);
 	}
 
 	public static bool PointOnLine(Vector2 pointPosition, Vector2 lineStartPosition, Vector2 lineEndPosition, float tolerance)
@@ -112,27 +111,17 @@ public static class Intersection2D
 	// https://stackoverflow.com/a/1079478/13591389
 	public static bool CircleOnLine(Vector2 circlePosition, float radius, Vector2 lineStartPosition, Vector2 lineEndPosition)
 	{
-		Vector2 lineStartToCircle = circlePosition - lineStartPosition;
-		Vector2 lineStartToEnd = lineEndPosition - lineStartPosition;
-		float lineLengthSquared = lineStartToEnd.LengthSquared();
-		float dot = Vector2.Dot(lineStartToCircle, lineStartToEnd);
-		if (dot < 0 || dot > lineLengthSquared) return false;
-		Vector2 closestPoint = lineStartPosition + (dot / lineLengthSquared) * lineStartToEnd;
-		float distanceToLine = Vector2.Distance(circlePosition, closestPoint);
-		return distanceToLine <= radius;
-	}
-
-	// Help from Claude
-	public static bool CircleOnLineSquared(Vector2 circlePosition, float radiusSquared, Vector2 lineStartPosition, Vector2 lineEndPosition)
-	{
 		Vector2 lineStartToCircle = circlePosition - lineStartPosition; // AC
 		Vector2 lineStartToEnd = lineEndPosition - lineStartPosition; // AB
-		float lineLengthSquared = lineStartToEnd.LengthSquared();
-		float dot = Vector2.Dot(lineStartToCircle, lineStartToEnd);
-		if (dot < 0 || dot > lineLengthSquared) return false;
-		Vector2 closestPoint = lineStartPosition + (dot / lineLengthSquared) * lineStartToEnd;
-		float squaredDistanceToLine = (circlePosition - closestPoint).LengthSquared();
-		return squaredDistanceToLine <= radiusSquared;
+		Vector2 projectedPosition = lineStartPosition + lineStartToCircle.Projected(lineStartToEnd); // D
+
+		float distanceToLine = Vector2.Distance(circlePosition, projectedPosition); // CD
+		if (distanceToLine > radius) return false;
+
+		float distanceToStart = Vector2.Distance(circlePosition, lineStartPosition);
+		float distanceToEnd = Vector2.Distance(circlePosition, lineEndPosition);
+		float distanceToBoth = distanceToStart + distanceToEnd - radius * 2;
+		return distanceToBoth < lineStartToEnd.Length();
 	}
 
 	// https://paulbourke.net/geometry/pointlineplane/

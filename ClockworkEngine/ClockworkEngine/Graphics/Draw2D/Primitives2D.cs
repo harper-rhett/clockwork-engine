@@ -66,11 +66,12 @@ public static class Primitives2D
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRing")]
 	public static extern void DrawRingArc(Vector2 position, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
 	public static void DrawRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color color) => DrawRingArc(position, innerRadius, outerRadius, 0f, 360f, segments, color);
-	public static void DrawCircle(Vector2 position, float radius, int segments, float thickness, Color color)
+	public static void DrawCircleLines(Vector2 position, float radius, int segments, float thickness, Color color)
 	{
 		float halfThickness = thickness / 2f;
 		DrawRing(position, radius - halfThickness, radius + halfThickness, segments, color);
 	}
+	public static void DrawCircleLines(Vector2 position, float radius, float thickness, Color color) => DrawCircleLines(position, radius, 36, thickness, color);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawRingLines")]
 	public static extern void DrawRingArcLines(Vector2 position, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);
