@@ -8,43 +8,31 @@ using System.Numerics;
 
 namespace Clockwork.Utilities;
 
-public class Quadtree<ValueType> : IEnumerable
+public class Quadtree<ItemType> : IEnumerable
 {
-	private QuadtreeNode<ValueType> rootNode;
-	private int nodeCapacity;
-	public int NodeCapacity
-	{
-		get => nodeCapacity;
-		set
-		{
-			nodeCapacity = value;
-			List<QuadtreeNode<ValueType>> leafNodes = GetLeafNodes();
-			foreach (QuadtreeNode<ValueType> leafNode in leafNodes) leafNode.nodeCapacity = nodeCapacity;
-		}
-	}
+	private QuadtreeNode<ItemType> rootNode;
 
-	public Quadtree(Vector2 position, float size)
+	public Quadtree(Vector2 position, float size, int nodeCapacity = 4)
 	{
 		rootNode = new(position, size, nodeCapacity);
-		NodeCapacity = 4;
 	}
 
-	public void Add(ValueType value, Vector2 position)
+	public void Add(ItemType item, Vector2 position)
 	{
-		QuadtreeItem<ValueType> quadtreeItem = new(value, position);
+		QuadtreePoint<ItemType> quadtreeItem = new(item, position);
 		rootNode.Add(quadtreeItem);
 	}
 
-	private List<QuadtreeNode<ValueType>> GetLeafNodes()
+	private List<QuadtreeNode<ItemType>> GetLeafNodes()
 	{
-		List<QuadtreeNode<ValueType>> leafNodes = new();
+		List<QuadtreeNode<ItemType>> leafNodes = new();
 		rootNode.CollectLeafNodes(leafNodes);
 		return leafNodes;
 	}
 
 	public Rectangle[] GetLeafBounds()
 	{
-		List<QuadtreeNode<ValueType>> leafNodes = GetLeafNodes();
+		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
 
 		Rectangle[] rectangles = new Rectangle[leafNodes.Count];
 		for (int leafIndex = 0; leafIndex < leafNodes.Count; leafIndex++)
@@ -55,48 +43,46 @@ public class Quadtree<ValueType> : IEnumerable
 		return rectangles;
 	}
 
-	private List<QuadtreeNode<ValueType>> GetNodesIntersectingRadius(Vector2 position, float radius)
+	private List<QuadtreeNode<ItemType>> GetNodesIntersectingRadius(Vector2 position, float radius)
 	{
-		List<QuadtreeNode<ValueType>> nodes = new();
+		List<QuadtreeNode<ItemType>> nodes = new();
 		rootNode.CollectNodesIntersectingRadius(position, radius, nodes);
 		return nodes;
 	}
 
-	private List<QuadtreeItem<ValueType>> GetItemsInRadius(Vector2 position, float radius)
+	public List<Rectangle> GetBoundsIntersectingRadius(Vector2 position, float radius)
 	{
-		List<QuadtreeNode<ValueType>> nodes = GetNodesIntersectingRadius(position, radius);
-		List<QuadtreeItem<ValueType>> items = new();
-		float radiusSquared = radius * radius;
-		foreach (QuadtreeNode<ValueType> node in nodes)
-		{
-			foreach (QuadtreeItem<ValueType> item in node.Items)
-			{
-				float distanceSquared = Vector2.DistanceSquared(position, item.Position);
-				if (distanceSquared < radiusSquared) items.Add(item);
-			}
-		}
+		List<Rectangle> bounds = new();
+		rootNode.CollectBoundsIntersectingRadius(position, radius, bounds);
+		return bounds;
+	}
 
+	private List<QuadtreePoint<ItemType>> GetPointsInRadius(Vector2 position, float radius)
+	{
+		List<QuadtreePoint<ItemType>> points = new();
+		rootNode.CollectPointsIntersectingRadius(position, radius, radius * radius, points);
+		return points;
+	}
+
+	public List<ItemType> GetItemsInRadius(Vector2 position, float radius)
+	{
+		List<ItemType> items = new();
+		rootNode.CollectItemsIntersectingRadius(position, radius, radius * radius, items);
 		return items;
 	}
 
-	public List<ValueType> GetValuesInRadius(Vector2 position, float radius)
+	private IEnumerable<QuadtreePoint<ItemType>> GetPoints()
 	{
-		List<QuadtreeItem<ValueType>> itemsInRadius = GetItemsInRadius(position, radius);
-		return itemsInRadius.Select(item => item.Value).ToList();
+		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
+		foreach (QuadtreeNode<ItemType> node in leafNodes)
+			foreach (QuadtreePoint<ItemType> point in node.Points) yield return point;
 	}
 
-	private IEnumerable<QuadtreeItem<ValueType>> GetItems()
+	public IEnumerator<ItemType> GetEnumerator()
 	{
-		List<QuadtreeNode<ValueType>> leafNodes = GetLeafNodes();
-		foreach (QuadtreeNode<ValueType> node in leafNodes)
-			foreach (QuadtreeItem<ValueType> item in node.Items) yield return item;
-	}
-
-	public IEnumerator<ValueType> GetEnumerator()
-	{
-		List<QuadtreeNode<ValueType>> leafNodes = GetLeafNodes();
-		foreach (QuadtreeNode<ValueType> node in leafNodes)
-			foreach (QuadtreeItem<ValueType> item in node.Items) yield return item.Value;
+		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
+		foreach (QuadtreeNode<ItemType> node in leafNodes)
+			foreach (QuadtreePoint<ItemType> point in node.Points) yield return point.Item;
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
@@ -104,20 +90,20 @@ public class Quadtree<ValueType> : IEnumerable
 		return GetEnumerator();
 	}
 
-	public void DrawBounds(float lineThickness)
+	public void DrawBounds(float lineThickness, Color color)
 	{
 		Rectangle[] rectangles = GetLeafBounds();
 		foreach (Rectangle rectangle in rectangles)
 		{
-			Primitives2D.DrawRectangleLines(rectangle, lineThickness, Colors.Green);
+			Primitives2D.DrawRectangleLines(rectangle, lineThickness, color);
 		}
 	}
 
-	public void DrawPoints(float pointRadius)
+	public void DrawPoints(float pointRadius, Color color)
 	{
-		foreach (QuadtreeItem<ValueType> item in GetItems())
+		foreach (QuadtreePoint<ItemType> point in GetPoints())
 		{
-			Primitives2D.DrawCircle(item.Position, pointRadius, Colors.White);
+			Primitives2D.DrawCircle(point.Position, pointRadius, color);
 		}
 	}
 }
