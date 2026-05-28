@@ -1,5 +1,6 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Graphics.Cameras;
+using System.Collections.Generic;
 
 namespace Clockwork;
 
@@ -25,6 +26,17 @@ public class Scene
 	public Scene(Color backgroundColor)
 	{
 		BackgroundColor = backgroundColor;
+	}
+
+	public Scene(IEnumerable<Entity> entities)
+	{
+		foreach (Entity entity in entities) AddEntity(entity);
+	}
+
+	public Scene(IEnumerable<Entity> entities, Color backgroundColor)
+	{
+		BackgroundColor = backgroundColor;
+		foreach (Entity entity in entities) AddEntity(entity);
 	}
 
 	public void Update()

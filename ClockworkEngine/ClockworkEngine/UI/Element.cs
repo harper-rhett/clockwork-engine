@@ -25,6 +25,21 @@ public class Element : Entity
 	public event Action<Element> Pressed;
 	public event Action<Element> Released;
 
+	public Element()
+	{
+		Rectangle = new(Vector2.Zero, Engine.GameSize);
+	}
+
+	public Element(int x, int y, int width, int height)
+	{
+		Rectangle = new(x, y, width, height);
+	}
+
+	public Element(Vector2 position, Vector2 size)
+	{
+		Rectangle = new(position, size);
+	}
+
 	public override void OnUpdate()
 	{
 		UpdateHover();

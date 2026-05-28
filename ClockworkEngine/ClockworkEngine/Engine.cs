@@ -7,6 +7,7 @@ using Clockwork.Graphics.Text;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Numerics;
 
 namespace Clockwork;
 
@@ -22,13 +23,13 @@ public static class Engine
 	internal const string raylibLibraryName = "raylib";
 
 	// Game size
-	public static Coordinate GameSize
+	public static Vector2 GameSize
 	{
 		get => new(GameWidth, GameHeight);
 		set
 		{
-			GameWidth = value.X;
-			GameHeight = value.Y;
+			GameWidth = (int)value.X;
+			GameHeight = (int)value.Y;
 			HalfGameWidth = GameWidth / 2;
 			HalfGameHeight = GameHeight / 2;
 			if (gameRenderTexture.IsValid) gameRenderTexture.Dispose();
@@ -88,7 +89,7 @@ public static class Engine
 
 	public static void Start(IEnumerable<Entity> entities)
 	{
-		Start(new SimpleScene(entities));
+		Start(new Scene(entities));
 	}
 
 	private static void MasterLoop()
