@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Clockwork.UI;
 
-public class Button : Element
+public class Button : Container
 {
 	private static Color DefaultBackgroundColor = Colors.White;
 	private static Color DefaultBorderColor = Colors.Black;
