@@ -208,7 +208,12 @@ internal class QuadtreeNode<ItemType>
 
 	public void QueryPoints(IList<QuadtreePoint<ItemType>> queriedPoints)
 	{
-		for (int pointIndex = 0; pointIndex < pointCount; pointIndex++) queriedPoints.Add(points[pointIndex]);
+		if (isLeafNode)
+		{
+			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++) queriedPoints.Add(points[pointIndex]);
+			return;
+		}
+
 		northWest.QueryPoints(queriedPoints);
 		northEast.QueryPoints(queriedPoints);
 		southWest.QueryPoints(queriedPoints);
@@ -327,6 +332,7 @@ internal class QuadtreeNode<ItemType>
 				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
 				if (distanceSquared < radiusSquared) return true;
 			}
+			return false;
 		}
 		
 		return
