@@ -31,29 +31,29 @@ public class Quadtree<ItemType>
 
 	public void QueryBounds(IList<Rectangle> queriedBounds) => rootNode.QueryBounds(queriedBounds);
 
-	private void QueryLeafNodes(Vector2 position, float radius, IList<QuadtreeNode<ItemType>> queriedNodes) => rootNode.QueryLeafNodes(position, radius, queriedNodes);
+	private void QueryLeafNodes(Vector2 position, float radiusSquared, IList<QuadtreeNode<ItemType>> queriedNodes) => rootNode.QueryLeafNodes(position, radiusSquared, queriedNodes);
 
-	public void QueryBounds(Vector2 position, float radius, IList<Rectangle> queriedBounds) => rootNode.QueryBounds(position, radius, queriedBounds);
+	public void QueryBounds(Vector2 position, float radiusSquared, IList<Rectangle> queriedBounds) => rootNode.QueryBounds(position, radiusSquared, queriedBounds);
 
-	private void QueryPoints(Vector2 position, float radius, float radiusSquared, IList<QuadtreePoint<ItemType>> queriedPoints) => rootNode.QueryPoints(position, radius, radiusSquared, queriedPoints);
+	private void QueryPoints(Vector2 position, float radiusSquared, IList<QuadtreePoint<ItemType>> queriedPoints) => rootNode.QueryPoints(position, radiusSquared, queriedPoints);
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems);
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems) => rootNode.QueryItems(position, radiusSquared, queriedItems);
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<float> distancesSquared) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems, IList<float> distancesSquared) => rootNode.QueryItems(position, radiusSquared, queriedItems, distancesSquared);
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared) => rootNode.QueryItems(position, radiusSquared, queriedItems, differences, distancesSquared);
 
 	private void QueryPoints(IList<QuadtreePoint<ItemType>> queriedPoints) => rootNode.QueryPoints(queriedPoints);
 
 	public ItemType QueryClosestItem(Vector2 position)
 	{
 		ItemType closestItem = default;
-		float minDistance = float.PositiveInfinity;
-		rootNode.QueryClosestItem(position, ref minDistance, ref closestItem);
+		float minDistanceSquared = float.PositiveInfinity;
+		rootNode.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
 		return closestItem;
 	}
 
-	public bool AnyItemInRadius(Vector2 position, float radius, float radiusSquared) => rootNode.AnyItemInRadius(position, radius, radiusSquared);
+	public bool AnyItemInRadius(Vector2 position, float radiusSquared) => rootNode.AnyItemInRadius(position, radiusSquared);
 
 	public void DrawBounds(float lineThickness, Color color)
 	{

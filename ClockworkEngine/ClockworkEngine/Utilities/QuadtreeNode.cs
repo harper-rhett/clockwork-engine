@@ -20,8 +20,10 @@ internal class QuadtreeNode<ItemType>
 
 	// Positioning
 	public Rectangle Rectangle { get; private set; }
-	private float x => Rectangle.X;
-	private float y => Rectangle.Y;
+	private float westX;
+	private float northY;
+	private float eastX;
+	private float southY;
 	private float size;
 	private float halfSize;
 	private float centerX;
@@ -43,6 +45,10 @@ internal class QuadtreeNode<ItemType>
 
 	public void Initialize(Vector2 position, float size)
 	{
+		westX = position.X;
+		northY = position.Y;
+		eastX = position.X + size;
+		southY = position.Y + size;
 		Rectangle = new(position.X, position.Y, size, size);
 		this.size = size;
 	}
@@ -86,13 +92,13 @@ internal class QuadtreeNode<ItemType>
 	{
 		// Calculate positional variables
 		halfSize = size / 2f;
-		centerX = x + halfSize;
-		centerY = y + halfSize;
+		centerX = westX + halfSize;
+		centerY = northY + halfSize;
 
 		// Create sub nodes
-		northWest = GetSubNode(new Vector2(x, y), halfSize);
-		northEast = GetSubNode(new Vector2(centerX, y), halfSize);
-		southWest = GetSubNode(new Vector2(x, centerY), halfSize);
+		northWest = GetSubNode(new Vector2(westX, northY), halfSize);
+		northEast = GetSubNode(new Vector2(centerX, northY), halfSize);
+		southWest = GetSubNode(new Vector2(westX, centerY), halfSize);
 		southEast = GetSubNode(new Vector2(centerX, centerY), halfSize);
 
 		// Sort and clear
@@ -156,9 +162,9 @@ internal class QuadtreeNode<ItemType>
 		}
 	}
 
-	public void QueryLeafNodes(Vector2 position, float radius, IList<QuadtreeNode<ItemType>> queriedNodes)
+	public void QueryLeafNodes(Vector2 position, float radiusSquared, IList<QuadtreeNode<ItemType>> queriedNodes)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -166,15 +172,15 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryLeafNodes(position, radius, queriedNodes);
-		northEast.QueryLeafNodes(position, radius, queriedNodes);
-		southWest.QueryLeafNodes(position, radius, queriedNodes);
-		southEast.QueryLeafNodes(position, radius, queriedNodes);
+		northWest.QueryLeafNodes(position, radiusSquared, queriedNodes);
+		northEast.QueryLeafNodes(position, radiusSquared, queriedNodes);
+		southWest.QueryLeafNodes(position, radiusSquared, queriedNodes);
+		southEast.QueryLeafNodes(position, radiusSquared, queriedNodes);
 	}
 
-	public void QueryBounds(Vector2 position, float radius, IList<Rectangle> queriedBounds)
+	public void QueryBounds(Vector2 position, float radiusSquared, IList<Rectangle> queriedBounds)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -182,15 +188,15 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryBounds(position, radius, queriedBounds);
-		northEast.QueryBounds(position, radius, queriedBounds);
-		southWest.QueryBounds(position, radius, queriedBounds);
-		southEast.QueryBounds(position, radius, queriedBounds);
+		northWest.QueryBounds(position, radiusSquared, queriedBounds);
+		northEast.QueryBounds(position, radiusSquared, queriedBounds);
+		southWest.QueryBounds(position, radiusSquared, queriedBounds);
+		southEast.QueryBounds(position, radiusSquared, queriedBounds);
 	}
 
-	public void QueryPoints(Vector2 position, float radius, float radiusSquared, IList<QuadtreePoint<ItemType>> queriedPoints)
+	public void QueryPoints(Vector2 position, float radiusSquared, IList<QuadtreePoint<ItemType>> queriedPoints)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -203,10 +209,10 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryPoints(position, radius, radiusSquared, queriedPoints);
-		northEast.QueryPoints(position, radius, radiusSquared, queriedPoints);
-		southWest.QueryPoints(position, radius, radiusSquared, queriedPoints);
-		southEast.QueryPoints(position, radius, radiusSquared, queriedPoints);
+		northWest.QueryPoints(position, radiusSquared, queriedPoints);
+		northEast.QueryPoints(position, radiusSquared, queriedPoints);
+		southWest.QueryPoints(position, radiusSquared, queriedPoints);
+		southEast.QueryPoints(position, radiusSquared, queriedPoints);
 	}
 
 	public void QueryPoints(IList<QuadtreePoint<ItemType>> queriedPoints)
@@ -223,9 +229,9 @@ internal class QuadtreeNode<ItemType>
 		southEast.QueryPoints(queriedPoints);
 	}
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems)
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -238,15 +244,15 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryItems(position, radius, radiusSquared, queriedItems);
-		northEast.QueryItems(position, radius, radiusSquared, queriedItems);
-		southWest.QueryItems(position, radius, radiusSquared, queriedItems);
-		southEast.QueryItems(position, radius, radiusSquared, queriedItems);
+		northWest.QueryItems(position, radiusSquared, queriedItems);
+		northEast.QueryItems(position, radiusSquared, queriedItems);
+		southWest.QueryItems(position, radiusSquared, queriedItems);
+		southEast.QueryItems(position, radiusSquared, queriedItems);
 	}
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<float> distancesSquared)
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems, IList<float> distancesSquared)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -263,15 +269,15 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
-		northEast.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
-		southWest.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
-		southEast.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
+		northWest.QueryItems(position, radiusSquared, queriedItems, distancesSquared);
+		northEast.QueryItems(position, radiusSquared, queriedItems, distancesSquared);
+		southWest.QueryItems(position, radiusSquared, queriedItems, distancesSquared);
+		southEast.QueryItems(position, radiusSquared, queriedItems, distancesSquared);
 	}
 
-	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared)
+	public void QueryItems(Vector2 position, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared)
 	{
-		if (!Intersects(position, radius)) return;
+		if (!Intersects(position, radiusSquared)) return;
 
 		if (isLeafNode)
 		{
@@ -290,43 +296,70 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
-		northEast.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
-		southWest.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
-		southEast.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
+		northWest.QueryItems(position, radiusSquared, queriedItems, differences, distancesSquared);
+		northEast.QueryItems(position, radiusSquared, queriedItems, differences, distancesSquared);
+		southWest.QueryItems(position, radiusSquared, queriedItems, differences, distancesSquared);
+		southEast.QueryItems(position, radiusSquared, queriedItems, differences, distancesSquared);
 	}
 
-	public void QueryClosestItem(Vector2 position, ref float minDistance, ref ItemType closestItem)
+	public void QueryClosestItem(Vector2 position, ref float minDistanceSquared, ref ItemType closestItem)
 	{
-		if (!Intersects(position, minDistance)) return;
+		if (!Intersects(position, minDistanceSquared)) return;
 
 		if (isLeafNode)
 		{
-			float minDistanceSquared = minDistance * minDistance;
 			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
 			{
 				QuadtreePoint<ItemType> point = points[pointIndex];
 				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
 				if (distanceSquared < minDistanceSquared)
 				{
-					minDistance = float.Sqrt(distanceSquared);
 					closestItem = point.Item;
 					minDistanceSquared = distanceSquared;
 				}
 			}
+			return;
+		}
+
+		if (position.X < centerX)
+		{
+			if (position.Y < centerY)
+			{
+				northWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				northEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+			}
+			else
+			{
+				northWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				northEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+			}
 		}
 		else
 		{
-			northWest.QueryClosestItem(position, ref minDistance, ref closestItem);
-			northEast.QueryClosestItem(position, ref minDistance, ref closestItem);
-			southWest.QueryClosestItem(position, ref minDistance, ref closestItem);
-			southEast.QueryClosestItem(position, ref minDistance, ref closestItem);
+			if (position.Y < centerY)
+			{
+				northWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				northEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+			}
+			else
+			{
+				northWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				northEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southWest.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+				southEast.QueryClosestItem(position, ref minDistanceSquared, ref closestItem);
+			}
 		}
 	}
 
-	public bool AnyItemInRadius(Vector2 position, float radius, float radiusSquared)
+	public bool AnyItemInRadius(Vector2 position, float radiusSquared)
 	{
-		if (!Intersects(position, radius)) return false;
+		if (!Intersects(position, radiusSquared)) return false;
 		if (isLeafNode)
 		{
 			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
@@ -337,16 +370,20 @@ internal class QuadtreeNode<ItemType>
 			}
 			return false;
 		}
-		
+
 		return
-			northWest.AnyItemInRadius(position, radius, radiusSquared)
-			|| northEast.AnyItemInRadius(position, radius, radiusSquared)
-			|| southWest.AnyItemInRadius(position, radius, radiusSquared)
-			|| southEast.AnyItemInRadius(position, radius, radiusSquared);
+			northWest.AnyItemInRadius(position, radiusSquared)
+			|| northEast.AnyItemInRadius(position, radiusSquared)
+			|| southWest.AnyItemInRadius(position, radiusSquared)
+			|| southEast.AnyItemInRadius(position, radiusSquared);
 	}
 
-	private bool Intersects(Vector2 position, float radius)
+	private bool Intersects(Vector2 position, float radiusSquared)
 	{
-		return Intersection2D.CircleOnRectangle(position, radius, Rectangle);
+		float xEdge = position.X < westX ? westX : (position.X > eastX ? eastX : position.X);
+		float yEdge = position.Y < northY ? northY : (position.Y > southY ? southY : position.Y);
+		float xDistance = position.X - xEdge;
+		float yDistance = position.Y - yEdge;
+		return xDistance * xDistance + yDistance * yDistance <= radiusSquared;
 	}
 }
