@@ -27,26 +27,38 @@ public class Quadtree<ItemType>
 		rootNode.Reclaim(true);
 	}
 
-	private void CollectLeafNodes(ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectLeafNodes(collectedNodes);
+	private void QueryLeafNodes(IList<QuadtreeNode<ItemType>> queriedNodes) => rootNode.QueryLeafNodes(queriedNodes);
 
-	public void CollectLeafBounds(ICollection<Rectangle> collectedBounds) => rootNode.CollectLeafBounds(collectedBounds);
+	public void QueryBounds(IList<Rectangle> queriedBounds) => rootNode.QueryBounds(queriedBounds);
 
-	private void CollectNodesIntersectingRadius(Vector2 position, float radius, ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectNodesIntersecting(position, radius, collectedNodes);
+	private void QueryLeafNodes(Vector2 position, float radius, IList<QuadtreeNode<ItemType>> queriedNodes) => rootNode.QueryLeafNodes(position, radius, queriedNodes);
 
-	public void CollectBoundsIntersectingRadius(Vector2 position, float radius, ICollection<Rectangle> collectedBounds) => rootNode.CollectBoundsIntersecting(position, radius, collectedBounds);
+	public void QueryBounds(Vector2 position, float radius, IList<Rectangle> queriedBounds) => rootNode.QueryBounds(position, radius, queriedBounds);
 
-	private void CollectPointsWithinRadius(Vector2 position, float radius, float radiusSquared, ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPointsWithin(position, radius, radiusSquared, collectedPoints);
+	private void QueryPoints(Vector2 position, float radius, float radiusSquared, IList<QuadtreePoint<ItemType>> queriedPoints) => rootNode.QueryPoints(position, radius, radiusSquared, queriedPoints);
 
-	public void CollectItemsWithinRadius(Vector2 position, float radius, float radiusSquared, ICollection<ItemType> collectedItems) => rootNode.CollectItemsWithin(position, radius, radiusSquared, collectedItems);
+	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems);
 
-	private void CollectPoints(ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPoints(collectedPoints);
+	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<float> distancesSquared) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
 
-	private bool AnyItemInRadius(Vector2 position, float radius, float radiusSquared) => rootNode.AnyItemWithin(position, radius, radiusSquared);
+	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared) => rootNode.QueryItems(position, radius, radiusSquared, queriedItems, differences, distancesSquared);
+
+	private void QueryPoints(IList<QuadtreePoint<ItemType>> queriedPoints) => rootNode.QueryPoints(queriedPoints);
+
+	public ItemType QueryClosestItem(Vector2 position)
+	{
+		ItemType closestItem = default;
+		float minDistance = float.PositiveInfinity;
+		rootNode.QueryClosestItem(position, ref minDistance, ref closestItem);
+		return closestItem;
+	}
+
+	public bool AnyItemInRadius(Vector2 position, float radius, float radiusSquared) => rootNode.AnyItemInRadius(position, radius, radiusSquared);
 
 	public void DrawBounds(float lineThickness, Color color)
 	{
 		List<Rectangle> bounds = new();
-		CollectLeafBounds(bounds);
+		QueryBounds(bounds);
 		foreach (Rectangle rectangle in bounds)
 		{
 			Primitives2D.DrawRectangleLines(rectangle, lineThickness, color);
@@ -56,7 +68,7 @@ public class Quadtree<ItemType>
 	public void DrawPoints(float pointRadius, Color color)
 	{
 		List<QuadtreePoint<ItemType>> points = new();
-		CollectPoints(points);
+		QueryPoints(points);
 		foreach (QuadtreePoint<ItemType> point in points)
 		{
 			Primitives2D.DrawCircle(point.Position, pointRadius, color);
