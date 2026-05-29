@@ -27,7 +27,7 @@ public class Quadtree<ItemType>
 		rootNode.Reclaim(true);
 	}
 
-	private void GetLeafNodes(ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectLeafNodes(collectedNodes);
+	private void CollectLeafNodes(ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectLeafNodes(collectedNodes);
 
 	public void CollectLeafBounds(ICollection<Rectangle> collectedBounds) => rootNode.CollectLeafBounds(collectedBounds);
 
