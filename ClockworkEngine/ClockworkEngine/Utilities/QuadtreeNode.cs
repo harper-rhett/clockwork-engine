@@ -260,10 +260,10 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.QueryItems(position, radius, radiusSquared, queriedItems);
-		northEast.QueryItems(position, radius, radiusSquared, queriedItems);
-		southWest.QueryItems(position, radius, radiusSquared, queriedItems);
-		southEast.QueryItems(position, radius, radiusSquared, queriedItems);
+		northWest.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
+		northEast.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
+		southWest.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
+		southEast.QueryItems(position, radius, radiusSquared, queriedItems, distancesSquared);
 	}
 
 	public void QueryItems(Vector2 position, float radius, float radiusSquared, IList<ItemType> queriedItems, IList<Vector2> differences, IList<float> distancesSquared)
