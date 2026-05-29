@@ -11,7 +11,13 @@ internal class QuadtreeNode<ItemType>
 {
 	// Structure
 	private QuadtreePoint<ItemType>[] points;
-	public ReadOnlySpan<QuadtreePoint<ItemType>> Points => points.AsSpan(0, pointCount);
+	public IEnumerable<QuadtreePoint<ItemType>> Points
+	{
+		get
+		{
+			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++) yield return points[pointIndex];
+		}
+	}
 	private QuadtreeNode<ItemType> northWest;
 	private QuadtreeNode<ItemType> northEast;
 	private QuadtreeNode<ItemType> southWest;
@@ -44,9 +50,6 @@ internal class QuadtreeNode<ItemType>
 	{
 		Rectangle = new(position.X, position.Y, size, size);
 		this.size = size;
-		halfSize = size / 2f;
-		centerX = x + halfSize;
-		centerY = y + halfSize;
 	}
 
 	public void Add(QuadtreePoint<ItemType> point)
@@ -85,6 +88,11 @@ internal class QuadtreeNode<ItemType>
 
 	private void Split()
 	{
+		// Calculate positional variables
+		halfSize = size / 2f;
+		centerX = x + halfSize;
+		centerY = y + halfSize;
+
 		// Create sub nodes
 		northWest = GetSubNode(new Vector2(x, y), halfSize);
 		northEast = GetSubNode(new Vector2(centerX, y), halfSize);
