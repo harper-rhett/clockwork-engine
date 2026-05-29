@@ -50,28 +50,28 @@ public class Quadtree<ItemType> : IEnumerable
 	private List<QuadtreeNode<ItemType>> GetNodesIntersectingRadius(Vector2 position, float radius)
 	{
 		List<QuadtreeNode<ItemType>> nodes = new();
-		rootNode.CollectNodesIntersectingRadius(position, radius, nodes);
+		rootNode.CollectNodesWithin(position, radius, nodes);
 		return nodes;
 	}
 
 	public List<Rectangle> GetBoundsIntersectingRadius(Vector2 position, float radius)
 	{
 		List<Rectangle> bounds = new();
-		rootNode.CollectBoundsIntersectingRadius(position, radius, bounds);
+		rootNode.CollectBoundsWithin(position, radius, bounds);
 		return bounds;
 	}
 
 	private List<QuadtreePoint<ItemType>> GetPointsInRadius(Vector2 position, float radius)
 	{
 		List<QuadtreePoint<ItemType>> points = new();
-		rootNode.CollectPointsIntersectingRadius(position, radius, radius * radius, points);
+		rootNode.CollectPointsWithin(position, radius, radius * radius, points);
 		return points;
 	}
 
 	public List<ItemType> GetItemsInRadius(Vector2 position, float radius)
 	{
 		List<ItemType> items = new();
-		rootNode.CollectItemsIntersectingRadius(position, radius, radius * radius, items);
+		rootNode.CollectItemsWithin(position, radius, radius * radius, items);
 		return items;
 	}
 
