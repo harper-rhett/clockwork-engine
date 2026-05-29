@@ -25,7 +25,7 @@ public static class Text
 		{
 			string text = logs[log];
 			int width = MeasureWidth(text, fontSize);
-			Vector2 position = startPosition + Vector2.UnitY * spacing * log;
+			Vector2 position = startPosition + Vector2.UnitY * spacing * log + Vector2.UnitY * fontSize * log;
 			Primitives2D.DrawRectangle(position, new(width, fontSize), Colors.Black);
 			Draw(text, position, fontSize, Colors.White);
 		}
