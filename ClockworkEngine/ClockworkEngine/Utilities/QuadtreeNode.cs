@@ -236,6 +236,26 @@ internal class QuadtreeNode<ItemType>
 		southEast.CollectItemsWithin(position, radius, radiusSquared, collectedItems);
 	}
 
+	public bool AnyItemWithin(Vector2 position, float radius, float radiusSquared)
+	{
+		if (!IntersectWithRadius(position, radius)) return false;
+		if (isLeafNode)
+		{
+			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
+			{
+				QuadtreePoint<ItemType> point = points[pointIndex];
+				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
+				if (distanceSquared < radiusSquared) return true;
+			}
+		}
+		
+		return
+			northWest.AnyItemWithin(position, radius, radiusSquared)
+			|| northEast.AnyItemWithin(position, radius, radiusSquared)
+			|| southWest.AnyItemWithin(position, radius, radiusSquared)
+			|| southEast.AnyItemWithin(position, radius, radiusSquared);
+	}
+
 	private bool IntersectWithRadius(Vector2 position, float radius)
 	{
 		return Intersection2D.CircleOnRectangle(position, radius, Rectangle);

@@ -35,11 +35,13 @@ public class Quadtree<ItemType>
 
 	public void CollectBoundsIntersectingRadius(Vector2 position, float radius, ICollection<Rectangle> collectedBounds) => rootNode.CollectBoundsIntersecting(position, radius, collectedBounds);
 
-	private void CollectPointsInRadius(Vector2 position, float radius, ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPointsWithin(position, radius, radius * radius, collectedPoints);
+	private void CollectPointsWithinRadius(Vector2 position, float radius, float radiusSquared, ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPointsWithin(position, radius, radiusSquared, collectedPoints);
 
-	public void CollectItemsInRadius(Vector2 position, float radius, ICollection<ItemType> collectedItems) => rootNode.CollectItemsWithin(position, radius, radius * radius, collectedItems);
+	public void CollectItemsWithinRadius(Vector2 position, float radius, float radiusSquared, ICollection<ItemType> collectedItems) => rootNode.CollectItemsWithin(position, radius, radiusSquared, collectedItems);
 
 	private void CollectPoints(ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPoints(collectedPoints);
+
+	private bool AnyItemInRadius(Vector2 position, float radius, float radiusSquared) => rootNode.AnyItemWithin(position, radius, radiusSquared);
 
 	public void DrawBounds(float lineThickness, Color color)
 	{
