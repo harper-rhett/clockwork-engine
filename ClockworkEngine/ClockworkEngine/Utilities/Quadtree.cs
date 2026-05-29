@@ -1,9 +1,7 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Graphics.Draw2D;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 
 namespace Clockwork.Utilities;
@@ -11,16 +9,22 @@ namespace Clockwork.Utilities;
 public class Quadtree<ItemType> : IEnumerable
 {
 	private QuadtreeNode<ItemType> rootNode;
+	private Stack<QuadtreeNode<ItemType>> nodePool = new();
 
 	public Quadtree(Vector2 position, float size, int nodeCapacity = 4)
 	{
-		rootNode = new(position, size, nodeCapacity);
+		rootNode = new(position, size, nodeCapacity, nodePool);
 	}
 
 	public void Add(ItemType item, Vector2 position)
 	{
 		QuadtreePoint<ItemType> quadtreeItem = new(item, position);
 		rootNode.Add(quadtreeItem);
+	}
+
+	public void Clear()
+	{
+		rootNode.Reclaim(true);
 	}
 
 	private List<QuadtreeNode<ItemType>> GetLeafNodes()

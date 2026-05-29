@@ -10,22 +10,20 @@ namespace Clockwork.Utilities;
 internal class QuadtreeNode<ItemType>
 {
 	// Structure
-	private readonly List<QuadtreePoint<ItemType>> points = new();
+	private QuadtreePoint<ItemType>[] points;
 	public IReadOnlyList<QuadtreePoint<ItemType>> Points => points;
 	private QuadtreeNode<ItemType> northWest;
 	private QuadtreeNode<ItemType> northEast;
 	private QuadtreeNode<ItemType> southWest;
 	private QuadtreeNode<ItemType> southEast;
+	private Stack<QuadtreeNode<ItemType>> nodePool;
+	private int pointCount;
 
 	// Positioning
-	public readonly Rectangle Rectangle;
+	public Rectangle Rectangle { get; private set; }
 	private float x => Rectangle.X;
 	private float y => Rectangle.Y;
 	private float size => Rectangle.Width;
-	private float westX;
-	private float eastX;
-	private float northY;
-	private float southY;
 	private float centerX;
 	private float centerY;
 
@@ -33,25 +31,45 @@ internal class QuadtreeNode<ItemType>
 	private bool isLeafNode = true;
 	private int nodeCapacity;
 
-	public QuadtreeNode(Vector2 position, float size, int nodeCapacity)
+	public QuadtreeNode(Vector2 position, float size, int nodeCapacity, Stack<QuadtreeNode<ItemType>> nodePool)
 	{
 		Rectangle = new(position.X, position.Y, size, size);
 		this.nodeCapacity = nodeCapacity;
+		points = new QuadtreePoint<ItemType>[nodeCapacity + 1];
+		this.nodePool = nodePool;
+	}
 
-		westX = position.X;
-		eastX = position.X + size;
-		northY = position.Y;
-		southY = position.Y + size;
+	public void Reinitialize(Vector2 position, float size)
+	{
+		Rectangle = new(position.X, position.Y, size, size);
 	}
 
 	public void Add(QuadtreePoint<ItemType> point)
 	{
 		if (isLeafNode)
 		{
-			points.Add(point);
-			if (points.Count > nodeCapacity) Split();
+			points[pointCount] = point;
+			pointCount++;
+			if (pointCount > nodeCapacity) Split();
 		}
 		else SortPoint(point);
+	}
+
+	public void Reclaim(bool isRootNode)
+	{
+		isLeafNode = true;
+		pointCount = 0;
+		if (!isRootNode) nodePool.Push(this);
+
+		northWest.Reclaim(false);
+		northEast.Reclaim(false);
+		southWest.Reclaim(false);
+		southEast.Reclaim(false);
+
+		northWest = null;
+		northEast = null;
+		southWest = null;
+		southEast = null;
 	}
 
 	private void Split()
@@ -62,15 +80,28 @@ internal class QuadtreeNode<ItemType>
 		centerY = y + halfSize;
 
 		// Create sub nodes
-		northWest = new(new Vector2(x, y), halfSize, nodeCapacity);
-		northEast = new(new Vector2(centerX, y), halfSize, nodeCapacity);
-		southWest = new(new Vector2(x, centerY), halfSize, nodeCapacity);
-		southEast = new(new Vector2(centerX, centerY), halfSize, nodeCapacity);
+		northWest = GetSubNode(new Vector2(x, y), halfSize);
+		northEast = GetSubNode(new Vector2(centerX, y), halfSize);
+		southWest = GetSubNode(new Vector2(x, centerY), halfSize);
+		southEast = GetSubNode(new Vector2(centerX, centerY), halfSize);
 
 		// Sort and clear
 		foreach (QuadtreePoint<ItemType> point in points) SortPoint(point);
-		points.Clear();
 		isLeafNode = false;
+	}
+
+	private QuadtreeNode<ItemType> GetSubNode(Vector2 position, float size)
+	{
+		QuadtreeNode<ItemType> node;
+
+		if (nodePool.Count > 0)
+		{
+			node = nodePool.Pop();
+			node.Reinitialize(position, size);
+		}
+		else node = new(position, size, nodeCapacity, nodePool);
+
+		return node;
 	}
 
 	private void SortPoint(QuadtreePoint<ItemType> point)
