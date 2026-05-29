@@ -11,7 +11,7 @@ internal class QuadtreeNode<ItemType>
 {
 	// Structure
 	private QuadtreePoint<ItemType>[] points;
-	public IReadOnlyList<QuadtreePoint<ItemType>> Points => points;
+	public ReadOnlySpan<QuadtreePoint<ItemType>> Points => points.AsSpan(0, pointCount);
 	private QuadtreeNode<ItemType> northWest;
 	private QuadtreeNode<ItemType> northEast;
 	private QuadtreeNode<ItemType> southWest;
@@ -57,19 +57,25 @@ internal class QuadtreeNode<ItemType>
 
 	public void Reclaim(bool isRootNode)
 	{
-		isLeafNode = true;
-		pointCount = 0;
+		// Reclaim children
+		if (!isLeafNode)
+		{
+			northWest.Reclaim(false);
+			northEast.Reclaim(false);
+			southWest.Reclaim(false);
+			southEast.Reclaim(false);
+
+			northWest = null;
+			northEast = null;
+			southWest = null;
+			southEast = null;
+
+			isLeafNode = true;
+		}
+
+		// Reset and reclaim
 		if (!isRootNode) nodePool.Push(this);
-
-		northWest.Reclaim(false);
-		northEast.Reclaim(false);
-		southWest.Reclaim(false);
-		southEast.Reclaim(false);
-
-		northWest = null;
-		northEast = null;
-		southWest = null;
-		southEast = null;
+		pointCount = 0;
 	}
 
 	private void Split()
@@ -86,7 +92,11 @@ internal class QuadtreeNode<ItemType>
 		southEast = GetSubNode(new Vector2(centerX, centerY), halfSize);
 
 		// Sort and clear
-		foreach (QuadtreePoint<ItemType> point in points) SortPoint(point);
+		for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
+		{
+			QuadtreePoint<ItemType> point = points[pointIndex];
+			SortPoint(point);
+		}
 		isLeafNode = false;
 	}
 
