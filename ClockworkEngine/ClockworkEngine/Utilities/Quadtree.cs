@@ -50,14 +50,14 @@ public class Quadtree<ItemType> : IEnumerable
 	private List<QuadtreeNode<ItemType>> GetNodesIntersectingRadius(Vector2 position, float radius)
 	{
 		List<QuadtreeNode<ItemType>> nodes = new();
-		rootNode.CollectNodesWithin(position, radius, nodes);
+		rootNode.CollectNodesIntersecting(position, radius, nodes);
 		return nodes;
 	}
 
 	public List<Rectangle> GetBoundsIntersectingRadius(Vector2 position, float radius)
 	{
 		List<Rectangle> bounds = new();
-		rootNode.CollectBoundsWithin(position, radius, bounds);
+		rootNode.CollectBoundsIntersecting(position, radius, bounds);
 		return bounds;
 	}
 
@@ -77,16 +77,16 @@ public class Quadtree<ItemType> : IEnumerable
 
 	private IEnumerable<QuadtreePoint<ItemType>> GetPoints()
 	{
-		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
-		foreach (QuadtreeNode<ItemType> node in leafNodes)
-			foreach (QuadtreePoint<ItemType> point in node.Points) yield return point;
+		List<QuadtreePoint<ItemType>> points = new();
+		rootNode.CollectPoints(points);
+		foreach (QuadtreePoint<ItemType> point in points) yield return point;
 	}
 
 	public IEnumerator<ItemType> GetEnumerator()
 	{
-		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
-		foreach (QuadtreeNode<ItemType> node in leafNodes)
-			foreach (QuadtreePoint<ItemType> point in node.Points) yield return point.Item;
+		List<QuadtreePoint<ItemType>> points = new();
+		rootNode.CollectPoints(points);
+		foreach (QuadtreePoint<ItemType> point in points) yield return point.Item;
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

@@ -11,13 +11,6 @@ internal class QuadtreeNode<ItemType>
 {
 	// Structure
 	private QuadtreePoint<ItemType>[] points;
-	public IEnumerable<QuadtreePoint<ItemType>> Points
-	{
-		get
-		{
-			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++) yield return points[pointIndex];
-		}
-	}
 	private QuadtreeNode<ItemType> northWest;
 	private QuadtreeNode<ItemType> northEast;
 	private QuadtreeNode<ItemType> southWest;
@@ -136,7 +129,7 @@ internal class QuadtreeNode<ItemType>
 		}
 	}
 
-	public void CollectLeafNodes(List<QuadtreeNode<ItemType>> leafNodes)
+	public void CollectLeafNodes(ICollection<QuadtreeNode<ItemType>> leafNodes)
 	{
 		if (isLeafNode) leafNodes.Add(this);
 		else
@@ -148,7 +141,7 @@ internal class QuadtreeNode<ItemType>
 		}
 	}
 
-	public void CollectNodesWithin(Vector2 position, float radius, List<QuadtreeNode<ItemType>> collectedNodes)
+	public void CollectNodesIntersecting(Vector2 position, float radius, ICollection<QuadtreeNode<ItemType>> collectedNodes)
 	{
 		if (!IntersectWithRadius(position, radius)) return;
 
@@ -158,13 +151,13 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.CollectNodesWithin(position, radius, collectedNodes);
-		northEast.CollectNodesWithin(position, radius, collectedNodes);
-		southWest.CollectNodesWithin(position, radius, collectedNodes);
-		southEast.CollectNodesWithin(position, radius, collectedNodes);
+		northWest.CollectNodesIntersecting(position, radius, collectedNodes);
+		northEast.CollectNodesIntersecting(position, radius, collectedNodes);
+		southWest.CollectNodesIntersecting(position, radius, collectedNodes);
+		southEast.CollectNodesIntersecting(position, radius, collectedNodes);
 	}
 
-	public void CollectBoundsWithin(Vector2 position, float radius, List<Rectangle> collectedBounds)
+	public void CollectBoundsIntersecting(Vector2 position, float radius, ICollection<Rectangle> collectedBounds)
 	{
 		if (!IntersectWithRadius(position, radius)) return;
 
@@ -174,13 +167,13 @@ internal class QuadtreeNode<ItemType>
 			return;
 		}
 
-		northWest.CollectBoundsWithin(position, radius, collectedBounds);
-		northEast.CollectBoundsWithin(position, radius, collectedBounds);
-		southWest.CollectBoundsWithin(position, radius, collectedBounds);
-		southEast.CollectBoundsWithin(position, radius, collectedBounds);
+		northWest.CollectBoundsIntersecting(position, radius, collectedBounds);
+		northEast.CollectBoundsIntersecting(position, radius, collectedBounds);
+		southWest.CollectBoundsIntersecting(position, radius, collectedBounds);
+		southEast.CollectBoundsIntersecting(position, radius, collectedBounds);
 	}
 
-	public void CollectPointsWithin(Vector2 position, float radius, float radiusSquared, List<QuadtreePoint<ItemType>> collectedPoints)
+	public void CollectPointsWithin(Vector2 position, float radius, float radiusSquared, ICollection<QuadtreePoint<ItemType>> collectedPoints)
 	{
 		if (!IntersectWithRadius(position, radius)) return;
 
@@ -201,7 +194,16 @@ internal class QuadtreeNode<ItemType>
 		southEast.CollectPointsWithin(position, radius, radiusSquared, collectedPoints);
 	}
 
-	public void CollectItemsWithin(Vector2 position, float radius, float radiusSquared, List<ItemType> collectedItems)
+	public void CollectPoints(ICollection<QuadtreePoint<ItemType>> collectedPoints)
+	{
+		for (int pointIndex = 0; pointIndex < pointCount; pointIndex++) collectedPoints.Add(points[pointIndex]);
+		northWest.CollectPoints(collectedPoints);
+		northEast.CollectPoints(collectedPoints);
+		southWest.CollectPoints(collectedPoints);
+		southEast.CollectPoints(collectedPoints);
+	}
+
+	public void CollectItemsWithin(Vector2 position, float radius, float radiusSquared, ICollection<ItemType> collectedItems)
 	{
 		if (!IntersectWithRadius(position, radius)) return;
 
