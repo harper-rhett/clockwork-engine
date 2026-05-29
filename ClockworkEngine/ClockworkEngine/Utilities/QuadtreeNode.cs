@@ -295,7 +295,7 @@ internal class QuadtreeNode<ItemType>
 
 	public void QueryClosestItem(Vector2 position, ref float minDistance, ref ItemType closestItem)
 	{
-		if (!Intersects(position)) return;
+		if (!Intersects(position, minDistance)) return;
 
 		if (isLeafNode)
 		{
@@ -340,11 +340,6 @@ internal class QuadtreeNode<ItemType>
 			|| northEast.AnyItemInRadius(position, radius, radiusSquared)
 			|| southWest.AnyItemInRadius(position, radius, radiusSquared)
 			|| southEast.AnyItemInRadius(position, radius, radiusSquared);
-	}
-
-	private bool Intersects(Vector2 point)
-	{
-		return Intersection2D.PointInRectangle(point, Rectangle);
 	}
 
 	private bool Intersects(Vector2 position, float radius)
