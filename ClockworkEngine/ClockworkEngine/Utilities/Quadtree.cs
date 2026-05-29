@@ -11,9 +11,9 @@ public class Quadtree<ItemType>
 	private QuadtreeNode<ItemType> rootNode;
 	private Stack<QuadtreeNode<ItemType>> nodePool = new();
 
-	public Quadtree(Vector2 position, float size, int nodeCapacity = 4)
+	public Quadtree(Vector2 position, float size, float minCellSize, int nodeCapacity = 4)
 	{
-		rootNode = new(position, size, nodeCapacity, nodePool);
+		rootNode = new(position, size, minCellSize, nodeCapacity, nodePool);
 	}
 
 	public void Add(ItemType item, Vector2 position)

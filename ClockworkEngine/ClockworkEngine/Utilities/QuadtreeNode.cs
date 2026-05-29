@@ -30,10 +30,12 @@ internal class QuadtreeNode<ItemType>
 	// Settings
 	private bool isLeafNode = true;
 	private int nodeCapacity;
+	private float minCellSize;
 
-	public QuadtreeNode(Vector2 position, float size, int nodeCapacity, Stack<QuadtreeNode<ItemType>> nodePool)
+	public QuadtreeNode(Vector2 position, float size, float minCellSize, int nodeCapacity, Stack<QuadtreeNode<ItemType>> nodePool)
 	{
 		Initialize(position, size);
+		this.minCellSize = minCellSize;
 		this.nodeCapacity = nodeCapacity;
 		points = new QuadtreePoint<ItemType>[nodeCapacity + 1];
 		this.nodePool = nodePool;
@@ -49,9 +51,10 @@ internal class QuadtreeNode<ItemType>
 	{
 		if (isLeafNode)
 		{
+			if (pointCount == points.Length) Array.Resize(ref points, points.Length * 2);
 			points[pointCount] = point;
 			pointCount++;
-			if (pointCount > nodeCapacity) Split();
+			if (pointCount > nodeCapacity && size > minCellSize) Split();
 		}
 		else SortPoint(point);
 	}
@@ -110,7 +113,7 @@ internal class QuadtreeNode<ItemType>
 			node = nodePool.Pop();
 			node.Initialize(position, size);
 		}
-		else node = new(position, size, nodeCapacity, nodePool);
+		else node = new(position, size, minCellSize, nodeCapacity, nodePool);
 
 		return node;
 	}
