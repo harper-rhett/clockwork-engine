@@ -23,7 +23,8 @@ internal class QuadtreeNode<ItemType>
 	public Rectangle Rectangle { get; private set; }
 	private float x => Rectangle.X;
 	private float y => Rectangle.Y;
-	private float size => Rectangle.Width;
+	private float size;
+	private float halfSize;
 	private float centerX;
 	private float centerY;
 
@@ -33,15 +34,19 @@ internal class QuadtreeNode<ItemType>
 
 	public QuadtreeNode(Vector2 position, float size, int nodeCapacity, Stack<QuadtreeNode<ItemType>> nodePool)
 	{
-		Rectangle = new(position.X, position.Y, size, size);
+		Initialize(position, size);
 		this.nodeCapacity = nodeCapacity;
 		points = new QuadtreePoint<ItemType>[nodeCapacity + 1];
 		this.nodePool = nodePool;
 	}
 
-	public void Reinitialize(Vector2 position, float size)
+	public void Initialize(Vector2 position, float size)
 	{
 		Rectangle = new(position.X, position.Y, size, size);
+		this.size = size;
+		halfSize = size / 2f;
+		centerX = x + halfSize;
+		centerY = y + halfSize;
 	}
 
 	public void Add(QuadtreePoint<ItemType> point)
@@ -80,11 +85,6 @@ internal class QuadtreeNode<ItemType>
 
 	private void Split()
 	{
-		// Initialize positional values
-		float halfSize = size / 2f;
-		centerX = x + halfSize;
-		centerY = y + halfSize;
-
 		// Create sub nodes
 		northWest = GetSubNode(new Vector2(x, y), halfSize);
 		northEast = GetSubNode(new Vector2(centerX, y), halfSize);
@@ -107,7 +107,7 @@ internal class QuadtreeNode<ItemType>
 		if (nodePool.Count > 0)
 		{
 			node = nodePool.Pop();
-			node.Reinitialize(position, size);
+			node.Initialize(position, size);
 		}
 		else node = new(position, size, nodeCapacity, nodePool);
 
@@ -140,52 +140,70 @@ internal class QuadtreeNode<ItemType>
 		}
 	}
 
-	private void CollectFromIntersectingRadius(Vector2 position, float radius, Action<QuadtreeNode<ItemType>> action)
+	public void CollectNodesIntersectingRadius(Vector2 position, float radius, List<QuadtreeNode<ItemType>> collectedNodes)
 	{
 		if (isLeafNode)
 		{
-			action.Invoke(this);
+			collectedNodes.Add(this);
 			return;
 		}
 
-		if (northWest.IntersectWithRadius(position, radius)) northWest.CollectFromIntersectingRadius(position, radius, action);
-		if (northEast.IntersectWithRadius(position, radius)) northEast.CollectFromIntersectingRadius(position, radius, action);
-		if (southWest.IntersectWithRadius(position, radius)) southWest.CollectFromIntersectingRadius(position, radius, action);
-		if (southEast.IntersectWithRadius(position, radius)) southEast.CollectFromIntersectingRadius(position, radius, action);
+		if (northWest.IntersectWithRadius(position, radius)) northWest.CollectNodesIntersectingRadius(position, radius, collectedNodes);
+		if (northEast.IntersectWithRadius(position, radius)) northEast.CollectNodesIntersectingRadius(position, radius, collectedNodes);
+		if (southWest.IntersectWithRadius(position, radius)) southWest.CollectNodesIntersectingRadius(position, radius, collectedNodes);
+		if (southEast.IntersectWithRadius(position, radius)) southEast.CollectNodesIntersectingRadius(position, radius, collectedNodes);
 	}
 
-	public void CollectNodesIntersectingRadius(Vector2 position, float radius, List<QuadtreeNode<ItemType>> nodes)
+	public void CollectBoundsIntersectingRadius(Vector2 position, float radius, List<Rectangle> collectedBounds)
 	{
-		CollectFromIntersectingRadius(position, radius, nodes.Add);
-	}
-
-	public void CollectBoundsIntersectingRadius(Vector2 position, float radius, List<Rectangle> bounds)
-	{
-		CollectFromIntersectingRadius(position, radius, (node) => bounds.Add(node.Rectangle));
-	}
-
-	public void CollectPointsIntersectingRadius(Vector2 position, float radius, float radiusSquared, List<QuadtreePoint<ItemType>> points)
-	{
-		CollectFromIntersectingRadius(position, radius, (node) =>
+		if (isLeafNode)
 		{
-			foreach (QuadtreePoint<ItemType> point in node.points)
-			{
-				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
-				if (distanceSquared < radiusSquared) points.Add(point);
-			}
-		});
+			collectedBounds.Add(Rectangle);
+			return;
+		}
+
+		if (northWest.IntersectWithRadius(position, radius)) northWest.CollectBoundsIntersectingRadius(position, radius, collectedBounds);
+		if (northEast.IntersectWithRadius(position, radius)) northEast.CollectBoundsIntersectingRadius(position, radius, collectedBounds);
+		if (southWest.IntersectWithRadius(position, radius)) southWest.CollectBoundsIntersectingRadius(position, radius, collectedBounds);
+		if (southEast.IntersectWithRadius(position, radius)) southEast.CollectBoundsIntersectingRadius(position, radius, collectedBounds);
 	}
 
-	public void CollectItemsIntersectingRadius(Vector2 position, float radius, float radiusSquared, List<ItemType> items)
+	public void CollectPointsIntersectingRadius(Vector2 position, float radius, float radiusSquared, List<QuadtreePoint<ItemType>> collectedPoints)
 	{
-		CollectFromIntersectingRadius(position, radius, (node) =>
+		if (isLeafNode)
 		{
-			foreach (QuadtreePoint<ItemType> point in node.points)
+			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
 			{
+				QuadtreePoint<ItemType> point = points[pointIndex];
 				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
-				if (distanceSquared < radiusSquared) items.Add(point.Item);
+				if (distanceSquared < radiusSquared) collectedPoints.Add(point);
 			}
-		});
+			return;
+		}
+
+		if (northWest.IntersectWithRadius(position, radius)) northWest.CollectPointsIntersectingRadius(position, radius, radiusSquared, collectedPoints);
+		if (northEast.IntersectWithRadius(position, radius)) northEast.CollectPointsIntersectingRadius(position, radius, radiusSquared, collectedPoints);
+		if (southWest.IntersectWithRadius(position, radius)) southWest.CollectPointsIntersectingRadius(position, radius, radiusSquared, collectedPoints);
+		if (southEast.IntersectWithRadius(position, radius)) southEast.CollectPointsIntersectingRadius(position, radius, radiusSquared, collectedPoints);
+	}
+
+	public void CollectItemsIntersectingRadius(Vector2 position, float radius, float radiusSquared, List<ItemType> collectedItems)
+	{
+		if (isLeafNode)
+		{
+			for (int pointIndex = 0; pointIndex < pointCount; pointIndex++)
+			{
+				QuadtreePoint<ItemType> point = points[pointIndex];
+				float distanceSquared = Vector2.DistanceSquared(position, point.Position);
+				if (distanceSquared < radiusSquared) collectedItems.Add(point.Item);
+			}
+			return;
+		}
+
+		if (northWest.IntersectWithRadius(position, radius)) northWest.CollectItemsIntersectingRadius(position, radius, radiusSquared, collectedItems);
+		if (northEast.IntersectWithRadius(position, radius)) northEast.CollectItemsIntersectingRadius(position, radius, radiusSquared, collectedItems);
+		if (southWest.IntersectWithRadius(position, radius)) southWest.CollectItemsIntersectingRadius(position, radius, radiusSquared, collectedItems);
+		if (southEast.IntersectWithRadius(position, radius)) southEast.CollectItemsIntersectingRadius(position, radius, radiusSquared, collectedItems);
 	}
 
 	private bool IntersectWithRadius(Vector2 position, float radius)
