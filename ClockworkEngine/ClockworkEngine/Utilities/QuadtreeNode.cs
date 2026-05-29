@@ -129,15 +129,27 @@ internal class QuadtreeNode<ItemType>
 		}
 	}
 
-	public void CollectLeafNodes(ICollection<QuadtreeNode<ItemType>> leafNodes)
+	public void CollectLeafNodes(ICollection<QuadtreeNode<ItemType>> collectedNodes)
 	{
-		if (isLeafNode) leafNodes.Add(this);
+		if (isLeafNode) collectedNodes.Add(this);
 		else
 		{
-			northWest.CollectLeafNodes(leafNodes);
-			northEast.CollectLeafNodes(leafNodes);
-			southWest.CollectLeafNodes(leafNodes);
-			southEast.CollectLeafNodes(leafNodes);
+			northWest.CollectLeafNodes(collectedNodes);
+			northEast.CollectLeafNodes(collectedNodes);
+			southWest.CollectLeafNodes(collectedNodes);
+			southEast.CollectLeafNodes(collectedNodes);
+		}
+	}
+
+	public void CollectLeafBounds(ICollection<Rectangle> collectedBounds)
+	{
+		if (isLeafNode) collectedBounds.Add(Rectangle);
+		else
+		{
+			northWest.CollectLeafBounds(collectedBounds);
+			northEast.CollectLeafBounds(collectedBounds);
+			southWest.CollectLeafBounds(collectedBounds);
+			southEast.CollectLeafBounds(collectedBounds);
 		}
 	}
 

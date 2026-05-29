@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace Clockwork.Utilities;
 
-public class Quadtree<ItemType> : IEnumerable
+public class Quadtree<ItemType>
 {
 	private QuadtreeNode<ItemType> rootNode;
 	private Stack<QuadtreeNode<ItemType>> nodePool = new();
@@ -27,77 +27,25 @@ public class Quadtree<ItemType> : IEnumerable
 		rootNode.Reclaim(true);
 	}
 
-	private List<QuadtreeNode<ItemType>> GetLeafNodes()
-	{
-		List<QuadtreeNode<ItemType>> leafNodes = new();
-		rootNode.CollectLeafNodes(leafNodes);
-		return leafNodes;
-	}
+	private void GetLeafNodes(ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectLeafNodes(collectedNodes);
 
-	public Rectangle[] GetLeafBounds()
-	{
-		List<QuadtreeNode<ItemType>> leafNodes = GetLeafNodes();
+	public void CollectLeafBounds(ICollection<Rectangle> collectedBounds) => rootNode.CollectLeafBounds(collectedBounds);
 
-		Rectangle[] rectangles = new Rectangle[leafNodes.Count];
-		for (int leafIndex = 0; leafIndex < leafNodes.Count; leafIndex++)
-		{
-			rectangles[leafIndex] = leafNodes[leafIndex].Rectangle;
-		}
+	private void CollectNodesIntersectingRadius(Vector2 position, float radius, ICollection<QuadtreeNode<ItemType>> collectedNodes) => rootNode.CollectNodesIntersecting(position, radius, collectedNodes);
 
-		return rectangles;
-	}
+	public void CollectBoundsIntersectingRadius(Vector2 position, float radius, ICollection<Rectangle> collectedBounds) => rootNode.CollectBoundsIntersecting(position, radius, collectedBounds);
 
-	private List<QuadtreeNode<ItemType>> GetNodesIntersectingRadius(Vector2 position, float radius)
-	{
-		List<QuadtreeNode<ItemType>> nodes = new();
-		rootNode.CollectNodesIntersecting(position, radius, nodes);
-		return nodes;
-	}
+	private void CollectPointsInRadius(Vector2 position, float radius, ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPointsWithin(position, radius, radius * radius, collectedPoints);
 
-	public List<Rectangle> GetBoundsIntersectingRadius(Vector2 position, float radius)
-	{
-		List<Rectangle> bounds = new();
-		rootNode.CollectBoundsIntersecting(position, radius, bounds);
-		return bounds;
-	}
+	public void CollectItemsInRadius(Vector2 position, float radius, ICollection<ItemType> collectedItems) => rootNode.CollectItemsWithin(position, radius, radius * radius, collectedItems);
 
-	private List<QuadtreePoint<ItemType>> GetPointsInRadius(Vector2 position, float radius)
-	{
-		List<QuadtreePoint<ItemType>> points = new();
-		rootNode.CollectPointsWithin(position, radius, radius * radius, points);
-		return points;
-	}
-
-	public List<ItemType> GetItemsInRadius(Vector2 position, float radius)
-	{
-		List<ItemType> items = new();
-		rootNode.CollectItemsWithin(position, radius, radius * radius, items);
-		return items;
-	}
-
-	private IEnumerable<QuadtreePoint<ItemType>> GetPoints()
-	{
-		List<QuadtreePoint<ItemType>> points = new();
-		rootNode.CollectPoints(points);
-		foreach (QuadtreePoint<ItemType> point in points) yield return point;
-	}
-
-	public IEnumerator<ItemType> GetEnumerator()
-	{
-		List<QuadtreePoint<ItemType>> points = new();
-		rootNode.CollectPoints(points);
-		foreach (QuadtreePoint<ItemType> point in points) yield return point.Item;
-	}
-
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
-	}
+	private void CollectPoints(ICollection<QuadtreePoint<ItemType>> collectedPoints) => rootNode.CollectPoints(collectedPoints);
 
 	public void DrawBounds(float lineThickness, Color color)
 	{
-		Rectangle[] rectangles = GetLeafBounds();
-		foreach (Rectangle rectangle in rectangles)
+		List<Rectangle> bounds = new();
+		CollectLeafBounds(bounds);
+		foreach (Rectangle rectangle in bounds)
 		{
 			Primitives2D.DrawRectangleLines(rectangle, lineThickness, color);
 		}
@@ -105,7 +53,9 @@ public class Quadtree<ItemType> : IEnumerable
 
 	public void DrawPoints(float pointRadius, Color color)
 	{
-		foreach (QuadtreePoint<ItemType> point in GetPoints())
+		List<QuadtreePoint<ItemType>> points = new();
+		CollectPoints(points);
+		foreach (QuadtreePoint<ItemType> point in points)
 		{
 			Primitives2D.DrawCircle(point.Position, pointRadius, color);
 		}
