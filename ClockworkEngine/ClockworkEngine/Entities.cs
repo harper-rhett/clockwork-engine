@@ -4,11 +4,13 @@ namespace Clockwork;
 
 public class Entities
 {
-	// Entities
-	private readonly List<Entity> entitiesToAdd = new();
+	// Processing
+	private List<Entity> entitiesToAdd = new();
+	private List<Entity> entitiesToAddBuffer = new();
+	private List<Entity> entitiesToRemove = new();
+	private List<Entity> entitiesToRemoveBuffer = new();
 	private readonly List<Entity> entitiesToMoveUpdate = new();
 	private readonly List<Entity> entitiesToMoveDraw = new();
-	private readonly List<Entity> entitiesToRemove = new();
 
 	// Layers
 	internal readonly SortedList<int, List<Entity>> UpdateLayers = new();
@@ -26,17 +28,19 @@ public class Entities
 
 	internal void ProcessAdditions()
 	{
+		// Swap bugger
+		(entitiesToAdd, entitiesToAddBuffer) = (entitiesToAddBuffer, entitiesToAdd);
+
 		// Loop through entities to add
-		foreach (Entity entity in entitiesToAdd)
+		foreach (Entity entity in entitiesToAddBuffer)
 		{
 			AddToUpdateLayer(entity);
 			AddToDrawLayer(entity);
 		}
 
 		// Reset
-		List<Entity> entitiesToAddCopy = new(entitiesToAdd);
-		entitiesToAdd.Clear();
-		foreach (Entity entity in entitiesToAddCopy) entity.OnAddedToScene();
+		foreach (Entity entity in entitiesToAddBuffer) entity.OnAddedToScene();
+		entitiesToAddBuffer.Clear();
 	}
 
 	private void AddToUpdateLayer(Entity entityToAdd)
@@ -94,17 +98,18 @@ public class Entities
 
 	internal void ProcessRemovals()
 	{
+		(entitiesToRemove, entitiesToRemoveBuffer) = (entitiesToRemoveBuffer, entitiesToRemove);
+
 		// Loop through entities to remove
-		foreach (Entity entity in entitiesToRemove)
+		foreach (Entity entity in entitiesToRemoveBuffer)
 		{
 			UpdateLayers[entity.UpdateLayer].Remove(entity);
 			DrawLayers[entity.DrawLayer].Remove(entity);	
 		}
 
 		// Reset
-		List<Entity> entitiesToRemoveCopy = new(entitiesToRemove);
-		entitiesToRemove.Clear();
-		foreach (Entity entity in entitiesToRemoveCopy) entity.OnRemovedFromScene();
+		foreach (Entity entity in entitiesToRemoveBuffer) entity.OnRemovedFromScene();
+		entitiesToRemoveBuffer.Clear();
 	}
 
 	private List<Entity> GetLayerEntities(SortedList<int, List<Entity>> layers, int layer)
