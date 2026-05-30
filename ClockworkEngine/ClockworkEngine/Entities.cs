@@ -5,14 +5,14 @@ namespace Clockwork;
 public class Entities
 {
 	// Entities
-	private List<Entity> entitiesToAdd = new();
-	private List<Entity> entitiesToMoveUpdate = new();
-	private List<Entity> entitiesToMoveDraw = new();
-	private List<Entity> entitiesToRemove = new();
+	private readonly List<Entity> entitiesToAdd = new();
+	private readonly List<Entity> entitiesToMoveUpdate = new();
+	private readonly List<Entity> entitiesToMoveDraw = new();
+	private readonly List<Entity> entitiesToRemove = new();
 
 	// Layers
-	private SortedList<int, List<Entity>> updateLayers = new();
-	private SortedList<int, List<Entity>> drawLayers = new();
+	internal readonly SortedList<int, List<Entity>> UpdateLayers = new();
+	internal readonly SortedList<int, List<Entity>> DrawLayers = new();
 
 	internal void Add(Entity entity)
 	{
@@ -41,14 +41,14 @@ public class Entities
 
 	private void AddToUpdateLayer(Entity entityToAdd)
 	{
-		List<Entity> updateLayer = GetLayerEntities(updateLayers, entityToAdd.UpdateLayer);
+		List<Entity> updateLayer = GetLayerEntities(UpdateLayers, entityToAdd.UpdateLayer);
 		updateLayer.Add(entityToAdd);
 		entityToAdd.lastUpdateLayer = entityToAdd.UpdateLayer;
 	}
 
 	private void AddToDrawLayer(Entity entityToAdd)
 	{
-		List<Entity> drawLayer = GetLayerEntities(drawLayers, entityToAdd.DrawLayer);
+		List<Entity> drawLayer = GetLayerEntities(DrawLayers, entityToAdd.DrawLayer);
 		drawLayer.Add(entityToAdd);
 		entityToAdd.lastDrawLayer = entityToAdd.DrawLayer;
 	}
@@ -61,11 +61,11 @@ public class Entities
 			if (entity.UpdateLayer == entity.lastUpdateLayer) continue;
 
 			// Remove from last layer
-			List<Entity> lastUpdateLayer = GetLayerEntities(updateLayers, entity.lastUpdateLayer);
+			List<Entity> lastUpdateLayer = GetLayerEntities(UpdateLayers, entity.lastUpdateLayer);
 			bool removedFromUpdateLayer = lastUpdateLayer.Remove(entity);
 
 			// Add to new layer
-			List<Entity> newUpdateLayer = GetLayerEntities(updateLayers, entity.UpdateLayer);
+			List<Entity> newUpdateLayer = GetLayerEntities(UpdateLayers, entity.UpdateLayer);
 			newUpdateLayer.Add(entity);
 
 			// Mark as added
@@ -79,11 +79,11 @@ public class Entities
 			if (entity.DrawLayer == entity.lastDrawLayer) continue;
 
 			// Remove from last layer
-			List<Entity> lastDrawLayer = GetLayerEntities(drawLayers, entity.lastDrawLayer);
+			List<Entity> lastDrawLayer = GetLayerEntities(DrawLayers, entity.lastDrawLayer);
 			bool removedFromDrawLayer = lastDrawLayer.Remove(entity);
 
 			// Add to new layer
-			List<Entity> newDrawLayer = GetLayerEntities(drawLayers, entity.DrawLayer);
+			List<Entity> newDrawLayer = GetLayerEntities(DrawLayers, entity.DrawLayer);
 			newDrawLayer.Add(entity);
 
 			// Mark as added
@@ -97,8 +97,8 @@ public class Entities
 		// Loop through entities to remove
 		foreach (Entity entity in entitiesToRemove)
 		{
-			updateLayers[entity.UpdateLayer].Remove(entity);
-			drawLayers[entity.DrawLayer].Remove(entity);	
+			UpdateLayers[entity.UpdateLayer].Remove(entity);
+			DrawLayers[entity.DrawLayer].Remove(entity);	
 		}
 
 		// Reset
@@ -122,25 +122,5 @@ public class Entities
 	public void MoveDrawLayer(Entity entity)
 	{
 		entitiesToMoveDraw.Add(entity);
-	}
-
-	public IEnumerable<Entity> InUpdateOrder
-	{
-		get
-		{
-			foreach (List<Entity> entityLayer in updateLayers.Values)
-				foreach (Entity entity in entityLayer)
-					yield return entity;
-		}
-	}
-
-	public IEnumerable<Entity> InDrawOrder
-	{
-		get
-		{
-			foreach (List<Entity> entityLayer in drawLayers.Values)
-				foreach (Entity entity in entityLayer)
-					yield return entity;
-		}
 	}
 }
