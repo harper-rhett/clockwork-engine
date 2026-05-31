@@ -7,7 +7,7 @@ public abstract class Entity
 	// Scene
 	public Scene Scene;
 	public bool IsUpdating = true;
-	public bool IsRendering = true;
+	public bool IsDrawing = true;
 	public event Action Removed;
 	public bool IsInScene { get; private set; }
 	public float FrameTime => Scene is null ? Engine.GlobalFrameTime : Scene.FrameTime;
@@ -66,4 +66,7 @@ public abstract class Entity
 	// Callbacks
 	public virtual void OnAddedToScene() { }
 	public virtual void OnRemovedFromScene() { }
+
+	// Overrides
+	public virtual bool IsVisible() => true;
 }

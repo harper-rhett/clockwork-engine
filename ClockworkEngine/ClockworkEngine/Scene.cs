@@ -78,7 +78,7 @@ public class Scene
 			for (int entityIndex = 0; entityIndex < layerEntities.Length; entityIndex++)
 			{
 				Entity entity = layerEntities[entityIndex];
-				if (entity.IsRendering) entity.OnDraw();
+				if (entity.IsDrawing && entity.IsVisible()) entity.OnDraw();
 			}
 		}
 
@@ -94,7 +94,7 @@ public class Scene
 			for (int entityIndex = 0; entityIndex < layerEntities.Length; entityIndex++)
 			{
 				Entity entity = layerEntities[entityIndex];
-				if (entity.IsRendering) entity.OnDrawGUI();
+				if (entity.IsDrawing) entity.OnDrawGUI();
 			}
 		}
 	}

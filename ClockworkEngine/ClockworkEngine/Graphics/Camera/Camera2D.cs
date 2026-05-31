@@ -8,6 +8,16 @@ public class Camera2D : CameraEntity
 {
 	// General
 	public Transform2D Transform = new();
+	public Vector2 Position
+	{
+		get => Transform.WorldPosition;
+		set => Transform.WorldPosition = value;
+	}
+	public float Rotation
+	{
+		get => Transform.WorldRotation;
+		set => Transform.WorldRotation = value;
+	}
 	public Camera2DInternal InternalCamera;
 	public Vector2 Offset
 	{
@@ -19,10 +29,8 @@ public class Camera2D : CameraEntity
 		get => InternalCamera.Zoom;
 		set => InternalCamera.Zoom = value;
 	}
-
-	// Mouse
-	public float MouseWorldX => (Mouse.GameX - Engine.HalfGameWidth) / Zoom + Transform.WorldPosition.X;
-	public float MouseWorldY => (Mouse.GameY - Engine.HalfGameHeight) / Zoom + Transform.WorldPosition.Y;
+	public float Width => Engine.GameWidth / Zoom;
+	public float Height => Engine.GameHeight / Zoom;
 
 	public Camera2D()
 	{
@@ -41,5 +49,13 @@ public class Camera2D : CameraEntity
 	internal override void End()
 	{
 		Camera2DInternal.EndRendering();
+	}
+
+	public float GetMouseWorldX() => (Mouse.GameX - Engine.HalfGameWidth) / Zoom + Transform.WorldPosition.X;
+	public float GetMouseWorldY() => (Mouse.GameY - Engine.HalfGameHeight) / Zoom + Transform.WorldPosition.Y;
+
+	public Rectangle GetAxisAlignedViewport()
+	{
+		return new Rectangle(Position.X - Offset.X / Zoom, Position.Y - Offset.Y / Zoom, Width, Height);
 	}
 }

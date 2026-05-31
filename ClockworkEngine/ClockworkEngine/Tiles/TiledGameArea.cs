@@ -23,7 +23,7 @@ public class TiledGameArea : TiledArea
 			foreach (Entity entity in registeredEntities)
 			{
 				entity.IsUpdating = value;
-				entity.IsRendering = value;
+				entity.IsDrawing = value;
 			}
 			foreach (TiledArea area in registeredAreas) area.IsActive = value;
 		}
