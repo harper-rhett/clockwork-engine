@@ -9,22 +9,39 @@ namespace Clockwork;
 public static class Profiler
 {
 	private static Dictionary<string, PerformanceTracker> trackers = new();
-	public static int FramesTracked = 300;
-
-	public static void StartTracking(string key)
+	private static bool isActive = true;
+	public static bool IsActive
 	{
-		if (trackers.TryGetValue(key, out PerformanceTracker tracker)) tracker.Start();
-		else
+		get => isActive;
+		set
 		{
-			PerformanceTracker newTracker = new();
-			newTracker.Start();
-			trackers[key] = newTracker;
+			isActive = value;
+			foreach (PerformanceTracker tracker in trackers.Values) tracker.IsActive = isActive;
 		}
 	}
 
-	public static void StopTracking(string key)
+	public static void StartOrResumeTracking(string key)
 	{
-		if (trackers.TryGetValue(key, out PerformanceTracker tracker)) tracker.Stop();
+		if (trackers.TryGetValue(key, out PerformanceTracker tracker)) tracker.StartOrResume();
+		else
+		{
+			PerformanceTracker newTracker = new();
+			trackers[key] = newTracker;
+			newTracker.StartOrResume();
+		}
+	}
+
+	public static void PauseTracking(string key)
+	{
+		if (!isActive) return;
+		if (trackers.TryGetValue(key, out PerformanceTracker tracker)) tracker.Pause();
+		else throw new InvalidOperationException("Must start tracking first.");
+	}
+
+	public static void FinishTracking(string key)
+	{
+		if (!isActive) return;
+		if (trackers.TryGetValue(key, out PerformanceTracker tracker)) tracker.Finish();
 		else throw new InvalidOperationException("Must start tracking first.");
 	}
 

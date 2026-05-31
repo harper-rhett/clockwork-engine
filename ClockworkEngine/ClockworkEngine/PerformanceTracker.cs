@@ -8,21 +8,46 @@ public class PerformanceTracker
 {
 	private Stopwatch stopwatch = new();
 	private Queue<float> millisecondsTracked = new();
+	public static int FramesTracked = 600;
 
-	public void Start()
+	private bool isActive = true;
+	public bool IsActive
 	{
-		stopwatch.Restart();
+		get => isActive;
+		set
+		{
+			isActive = value;
+			if (!isActive)
+			{
+				millisecondsTracked.Clear();
+				stopwatch.Reset();
+			}
+		}
 	}
 
-	public void Stop()
+	public void StartOrResume()
 	{
+		if (!isActive) return;
+		stopwatch.Start();
+	}
+
+	public void Pause()
+	{
+		if (!isActive) return;
+		stopwatch.Stop();
+	}
+
+	public void Finish()
+	{
+		if (!isActive) return;
 		stopwatch.Stop();
 		millisecondsTracked.Enqueue(stopwatch.ElapsedMilliseconds);
-		if (millisecondsTracked.Count > Profiler.FramesTracked) millisecondsTracked.Dequeue();
+		if (millisecondsTracked.Count > FramesTracked) millisecondsTracked.Dequeue();
+		stopwatch.Reset();
 	}
 
 	public float GetAverageTime()
 	{
-		return millisecondsTracked.Average();
+		return millisecondsTracked.Count == 0 ? 0 : millisecondsTracked.Average();
 	}
 }
