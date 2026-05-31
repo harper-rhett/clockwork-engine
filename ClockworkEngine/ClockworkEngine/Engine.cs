@@ -9,6 +9,7 @@ using System;
 using System.IO;
 using System.Numerics;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Clockwork;
 
@@ -122,9 +123,13 @@ public static class Engine
 		Drawing.End();
 	}
 
-	public static void DrawDebug(int fontSize, int spacing)
+	public static void DrawDebug(int fontSize, Color color, params string[] extraLogs)
 	{
-		Text.Draw($"{ActualFPS} FPS", spacing, spacing, fontSize, Colors.White);
+		string[] defaultLogs = [ $"{ActualFPS} FPS" ];
+		string[] combinedLogs = new string[defaultLogs.Length + extraLogs.Length];
+		Array.Copy(defaultLogs, combinedLogs, defaultLogs.Length);
+		Array.Copy(extraLogs, 0, combinedLogs, defaultLogs.Length, extraLogs.Length);
+		Text.DrawDebug(fontSize, color, combinedLogs);
 	}
 
 	private static void TakeScreenshot()

@@ -18,16 +18,16 @@ public static class Text
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextPro")]
 	public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color color);
 
-	public static void DrawDebug(int fontSize, int spacing, params string[] logs)
+	public static void DrawDebug(int fontSize, Color color, params string[] logs)
 	{
-		Vector2 startPosition = Vector2.One * spacing;
+		Vector2 startPosition = Vector2.One * (fontSize / 2f);
 		for (int log = 0; log < logs.Length; log++)
 		{
 			string text = logs[log];
 			int width = MeasureWidth(text, fontSize);
-			Vector2 position = startPosition + Vector2.UnitY * spacing * log + Vector2.UnitY * fontSize * log;
+			Vector2 position = startPosition + Vector2.UnitY * fontSize * log;
 			Primitives2D.DrawRectangle(position, new(width, fontSize), Colors.Black);
-			Draw(text, position, fontSize, Colors.White);
+			Draw(text, position, fontSize, color);
 		}
 	}
 
