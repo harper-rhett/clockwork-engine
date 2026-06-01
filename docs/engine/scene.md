@@ -48,16 +48,17 @@ Scene scene = new(Colors.Black);
 
 P.S. Scenes also contain a field for a camera, if your game uses one. More on this in the [camera](camera.md) docs.
 
-## SimpleScene
+## Scenes from a Collection
 
-If you have a collection of entities and don't need a custom scene class, `SimpleScene` has you covered:
+If you have a collection of entities and don't need a custom scene class, you can construct a `Scene` directly from them:
 
 ```csharp
 Entity[] entities = { new Player(), new Enemy(), new Ground() };
-SimpleScene scene = new(entities);
+Scene scene = new(entities);
+Scene darkScene = new(entities, Colors.Black); // with a background color
 ```
 
-This is especially handy when combined with `Engine.Start`:
+There's also a `SimpleScene` wrapper that does the same thing, which is especially handy when combined with `Engine.Start`:
 
 ```csharp
 Engine.Start(new Entity[] { new Player(), new Enemy() });
@@ -74,6 +75,12 @@ scene.TimeModifier = 2;
 ```
 
 This means if a game scene and a pause menu are required, both can be run at once and the game scene can be paused with leisure. Unpausing will pick up right where it left off. No time passes for a scene when it is paused. And, of course all entities are paused and live in this system, but they also all have a reference to scene. So, they can use that reference for any time related needs. Check out the [timers](../utilities/timers.md) for an example of this.
+
+The scene also exposes `FrameTime`, which is the engine's frame time scaled by `TimeModifier` and zeroed while paused. Entities should use this (or their own `FrameTime` shortcut) for movement so they automatically respect pausing and slow-motion:
+
+```csharp
+position += velocity * scene.FrameTime;
+```
 
 ## DrawGUI
 

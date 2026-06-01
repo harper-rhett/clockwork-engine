@@ -24,7 +24,7 @@ bool inBounds = gameArea.InBounds(pixelX, pixelY);
 MyTileType tileType = gameArea.GetTileType<MyTileType>(pixelX, pixelY);
 ```
 
-Entities can be registered to a `TiledGameArea`, which ties their `IsUpdating` and `IsRendering` to the area's `IsActive` state. When a registered entity is removed from the scene, it automatically unregisters:
+Entities can be registered to a `TiledGameArea`, which ties their `IsUpdating` and `IsDrawing` to the area's `IsActive` state. When a registered entity is removed from the scene, it automatically unregisters:
 
 ```csharp
 gameArea.RegisterEntity(myEnemy);

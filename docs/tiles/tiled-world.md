@@ -23,3 +23,7 @@ All areas in the layer are drawn automatically during the layer's `OnDraw`.
 TiledLayer<TiledGameArea> world = scene.AddEntity(new TiledLayer<TiledGameArea>(tileSize));
 TiledGameArea area = world.GetArea(pixelX, pixelY);
 ```
+
+## Building Levels
+
+You can populate tiled areas yourself in code, but for real levels you'll likely want a visual editor. The [LDtk importer](ldtk.md) loads levels authored in [LDtk](https://ldtk.io/) straight into a `TiledLayer`, including tiles and entity placement.

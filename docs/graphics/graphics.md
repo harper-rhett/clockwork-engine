@@ -30,6 +30,10 @@ Spline.DrawLinear(splinePositions, splineThickness, splineColor);
 
 > `using Clockwork.Graphics.Draw3D;`
 
+> **Note:** 3D support is still under active development. The primitives and model APIs below work, but expect rough edges and changes as 3D matures. The engine's primary focus today is 2D.
+
+> **Example:** See `Primitives3DExample` in the [examples repository](https://github.com/harper-rhett/clockwork-examples) for a 3D scene with a free-flying camera.
+
 For 3D rendering, `Primitives3D` provides spheres, cubes, capsules, and other shapes:
 
 ```csharp
@@ -98,6 +102,17 @@ Color blended = Color.Lerp(Colors.Red, Colors.Blue, 0.5f);
 
 The `Colors` class contains a large set of predefined colors like `Colors.White`, `Colors.Red`, and so on.
 
+## Gradients
+
+A `Gradient` blends across several colors, and `Sample` returns the color at a position from `0` to `1`. It's handy for health bars, skies, heatmaps, and animating colors over time:
+
+```csharp
+Gradient gradient = new(Colors.Red, Colors.Yellow, Colors.Green);
+Color midpoint = gradient.Sample(0.5f);
+```
+
+> **Example:** See `GradientExample` in the [examples repository](https://github.com/harper-rhett/clockwork-examples), which samples a gradient across the width of the screen.
+
 ## Parallax
 
 The `Parallax` entity creates multi-layered scrolling backgrounds that move relative to a camera:
@@ -118,5 +133,4 @@ Check out the source code to find out more information about this namespace. Oth
 - Shaders and shader data
 - Images (bitmap manipulation)
 - Blend modes
-- Gradients
 - Nine-patch sprites

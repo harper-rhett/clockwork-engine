@@ -28,19 +28,30 @@ bool weighted = Generate.Bool(0.75f); // 75% chance of true
 Vector3 direction3D = Generate.UnitVector3();
 ```
 
-You can also work with collections:
+You can also generate a random position inside a region, which is handy for scattering things across the screen or within a bounding box:
 
 ```csharp
-Generate.Shuffle(myList);
-int randomIndex = Generate.Index(myCollection);
-Enemy randomEnemy = Generate.Item(enemies);
+Vector2 spawn = Generate.Vector2(0, 0, Engine.GameWidth, Engine.GameHeight);
+Vector2 inBounds = Generate.Vector2(areaRectangle); // within a Rectangle
 ```
 
-There are extension method variants too, for a more natural syntax:
+And you can work with collections:
 
 ```csharp
+Generate.Shuffle(myList);                  // shuffle in place
+List<Enemy> shuffled = Generate.GetShuffled(enemies); // shuffled copy
+int randomIndex = Generate.Index(myCollection);
+Enemy randomEnemy = Generate.Item(enemies);
+Generate.RemoveItem(enemies);              // remove a random item
+```
+
+Most collection methods have extension variants too, for a more natural syntax:
+
+```csharp
+myList.Shuffle();
 int index = myCollection.GetRandomIndex();
 Enemy enemy = enemies.GetRandomItem();
+enemies.RemoveRandomItem();
 ```
 
 ## Seed
@@ -56,4 +67,10 @@ float speed = seed.NextFloat(1f, 5f);
 Vector2 direction = seed.NextUnitVector2();
 ```
 
-`Seed` has all of the same methods as `Generate`, just prefixed with `Next`. This is useful for procedural generation where you want reproducible results.
+`Seed` mirrors `Generate`, with method names prefixed by `Next` (`NextInteger`, `NextFloat`, `NextVector2`, `NextItem`, and so on). This is useful for procedural generation where you want reproducible results — the same seed always produces the same sequence:
+
+```csharp
+Seed seed = new(worldSeed);
+Vector2 treePosition = seed.NextVector2(mapBounds);
+Biome biome = seed.NextItem(biomes);
+```

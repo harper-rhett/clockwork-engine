@@ -2,6 +2,8 @@
 
 > `using Clockwork.Shapes;`
 
+> **Example:** See `CollisionExample` in the [examples repository](https://github.com/harper-rhett/clockwork-examples) for shapes used as interactive colliders, and `PolygonExample` for animated polygons.
+
 Primitive shapes can be drawn from `Primitives2D` and `Primitives3D`. Shape entities are similar, but different. They are pre-built entities useful for prototyping that draw themselves.
 
 ## 2D Shapes
@@ -56,23 +58,8 @@ SphereShape sphere = scene.AddEntity(new SphereShape(position, radius, Colors.Re
 
 `SphereShape` implements `IIntersectsWithRay`, making it useful for ray-based selection and collision.
 
-## Verlet Physics
+## Soft-Body Physics
 
-Clockwork also includes Verlet integration shapes for soft-body physics simulations like ropes and cloth:
-
-- `VerletJoint`: Extends `CircleShape` with velocity-based Verlet integration. Joints move according to their velocity each frame.
-- `VerletBone`: Extends `LineShape` and connects two `VerletJoint` instances. Calling `Tighten()` enforces the desired length between joints.
-
-```csharp
-VerletJoint jointA = scene.AddEntity(new VerletJoint(radius, Colors.White));
-VerletJoint jointB = scene.AddEntity(new VerletJoint(radius, Colors.White));
-VerletBone bone = scene.AddEntity(new VerletBone(jointA, jointB, tolerance, thickness, Colors.Gray));
-```
-
-To simulate a rope or chain, create a series of joints connected by bones and call `Tighten()` on each bone during the update loop. Apply forces to joints with `AddVelocity()`:
-
-```csharp
-joint.AddVelocity(new Vector2(0, gravity * Engine.FrameTime));
-```
+Shapes also serve as the foundation for Verlet physics. `VerletJoint` and `VerletBone` build on `CircleShape` and `LineShape` to simulate ropes, chains, and cloth. These live in the `Clockwork.Simulation` namespace — see the [simulation](../simulation/simulation.md) docs.
 
 More on collision detection in the [intersections](intersections.md) section.

@@ -4,6 +4,8 @@
 
 Clockwork includes a basic data visualization system, currently featuring a scatter plot. This is useful for debugging, simulations, and visualizing data in real time.
 
+> **Note:** Graphs are an early, minimal feature. Only `ScatterPlot` exists today, and its styling options are limited. More chart types and customization are planned.
+
 ## ScatterPlot
 
 `ScatterPlot` is an entity that implements `ICollection<Vector2>`, so you can add and remove data points just like a list:

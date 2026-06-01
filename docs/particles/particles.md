@@ -2,6 +2,8 @@
 
 > `using Clockwork.Particles`
 
+> **Example:** The firework system below is the `FireworksExample` project in the [examples repository](https://github.com/harper-rhett/clockwork-examples). `PolygonExample` shows particle streaming.
+
 Particles themselves are simple, where each particle is a `struct` with the following fields:
 
 - Position

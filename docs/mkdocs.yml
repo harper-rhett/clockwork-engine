@@ -8,6 +8,7 @@ nav:
     - engine/scene.md
     - engine/entity.md
     - engine/camera.md
+    - engine/profiler.md
   - Animation:
     - animation/curves.md
     - animation/easer.md
@@ -23,10 +24,13 @@ nav:
   - Shapes:
     - shapes/shapes.md
     - shapes/intersections.md
+  - Simulation:
+    - simulation/simulation.md
   - Tiles:
     - tiles/tiled-area.md
     - tiles/tiled-collider.md
     - tiles/tiled-world.md
+    - tiles/ldtk.md
   - UI:
     - ui/ui.md
   - Graphs:
@@ -35,6 +39,7 @@ nav:
     - utilities/transforms.md
     - utilities/timers.md
     - utilities/randomization.md
+    - utilities/quadtree.md
     - utilities/extensions.md
   - Windowing:
     - windowing/windowing.md

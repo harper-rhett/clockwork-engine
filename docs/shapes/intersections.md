@@ -1,5 +1,7 @@
 # Intersections
 
+> **Example:** See `CollisionExample` in the [examples repository](https://github.com/harper-rhett/clockwork-examples) for cross-shape intersection tests in action.
+
 If you want to check for collisions between two shapes, intersections might be a good choice for your calculations.
 
 ## 2D Intersections

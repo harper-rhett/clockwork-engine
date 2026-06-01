@@ -66,3 +66,26 @@ Quaternion rotated = rotation.RotateWorldAxis(Vector3.UnitY, radians);
 Quaternion rotated = rotation.RotateLocalAxis(localAxis, radians);
 Quaternion fresh = QuaternionExtensions.CreateRotation(Vector3.UnitY, radians);
 ```
+
+## Collection Extensions
+
+`GetIndices` returns a list of every valid index in a collection, which is handy for iterating or shuffling indices rather than items:
+
+```csharp
+List<int> indices = myList.GetIndices(); // [0, 1, 2, ...]
+```
+
+## Scope
+
+`Scope` is a small helper for running paired enter/exit actions using a `using` block. The exit action runs automatically when the scope is disposed, even if you return or throw early:
+
+```csharp
+using (new Scope(() => RenderTexture.BeginDrawing(target), RenderTexture.EndDrawing))
+{
+	// draw to the render texture here
+}
+// EndDrawing has now been called
+```
+
+This keeps "begin/end" style APIs balanced without having to remember the closing call.
+

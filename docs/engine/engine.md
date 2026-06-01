@@ -23,18 +23,54 @@ The `Engine` class also has some useful public properties and methods you can us
 - `Engine.GameHeight`
 - `Engine.HalfGameWidth`
 - `Engine.HalfGameHeight`
-- `Engine.GameSize` — a `Coordinate` containing the width and height
-- `Engine.FrameTime`
-- `Engine.FPS`
+- `Engine.GameSize` — a `Vector2` containing the width and height
+- `Engine.GlobalFrameTime`
+- `Engine.ActualFPS`
 - `Engine.TargetFPS`
 - `Engine.TakeScreenshot(string folderPath)`
 - `Engine.StartScreenshotBurst(string folderPath)` / `Engine.StopScreenshotBurst()`
-- `Engine.DrawDebug(int fontSize, int spacing)`
+- `Engine.DrawDebug(int fontSize, Color color, params string[] extraLogs)`
 
-Frame time is the time between frames, often called delta time. It's a useful variable for syncing actions and animations with frame rate. Though, you will primarily use it when writing entities. For instance:
+## Frame Time
+
+Frame time is the time between frames, often called delta time. It's a useful variable for syncing actions and animations with frame rate. `Engine.GlobalFrameTime` gives the raw, unscaled frame time:
 
 ```csharp
-myEntity.position += velocity * Engine.FrameTime;
+myEntity.position += velocity * Engine.GlobalFrameTime;
 ```
 
-Screenshot burst is handy for capturing sequences of frames. While bursting, `Engine.IsScreenshotBursting` will be `true`.
+In practice, you'll rarely reach for `Engine.GlobalFrameTime` directly. When writing entities, prefer the `FrameTime` property on `Entity` or `Scene`, which respects the scene's pause state and time scaling:
+
+```csharp
+myEntity.position += velocity * FrameTime; // inside an entity
+```
+
+See the [scene](scene.md) docs for more on the timing system.
+
+## Debug Overlay
+
+`Engine.DrawDebug` renders the current FPS, plus any extra log lines you pass in. It's a quick way to surface runtime values without building a UI:
+
+```csharp
+Engine.DrawDebug(16, Colors.Lime, $"Enemies: {enemyCount}", $"Score: {score}");
+```
+
+## Screenshots
+
+`Engine.TakeScreenshot` captures a single frame to the given folder, and the burst methods capture a continuous sequence. While bursting, `Engine.IsScreenshotBursting` will be `true`:
+
+```csharp
+Engine.StartScreenshotBurst("captures");
+// ...several frames later...
+Engine.StopScreenshotBurst();
+```
+
+If you'd rather drive screenshots from the keyboard, set `Engine.ScreenshotCommands = true` to enable built-in hotkeys:
+
+- `=` — take a single screenshot (saved to `screenshots`)
+- `[` — start a burst (saved to `burst-screenshots`)
+- `]` — stop the burst
+
+## Viewport Culling
+
+The engine only draws entities that report themselves as visible, which keeps large scenes performant. By default every entity is visible, but you can override `Entity.IsVisible()` to cull off-screen entities. See the [entity](entity.md) and [camera](camera.md) docs for details.

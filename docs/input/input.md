@@ -11,9 +11,9 @@ if (Keyboard.IsKeyPressed(KeyboardKey.Space)) Jump();
 Ah... so simple! Mouse input is roughly the same, though there are several coordinate spaces to choose from:
 
 ```csharp
-int mouseWindowX = Mouse.WindowX;   // mouse x relative to the window
-int mouseGameX = Mouse.GameX;       // mouse x relative to the game viewport
-float mouseWorldX = camera.MouseWorldX; // mouse x relative to the world (via Camera2D)
+int mouseWindowX = Mouse.WindowX;          // mouse x relative to the window
+int mouseGameX = Mouse.GameX;              // mouse x relative to the game viewport
+float mouseWorldX = camera.GetMouseWorldX(); // mouse x relative to the world (via Camera2D)
 ```
 
 There's also `Mouse.WindowPosition`, `Mouse.GamePosition`, `Mouse.Delta`, and `Mouse.WheelDelta` for common mouse queries. You can check whether the cursor is on screen with `Mouse.IsOnScreen`.
