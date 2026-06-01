@@ -10,6 +10,7 @@ using System.IO;
 using System.Numerics;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using Clockwork.Input;
 
 namespace Clockwork;
 
@@ -42,6 +43,7 @@ public static class Engine
 	public static int GameHeight { get; private set; }
 	public static int HalfGameWidth { get; private set; }
 	public static int HalfGameHeight { get; private set; }
+	public static bool ScreenshotCommands;
 
 	// Screen shots
 	private static bool takeScreenshot;
@@ -114,6 +116,12 @@ public static class Engine
 		game.OnDraw();
 		RenderTexture.EndDrawing();
 
+		if (ScreenshotCommands)
+		{
+			if (Keyboard.IsKeyPressed(KeyboardKey.Equal)) TakeScreenshot("screenshots");
+			else if (Keyboard.IsKeyPressed(KeyboardKey.LeftBracket)) StartScreenshotBurst("burst-screenshots");
+			else if (Keyboard.IsKeyPressed(KeyboardKey.RightBracket)) StopScreenshotBurst();
+		}
 		if (takeScreenshot) TakeScreenshot();
 		if (IsScreenshotBursting) BurstScreenshot();
 
@@ -135,29 +143,33 @@ public static class Engine
 	private static void TakeScreenshot()
 	{
 		Image gameImage = Image.Load(gameRenderTexture.Texture);
+		gameImage.FlipVertical();
 		string fileName = $"{DateTime.Now.ToString("yy-MM-dd_HH-mm-ss")}.png";
 		string filePath = Path.Combine(screenshotFolderPath, fileName);
 		gameImage.Export(filePath, out bool success);
+		gameImage.Dispose();
 		takeScreenshot = false;
 	}
 
 	private static void BurstScreenshot()
 	{
 		Image gameImage = Image.Load(gameRenderTexture.Texture);
-		string fileName = $"burst-{screenshotBurstIndex.ToString("D5")}.png";
+		gameImage.FlipVertical();
+		string fileName = $"burst-{screenshotBurstIndex:D5}.png";
 		string filePath = Path.Combine(screenshotBurstFolderPath, fileName);
 		gameImage.Export(filePath, out bool success);
+		gameImage.Dispose();
 		screenshotBurstIndex++;
 	}
 
-	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
+	[DllImport(raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFrameTime")]
 	private static extern float GetFrameTime();
 
-	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
+	[DllImport(raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetTargetFPS")]
 	private static extern void SetTargetFPS(int fps);
 	public static int TargetFPS { set => SetTargetFPS(value); }
 
-	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
+	[DllImport(raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFPS")]
 	private static extern float GetFPS();
 	public static float ActualFPS => GetFPS();
 

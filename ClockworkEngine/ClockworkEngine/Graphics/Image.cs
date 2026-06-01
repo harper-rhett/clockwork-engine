@@ -28,6 +28,14 @@ public unsafe struct Image
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadImage")]
 	private static extern void Unload(Image image);
 
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImageFlipVertical")]
+	private static extern void FlipVertical(ref Image image);
+	public void FlipVertical() => FlipVertical(ref this);
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImageFlipHorizontal")]
+	private static extern void FlipHorizontal(ref Image image);
+	public void FlipHorizontal() => FlipHorizontal(ref this);
+
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ExportImage")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool Export(Image image, string fileName);
