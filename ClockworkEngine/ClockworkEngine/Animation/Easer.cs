@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Clockwork.Graphics;
 
 namespace Clockwork.Animation;

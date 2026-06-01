@@ -1,5 +1,7 @@
-![Logo](logo.png)
+<img src="media/logo.png" width="200" />
+
 # Clockwork Engine
+
 Clockwork Engine is a (currently) 2D C# game development framework built on the [Raylib Graphics Library](https://www.raylib.com/). It is outfitted with tools designed to make prototyping simple, projects scalable, and scope-creep manageable.
 
 Clockwork Engine currently supports:
@@ -7,6 +9,15 @@ Clockwork Engine currently supports:
 - Linux x64
 - Mac x64
 - Mac Arm64
+
+## Examples
+
+<img src="media/polygons.webp" height="200" />
+<img src="media/fireworks.webp" height="200" />
+<img src="media/orbits.webp" height="200" />
+<img src="media/quadtree.webp" height="200" />
+<img src="media/organisms.webp" height="200" />
+<img src="media/platformer.webp" height="200" />
 
 ## Resources
 
