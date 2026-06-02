@@ -9,12 +9,17 @@ namespace Clockwork.UI;
 public class Element : Entity
 {
 	// Shape
-	public Rectangle Rectangle;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+
+	// General
 	public Color BackgroundColor = Colors.White;
 	public Color BorderColor = Colors.Clear;
 	public int BorderThickness;
-	private int rightBound => (int)(Rectangle.X + Rectangle.Width);
-	private int lowerBound => (int)(Rectangle.Y + Rectangle.Height);
+	private int rightBound => (int)(X + Width);
+	private int lowerBound => (int)(Y + Height);
 
 	// Hover
 	public event Action<Element> HoverEntered;
@@ -25,19 +30,60 @@ public class Element : Entity
 	public event Action<Element> Pressed;
 	public event Action<Element> Released;
 
+	// Public shape
+	public int X
+	{
+		get => x;
+		set
+		{
+			x = value;
+			OnXUpdated();
+		}
+	}
+	public int Y
+	{
+		get => y;
+		set
+		{
+			y = value;
+			OnYUpdated();
+		}
+	}
+	public int Width
+	{
+		get => width;
+		set
+		{
+			width = value;
+			OnWidthUpdated();
+		}
+	}
+	public int Height
+	{
+		get => height;
+		set
+		{
+			height = value;
+			OnHeightUpdated();
+		}
+	}
+
 	public Element()
 	{
-		Rectangle = new(Vector2.Zero, Engine.GameSize);
+		width = Engine.GameWidth;
+		height = Engine.GameHeight;
 	}
 
 	public Element(int x, int y, int width, int height)
 	{
-		Rectangle = new(x, y, width, height);
+		this.x = x; this.y = y;
+		this.width = width; this.height = height;
 	}
 
 	public Element(Vector2 position, Vector2 size)
 	{
-		Rectangle = new(position, size);
+		x = (int)position.X; y = (int)position.Y;
+		width = (int)size.X; height = (int)size.Y;
 	}
 
 	public override void OnUpdate()
@@ -69,9 +115,9 @@ public class Element : Entity
 		get
 		{
 			Vector2 mousePosition = Mouse.GamePosition;
-			bool isHovering = mousePosition.X > Rectangle.X
+			bool isHovering = mousePosition.X > x
 			&& mousePosition.X < rightBound
-			&& mousePosition.Y > Rectangle.Y
+			&& mousePosition.Y > y
 			&& mousePosition.Y < lowerBound
 			&& Mouse.IsOnScreen;
 			return isHovering;
@@ -99,13 +145,19 @@ public class Element : Entity
 	{
 		if (BackgroundColor == Colors.Clear) return;
 
-		Primitives2D.DrawRectangle(Rectangle, BackgroundColor);
+		Primitives2D.DrawRectangle(x, y, width, height, BackgroundColor);
 
 		if (BorderThickness > 0 && BackgroundColor != Colors.Clear) DrawBorder();
 	}
 
 	private void DrawBorder()
 	{
-		Primitives2D.DrawRectangleLines(Rectangle, BorderThickness, BorderColor);
+		Rectangle rectangle = new(x, y, width, height);
+		Primitives2D.DrawRectangleLines(rectangle, BorderThickness, BorderColor);
 	}
+
+	protected virtual void OnXUpdated() { }
+	protected virtual void OnYUpdated() { }
+	protected virtual void OnWidthUpdated() { }
+	protected virtual void OnHeightUpdated() { }
 }

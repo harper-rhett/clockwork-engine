@@ -8,7 +8,7 @@ public class Button : Container
 {
 	private static Color DefaultBackgroundColor = Colors.White;
 	private static Color DefaultBorderColor = Colors.Black;
-	public Color AccentColor = Colors.SkyBlue;
+	public Color AccentColor = Colors.Blue;
 
 	public Button()
 	{
