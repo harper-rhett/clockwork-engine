@@ -1,6 +1,6 @@
-# <a id="Clockwork_Graphics_Spline"></a> Class Spline
+# <a id="Clockwork_Graphics_Draw2D_Spline"></a> Class Spline
 
-Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)  
+Namespace: [Clockwork.Graphics.Draw2D](Clockwork.Graphics.Draw2D.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -10,7 +10,7 @@ public static class Spline
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[Spline](Clockwork.Graphics.Spline.md)
+[Spline](Clockwork.Graphics.Draw2D.Spline.md)
 
 #### Inherited Members
 
@@ -24,7 +24,7 @@ public static class Spline
 
 ## Methods
 
-### <a id="Clockwork_Graphics_Spline_DrawBasis_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBasis\(Vector2\[\], float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawBasis_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBasis\(Vector2\[\], float, Color\)
 
 ```csharp
 public static void DrawBasis(Vector2[] positions, float thickness, Color color)
@@ -38,7 +38,7 @@ public static void DrawBasis(Vector2[] positions, float thickness, Color color)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawBezierCubic_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBezierCubic\(Vector2\[\], float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawBezierCubic_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBezierCubic\(Vector2\[\], float, Color\)
 
 ```csharp
 public static void DrawBezierCubic(Vector2[] positions, float thickness, Color color)
@@ -52,7 +52,7 @@ public static void DrawBezierCubic(Vector2[] positions, float thickness, Color c
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawBezierQuadratic_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBezierQuadratic\(Vector2\[\], float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawBezierQuadratic_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawBezierQuadratic\(Vector2\[\], float, Color\)
 
 ```csharp
 public static void DrawBezierQuadratic(Vector2[] positions, float thickness, Color color)
@@ -66,7 +66,7 @@ public static void DrawBezierQuadratic(Vector2[] positions, float thickness, Col
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawCatmullRom_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawCatmullRom\(Vector2\[\], float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawCatmullRom_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawCatmullRom\(Vector2\[\], float, Color\)
 
 ```csharp
 public static void DrawCatmullRom(Vector2[] positions, float thickness, Color color)
@@ -80,7 +80,7 @@ public static void DrawCatmullRom(Vector2[] positions, float thickness, Color co
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawLinear_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawLinear\(Vector2\[\], float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawLinear_System_Numerics_Vector2___System_Single_Clockwork_Graphics_Color_"></a> DrawLinear\(Vector2\[\], float, Color\)
 
 ```csharp
 public static void DrawLinear(Vector2[] positions, float thickness, Color color)
@@ -94,7 +94,7 @@ public static void DrawLinear(Vector2[] positions, float thickness, Color color)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawSegmentBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBasis\(Vector2, Vector2, Vector2, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawSegmentBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBasis\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
 public static extern void DrawSegmentBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
@@ -114,7 +114,7 @@ public static extern void DrawSegmentBasis(Vector2 positionOne, Vector2 position
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawSegmentBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBezierCubic\(Vector2, Vector2, Vector2, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawSegmentBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBezierCubic\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
 public static extern void DrawSegmentBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float thickness, Color color)
@@ -134,7 +134,7 @@ public static extern void DrawSegmentBezierCubic(Vector2 positionOne, Vector2 co
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawSegmentBezierQuadratic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBezierQuadratic\(Vector2, Vector2, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawSegmentBezierQuadratic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentBezierQuadratic\(Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
 public static extern void DrawSegmentBezierQuadratic(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float thickness, Color color)
@@ -152,7 +152,7 @@ public static extern void DrawSegmentBezierQuadratic(Vector2 positionOne, Vector
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawSegmentCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentCatmullRom\(Vector2, Vector2, Vector2, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawSegmentCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentCatmullRom\(Vector2, Vector2, Vector2, Vector2, float, Color\)
 
 ```csharp
 public static extern void DrawSegmentCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float thickness, Color color)
@@ -172,7 +172,7 @@ public static extern void DrawSegmentCatmullRom(Vector2 positionOne, Vector2 pos
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_DrawSegmentLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentLinear\(Vector2, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_DrawSegmentLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawSegmentLinear\(Vector2, Vector2, float, Color\)
 
 ```csharp
 public static extern void DrawSegmentLinear(Vector2 startPosition, Vector2 endPosition, float thickness, Color color)
@@ -188,7 +188,7 @@ public static extern void DrawSegmentLinear(Vector2 startPosition, Vector2 endPo
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Spline_GetPointBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBasis\(Vector2, Vector2, Vector2, Vector2, float\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_GetPointBasis_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBasis\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
 public static extern Vector2 GetPointBasis(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
@@ -210,7 +210,7 @@ public static extern Vector2 GetPointBasis(Vector2 positionOne, Vector2 position
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Graphics_Spline_GetPointBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierCubic\(Vector2, Vector2, Vector2, Vector2, float\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_GetPointBezierCubic_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierCubic\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
 public static extern Vector2 GetPointBezierCubic(Vector2 positionOne, Vector2 controlPositionOne, Vector2 controlPositionTwo, Vector2 positionTwo, float progress)
@@ -232,7 +232,7 @@ public static extern Vector2 GetPointBezierCubic(Vector2 positionOne, Vector2 co
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Graphics_Spline_GetPointBezierQuad_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierQuad\(Vector2, Vector2, Vector2, float\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_GetPointBezierQuad_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointBezierQuad\(Vector2, Vector2, Vector2, float\)
 
 ```csharp
 public static extern Vector2 GetPointBezierQuad(Vector2 positionOne, Vector2 controlPosition, Vector2 positionTwo, float progress)
@@ -252,7 +252,7 @@ public static extern Vector2 GetPointBezierQuad(Vector2 positionOne, Vector2 con
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Graphics_Spline_GetPointCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointCatmullRom\(Vector2, Vector2, Vector2, Vector2, float\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_GetPointCatmullRom_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointCatmullRom\(Vector2, Vector2, Vector2, Vector2, float\)
 
 ```csharp
 public static extern Vector2 GetPointCatmullRom(Vector2 positionOne, Vector2 positionTwo, Vector2 positionThree, Vector2 positionFour, float progress)
@@ -274,7 +274,7 @@ public static extern Vector2 GetPointCatmullRom(Vector2 positionOne, Vector2 pos
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Graphics_Spline_GetPointLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointLinear\(Vector2, Vector2, float\)
+### <a id="Clockwork_Graphics_Draw2D_Spline_GetPointLinear_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> GetPointLinear\(Vector2, Vector2, float\)
 
 ```csharp
 public static extern Vector2 GetPointLinear(Vector2 startPosition, Vector2 endPosition, float progress)

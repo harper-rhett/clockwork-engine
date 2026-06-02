@@ -74,20 +74,20 @@ public static readonly Color Clear
 
  [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Colors_DarkBlue"></a> DarkBlue
+### <a id="Clockwork_Graphics_Colors_Crimson"></a> Crimson
 
 ```csharp
-public static readonly Color DarkBlue
+public static readonly Color Crimson
 ```
 
 #### Field Value
 
  [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Colors_DarkBrown"></a> DarkBrown
+### <a id="Clockwork_Graphics_Colors_Cyan"></a> Cyan
 
 ```csharp
-public static readonly Color DarkBrown
+public static readonly Color Cyan
 ```
 
 #### Field Value
@@ -98,26 +98,6 @@ public static readonly Color DarkBrown
 
 ```csharp
 public static readonly Color DarkGray
-```
-
-#### Field Value
-
- [Color](Clockwork.Graphics.Color.md)
-
-### <a id="Clockwork_Graphics_Colors_DarkGreen"></a> DarkGreen
-
-```csharp
-public static readonly Color DarkGreen
-```
-
-#### Field Value
-
- [Color](Clockwork.Graphics.Color.md)
-
-### <a id="Clockwork_Graphics_Colors_DarkPurple"></a> DarkPurple
-
-```csharp
-public static readonly Color DarkPurple
 ```
 
 #### Field Value
@@ -148,6 +128,16 @@ public static readonly Color Gray
 
 ```csharp
 public static readonly Color Green
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Colors_HotPink"></a> HotPink
+
+```csharp
+public static readonly Color HotPink
 ```
 
 #### Field Value
@@ -194,10 +184,40 @@ public static readonly Color Maroon
 
  [Color](Clockwork.Graphics.Color.md)
 
+### <a id="Clockwork_Graphics_Colors_Navy"></a> Navy
+
+```csharp
+public static readonly Color Navy
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Colors_Olive"></a> Olive
+
+```csharp
+public static readonly Color Olive
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
 ### <a id="Clockwork_Graphics_Colors_Orange"></a> Orange
 
 ```csharp
 public static readonly Color Orange
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Colors_OrangeRed"></a> OrangeRed
+
+```csharp
+public static readonly Color OrangeRed
 ```
 
 #### Field Value
@@ -238,6 +258,16 @@ public static readonly Color Red
 
 ```csharp
 public static readonly Color SkyBlue
+```
+
+#### Field Value
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Colors_Teal"></a> Teal
+
+```csharp
+public static readonly Color Teal
 ```
 
 #### Field Value

@@ -246,6 +246,18 @@ public int TopY { get; }
 
 ## Methods
 
+### <a id="Clockwork_Tiles_TiledCollider_1_CaptureState_Clockwork_Tiles_TiledGameArea_System_Numerics_Vector2_"></a> CaptureState\(TiledGameArea, Vector2\)
+
+```csharp
+public void CaptureState(TiledGameArea area, Vector2 position)
+```
+
+#### Parameters
+
+`area` [TiledGameArea](Clockwork.Tiles.TiledGameArea.md)
+
+`position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="Clockwork_Tiles_TiledCollider_1_Draw_System_Numerics_Vector2_Clockwork_Graphics_Color_"></a> Draw\(Vector2, Color\)
 
 ```csharp
@@ -327,16 +339,4 @@ public bool IsTileTop(TileType tileType)
 #### Returns
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="Clockwork_Tiles_TiledCollider_1_Update_Clockwork_Tiles_TiledArea_System_Numerics_Vector2_"></a> Update\(TiledArea, Vector2\)
-
-```csharp
-public void Update(TiledArea area, Vector2 position)
-```
-
-#### Parameters
-
-`area` [TiledArea](Clockwork.Tiles.TiledArea.md)
-
-`position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 

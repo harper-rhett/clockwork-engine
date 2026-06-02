@@ -5,8 +5,54 @@ namespace Clockwork.UI;
 
 public class Container : Element
 {
-	public readonly List<Element> Children = new();
-	public int Padding;
+	private readonly List<Element> children = new();
+	public IReadOnlyList<Element> Children => children;
+	public int Padding
+	{
+		set
+		{
+			PaddingLeft = value;
+			PaddingRight = value;
+			PaddingTop = value;
+			PaddingBottom = value;
+		}
+	}
+	private int paddingLeft;
+	public int PaddingLeft
+	{
+		get => paddingLeft;
+		set
+		{
+			paddingLeft = value;
+		}
+	}
+	private int paddingRight;
+	public int PaddingRight
+	{
+		get => paddingRight;
+		set
+		{
+			paddingRight = value;
+		}
+	}
+	private int paddingTop;
+	public int PaddingTop
+	{
+		get => paddingTop;
+		set
+		{
+			paddingTop = value;
+		}
+	}
+	private int paddingBottom;
+	public int PaddingBottom
+	{
+		get => paddingBottom;
+		set
+		{
+			paddingBottom = value;
+		}
+	}
 
 	public Container() : base() { }
 
@@ -14,14 +60,38 @@ public class Container : Element
 
 	public Container(Vector2 position, Vector2 size) : base(position, size) { }
 
-	public override void OnUpdate()
+	public void AddChild(Element element)
 	{
-		base.OnUpdate();
+		element.DrawLayer = DrawLayer + 1;
+		children.Add(element);
+		Refresh();
 	}
 
-	public override void OnDraw()
+	private void Refresh()
 	{
-		base.OnDraw();
-		// need to draw children on top
+		OnXUpdated();
+		OnYUpdated();
+		OnWidthUpdated();
+		OnHeightUpdated();
+	}
+
+	protected override void OnXUpdated()
+	{
+		foreach (Element child in children) child.X = X + paddingLeft;
+	}
+
+	protected override void OnYUpdated()
+	{
+		foreach (Element child in children) child.Y = Y + paddingTop;
+	}
+
+	protected override void OnWidthUpdated()
+	{
+		foreach (Element child in children) child.Width = Width - paddingLeft - paddingRight;
+	}
+
+	protected override void OnHeightUpdated()
+	{
+		foreach (Element child in children) child.Height = Height - paddingTop - paddingBottom;
 	}
 }

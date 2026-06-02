@@ -3,10 +3,6 @@
   href: Clockwork.md
   items:
   - name: Classes
-  - name: Camera
-    href: Clockwork.Camera.md
-  - name: Camera2D
-    href: Clockwork.Camera2D.md
   - name: Engine
     href: Clockwork.Engine.md
   - name: Entities
@@ -15,8 +11,14 @@
     href: Clockwork.Entity.md
   - name: Game
     href: Clockwork.Game.md
+  - name: PerformanceTracker
+    href: Clockwork.PerformanceTracker.md
+  - name: Profiler
+    href: Clockwork.Profiler.md
   - name: Scene
     href: Clockwork.Scene.md
+  - name: SimpleGame
+    href: Clockwork.SimpleGame.md
 - name: Clockwork.Animation
   href: Clockwork.Animation.md
   items:
@@ -71,42 +73,108 @@
     href: Clockwork.Graphics.Parallax.md
   - name: Parallax.Layer
     href: Clockwork.Graphics.Parallax.Layer.md
-  - name: Primitives
-    href: Clockwork.Graphics.Primitives.md
-  - name: Spline
-    href: Clockwork.Graphics.Spline.md
-  - name: Text
-    href: Clockwork.Graphics.Text.md
+  - name: Shader
+    href: Clockwork.Graphics.Shader.md
   - name: Structs
   - name: Color
     href: Clockwork.Graphics.Color.md
-  - name: Font
-    href: Clockwork.Graphics.Font.md
-  - name: GlyphInfo
-    href: Clockwork.Graphics.GlyphInfo.md
   - name: Image
     href: Clockwork.Graphics.Image.md
-  - name: NinePatch
-    href: Clockwork.Graphics.NinePatch.md
   - name: Rectangle
     href: Clockwork.Graphics.Rectangle.md
   - name: RenderTexture
     href: Clockwork.Graphics.RenderTexture.md
-  - name: Shader
-    href: Clockwork.Graphics.Shader.md
+  - name: ShaderData
+    href: Clockwork.Graphics.ShaderData.md
   - name: Texture
     href: Clockwork.Graphics.Texture.md
   - name: Enums
   - name: BlendMode
     href: Clockwork.Graphics.BlendMode.md
-  - name: NinePatchLayout
-    href: Clockwork.Graphics.NinePatchLayout.md
   - name: PixelFormat
     href: Clockwork.Graphics.PixelFormat.md
   - name: TextureFilter
     href: Clockwork.Graphics.TextureFilter.md
   - name: UniformDataType
     href: Clockwork.Graphics.UniformDataType.md
+- name: Clockwork.Graphics.Cameras
+  href: Clockwork.Graphics.Cameras.md
+  items:
+  - name: Classes
+  - name: Camera2D
+    href: Clockwork.Graphics.Cameras.Camera2D.md
+  - name: Camera3D
+    href: Clockwork.Graphics.Cameras.Camera3D.md
+  - name: CameraEntity
+    href: Clockwork.Graphics.Cameras.CameraEntity.md
+  - name: FreeCamera2D
+    href: Clockwork.Graphics.Cameras.FreeCamera2D.md
+  - name: FreeCamera3D
+    href: Clockwork.Graphics.Cameras.FreeCamera3D.md
+  - name: Structs
+  - name: Camera2DInternal
+    href: Clockwork.Graphics.Cameras.Camera2DInternal.md
+  - name: Camera3DInternal
+    href: Clockwork.Graphics.Cameras.Camera3DInternal.md
+  - name: Enums
+  - name: CameraProjection
+    href: Clockwork.Graphics.Cameras.CameraProjection.md
+- name: Clockwork.Graphics.Draw2D
+  href: Clockwork.Graphics.Draw2D.md
+  items:
+  - name: Classes
+  - name: Primitives2D
+    href: Clockwork.Graphics.Draw2D.Primitives2D.md
+  - name: Spline
+    href: Clockwork.Graphics.Draw2D.Spline.md
+  - name: Structs
+  - name: NinePatch
+    href: Clockwork.Graphics.Draw2D.NinePatch.md
+  - name: Enums
+  - name: NinePatchLayout
+    href: Clockwork.Graphics.Draw2D.NinePatchLayout.md
+- name: Clockwork.Graphics.Draw3D
+  href: Clockwork.Graphics.Draw3D.md
+  items:
+  - name: Classes
+  - name: Material
+    href: Clockwork.Graphics.Draw3D.Material.md
+  - name: MaterialMapIndex
+    href: Clockwork.Graphics.Draw3D.MaterialMapIndex.md
+  - name: Mesh
+    href: Clockwork.Graphics.Draw3D.Mesh.md
+  - name: Primitives3D
+    href: Clockwork.Graphics.Draw3D.Primitives3D.md
+  - name: Structs
+  - name: BoneInfo
+    href: Clockwork.Graphics.Draw3D.BoneInfo.md
+  - name: MaterialData
+    href: Clockwork.Graphics.Draw3D.MaterialData.md
+  - name: MaterialMap
+    href: Clockwork.Graphics.Draw3D.MaterialMap.md
+  - name: MeshData
+    href: Clockwork.Graphics.Draw3D.MeshData.md
+  - name: Model
+    href: Clockwork.Graphics.Draw3D.Model.md
+  - name: RaylibTransform
+    href: Clockwork.Graphics.Draw3D.RaylibTransform.md
+- name: Clockwork.Graphics.Text
+  href: Clockwork.Graphics.Text.md
+  items:
+  - name: Classes
+  - name: Text
+    href: Clockwork.Graphics.Text.Text.md
+  - name: Structs
+  - name: Font
+    href: Clockwork.Graphics.Text.Font.md
+  - name: GlyphInfo
+    href: Clockwork.Graphics.Text.GlyphInfo.md
+- name: Clockwork.Graphs
+  href: Clockwork.Graphs.md
+  items:
+  - name: Classes
+  - name: ScatterPlot
+    href: Clockwork.Graphs.ScatterPlot.md
 - name: Clockwork.Input
   href: Clockwork.Input.md
   items:
@@ -162,8 +230,10 @@
   - name: Classes
   - name: CircleShape
     href: Clockwork.Shapes.CircleShape.md
-  - name: Intersection
-    href: Clockwork.Shapes.Intersection.md
+  - name: Intersection2D
+    href: Clockwork.Shapes.Intersection2D.md
+  - name: Intersection3D
+    href: Clockwork.Shapes.Intersection3D.md
   - name: LineShape
     href: Clockwork.Shapes.LineShape.md
   - name: PointShape
@@ -172,6 +242,11 @@
     href: Clockwork.Shapes.PolygonShape.md
   - name: RectangleShape
     href: Clockwork.Shapes.RectangleShape.md
+  - name: SphereShape
+    href: Clockwork.Shapes.SphereShape.md
+  - name: Structs
+  - name: RayCollision
+    href: Clockwork.Shapes.RayCollision.md
   - name: Interfaces
   - name: IIntersectsWithCircle
     href: Clockwork.Shapes.IIntersectsWithCircle.md
@@ -179,8 +254,18 @@
     href: Clockwork.Shapes.IIntersectsWithLine.md
   - name: IIntersectsWithPoint
     href: Clockwork.Shapes.IIntersectsWithPoint.md
+  - name: IIntersectsWithRay
+    href: Clockwork.Shapes.IIntersectsWithRay.md
   - name: IIntersectsWithRectangle
     href: Clockwork.Shapes.IIntersectsWithRectangle.md
+- name: Clockwork.Simulation
+  href: Clockwork.Simulation.md
+  items:
+  - name: Classes
+  - name: VerletBone
+    href: Clockwork.Simulation.VerletBone.md
+  - name: VerletJoint
+    href: Clockwork.Simulation.VerletJoint.md
 - name: Clockwork.Tiles
   href: Clockwork.Tiles.md
   items:
@@ -191,12 +276,28 @@
     href: Clockwork.Tiles.TiledArea.md
   - name: TiledCollider<TileType>
     href: Clockwork.Tiles.TiledCollider-1.md
-  - name: TiledWorld
-    href: Clockwork.Tiles.TiledWorld.md
+  - name: TiledGameArea
+    href: Clockwork.Tiles.TiledGameArea.md
+  - name: TiledLayer
+    href: Clockwork.Tiles.TiledLayer.md
+  - name: TiledLayer<TiledAreaType>
+    href: Clockwork.Tiles.TiledLayer-1.md
+- name: Clockwork.UI
+  href: Clockwork.UI.md
+  items:
+  - name: Classes
+  - name: Button
+    href: Clockwork.UI.Button.md
+  - name: Container
+    href: Clockwork.UI.Container.md
+  - name: Element
+    href: Clockwork.UI.Element.md
 - name: Clockwork.Utilities
   href: Clockwork.Utilities.md
   items:
   - name: Classes
+  - name: CollectionExtensions
+    href: Clockwork.Utilities.CollectionExtensions.md
   - name: FireTimer
     href: Clockwork.Utilities.FireTimer.md
   - name: FloatExtensions
@@ -205,10 +306,22 @@
     href: Clockwork.Utilities.Generate.md
   - name: IntegerExtensions
     href: Clockwork.Utilities.IntegerExtensions.md
+  - name: Quadtree<ItemType>
+    href: Clockwork.Utilities.Quadtree-1.md
+  - name: QuaternionExtensions
+    href: Clockwork.Utilities.QuaternionExtensions.md
+  - name: Rotation2D
+    href: Clockwork.Utilities.Rotation2D.md
+  - name: Scope
+    href: Clockwork.Utilities.Scope.md
   - name: Seed
     href: Clockwork.Utilities.Seed.md
   - name: Transform2D
     href: Clockwork.Utilities.Transform2D.md
+  - name: Transform3D
+    href: Clockwork.Utilities.Transform3D.md
+  - name: Translation2D
+    href: Clockwork.Utilities.Translation2D.md
   - name: TriggerTimer
     href: Clockwork.Utilities.TriggerTimer.md
   - name: VectorExtensions
@@ -217,8 +330,10 @@
   - name: Coordinate
     href: Clockwork.Utilities.Coordinate.md
   - name: Interfaces
-  - name: ITransform2D
-    href: Clockwork.Utilities.ITransform2D.md
+  - name: IRotation2D
+    href: Clockwork.Utilities.IRotation2D.md
+  - name: ITranslation2D
+    href: Clockwork.Utilities.ITranslation2D.md
   - name: Delegates
   - name: FireTimer.FiredDelegate
     href: Clockwork.Utilities.FireTimer.FiredDelegate.md
@@ -232,3 +347,5 @@
     href: Clockwork.Windowing.Monitor.md
   - name: Window
     href: Clockwork.Windowing.Window.md
+  - name: WindowRenderer
+    href: Clockwork.Windowing.WindowRenderer.md

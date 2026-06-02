@@ -22,22 +22,24 @@ public static class Engine
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
-## Properties
+## Fields
 
-### <a id="Clockwork_Engine_FPS"></a> FPS
+### <a id="Clockwork_Engine_ScreenshotCommands"></a> ScreenshotCommands
 
 ```csharp
-public static float FPS { get; }
+public static bool ScreenshotCommands
 ```
 
-#### Property Value
+#### Field Value
 
- [float](https://learn.microsoft.com/dotnet/api/system.single)
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Engine_FrameTime"></a> FrameTime
+## Properties
+
+### <a id="Clockwork_Engine_ActualFPS"></a> ActualFPS
 
 ```csharp
-public static float FrameTime { get; }
+public static float ActualFPS { get; }
 ```
 
 #### Property Value
@@ -57,12 +59,12 @@ public static int GameHeight { get; }
 ### <a id="Clockwork_Engine_GameSize"></a> GameSize
 
 ```csharp
-public static Coordinate GameSize { get; set; }
+public static Vector2 GameSize { get; set; }
 ```
 
 #### Property Value
 
- [Coordinate](Clockwork.Utilities.Coordinate.md)
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
 ### <a id="Clockwork_Engine_GameWidth"></a> GameWidth
 
@@ -73,6 +75,16 @@ public static int GameWidth { get; }
 #### Property Value
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Engine_GlobalFrameTime"></a> GlobalFrameTime
+
+```csharp
+public static float GlobalFrameTime { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Engine_HalfGameHeight"></a> HalfGameHeight
 
@@ -116,17 +128,19 @@ public static int TargetFPS { set; }
 
 ## Methods
 
-### <a id="Clockwork_Engine_DrawDebug_System_Int32_System_Int32_"></a> DrawDebug\(int, int\)
+### <a id="Clockwork_Engine_DrawDebug_System_Int32_Clockwork_Graphics_Color_System_String___"></a> DrawDebug\(int, Color, params string\[\]\)
 
 ```csharp
-public static void DrawDebug(int fontSize, int spacing)
+public static void DrawDebug(int fontSize, Color color, params string[] extraLogs)
 ```
 
 #### Parameters
 
 `fontSize` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-`spacing` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`color` [Color](Clockwork.Graphics.Color.md)
+
+`extraLogs` [string](https://learn.microsoft.com/dotnet/api/system.string)\[\]
 
 ### <a id="Clockwork_Engine_Initialize_System_String_System_Int32_System_Int32_"></a> Initialize\(string, int, int\)
 
@@ -151,6 +165,26 @@ public static void Start(Game game)
 #### Parameters
 
 `game` [Game](Clockwork.Game.md)
+
+### <a id="Clockwork_Engine_Start_Clockwork_Scene_"></a> Start\(Scene\)
+
+```csharp
+public static void Start(Scene scene)
+```
+
+#### Parameters
+
+`scene` [Scene](Clockwork.Scene.md)
+
+### <a id="Clockwork_Engine_Start_System_Collections_Generic_IEnumerable_Clockwork_Entity__"></a> Start\(IEnumerable<Entity\>\)
+
+```csharp
+public static void Start(IEnumerable<Entity> entities)
+```
+
+#### Parameters
+
+`entities` [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable\-1)<[Entity](Clockwork.Entity.md)\>
 
 ### <a id="Clockwork_Engine_StartScreenshotBurst_System_String_"></a> StartScreenshotBurst\(string\)
 

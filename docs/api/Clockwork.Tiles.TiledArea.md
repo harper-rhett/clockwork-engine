@@ -12,6 +12,10 @@ public class TiledArea
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 [TiledArea](Clockwork.Tiles.TiledArea.md)
 
+#### Derived
+
+[TiledGameArea](Clockwork.Tiles.TiledGameArea.md)
+
 #### Inherited Members
 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
@@ -104,15 +108,15 @@ public readonly int WidthInTiles
 
 ## Properties
 
-### <a id="Clockwork_Tiles_TiledArea_RegisteredEntities"></a> RegisteredEntities
+### <a id="Clockwork_Tiles_TiledArea_IsActive"></a> IsActive
 
 ```csharp
-public IReadOnlyList<Entity> RegisteredEntities { get; }
+public virtual bool IsActive { get; set; }
 ```
 
 #### Property Value
 
- [IReadOnlyList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist\-1)<[Entity](Clockwork.Entity.md)\>
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 ### <a id="Clockwork_Tiles_TiledArea_Tiles"></a> Tiles
 
@@ -124,16 +128,6 @@ public Tile[] Tiles { set; }
 
  [Tile](Clockwork.Tiles.Tile.md)\[\]
 
-### <a id="Clockwork_Tiles_TiledArea_TilesByID"></a> TilesByID
-
-```csharp
-public int[,] TilesByID { set; }
-```
-
-#### Property Value
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)\[,\]
-
 ## Methods
 
 ### <a id="Clockwork_Tiles_TiledArea_Draw"></a> Draw\(\)
@@ -141,82 +135,4 @@ public int[,] TilesByID { set; }
 ```csharp
 public void Draw()
 ```
-
-### <a id="Clockwork_Tiles_TiledArea_GetTileLocalCoordinate_System_Int32_System_Int32_"></a> GetTileLocalCoordinate\(int, int\)
-
-```csharp
-public Coordinate GetTileLocalCoordinate(int pixelX, int pixelY)
-```
-
-#### Parameters
-
-`pixelX` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`pixelY` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-#### Returns
-
- [Coordinate](Clockwork.Utilities.Coordinate.md)
-
-### <a id="Clockwork_Tiles_TiledArea_GetTileType__1_System_Int32_System_Int32_"></a> GetTileType<TileType\>\(int, int\)
-
-```csharp
-public TileType GetTileType<TileType>(int pixelX, int pixelY) where TileType : Enum
-```
-
-#### Parameters
-
-`pixelX` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`pixelY` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-#### Returns
-
- TileType
-
-#### Type Parameters
-
-`TileType` 
-
-### <a id="Clockwork_Tiles_TiledArea_GetTileTypeID_System_Int32_System_Int32_"></a> GetTileTypeID\(int, int\)
-
-```csharp
-public int GetTileTypeID(int pixelX, int pixelY)
-```
-
-#### Parameters
-
-`pixelX` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`pixelY` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-#### Returns
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="Clockwork_Tiles_TiledArea_InBounds_System_Int32_System_Int32_"></a> InBounds\(int, int\)
-
-```csharp
-public bool InBounds(int pixelX, int pixelY)
-```
-
-#### Parameters
-
-`pixelX` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`pixelY` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-#### Returns
-
- [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="Clockwork_Tiles_TiledArea_RegisterEntity_Clockwork_Entity_"></a> RegisterEntity\(Entity\)
-
-```csharp
-public void RegisterEntity(Entity entity)
-```
-
-#### Parameters
-
-`entity` [Entity](Clockwork.Entity.md)
 

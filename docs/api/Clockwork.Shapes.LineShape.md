@@ -13,6 +13,10 @@ public class LineShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, II
 [Entity](Clockwork.Entity.md) ← 
 [LineShape](Clockwork.Shapes.LineShape.md)
 
+#### Derived
+
+[VerletBone](Clockwork.Simulation.VerletBone.md)
+
 #### Implements
 
 [IIntersectsWithPoint](Clockwork.Shapes.IIntersectsWithPoint.md), 
@@ -24,15 +28,21 @@ public class LineShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, II
 
 [Entity.Scene](Clockwork.Entity.md\#Clockwork\_Entity\_Scene), 
 [Entity.IsUpdating](Clockwork.Entity.md\#Clockwork\_Entity\_IsUpdating), 
-[Entity.IsRendering](Clockwork.Entity.md\#Clockwork\_Entity\_IsRendering), 
+[Entity.IsDrawing](Clockwork.Entity.md\#Clockwork\_Entity\_IsDrawing), 
+[Entity.Removed](Clockwork.Entity.md\#Clockwork\_Entity\_Removed), 
+[Entity.IsInScene](Clockwork.Entity.md\#Clockwork\_Entity\_IsInScene), 
+[Entity.FrameTime](Clockwork.Entity.md\#Clockwork\_Entity\_FrameTime), 
+[Entity.Time](Clockwork.Entity.md\#Clockwork\_Entity\_Time), 
 [Entity.UpdateLayer](Clockwork.Entity.md\#Clockwork\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](Clockwork.Entity.md\#Clockwork\_Entity\_DrawLayer), 
 [Entity.OnUpdate\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnUpdate), 
 [Entity.OnDraw\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnDraw), 
 [Entity.OnDrawGUI\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnDrawGUI), 
-[Entity.Remove\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_Remove), 
+[Entity.AddToScene\(Scene\)](Clockwork.Entity.md\#Clockwork\_Entity\_AddToScene\_Clockwork\_Scene\_), 
+[Entity.RemoveFromScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_RemoveFromScene), 
 [Entity.OnAddedToScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnAddedToScene), 
 [Entity.OnRemovedFromScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnRemovedFromScene), 
+[Entity.IsVisible\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_IsVisible), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
@@ -67,26 +77,6 @@ public Color Color
 
  [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Shapes_LineShape_EndPosition"></a> EndPosition
-
-```csharp
-public Vector2 EndPosition
-```
-
-#### Field Value
-
- [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
-### <a id="Clockwork_Shapes_LineShape_StartPosition"></a> StartPosition
-
-```csharp
-public Vector2 StartPosition
-```
-
-#### Field Value
-
- [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
 ### <a id="Clockwork_Shapes_LineShape_Thickness"></a> Thickness
 
 ```csharp
@@ -96,6 +86,28 @@ public float Thickness
 #### Field Value
 
  [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+## Properties
+
+### <a id="Clockwork_Shapes_LineShape_EndPosition"></a> EndPosition
+
+```csharp
+public virtual Vector2 EndPosition { get; protected set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Shapes_LineShape_StartPosition"></a> StartPosition
+
+```csharp
+public virtual Vector2 StartPosition { get; protected set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
 ## Methods
 

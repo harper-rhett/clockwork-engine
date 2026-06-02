@@ -22,69 +22,7 @@ public class Entities
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
-## Properties
-
-### <a id="Clockwork_Entities_InDrawOrder"></a> InDrawOrder
-
-```csharp
-public IEnumerable<Entity> InDrawOrder { get; }
-```
-
-#### Property Value
-
- [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable\-1)<[Entity](Clockwork.Entity.md)\>
-
-### <a id="Clockwork_Entities_InUpdateOrder"></a> InUpdateOrder
-
-```csharp
-public IEnumerable<Entity> InUpdateOrder { get; }
-```
-
-#### Property Value
-
- [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable\-1)<[Entity](Clockwork.Entity.md)\>
-
 ## Methods
-
-### <a id="Clockwork_Entities_DrawDebug_System_Int32_System_Int32_"></a> DrawDebug\(int, int\)
-
-```csharp
-public void DrawDebug(int fontSize, int spacing)
-```
-
-#### Parameters
-
-`fontSize` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`spacing` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="Clockwork_Entities_GetEntities__1"></a> GetEntities<EntityType\>\(\)
-
-```csharp
-public IReadOnlyList<EntityType> GetEntities<EntityType>() where EntityType : Entity
-```
-
-#### Returns
-
- [IReadOnlyList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist\-1)<EntityType\>
-
-#### Type Parameters
-
-`EntityType` 
-
-### <a id="Clockwork_Entities_GetEntity__1"></a> GetEntity<EntityType\>\(\)
-
-```csharp
-public EntityType GetEntity<EntityType>() where EntityType : Entity
-```
-
-#### Returns
-
- EntityType
-
-#### Type Parameters
-
-`EntityType` 
 
 ### <a id="Clockwork_Entities_MoveDrawLayer_Clockwork_Entity_"></a> MoveDrawLayer\(Entity\)
 

@@ -1,6 +1,6 @@
-# <a id="Clockwork_Graphics_NinePatch"></a> Struct NinePatch
+# <a id="Clockwork_Graphics_Draw2D_NinePatch"></a> Struct NinePatch
 
-Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)  
+Namespace: [Clockwork.Graphics.Draw2D](Clockwork.Graphics.Draw2D.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -18,7 +18,7 @@ public struct NinePatch
 
 ## Fields
 
-### <a id="Clockwork_Graphics_NinePatch_Bottom"></a> Bottom
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Bottom"></a> Bottom
 
 ```csharp
 public int Bottom
@@ -28,7 +28,7 @@ public int Bottom
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_NinePatch_Layout"></a> Layout
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Layout"></a> Layout
 
 ```csharp
 public NinePatchLayout Layout
@@ -36,9 +36,9 @@ public NinePatchLayout Layout
 
 #### Field Value
 
- [NinePatchLayout](Clockwork.Graphics.NinePatchLayout.md)
+ [NinePatchLayout](Clockwork.Graphics.Draw2D.NinePatchLayout.md)
 
-### <a id="Clockwork_Graphics_NinePatch_Left"></a> Left
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Left"></a> Left
 
 ```csharp
 public int Left
@@ -48,7 +48,7 @@ public int Left
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_NinePatch_Right"></a> Right
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Right"></a> Right
 
 ```csharp
 public int Right
@@ -58,7 +58,7 @@ public int Right
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_NinePatch_Source"></a> Source
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Source"></a> Source
 
 ```csharp
 public Rectangle Source
@@ -68,7 +68,7 @@ public Rectangle Source
 
  [Rectangle](Clockwork.Graphics.Rectangle.md)
 
-### <a id="Clockwork_Graphics_NinePatch_Top"></a> Top
+### <a id="Clockwork_Graphics_Draw2D_NinePatch_Top"></a> Top
 
 ```csharp
 public int Top

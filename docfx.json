@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "ClockworkEngine/ClockworkEngine.csproj" ],
+          "files": [ "ClockworkEngine/ClockworkEngine/ClockworkEngine.csproj" ],
           "cwd": "."
         }
       ],

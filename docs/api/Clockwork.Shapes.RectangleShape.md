@@ -4,7 +4,7 @@ Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
+public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, IIntersectsWithRectangle, IIntersectsWithLine
 ```
 
 #### Inheritance
@@ -15,7 +15,6 @@ public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IInter
 
 #### Implements
 
-[ITransform2D](Clockwork.Utilities.ITransform2D.md), 
 [IIntersectsWithPoint](Clockwork.Shapes.IIntersectsWithPoint.md), 
 [IIntersectsWithCircle](Clockwork.Shapes.IIntersectsWithCircle.md), 
 [IIntersectsWithRectangle](Clockwork.Shapes.IIntersectsWithRectangle.md), 
@@ -25,15 +24,21 @@ public class RectangleShape : Entity, ITransform2D, IIntersectsWithPoint, IInter
 
 [Entity.Scene](Clockwork.Entity.md\#Clockwork\_Entity\_Scene), 
 [Entity.IsUpdating](Clockwork.Entity.md\#Clockwork\_Entity\_IsUpdating), 
-[Entity.IsRendering](Clockwork.Entity.md\#Clockwork\_Entity\_IsRendering), 
+[Entity.IsDrawing](Clockwork.Entity.md\#Clockwork\_Entity\_IsDrawing), 
+[Entity.Removed](Clockwork.Entity.md\#Clockwork\_Entity\_Removed), 
+[Entity.IsInScene](Clockwork.Entity.md\#Clockwork\_Entity\_IsInScene), 
+[Entity.FrameTime](Clockwork.Entity.md\#Clockwork\_Entity\_FrameTime), 
+[Entity.Time](Clockwork.Entity.md\#Clockwork\_Entity\_Time), 
 [Entity.UpdateLayer](Clockwork.Entity.md\#Clockwork\_Entity\_UpdateLayer), 
 [Entity.DrawLayer](Clockwork.Entity.md\#Clockwork\_Entity\_DrawLayer), 
 [Entity.OnUpdate\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnUpdate), 
 [Entity.OnDraw\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnDraw), 
 [Entity.OnDrawGUI\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnDrawGUI), 
-[Entity.Remove\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_Remove), 
+[Entity.AddToScene\(Scene\)](Clockwork.Entity.md\#Clockwork\_Entity\_AddToScene\_Clockwork\_Scene\_), 
+[Entity.RemoveFromScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_RemoveFromScene), 
 [Entity.OnAddedToScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnAddedToScene), 
 [Entity.OnRemovedFromScene\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_OnRemovedFromScene), 
+[Entity.IsVisible\(\)](Clockwork.Entity.md\#Clockwork\_Entity\_IsVisible), 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
 [object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 

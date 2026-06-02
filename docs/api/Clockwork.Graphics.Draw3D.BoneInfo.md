@@ -1,10 +1,10 @@
-# <a id="Clockwork_Graphics_GlyphInfo"></a> Struct GlyphInfo
+# <a id="Clockwork_Graphics_Draw3D_BoneInfo"></a> Struct BoneInfo
 
-Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)  
+Namespace: [Clockwork.Graphics.Draw3D](Clockwork.Graphics.Draw3D.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public struct GlyphInfo
+public struct BoneInfo
 ```
 
 #### Inherited Members
@@ -18,50 +18,20 @@ public struct GlyphInfo
 
 ## Fields
 
-### <a id="Clockwork_Graphics_GlyphInfo_AdvanceX"></a> AdvanceX
+### <a id="Clockwork_Graphics_Draw3D_BoneInfo_Name"></a> Name
 
 ```csharp
-public int AdvanceX
+public sbyte* Name
 ```
 
 #### Field Value
 
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
+ [sbyte](https://learn.microsoft.com/dotnet/api/system.sbyte)\*
 
-### <a id="Clockwork_Graphics_GlyphInfo_Image"></a> Image
-
-```csharp
-public Image Image
-```
-
-#### Field Value
-
- [Image](Clockwork.Graphics.Image.md)
-
-### <a id="Clockwork_Graphics_GlyphInfo_OffsetX"></a> OffsetX
+### <a id="Clockwork_Graphics_Draw3D_BoneInfo_Parent"></a> Parent
 
 ```csharp
-public int OffsetX
-```
-
-#### Field Value
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="Clockwork_Graphics_GlyphInfo_OffsetY"></a> OffsetY
-
-```csharp
-public int OffsetY
-```
-
-#### Field Value
-
- [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="Clockwork_Graphics_GlyphInfo_Value"></a> Value
-
-```csharp
-public int Value
+public int Parent
 ```
 
 #### Field Value

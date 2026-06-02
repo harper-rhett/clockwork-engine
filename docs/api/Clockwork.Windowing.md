@@ -6,3 +6,5 @@
 
  [Window](Clockwork.Windowing.Window.md)
 
+ [WindowRenderer](Clockwork.Windowing.WindowRenderer.md)
+

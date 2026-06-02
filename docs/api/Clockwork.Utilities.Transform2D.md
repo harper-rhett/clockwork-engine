@@ -4,13 +4,18 @@ Namespace: [Clockwork.Utilities](Clockwork.Utilities.md)
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public class Transform2D
+public class Transform2D : ITranslation2D, IRotation2D
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 [Transform2D](Clockwork.Utilities.Transform2D.md)
+
+#### Implements
+
+[ITranslation2D](Clockwork.Utilities.ITranslation2D.md), 
+[IRotation2D](Clockwork.Utilities.IRotation2D.md)
 
 #### Inherited Members
 
@@ -22,27 +27,27 @@ public class Transform2D
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Utilities_Transform2D__ctor"></a> Transform2D\(\)
+
+```csharp
+public Transform2D()
+```
+
+### <a id="Clockwork_Utilities_Transform2D__ctor_System_Numerics_Vector2_System_Single_"></a> Transform2D\(Vector2, float\)
+
+```csharp
+public Transform2D(Vector2 position, float rotation)
+```
+
+#### Parameters
+
+`position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`rotation` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
 ## Fields
-
-### <a id="Clockwork_Utilities_Transform2D_LocalPosition"></a> LocalPosition
-
-```csharp
-public Vector2 LocalPosition
-```
-
-#### Field Value
-
- [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
-
-### <a id="Clockwork_Utilities_Transform2D_LocalRotation"></a> LocalRotation
-
-```csharp
-public float LocalRotation
-```
-
-#### Field Value
-
- [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Utilities_Transform2D_Parent"></a> Parent
 
@@ -55,6 +60,46 @@ public Transform2D Parent
  [Transform2D](Clockwork.Utilities.Transform2D.md)
 
 ## Properties
+
+### <a id="Clockwork_Utilities_Transform2D_Down"></a> Down
+
+```csharp
+public Vector2 Down { get; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_Transform2D_Left"></a> Left
+
+```csharp
+public Vector2 Left { get; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_Transform2D_LocalPosition"></a> LocalPosition
+
+```csharp
+public Vector2 LocalPosition { get; set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_Transform2D_LocalRotation"></a> LocalRotation
+
+```csharp
+public float LocalRotation { get; set; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Utilities_Transform2D_Matrix"></a> Matrix
 
@@ -75,6 +120,26 @@ public Matrix3x2 MatrixInverse { get; }
 #### Property Value
 
  [Matrix3x2](https://learn.microsoft.com/dotnet/api/system.numerics.matrix3x2)
+
+### <a id="Clockwork_Utilities_Transform2D_Right"></a> Right
+
+```csharp
+public Vector2 Right { get; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_Transform2D_Up"></a> Up
+
+```csharp
+public Vector2 Up { get; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
 ### <a id="Clockwork_Utilities_Transform2D_WorldPosition"></a> WorldPosition
 
