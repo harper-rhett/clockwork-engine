@@ -1,6 +1,6 @@
-# <a id="Clockwork_Graphics_NinePatchLayout"></a> Enum NinePatchLayout
+# <a id="Clockwork_Graphics_Draw2D_NinePatchLayout"></a> Enum NinePatchLayout
 
-Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)  
+Namespace: [Clockwork.Graphics.Draw2D](Clockwork.Graphics.Draw2D.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp

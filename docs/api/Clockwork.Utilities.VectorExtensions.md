@@ -24,6 +24,22 @@ public static class VectorExtensions
 
 ## Methods
 
+### <a id="Clockwork_Utilities_VectorExtensions_Averaged_System_Numerics_Vector2_System_Numerics_Vector2_"></a> Averaged\(Vector2, Vector2\)
+
+```csharp
+public static Vector2 Averaged(Vector2 firstVector, Vector2 secondVector)
+```
+
+#### Parameters
+
+`firstVector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`secondVector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="Clockwork_Utilities_VectorExtensions_Ceiled_System_Numerics_Vector2_"></a> Ceiled\(Vector2\)
 
 ```csharp
@@ -52,10 +68,52 @@ public static Vector2 Floored(this Vector2 vector)
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Utilities_VectorExtensions_Project_System_Numerics_Vector2_System_Numerics_Vector2_"></a> Project\(Vector2, Vector2\)
+### <a id="Clockwork_Utilities_VectorExtensions_NegateX_System_Numerics_Vector2_"></a> NegateX\(Vector2\)
 
 ```csharp
-public static Vector2 Project(this Vector2 sourceVector, Vector2 basisVector)
+public static Vector2 NegateX(this Vector2 vector)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_NegateY_System_Numerics_Vector2_"></a> NegateY\(Vector2\)
+
+```csharp
+public static Vector2 NegateY(this Vector2 vector)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_Normalized_System_Numerics_Vector2_"></a> Normalized\(Vector2\)
+
+```csharp
+public static Vector2 Normalized(this Vector2 vector)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_Projected_System_Numerics_Vector2_System_Numerics_Vector2_"></a> Projected\(Vector2, Vector2\)
+
+```csharp
+public static Vector2 Projected(this Vector2 sourceVector, Vector2 basisVector)
 ```
 
 #### Parameters
@@ -77,6 +135,38 @@ public static Vector2 Rounded(this Vector2 vector)
 #### Parameters
 
 `vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_SetX_System_Numerics_Vector2_System_Single_"></a> SetX\(Vector2, float\)
+
+```csharp
+public static Vector2 SetX(this Vector2 vector, float x)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`x` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_SetY_System_Numerics_Vector2_System_Single_"></a> SetY\(Vector2, float\)
+
+```csharp
+public static Vector2 SetY(this Vector2 vector, float y)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`y` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 #### Returns
 

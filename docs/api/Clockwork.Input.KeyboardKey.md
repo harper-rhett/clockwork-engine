@@ -15,8 +15,6 @@ public enum KeyboardKey
 
 `B = 66` 
 
-`Back = 4` 
-
 `Backslash = 92` 
 
 `Backspace = 259` 
@@ -93,39 +91,39 @@ public enum KeyboardKey
 
 `KeyboardMenu = 348` 
 
-`Kp0 = 320` 
+`Keypad0 = 320` 
 
-`Kp1 = 321` 
+`Keypad1 = 321` 
 
-`Kp2 = 322` 
+`Keypad2 = 322` 
 
-`Kp3 = 323` 
+`Keypad3 = 323` 
 
-`Kp4 = 324` 
+`Keypad4 = 324` 
 
-`Kp5 = 325` 
+`Keypad5 = 325` 
 
-`Kp6 = 326` 
+`Keypad6 = 326` 
 
-`Kp7 = 327` 
+`Keypad7 = 327` 
 
-`Kp8 = 328` 
+`Keypad8 = 328` 
 
-`Kp9 = 329` 
+`Keypad9 = 329` 
 
-`KpAdd = 334` 
+`KeypadAdd = 334` 
 
-`KpDecimal = 330` 
+`KeypadDecimal = 330` 
 
-`KpDivide = 331` 
+`KeypadDivide = 331` 
 
-`KpEnter = 335` 
+`KeypadEnter = 335` 
 
-`KpEqual = 336` 
+`KeypadEqual = 336` 
 
-`KpMultiply = 332` 
+`KeypadMultiply = 332` 
 
-`KpSubtract = 333` 
+`KeypadSubtract = 333` 
 
 `L = 76` 
 
@@ -142,8 +140,6 @@ public enum KeyboardKey
 `LeftSuper = 343` 
 
 `M = 77` 
-
-`Menu = 5` 
 
 `Minus = 45` 
 
@@ -214,10 +210,6 @@ public enum KeyboardKey
 `Up = 265` 
 
 `V = 86` 
-
-`VolumeDown = 25` 
-
-`VolumeUp = 24` 
 
 `W = 87` 
 

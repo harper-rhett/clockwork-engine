@@ -20,6 +20,14 @@ public struct RenderTexture : IDisposable
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Graphics_RenderTexture__ctor"></a> RenderTexture\(\)
+
+```csharp
+public RenderTexture()
+```
+
 ## Fields
 
 ### <a id="Clockwork_Graphics_RenderTexture_Depth"></a> Depth
@@ -32,10 +40,10 @@ public Texture Depth
 
  [Texture](Clockwork.Graphics.Texture.md)
 
-### <a id="Clockwork_Graphics_RenderTexture_Id"></a> Id
+### <a id="Clockwork_Graphics_RenderTexture_ID"></a> ID
 
 ```csharp
-public uint Id
+public uint ID
 ```
 
 #### Field Value
@@ -69,12 +77,12 @@ public bool IsValid { get; }
 ### <a id="Clockwork_Graphics_RenderTexture_BeginDrawing_Clockwork_Graphics_RenderTexture_"></a> BeginDrawing\(RenderTexture\)
 
 ```csharp
-public static extern void BeginDrawing(RenderTexture renderTexture2D)
+public static extern void BeginDrawing(RenderTexture renderTexture)
 ```
 
 #### Parameters
 
-`renderTexture2D` [RenderTexture](Clockwork.Graphics.RenderTexture.md)
+`renderTexture` [RenderTexture](Clockwork.Graphics.RenderTexture.md)
 
 ### <a id="Clockwork_Graphics_RenderTexture_Dispose"></a> Dispose\(\)
 
@@ -89,6 +97,16 @@ public void Dispose()
 ```csharp
 public static extern void EndDrawing()
 ```
+
+### <a id="Clockwork_Graphics_RenderTexture_GetDrawScope"></a> GetDrawScope\(\)
+
+```csharp
+public Scope GetDrawScope()
+```
+
+#### Returns
+
+ [Scope](Clockwork.Utilities.Scope.md)
 
 ### <a id="Clockwork_Graphics_RenderTexture_Load_System_Int32_System_Int32_"></a> Load\(int, int\)
 

@@ -47,7 +47,7 @@ public static int Monitor { set; }
 ### <a id="Clockwork_Windowing_Window_Position"></a> Position
 
 ```csharp
-public static Vector2 Position { get; }
+public static Vector2 Position { get; set; }
 ```
 
 #### Property Value
@@ -185,34 +185,6 @@ public static void SetMinimized(bool isMinimized)
 #### Parameters
 
 `isMinimized` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="Clockwork_Windowing_Window_SetPosition_System_Int32_System_Int32_"></a> SetPosition\(int, int\)
-
-```csharp
-public static extern void SetPosition(int x, int y)
-```
-
-#### Parameters
-
-`x` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`y` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-### <a id="Clockwork_Windowing_Window_SetRendererClipped"></a> SetRendererClipped\(\)
-
-```csharp
-public static void SetRendererClipped()
-```
-
-### <a id="Clockwork_Windowing_Window_SetRendererUnclipped_Clockwork_Graphics_Color_"></a> SetRendererUnclipped\(Color\)
-
-```csharp
-public static void SetRendererUnclipped(Color borderColor)
-```
-
-#### Parameters
-
-`borderColor` [Color](Clockwork.Graphics.Color.md)
 
 ### <a id="Clockwork_Windowing_Window_SetResizable_System_Boolean_"></a> SetResizable\(bool\)
 

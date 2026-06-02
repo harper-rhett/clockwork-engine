@@ -1,15 +1,11 @@
-# <a id="Clockwork_Graphics_Font"></a> Struct Font
+# <a id="Clockwork_Graphics_Text_Font"></a> Struct Font
 
-Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)  
+Namespace: [Clockwork.Graphics.Text](Clockwork.Graphics.Text.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public struct Font : IDisposable
+public struct Font
 ```
-
-#### Implements
-
-[IDisposable](https://learn.microsoft.com/dotnet/api/system.idisposable)
 
 #### Inherited Members
 
@@ -20,9 +16,17 @@ public struct Font : IDisposable
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Graphics_Text_Font__ctor"></a> Font\(\)
+
+```csharp
+public Font()
+```
+
 ## Fields
 
-### <a id="Clockwork_Graphics_Font_BaseSize"></a> BaseSize
+### <a id="Clockwork_Graphics_Text_Font_BaseSize"></a> BaseSize
 
 ```csharp
 public int BaseSize
@@ -32,7 +36,7 @@ public int BaseSize
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_Font_GlyphCount"></a> GlyphCount
+### <a id="Clockwork_Graphics_Text_Font_GlyphCount"></a> GlyphCount
 
 ```csharp
 public int GlyphCount
@@ -42,7 +46,7 @@ public int GlyphCount
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_Font_GlyphPadding"></a> GlyphPadding
+### <a id="Clockwork_Graphics_Text_Font_GlyphPadding"></a> GlyphPadding
 
 ```csharp
 public int GlyphPadding
@@ -52,7 +56,7 @@ public int GlyphPadding
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="Clockwork_Graphics_Font_Glyphs"></a> Glyphs
+### <a id="Clockwork_Graphics_Text_Font_Glyphs"></a> Glyphs
 
 ```csharp
 public GlyphInfo* Glyphs
@@ -60,9 +64,9 @@ public GlyphInfo* Glyphs
 
 #### Field Value
 
- [GlyphInfo](Clockwork.Graphics.GlyphInfo.md)\*
+ [GlyphInfo](Clockwork.Graphics.Text.GlyphInfo.md)\*
 
-### <a id="Clockwork_Graphics_Font_Recs"></a> Recs
+### <a id="Clockwork_Graphics_Text_Font_Recs"></a> Recs
 
 ```csharp
 public Rectangle* Recs
@@ -72,7 +76,7 @@ public Rectangle* Recs
 
  [Rectangle](Clockwork.Graphics.Rectangle.md)\*
 
-### <a id="Clockwork_Graphics_Font_Texture"></a> Texture
+### <a id="Clockwork_Graphics_Text_Font_Texture"></a> Texture
 
 ```csharp
 public Texture Texture
@@ -84,7 +88,7 @@ public Texture Texture
 
 ## Properties
 
-### <a id="Clockwork_Graphics_Font_Default"></a> Default
+### <a id="Clockwork_Graphics_Text_Font_Default"></a> Default
 
 ```csharp
 public static Font Default { get; }
@@ -92,9 +96,9 @@ public static Font Default { get; }
 
 #### Property Value
 
- [Font](Clockwork.Graphics.Font.md)
+ [Font](Clockwork.Graphics.Text.Font.md)
 
-### <a id="Clockwork_Graphics_Font_IsValid"></a> IsValid
+### <a id="Clockwork_Graphics_Text_Font_IsValid"></a> IsValid
 
 ```csharp
 public bool IsValid { get; }
@@ -106,15 +110,13 @@ public bool IsValid { get; }
 
 ## Methods
 
-### <a id="Clockwork_Graphics_Font_Dispose"></a> Dispose\(\)
-
-Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+### <a id="Clockwork_Graphics_Text_Font_Dispose"></a> Dispose\(\)
 
 ```csharp
 public void Dispose()
 ```
 
-### <a id="Clockwork_Graphics_Font_Load_System_String_"></a> Load\(string\)
+### <a id="Clockwork_Graphics_Text_Font_Load_System_String_"></a> Load\(string\)
 
 ```csharp
 public static extern Font Load(string fileName)
@@ -126,9 +128,9 @@ public static extern Font Load(string fileName)
 
 #### Returns
 
- [Font](Clockwork.Graphics.Font.md)
+ [Font](Clockwork.Graphics.Text.Font.md)
 
-### <a id="Clockwork_Graphics_Font_Load_Clockwork_Graphics_Image_Clockwork_Graphics_Color_System_Int32_"></a> Load\(Image, Color, int\)
+### <a id="Clockwork_Graphics_Text_Font_Load_Clockwork_Graphics_Image_Clockwork_Graphics_Color_System_Int32_"></a> Load\(Image, Color, int\)
 
 ```csharp
 public static extern Font Load(Image image, Color key, int firstCharacter)
@@ -144,9 +146,9 @@ public static extern Font Load(Image image, Color key, int firstCharacter)
 
 #### Returns
 
- [Font](Clockwork.Graphics.Font.md)
+ [Font](Clockwork.Graphics.Text.Font.md)
 
-### <a id="Clockwork_Graphics_Font_Unload_Clockwork_Graphics_Font_"></a> Unload\(Font\)
+### <a id="Clockwork_Graphics_Text_Font_Unload_Clockwork_Graphics_Text_Font_"></a> Unload\(Font\)
 
 ```csharp
 public static extern void Unload(Font font)
@@ -154,5 +156,5 @@ public static extern void Unload(Font font)
 
 #### Parameters
 
-`font` [Font](Clockwork.Graphics.Font.md)
+`font` [Font](Clockwork.Graphics.Text.Font.md)
 

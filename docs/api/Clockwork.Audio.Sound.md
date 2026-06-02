@@ -20,6 +20,14 @@ public struct Sound : IDisposable
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Audio_Sound__ctor"></a> Sound\(\)
+
+```csharp
+public Sound()
+```
+
 ## Fields
 
 ### <a id="Clockwork_Audio_Sound_FrameCount"></a> FrameCount

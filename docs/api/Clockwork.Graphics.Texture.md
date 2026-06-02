@@ -20,6 +20,14 @@ public struct Texture : IDisposable
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Graphics_Texture__ctor"></a> Texture\(\)
+
+```csharp
+public Texture()
+```
+
 ## Fields
 
 ### <a id="Clockwork_Graphics_Texture_Format"></a> Format
@@ -152,7 +160,7 @@ public void Draw(Rectangle source, Rectangle destination, Vector2 origin, float 
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Texture_DrawNinePatch_Clockwork_Graphics_NinePatch_Clockwork_Graphics_Rectangle_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawNinePatch\(NinePatch, Rectangle, Vector2, float, Color\)
+### <a id="Clockwork_Graphics_Texture_DrawNinePatch_Clockwork_Graphics_Draw2D_NinePatch_Clockwork_Graphics_Rectangle_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Color_"></a> DrawNinePatch\(NinePatch, Rectangle, Vector2, float, Color\)
 
 ```csharp
 public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color)
@@ -160,7 +168,7 @@ public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 or
 
 #### Parameters
 
-`ninePatch` [NinePatch](Clockwork.Graphics.NinePatch.md)
+`ninePatch` [NinePatch](Clockwork.Graphics.Draw2D.NinePatch.md)
 
 `destination` [Rectangle](Clockwork.Graphics.Rectangle.md)
 

@@ -12,6 +12,10 @@ public abstract class Game
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 [Game](Clockwork.Game.md)
 
+#### Derived
+
+[SimpleGame](Clockwork.SimpleGame.md)
+
 #### Inherited Members
 
 [object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
@@ -28,6 +32,12 @@ public abstract class Game
 
 ```csharp
 public abstract void OnDraw()
+```
+
+### <a id="Clockwork_Game_OnDrawGUI"></a> OnDrawGUI\(\)
+
+```csharp
+public virtual void OnDrawGUI()
 ```
 
 ### <a id="Clockwork_Game_OnUpdate"></a> OnUpdate\(\)

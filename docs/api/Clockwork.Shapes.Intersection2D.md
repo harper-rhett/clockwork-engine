@@ -1,16 +1,16 @@
-# <a id="Clockwork_Shapes_Intersection"></a> Class Intersection
+# <a id="Clockwork_Shapes_Intersection2D"></a> Class Intersection2D
 
 Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public static class Intersection
+public static class Intersection2D
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[Intersection](Clockwork.Shapes.Intersection.md)
+[Intersection2D](Clockwork.Shapes.Intersection2D.md)
 
 #### Inherited Members
 
@@ -24,7 +24,7 @@ public static class Intersection
 
 ## Methods
 
-### <a id="Clockwork_Shapes_Intersection_CircleInCircle_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleInCircle\(Vector2, float, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleInCircle_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleInCircle\(Vector2, float, Vector2, float\)
 
 ```csharp
 public static bool CircleInCircle(Vector2 positionA, float radiusA, Vector2 positionB, float radiusB)
@@ -44,7 +44,7 @@ public static bool CircleInCircle(Vector2 positionA, float radiusA, Vector2 posi
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_CircleInCircleSquared_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleInCircleSquared\(Vector2, float, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleInCircleSquared_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleInCircleSquared\(Vector2, float, Vector2, float\)
 
 ```csharp
 public static bool CircleInCircleSquared(Vector2 positionA, float radiusSquaredA, Vector2 positionB, float radiusSquaredB)
@@ -64,7 +64,7 @@ public static bool CircleInCircleSquared(Vector2 positionA, float radiusSquaredA
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_CircleOnCircle_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleOnCircle\(Vector2, float, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleOnCircle_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleOnCircle\(Vector2, float, Vector2, float\)
 
 ```csharp
 public static bool CircleOnCircle(Vector2 positionA, float radiusA, Vector2 positionB, float radiusB)
@@ -84,7 +84,7 @@ public static bool CircleOnCircle(Vector2 positionA, float radiusA, Vector2 posi
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_CircleOnCircleSquared_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleOnCircleSquared\(Vector2, float, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleOnCircleSquared_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Single_"></a> CircleOnCircleSquared\(Vector2, float, Vector2, float\)
 
 ```csharp
 public static bool CircleOnCircleSquared(Vector2 positionA, float radiusSquaredA, Vector2 positionB, float radiusSquaredB)
@@ -104,7 +104,7 @@ public static bool CircleOnCircleSquared(Vector2 positionA, float radiusSquaredA
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_CircleOnLine_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Numerics_Vector2_"></a> CircleOnLine\(Vector2, float, Vector2, Vector2\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleOnLine_System_Numerics_Vector2_System_Single_System_Numerics_Vector2_System_Numerics_Vector2_"></a> CircleOnLine\(Vector2, float, Vector2, Vector2\)
 
 ```csharp
 public static bool CircleOnLine(Vector2 circlePosition, float radius, Vector2 lineStartPosition, Vector2 lineEndPosition)
@@ -124,7 +124,7 @@ public static bool CircleOnLine(Vector2 circlePosition, float radius, Vector2 li
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_CircleOnRectangle_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Rectangle_"></a> CircleOnRectangle\(Vector2, float, Rectangle\)
+### <a id="Clockwork_Shapes_Intersection2D_CircleOnRectangle_System_Numerics_Vector2_System_Single_Clockwork_Graphics_Rectangle_"></a> CircleOnRectangle\(Vector2, float, Rectangle\)
 
 ```csharp
 public static bool CircleOnRectangle(Vector2 circlePosition, float circleRadius, Rectangle rectangle)
@@ -142,7 +142,7 @@ public static bool CircleOnRectangle(Vector2 circlePosition, float circleRadius,
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_LineOnLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_"></a> LineOnLine\(Vector2, Vector2, Vector2, Vector2\)
+### <a id="Clockwork_Shapes_Intersection2D_LineOnLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_"></a> LineOnLine\(Vector2, Vector2, Vector2, Vector2\)
 
 ```csharp
 public static bool LineOnLine(Vector2 startPositionA, Vector2 endPositionA, Vector2 startPositionB, Vector2 endPositionB)
@@ -162,7 +162,7 @@ public static bool LineOnLine(Vector2 startPositionA, Vector2 endPositionA, Vect
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_LineOnRectangle_System_Numerics_Vector2_System_Numerics_Vector2_Clockwork_Graphics_Rectangle_"></a> LineOnRectangle\(Vector2, Vector2, Rectangle\)
+### <a id="Clockwork_Shapes_Intersection2D_LineOnRectangle_System_Numerics_Vector2_System_Numerics_Vector2_Clockwork_Graphics_Rectangle_"></a> LineOnRectangle\(Vector2, Vector2, Rectangle\)
 
 ```csharp
 public static bool LineOnRectangle(Vector2 lineStartPosition, Vector2 lineEndPosition, Rectangle rectangle)
@@ -180,7 +180,7 @@ public static bool LineOnRectangle(Vector2 lineStartPosition, Vector2 lineEndPos
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_PointInCircle_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointInCircle\(Vector2, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_PointInCircle_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointInCircle\(Vector2, Vector2, float\)
 
 ```csharp
 public static bool PointInCircle(Vector2 pointPosition, Vector2 circlePosition, float radius)
@@ -198,7 +198,7 @@ public static bool PointInCircle(Vector2 pointPosition, Vector2 circlePosition, 
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_PointInCircleSquared_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointInCircleSquared\(Vector2, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_PointInCircleSquared_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointInCircleSquared\(Vector2, Vector2, float\)
 
 ```csharp
 public static bool PointInCircleSquared(Vector2 pointPosition, Vector2 circlePosition, float radiusSquared)
@@ -216,7 +216,7 @@ public static bool PointInCircleSquared(Vector2 pointPosition, Vector2 circlePos
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_PointInRectangle_System_Numerics_Vector2_Clockwork_Graphics_Rectangle_"></a> PointInRectangle\(Vector2, Rectangle\)
+### <a id="Clockwork_Shapes_Intersection2D_PointInRectangle_System_Numerics_Vector2_Clockwork_Graphics_Rectangle_"></a> PointInRectangle\(Vector2, Rectangle\)
 
 ```csharp
 public static bool PointInRectangle(Vector2 pointPosition, Rectangle rectangle)
@@ -232,7 +232,7 @@ public static bool PointInRectangle(Vector2 pointPosition, Rectangle rectangle)
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_PointOnLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointOnLine\(Vector2, Vector2, Vector2, float\)
+### <a id="Clockwork_Shapes_Intersection2D_PointOnLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_"></a> PointOnLine\(Vector2, Vector2, Vector2, float\)
 
 ```csharp
 public static bool PointOnLine(Vector2 pointPosition, Vector2 lineStartPosition, Vector2 lineEndPosition, float tolerance)
@@ -252,7 +252,7 @@ public static bool PointOnLine(Vector2 pointPosition, Vector2 lineStartPosition,
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection_RectangleOnRectangle_Clockwork_Graphics_Rectangle_Clockwork_Graphics_Rectangle_"></a> RectangleOnRectangle\(Rectangle, Rectangle\)
+### <a id="Clockwork_Shapes_Intersection2D_RectangleOnRectangle_Clockwork_Graphics_Rectangle_Clockwork_Graphics_Rectangle_"></a> RectangleOnRectangle\(Rectangle, Rectangle\)
 
 ```csharp
 public static bool RectangleOnRectangle(Rectangle rectangleA, Rectangle rectangleB)
