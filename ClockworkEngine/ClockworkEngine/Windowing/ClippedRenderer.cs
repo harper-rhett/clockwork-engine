@@ -9,11 +9,8 @@ internal class ClippedRenderer : WindowRenderer
 	private Rectangle gameRectangle;
 	private Rectangle viewportRectangle;
 
-	private int mouseGameX;
-	internal override int MouseGameX => mouseGameX;
-
-	private int mouseGameY;
-	internal override int MouseGameY => mouseGameY;
+	internal override int mouseGameX { get; set; }
+	internal override int mouseGameY { get; set; }
 
 	internal override void Update(RenderTexture gameRenderTexture)
 	{
@@ -65,10 +62,13 @@ internal class ClippedRenderer : WindowRenderer
 
 	private void CalculateMouse()
 	{
+		int windowX = Mouse.WindowX;
+		int windowY = Mouse.WindowY;
+
 		float widthScale = gameRectangle.Width / viewportRectangle.Width;
-		mouseGameX = (int)(Mouse.WindowX * widthScale + gameRectangle.X);
+		mouseGameX = (int)(windowX * widthScale + gameRectangle.X);
 		
 		float heightScale = gameRectangle.Height / -viewportRectangle.Height;
-		mouseGameY = (int)(Mouse.WindowY * heightScale + gameRectangle.Y);
+		mouseGameY = (int)(windowY * heightScale + gameRectangle.Y);
 	}
 }

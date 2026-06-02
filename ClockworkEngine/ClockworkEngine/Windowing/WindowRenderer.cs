@@ -15,8 +15,8 @@ public abstract class WindowRenderer
 	protected int gameHeight;
 
 	// Mouse fields
-	internal abstract int MouseGameX { get; }
-	internal abstract int MouseGameY { get; }
+	internal abstract int mouseGameX { get; set; }
+	internal abstract int mouseGameY { get; set; }
 
 	protected bool DidResize
 	{

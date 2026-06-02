@@ -38,7 +38,7 @@ public class TriggerTimer : Entity
 	{
 		isTriggered = true;
 		Triggered?.Invoke();
-		if (RemoveOnTriggered) Remove();
+		if (RemoveOnTriggered) RemoveFromScene();
 		OnTriggered();
 	}
 

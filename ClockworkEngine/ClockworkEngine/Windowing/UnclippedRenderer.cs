@@ -15,11 +15,8 @@ internal class UnclippedRenderer : WindowRenderer
 		this.borderColor = borderColor;
 	}
 
-	private int mouseGameX;
-	internal override int MouseGameX => mouseGameX;
-
-	private int mouseGameY;
-	internal override int MouseGameY => mouseGameY;
+	internal override int mouseGameX { get; set; }
+	internal override int mouseGameY { get; set; }
 
 	internal override void Update(RenderTexture gameRenderTexture)
 	{
@@ -72,13 +69,16 @@ internal class UnclippedRenderer : WindowRenderer
 
 	private void CalculateMouse()
 	{
+		int windowX = Mouse.WindowX;
+		int windowY = Mouse.WindowY;
+
 		float widthScale = gameRectangle.Width / viewportRectangle.Width;
-		float viewportX = float.Clamp(Mouse.WindowX - viewportRectangle.X, 0, viewportRectangle.Width);
+		float viewportX = float.Clamp(windowX - viewportRectangle.X, 0, viewportRectangle.Width);
 		float gameX = viewportX * widthScale;
 		mouseGameX = (int)gameX;
 
 		float heightScale = gameRectangle.Height  / - viewportRectangle.Height;
-		float viewportY = float.Clamp(Mouse.WindowY - viewportRectangle.Y, 0, viewportRectangle.Height);
+		float viewportY = float.Clamp(windowY - viewportRectangle.Y, 0, viewportRectangle.Height);
 		float gameY = viewportY * heightScale;
 		mouseGameY = (int)gameY;
 	}

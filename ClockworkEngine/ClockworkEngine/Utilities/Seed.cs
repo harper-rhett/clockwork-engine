@@ -1,4 +1,7 @@
-﻿using System.Numerics;
+﻿using Clockwork.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Clockwork.Utilities
 {
@@ -23,7 +26,7 @@ namespace Clockwork.Utilities
 
 		public int NextInteger() => random.Next();
 		public int NextInteger(int max) => random.Next(max);
-		public int NextInteger(int min, int max) => random.Next(min, max);
+		public int NextInteger(int minInclusive, int maxExclusive) => random.Next(minInclusive, maxExclusive);
 
 		public float NextFloat() => random.NextSingle();
 
@@ -49,12 +52,17 @@ namespace Clockwork.Utilities
 
 		public bool NextBool()
 		{
-			return NextDouble() > 0.5;
+			return NextBool(0.5f);
+		}
+
+		public bool NextBool(float trueChance)
+		{
+			return NextDouble() < trueChance;
 		}
 
 		public float NextRadians()
 		{
-			return NextFloat() * MathF.Tau;
+			return NextFloat() * float.Tau;
 		}
 
 		public float NextDegrees()
@@ -65,9 +73,21 @@ namespace Clockwork.Utilities
 		public Vector2 NextUnitVector2()
 		{
 			float radians = NextRadians();
-			float x = MathF.Cos(radians);
-			float y = MathF.Sin(radians);
+			float x = float.Cos(radians);
+			float y = float.Sin(radians);
 			return new Vector2(x, y);
+		}
+
+		public Vector2 NextVector2(float westX, float northY, float eastX, float southY)
+		{
+			float x = NextFloat(westX, eastX);
+			float y = NextFloat(northY, southY);
+			return new Vector2(x, y);
+		}
+
+		public Vector2 NextVector2(Rectangle bounds)
+		{
+			return NextVector2(bounds.X, bounds.X + bounds.Width, bounds.Y, bounds.Y + bounds.Height);
 		}
 
 		public Vector3 NextUnitVector3()
@@ -76,9 +96,41 @@ namespace Clockwork.Utilities
 			float z = NextFloat(-1f, 1f);
 			float radius = float.Sqrt(1f - z * z);
 
-			float x = radius * MathF.Cos(azimuth);
-			float y = radius * MathF.Sin(azimuth);
+			float x = radius * float.Cos(azimuth);
+			float y = radius * float.Sin(azimuth);
 			return new Vector3(x, y, z);
+		}
+
+		public void ShuffleNextList<Type>(IList<Type> list)
+		{
+			for (int index = list.Count - 1; index > 0; index--)
+			{
+				int randomIndex = NextInteger(index + 1);
+				(list[index], list[randomIndex]) = (list[randomIndex], list[index]);
+			}
+		}
+
+		public List<Type> GetNextShuffledList<Type>(IList<Type> list)
+		{
+			List<Type> shuffledList = new(list);
+			ShuffleNextList(shuffledList);
+			return shuffledList;
+		}
+
+		public int NextIndex<Type>(ICollection<Type> collection)
+		{
+			return NextInteger(collection.Count);
+		}
+
+		public Type NextItem<Type>(IList<Type> list)
+		{
+			int randomIndex = NextIndex(list);
+			return list[randomIndex];
+		}
+
+		public void RemoveNextItem<Type>(IList<Type> list)
+		{
+			list.RemoveAt(NextIndex(list));
 		}
 	}
 }

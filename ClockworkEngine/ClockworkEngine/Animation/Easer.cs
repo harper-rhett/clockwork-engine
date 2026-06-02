@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Clockwork.Graphics;
 
 namespace Clockwork.Animation;
@@ -65,7 +66,7 @@ public class Easer : Entity
 		IsEasing = false;
 		Finished?.Invoke();
 		OnFinished();
-		if (RemoveOnFinished) Remove();
+		if (RemoveOnFinished) RemoveFromScene();
 	}
 
 	protected virtual void OnFinished() { }

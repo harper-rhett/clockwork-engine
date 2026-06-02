@@ -4,7 +4,7 @@ Welcome to the documentation! On this home page, you will find a basic introduct
 
 ## Why Clockwork Engine?
 
-The reason Clockwork exists is becasue most game development tools are missing at least one of these features:
+The reason Clockwork exists is because most game development tools are missing at least one of these features:
 
 - Dedicated 2D and 3D modes
 - Immediate-mode drawing
@@ -30,6 +30,7 @@ Engine
 └─ Game
 	├─ Update Loop
 	├─ Draw Loop
+	├─ Draw GUI Loop
 	└─ Scenes
 		└─ Entities
 ```
@@ -38,12 +39,19 @@ In the following sections, I will explain the layers to their absolute minimum c
 
 ## Engine
 
-The "engine" initializes a window, controls the core game loop, and is essentially the entry point for the framework. To get started, initialize an engine with settings and attach your game (which you will create in the next step):
+The "engine" initializes a window, controls the core game loop, and is essentially the entry point for the framework. To get started, initialize an engine with settings and start your game (which you will create in the next step):
 
 ```csharp title="Program.cs"
 Engine.Initialize("My Game", 256, 256); // window title, game width, game height
 MyGame myGame = new();
 Engine.Start(myGame);
+```
+
+There are also shorthand `Start` overloads if you don't need a full `Game` class. You can pass a `Scene` directly, or even just an `IEnumerable<Entity>`:
+
+```csharp title="Program.cs"
+Engine.Initialize("Quick Prototype", 256, 256);
+Engine.Start(new MyScene());
 ```
 
 P.S. Don't forget to add `using Clockwork;` to the beginning of your scripts.
@@ -69,8 +77,15 @@ internal class MyGame : Game
 	{
 		
 	}
+
+	public override void OnDrawGUI()
+	{
+
+	}
 }
 ```
+
+`OnDrawGUI` is optional and is drawn after the main draw loop, unaffected by camera transformations. It's useful for HUD elements and debug overlays.
 
 At this point you could go ahead and start programming your game, but you would miss out on the bulk of the engine's tools. The `Scene` and `Entity` classes do a lot of heavy lifting, so stay tuned.
 
@@ -87,11 +102,11 @@ Your game class is where scenes will be managed. One scene is great for prototyp
 ```csharp title="MyGame.cs"
 internal class MyGame : Game
 {
-	Scene scene = new();
+	private Scene scene = new();
 
 	public MyGame()
 	{
-		scene.AddEntity(new CustomEntity()); // a new CustomEntity object is added to the scene
+		scene.AddEntity(new CustomEntity());
 	}
 
 	public override void OnUpdate()
@@ -190,7 +205,7 @@ public class Polygon : Entity
 
 	public override void OnDraw()
 	{
-		Primitives.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
+		Primitives2D.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
 	}
 }
 ```
@@ -200,7 +215,7 @@ public class Polygon : Entity
 You may be wondering how to render sprites or play audio. That's where the bindings come in. Clockwork is built on top of the [Raylib](https://www.raylib.com/) multimedia library, which handles textures, audio, input, and much more. It is also written in C. So, in order to communicate with Raylib, Clockwork contains hundreds of bindings that speak to the C code. You saw one binding in the previous example:
 
 ```csharp
-Primitives.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
+Primitives2D.DrawPolygon(Transform.WorldPosition, SideCount, Radius, Transform.WorldRotation, Color);
 ```
 
 Here's another example:
@@ -210,10 +225,11 @@ Sound explosionSound = Sound.Load("explosion.wav");
 explosionSound.Play();
 ```
 
-All of these bindings are nested into their own namespaces as well. For instance, for drawing primitives like polygons, you would need to import the `Graphics` namespace:
+All of these bindings are nested into their own namespaces as well. For instance, for drawing 2D primitives like polygons, you would need to import the `Graphics` namespace:
 
 ```csharp
 using Clockwork.Graphics;
+using Clockwork.Graphics.Draw2D;
 ```
 
 Similarly, for audio:

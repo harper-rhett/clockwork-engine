@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using Clockwork.Utilities;
+using System;
+using System.Runtime.InteropServices;
 
 namespace Clockwork.Graphics;
 
@@ -9,23 +11,27 @@ public struct RenderTexture : IDisposable
 	public Texture Texture;
 	public Texture Depth;
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginTextureMode")]
-	public static extern void BeginDrawing(RenderTexture renderTexture2D);
+	public RenderTexture() => throw new InvalidOperationException("RenderTexture must be instantiated from RenderTexture.Load.");
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndTextureMode")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginTextureMode")]
+	public static extern void BeginDrawing(RenderTexture renderTexture);
+	internal void BeginDrawing() => BeginDrawing(this);
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EndTextureMode")]
 	public static extern void EndDrawing();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadRenderTexture")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadRenderTexture")]
 	public static extern RenderTexture Load(int width, int height);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsRenderTextureValid")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsRenderTextureValid")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsThisValid(RenderTexture renderTexture);
 	public bool IsValid => IsThisValid(this);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadRenderTexture")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "UnloadRenderTexture")]
 	private static extern void Unload(RenderTexture renderTexture);
 
+	public Scope GetDrawScope() => new Scope(BeginDrawing, EndDrawing);
 	public void Dispose()
 	{
 		Unload(this);

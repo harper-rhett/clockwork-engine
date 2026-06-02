@@ -24,7 +24,7 @@ public class MusicRepeater2Part : Entity
 	{
 		if (isStarted && !isPaused)
 		{
-			timePlayed += Engine.FrameTime;
+			timePlayed += Engine.GlobalFrameTime;
 			bool wasPlayingInitial = playingInitial;
 			playingInitial = timePlayed <= initialMusicEndTime;
 			if (wasPlayingInitial != playingInitial) repeatedMusic.Play();
