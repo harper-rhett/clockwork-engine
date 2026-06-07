@@ -17,42 +17,10 @@ public class Container : Element
 			PaddingBottom = value;
 		}
 	}
-	private int paddingLeft;
-	public int PaddingLeft
-	{
-		get => paddingLeft;
-		set
-		{
-			paddingLeft = value;
-		}
-	}
-	private int paddingRight;
-	public int PaddingRight
-	{
-		get => paddingRight;
-		set
-		{
-			paddingRight = value;
-		}
-	}
-	private int paddingTop;
-	public int PaddingTop
-	{
-		get => paddingTop;
-		set
-		{
-			paddingTop = value;
-		}
-	}
-	private int paddingBottom;
-	public int PaddingBottom
-	{
-		get => paddingBottom;
-		set
-		{
-			paddingBottom = value;
-		}
-	}
+	public int PaddingLeft;
+	public int PaddingRight;
+	public int PaddingTop;
+	public int PaddingBottom;
 
 	public Container() : base() { }
 
@@ -77,21 +45,21 @@ public class Container : Element
 
 	protected override void OnXUpdated()
 	{
-		foreach (Element child in children) child.X = X + paddingLeft;
+		foreach (Element child in children) child.X = X + PaddingLeft;
 	}
 
 	protected override void OnYUpdated()
 	{
-		foreach (Element child in children) child.Y = Y + paddingTop;
+		foreach (Element child in children) child.Y = Y + PaddingTop;
 	}
 
 	protected override void OnWidthUpdated()
 	{
-		foreach (Element child in children) child.Width = Width - paddingLeft - paddingRight;
+		foreach (Element child in children) child.Width = Width - PaddingLeft - PaddingRight;
 	}
 
 	protected override void OnHeightUpdated()
 	{
-		foreach (Element child in children) child.Height = Height - paddingTop - paddingBottom;
+		foreach (Element child in children) child.Height = Height - PaddingTop - PaddingBottom;
 	}
 }

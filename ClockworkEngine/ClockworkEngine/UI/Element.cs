@@ -86,6 +86,8 @@ public class Element : Entity
 		width = (int)size.X; height = (int)size.Y;
 	}
 
+	public Vector2 GetPosition() => new Vector2(x, y);
+
 	public override void OnUpdate()
 	{
 		UpdateHover();
