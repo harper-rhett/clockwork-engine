@@ -19,6 +19,8 @@ public static class Profiler
 			foreach (PerformanceTracker tracker in trackers.Values) tracker.IsActive = isActive;
 		}
 	}
+	public static bool TrackUpdateLoop;
+	public static bool TrackDrawLoop;
 
 	public static void StartOrResumeTracking(string key)
 	{

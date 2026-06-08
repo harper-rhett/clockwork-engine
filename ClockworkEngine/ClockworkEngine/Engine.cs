@@ -104,14 +104,20 @@ public static class Engine
 
 	private static void MasterUpdate()
 	{
+		if (Profiler.TrackUpdateLoop) Profiler.StartOrResumeTracking("update");
+
 		GlobalFrameTime = GetFrameTime();
 		if (GlobalFrameTime > 0.1f) GlobalFrameTime = 0.1f;
 		game.OnUpdate();
 		WindowRenderer.Current.Update(gameRenderTexture);
+
+		if (Profiler.TrackUpdateLoop) Profiler.FinishTracking("update");
 	}
 
 	private static void MasterDraw()
 	{
+		if (Profiler.TrackDrawLoop) Profiler.StartOrResumeTracking("draw & frame-sleep");
+
 		RenderTexture.BeginDrawing(gameRenderTexture);
 		game.OnDraw();
 		RenderTexture.EndDrawing();
@@ -129,6 +135,14 @@ public static class Engine
 		WindowRenderer.Current.Draw(gameRenderTexture);
 		game.OnDrawGUI();
 		Drawing.End();
+
+		// Note: Instead of tracking frame sleep, we could remove Raylib's sleep implementation
+		// and replace it with our own. For instance, we would calculate frame time from TargetFPS
+		// and add our own frame sleeping after all update loops are complete.
+
+		// This way profiling draw time would be much simpler.
+
+		if (Profiler.TrackDrawLoop) Profiler.FinishTracking("draw & frame-sleep");
 	}
 
 	public static void DrawDebug(int fontSize, Color color, params string[] extraLogs)
