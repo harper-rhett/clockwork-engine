@@ -57,4 +57,9 @@ public static class VectorExtensions
 	{
 		return Vector2.Normalize(vector);
 	}
+
+	public static Vector2 Snapped(this Vector2 vector, float gridSize)
+	{
+		return (vector / gridSize).Rounded() * gridSize;
+	}
 }
