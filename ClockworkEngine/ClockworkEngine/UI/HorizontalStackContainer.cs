@@ -1,25 +1,16 @@
 ﻿namespace Clockwork.UI;
 
-public class VerticalStackContainer : Container
+public class HorizontalStackContainer : Container
 {
 	public int Spacing;
-	private VerticalAlignment verticalAlignment;
-	public VerticalAlignment VerticalAlignment
-	{
-		get => verticalAlignment;
-		set
-		{
-			verticalAlignment = value;
-		}
-	}
-	public bool StretchChildrenHeight;
+	public bool StretchChildrenWidth;
 
 	protected override void OnXUpdated()
 	{
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.X = X + PaddingLeft;
+			child.X = X + PaddingLeft + (child.Width + Spacing) * childIndex;
 		}
 	}
 
@@ -28,27 +19,27 @@ public class VerticalStackContainer : Container
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.Y = Y + PaddingTop + (child.Height + Spacing) * childIndex;
+			child.Y = Y + PaddingTop;
 		}
 	}
 
 	protected override void OnWidthUpdated()
 	{
+		if (!StretchChildrenWidth) return;
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.Width = Width - PaddingLeft - PaddingRight;
+			int workableWidth = Width - PaddingLeft - PaddingRight - Spacing * (children.Count - 1);
+			child.Width = workableWidth / children.Count;
 		}
 	}
 
 	protected override void OnHeightUpdated()
 	{
-		if (!StretchChildrenHeight) return;
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			int workableHeight = Height - PaddingTop - PaddingBottom - Spacing * (children.Count - 1);
-			child.Height = workableHeight / children.Count;
+			child.Height = Height - PaddingTop - PaddingBottom;
 		}
 	}
 }

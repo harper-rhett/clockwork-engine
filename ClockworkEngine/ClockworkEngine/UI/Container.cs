@@ -33,10 +33,10 @@ public class Container : Element
 		element.DrawLayer = DrawLayer + 1;
 		children.Add(element);
 
-		OnXUpdated();
-		OnYUpdated();
 		OnWidthUpdated();
 		OnHeightUpdated();
+		OnXUpdated();
+		OnYUpdated();
 	}
 
 	protected override void OnXUpdated()
