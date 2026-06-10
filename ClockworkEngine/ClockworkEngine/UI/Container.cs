@@ -5,7 +5,7 @@ namespace Clockwork.UI;
 
 public class Container : Element
 {
-	private readonly List<Element> children = new();
+	protected readonly List<Element> children = new();
 	public IReadOnlyList<Element> Children => children;
 	public int Padding
 	{
@@ -32,11 +32,7 @@ public class Container : Element
 	{
 		element.DrawLayer = DrawLayer + 1;
 		children.Add(element);
-		Refresh();
-	}
 
-	private void Refresh()
-	{
 		OnXUpdated();
 		OnYUpdated();
 		OnWidthUpdated();

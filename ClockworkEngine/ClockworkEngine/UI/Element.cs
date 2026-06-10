@@ -18,8 +18,8 @@ public class Element : Entity
 	public Color BackgroundColor = Colors.White;
 	public Color BorderColor = Colors.Clear;
 	public int BorderThickness;
-	private int rightBound => (int)(X + Width);
-	private int lowerBound => (int)(Y + Height);
+	private int rightBound => x + width;
+	private int lowerBound => y + height;
 
 	// Hover
 	public event Action<Element> HoverEntered;

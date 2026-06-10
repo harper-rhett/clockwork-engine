@@ -13,10 +13,10 @@ public static class Text
 	public static void Draw(string text, Vector2 position, int fontSize, Color color) => Draw(text, (int)float.Round(position.X), (int)float.Round(position.Y), fontSize, color);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextEx")]
-	public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color color);
+	public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float characterSpacing, Color color);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextPro")]
-	public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color color);
+	public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float characterSpacing, Color color);
 
 	public static void DrawDebug(int fontSize, Color color, params string[] logs)
 	{
@@ -38,5 +38,5 @@ public static class Text
 	public static extern int MeasureWidth(string text, int fontSize);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "MeasureTextEx")]
-	public static extern Vector2 MeasureSize(Font font, string text, float fontSize, float spacing);
+	public static extern Vector2 MeasureSize(Font font, string text, float fontSize, float characterSpacing);
 }

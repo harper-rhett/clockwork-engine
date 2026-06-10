@@ -43,6 +43,7 @@ public class Button : Container
 		BackgroundColor = DefaultBackgroundColor;
 		BorderColor = DefaultBorderColor;
 		BorderThickness = 5;
+		Height = 50;
 	}
 
 	private void SubscribeToEvents()
