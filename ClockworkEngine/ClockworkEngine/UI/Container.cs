@@ -30,13 +30,24 @@ public class Container : Element
 
 	public void AddChild(Element element)
 	{
-		element.DrawLayer = DrawLayer + 1;
 		children.Add(element);
 
 		OnWidthUpdated();
 		OnHeightUpdated();
 		OnXUpdated();
 		OnYUpdated();
+	}
+
+	public override void OnUpdate()
+	{
+		base.OnUpdate();
+		foreach (Element child in children) child.OnUpdate();
+	}
+
+	public override void OnDraw()
+	{
+		base.OnDraw();
+		foreach (Element child in children) child.OnDraw();
 	}
 
 	protected override void OnXUpdated()

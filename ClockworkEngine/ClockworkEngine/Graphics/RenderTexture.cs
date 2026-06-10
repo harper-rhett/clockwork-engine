@@ -11,6 +11,9 @@ public struct RenderTexture : IDisposable
 	public Texture Texture;
 	public Texture Depth;
 
+	public int Width => Texture.Width;
+	public int Height => Texture.Height;
+
 	public RenderTexture() => throw new InvalidOperationException("RenderTexture must be instantiated from RenderTexture.Load.");
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "BeginTextureMode")]

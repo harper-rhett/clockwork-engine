@@ -2,6 +2,7 @@
 using System.Numerics;
 using Clockwork.Graphics;
 using Clockwork.Input;
+using System;
 
 namespace Clockwork.Windowing;
 
@@ -32,6 +33,17 @@ public unsafe static class Window
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CloseWindow")]
 	public static extern void Close();
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsWindowResized")]
+	private static extern bool IsResized();
+	public static bool WasResized => IsResized();
+	public static event Engine.OnResized Resized;
+
+	internal static void PollResized()
+	{
+		if (Resized is null) return;
+		else if (WasResized) Resized.Invoke(Width, Height);
+	}
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "WindowShouldClose")]
 	[return: MarshalAs(UnmanagedType.I1)]

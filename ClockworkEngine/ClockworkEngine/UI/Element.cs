@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace Clockwork.UI;
 
-public class Element : Entity
+public class Element
 {
 	// Shape
 	private int x;
@@ -88,7 +88,7 @@ public class Element : Entity
 
 	public Vector2 GetPosition() => new Vector2(x, y);
 
-	public override void OnUpdate()
+	public virtual void OnUpdate()
 	{
 		UpdateHover();
 		UpdatePressed();
@@ -143,7 +143,7 @@ public class Element : Entity
 		) Released.Invoke(this);
 	}
 
-	public override void OnDraw()
+	public virtual void OnDraw()
 	{
 		if (BackgroundColor == Colors.Clear) return;
 

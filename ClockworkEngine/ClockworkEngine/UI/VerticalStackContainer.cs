@@ -3,15 +3,6 @@
 public class VerticalStackContainer : Container
 {
 	public int Spacing;
-	private VerticalAlignment verticalAlignment;
-	public VerticalAlignment VerticalAlignment
-	{
-		get => verticalAlignment;
-		set
-		{
-			verticalAlignment = value;
-		}
-	}
 	public bool StretchChildrenHeight;
 
 	protected override void OnXUpdated()

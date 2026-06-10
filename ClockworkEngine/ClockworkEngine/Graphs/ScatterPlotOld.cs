@@ -8,7 +8,7 @@ using System.Numerics;
 
 namespace Clockwork.Graphs;
 
-public class ScatterPlot : Entity, ICollection<Vector2>
+public class ScatterPlotOld : Entity, ICollection<Vector2>
 {
 	// General
 	public Vector2 Position = Vector2.Zero;
@@ -55,7 +55,7 @@ public class ScatterPlot : Entity, ICollection<Vector2>
 	private Rectangle sourceRectangle;
 	private bool shouldUpdate = false;
 
-	public ScatterPlot(string horizontalAxisName, string verticalAxisName)
+	public ScatterPlotOld(string horizontalAxisName, string verticalAxisName)
 	{
 		this.horizontalAxisName = horizontalAxisName;
 		this.verticalAxisName = verticalAxisName;

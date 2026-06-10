@@ -1,5 +1,4 @@
 ﻿using Clockwork.Graphics;
-using Clockwork.Utilities;
 using Clockwork.Windowing;
 using Clockwork.Audio;
 using System.Runtime.InteropServices;
@@ -8,8 +7,6 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Numerics;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Clockwork.Input;
 
 namespace Clockwork;
@@ -37,6 +34,7 @@ public static class Engine
 			HalfGameHeight = GameHeight / 2;
 			if (gameRenderTexture.IsValid) gameRenderTexture.Dispose();
 			gameRenderTexture = RenderTexture.Load(GameWidth, GameHeight);
+			GameResized?.Invoke(GameWidth, GameHeight);
 		}
 	}
 	public static int GameWidth { get; private set; }
@@ -44,6 +42,8 @@ public static class Engine
 	public static int HalfGameWidth { get; private set; }
 	public static int HalfGameHeight { get; private set; }
 	public static bool ScreenshotCommands;
+	public delegate void OnResized(int width, int height);
+	public static event OnResized GameResized;
 
 	// Screen shots
 	private static bool takeScreenshot;
@@ -118,6 +118,7 @@ public static class Engine
 	{
 		if (Profiler.TrackDrawLoop) Profiler.StartOrResumeTracking("draw & frame-sleep");
 
+		Window.PollResized();
 		RenderTexture.BeginDrawing(gameRenderTexture);
 		game.OnDraw();
 		RenderTexture.EndDrawing();
