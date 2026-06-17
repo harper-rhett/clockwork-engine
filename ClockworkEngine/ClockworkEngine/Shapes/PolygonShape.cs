@@ -1,6 +1,5 @@
 ﻿using Clockwork.Utilities;
 using Clockwork.Graphics;
-
 using Clockwork.Graphics.Draw2D;
 using System.Numerics;
 
@@ -17,13 +16,13 @@ public class PolygonShape : Entity
 	// Transform shortcuts
 	public Vector2 Position
 	{
-		get => Transform.WorldPosition;
-		set => Transform.WorldPosition = value;
+		get => Transform.Position;
+		set => Transform.Position = value;
 	}
 	public float Rotation
 	{
-		get => Transform.WorldRotation;
-		set => Transform.WorldRotation = value;
+		get => Transform.Rotation;
+		set => Transform.Rotation = value;
 	}
 
 	public PolygonShape(float radius, int sideCount, Color color)

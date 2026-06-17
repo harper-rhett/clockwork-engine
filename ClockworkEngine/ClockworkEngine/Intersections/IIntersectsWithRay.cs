@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Shapes;
+﻿namespace Clockwork.Intersections;
 
 public interface IIntersectsWithRay
 {

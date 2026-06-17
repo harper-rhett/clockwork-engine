@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
+using Clockwork.Shapes;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Intersections;
 
 public interface IIntersectsWithCircle
 {

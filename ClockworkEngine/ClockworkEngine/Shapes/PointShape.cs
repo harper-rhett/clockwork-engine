@@ -2,6 +2,7 @@
 using Clockwork.Utilities;
 using Clockwork.Graphics;
 using Clockwork.Graphics.Draw2D;
+using Clockwork.Intersections;
 
 namespace Clockwork.Shapes;
 
@@ -13,13 +14,13 @@ public class PointShape : Entity, IIntersectsWithCircle, IIntersectsWithRectangl
 	// Transform shortcuts
 	public Vector2 Position
 	{
-		get => Transform.WorldPosition;
-		set => Transform.WorldPosition = value;
+		get => Transform.Position;
+		set => Transform.Position = value;
 	}
 	public float Rotation
 	{
-		get => Transform.WorldRotation;
-		set => Transform.WorldRotation = value;
+		get => Transform.Rotation;
+		set => Transform.Rotation = value;
 	}
 
 	public PointShape(Color color)

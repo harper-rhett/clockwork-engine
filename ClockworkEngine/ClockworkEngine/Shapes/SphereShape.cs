@@ -2,6 +2,7 @@
 using Clockwork.Graphics.Draw3D;
 using Clockwork.Utilities;
 using System.Numerics;
+using Clockwork.Intersections;
 
 namespace Clockwork.Shapes;
 

@@ -1,6 +1,7 @@
 ﻿using Clockwork.Graphics;
+using Clockwork.Shapes;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Intersections;
 
 public interface IIntersectsWithRectangle
 {

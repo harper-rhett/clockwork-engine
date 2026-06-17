@@ -2,6 +2,7 @@
 using Clockwork.Utilities;
 using Clockwork.Graphics;
 using Clockwork.Graphics.Draw2D;
+using Clockwork.Intersections;
 
 namespace Clockwork.Shapes;
 
@@ -15,13 +16,13 @@ public class CircleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircle, 
 	// Transform shortcuts
 	public Vector2 Position
 	{
-		get => Transform.WorldPosition;
-		set => Transform.WorldPosition = value;
+		get => Transform.Position;
+		set => Transform.Position = value;
 	}
 	public float Rotation
 	{
-		get => Transform.WorldRotation;
-		set => Transform.WorldRotation = value;
+		get => Transform.Rotation;
+		set => Transform.Rotation = value;
 	}
 
 	public CircleShape(float radius, Color color)

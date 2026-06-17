@@ -1,7 +1,8 @@
 ﻿using System.Numerics;
 using System.Runtime.InteropServices;
+using Clockwork.Shapes;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Intersections;
 
 public static class Intersection3D
 {

@@ -20,6 +20,12 @@ public class Transform2D : ITranslation2D, IRotation2D
 		set => LocalPosition = Parent is null ? value : Vector2.Transform(value, Parent.MatrixInverse);
 	}
 
+	public Vector2 Position
+	{
+		get => WorldPosition;
+		set => WorldPosition = value;
+	}
+
 	public Vector2 LocalPosition { get; set; }
 
 	public Vector2 Up => Vector2.TransformNormal(new(0, -1), Matrix);
@@ -31,6 +37,12 @@ public class Transform2D : ITranslation2D, IRotation2D
 	{
 		get => Parent is null ? LocalRotation : Parent.WorldRotation + LocalRotation;
 		set => LocalRotation = Parent is null ? value : value - Parent.WorldRotation;
+	}
+
+	public float Rotation
+	{
+		get => WorldRotation;
+		set => WorldRotation = value;
 	}
 
 	public float LocalRotation { get; set; }

@@ -2,6 +2,7 @@
 using Clockwork.Utilities;
 using Clockwork.Graphics;
 using Clockwork.Graphics.Draw2D;
+using Clockwork.Intersections;
 
 namespace Clockwork.Shapes;
 
@@ -13,6 +14,17 @@ public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircl
 	public int Height;
 	public Color Color;
 	public Rectangle Rectangle => new(Transform.WorldPosition - Origin, Width, Height);
+
+	public Vector2 Position
+	{
+		get => Transform.Position;
+		set => Transform.Position = value;
+	}
+	public float Rotation
+	{
+		get => Transform.Rotation;
+		set => Transform.Rotation = value;
+	}
 
 	public RectangleShape(int width, int height, Color color)
 	{

@@ -2,7 +2,7 @@
 using Clockwork.Graphics;
 using Clockwork.Utilities;
 
-namespace Clockwork.Shapes;
+namespace Clockwork.Intersections;
 
 public static class Intersection2D
 {
