@@ -7,6 +7,7 @@ namespace Clockwork.Windowing;
 [StructLayout(LayoutKind.Sequential)]
 internal unsafe struct ItemPathList : IDisposable
 {
+	public uint Capacity;
 	public uint Count;
 	public byte** Paths;
 
