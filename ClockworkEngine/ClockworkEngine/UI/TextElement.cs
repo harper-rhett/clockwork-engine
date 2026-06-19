@@ -58,18 +58,7 @@ public class TextElement : Element
 		set
 		{
 			horizontalAlignment = value;
-			switch (horizontalAlignment)
-			{
-				case HorizontalAlignment.Left:
-					offset.X = 0;
-					break;
-				case HorizontalAlignment.Center:
-					offset.X = (Width / 2) - (TextWidth / 2);
-					break;
-				case HorizontalAlignment.Right:
-					offset.X = Width - TextWidth;
-					break;
-			}
+			RefreshHorizontalAlignment();
 		}
 	}
 
@@ -80,18 +69,7 @@ public class TextElement : Element
 		set
 		{
 			verticalAlignment = value;
-			switch (verticalAlignment)
-			{
-				case VerticalAlignment.Top:
-					offset.Y = 0;
-					break;
-				case VerticalAlignment.Center:
-					offset.Y = (Height / 2) - (TextHeight / 2);
-					break;
-				case VerticalAlignment.Bottom:
-					offset.Y = Height - TextHeight;
-					break;
-			}
+			RefreshVerticalAlignment();
 		}
 	}
 
@@ -110,10 +88,11 @@ public class TextElement : Element
 
 	public TextElement(string content, int fontSize, Color textColor)
 	{
-		Content = content;
-		FontSize = fontSize;
+		this.content = content;
+		this.fontSize = fontSize;
 		TextColor = textColor;
 		characterSpacing = fontSize / 10;
+		Measure();
 	}
 
 	private void InitializeDefaultState()
@@ -124,13 +103,50 @@ public class TextElement : Element
 	public override void OnDraw()
 	{
 		base.OnDraw();
-		Text.Draw(Font, Content, GetPosition() + offset, FontSize, characterSpacing, TextColor);
+		Text.Draw(font, Content, GetPosition() + offset, fontSize, characterSpacing, TextColor);
 	}
 
 	private void Measure()
 	{
-		Vector2 size = Text.MeasureSize(Font, content, FontSize, characterSpacing);
+		Vector2 size = Text.MeasureSize(font, content, fontSize, characterSpacing);
 		TextWidth = (int)size.X;
 		TextHeight = (int)size.Y;
 	}
+
+	private void RefreshHorizontalAlignment()
+	{
+		switch (horizontalAlignment)
+		{
+			case HorizontalAlignment.Left:
+				offset.X = 0;
+				break;
+			case HorizontalAlignment.Center:
+				offset.X = (Width / 2) - (TextWidth / 2);
+				break;
+			case HorizontalAlignment.Right:
+				offset.X = Width - TextWidth;
+				break;
+		}
+	}
+
+	private void RefreshVerticalAlignment()
+	{
+		switch (verticalAlignment)
+		{
+			case VerticalAlignment.Top:
+				offset.Y = 0;
+				break;
+			case VerticalAlignment.Center:
+				offset.Y = (Height / 2) - (TextHeight / 2);
+				break;
+			case VerticalAlignment.Bottom:
+				offset.Y = Height - TextHeight;
+				break;
+		}
+	}
+
+	protected override void OnXUpdated() => RefreshHorizontalAlignment();
+	protected override void OnYUpdated() => RefreshVerticalAlignment();
+	protected override void OnWidthUpdated() => RefreshHorizontalAlignment();
+	protected override void OnHeightUpdated() => RefreshVerticalAlignment();
 }

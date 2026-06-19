@@ -4,5 +4,5 @@ public abstract class Game
 {
 	public abstract void OnUpdate();
 	public abstract void OnDraw();
-	public virtual void OnDrawGUI() { }
+	public abstract void OnDrawGUI();
 }

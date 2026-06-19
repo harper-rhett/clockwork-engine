@@ -9,6 +9,8 @@ public class Button : Container
 	private static Color DefaultBackgroundColor = Colors.White;
 	private static Color DefaultBorderColor = Colors.Black;
 	public Color AccentColor = Colors.Blue;
+	public bool IsHovered { get; private set; }
+	public bool IsPressed { get; private set; }
 
 	public Button()
 	{
@@ -57,20 +59,24 @@ public class Button : Container
 	public virtual void OnHoverEntered(Element element)
 	{
 		BorderColor = AccentColor;
+		IsHovered = true;
 	}
 
 	public virtual void OnHoverExited(Element element)
 	{
 		BorderColor = DefaultBorderColor;
+		IsHovered = false;
 	}
 
 	public virtual void OnPressed(Element element)
 	{
 		BackgroundColor = Color.Mix(DefaultBackgroundColor, AccentColor);
+		IsPressed = true;
 	}
 
 	public virtual void OnReleased(Element element)
 	{
 		BackgroundColor = DefaultBackgroundColor;
+		IsPressed = false;
 	}
 }

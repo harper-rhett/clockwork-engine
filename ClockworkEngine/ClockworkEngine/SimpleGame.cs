@@ -20,4 +20,9 @@ public class SimpleGame : Game
 	{
 		Scene.Draw();
 	}
+
+	public override void OnDrawGUI()
+	{
+		Scene.DrawGUI();
+	}
 }
