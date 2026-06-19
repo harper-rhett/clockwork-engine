@@ -5,7 +5,10 @@ namespace Clockwork.UI;
 
 public class UploadBox : Button
 {
-	public event Action<string[]> ItemPathsDropped;
+	public UploadBoxType Type;
+	public string DefaultPath = string.Empty;
+	public string[] ExtensionFilters = Array.Empty<string>();
+	public event Action<string[]> ItemPathsSelected;
 
 	public override void OnUpdate()
 	{
@@ -14,9 +17,11 @@ public class UploadBox : Button
 		{
 			Window.Focus();
 			string[] itemPaths = Window.ConsumeDroppedItemPaths();
-			if (IsHovered && ItemPathsDropped is not null)
+			if (IsHovered && ItemPathsSelected is not null)
 			{
-				ItemPathsDropped.Invoke(itemPaths);
+				bool singleItem = itemPaths.Length == 1 && Type == UploadBoxType.SingleFile || Type == UploadBoxType.Folder;
+				bool multipleItems = Type == UploadBoxType.MultipleFiles;
+				if (singleItem || multipleItems) ItemPathsSelected.Invoke(itemPaths);
 			}
 		}
 	}
@@ -24,7 +29,24 @@ public class UploadBox : Button
 	public override void OnPressed(Element element)
 	{
 		base.OnPressed(element);
-		// Item selection window would open here
-		// Maybe use tinyfiledialogs (a C library that works on many OS)
+		if (ItemPathsSelected is null) return;
+		switch (Type)
+		{
+			case UploadBoxType.SingleFile:
+				WindowDialogs.TrySelectFile("Select File", out string[] singleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
+				ItemPathsSelected.Invoke(singleFilePaths);
+				break;
+
+			case UploadBoxType.MultipleFiles:
+				WindowDialogs.TrySelectFile("Select Files", out string[] multipleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
+				ItemPathsSelected.Invoke(multipleFilePaths);
+				break;
+
+			case UploadBoxType.Folder:
+				WindowDialogs.TrySelectFolder("Select Folder", out string folderPath, defaultPath: DefaultPath);
+				ItemPathsSelected.Invoke([folderPath]);
+				break;
+		}
+		OnReleased(this);
 	}
 }

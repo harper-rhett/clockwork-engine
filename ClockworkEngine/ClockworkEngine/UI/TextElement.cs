@@ -6,6 +6,8 @@ namespace Clockwork.UI;
 
 public class TextElement : Element
 {
+	// NOTE: Instead of remeasuring or realigning in the moment I should just set dirty and fix in the update loop
+
 	private string content = "[default text]";
 	public string Content
 	{
@@ -14,6 +16,7 @@ public class TextElement : Element
 		{
 			content = value;
 			Measure();
+			AlignHorizontal();
 		}
 	}
 	private Font font = Font.Default;

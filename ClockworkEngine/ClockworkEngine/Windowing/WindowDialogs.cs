@@ -5,7 +5,7 @@ namespace Clockwork.Windowing;
 
 // Adapted from https://github.com/nedoxff/TinyDialogsNet
 
-public static class FileDialogs
+public static class WindowDialogs
 {
 	private const char MultipleFileSeparator = '|';
 
@@ -25,13 +25,14 @@ public static class FileDialogs
 			);
 	}
 
-	public static bool TrySaveFile(string title, out string filePath, string defaultPath = "", string[] fileExtensions = default, string filterName = default)
+	public static bool TrySaveFile(string title, out string filePath, string defaultPath = "", string[] extensionFilters = null, string filterName = default)
 	{
 		CheckTitle(title);
+		extensionFilters ??= [];
 
 		nint response = OperatingSystem.IsWindows()
-			? SaveFileWindows(title, defaultPath, fileExtensions.Length, fileExtensions, filterName)
-			: SaveFileLinux(title, defaultPath, fileExtensions.Length, fileExtensions, filterName);
+			? SaveFileWindows(title, defaultPath, extensionFilters.Length, extensionFilters, filterName)
+			: SaveFileLinux(title, defaultPath, extensionFilters.Length, extensionFilters, filterName);
 
 		bool didSelect = response != IntPtr.Zero;
 		filePath = didSelect ? PointerToString(response) : null;
@@ -39,13 +40,14 @@ public static class FileDialogs
 		return didSelect;
 	}
 
-	public static bool TrySelectFile(string title, out string[] filePaths, string defaultPath = "", bool allowMultipleSelections = false, string[] fileExtensions = default, string filterName = default)
+	public static bool TrySelectFile(string title, out string[] filePaths, string defaultPath = "", bool allowMultipleSelections = false, string[] extensionfilters = null, string filterName = default)
 	{
 		CheckTitle(title);
+		extensionfilters ??= [];
 
 		nint response = OperatingSystem.IsWindows()
-			? SelectFileWindows(title, defaultPath, fileExtensions.Length, fileExtensions, filterName, allowMultipleSelections ? 1 : 0)
-			: SelectFileLinux(title, defaultPath, fileExtensions.Length, fileExtensions, filterName, allowMultipleSelections ? 1 : 0);
+			? SelectFileWindows(title, defaultPath, extensionfilters.Length, extensionfilters, filterName, allowMultipleSelections ? 1 : 0)
+			: SelectFileLinux(title, defaultPath, extensionfilters.Length, extensionfilters, filterName, allowMultipleSelections ? 1 : 0);
 
 		bool didSelect = response != IntPtr.Zero;
 		filePaths = didSelect ? PointerToString(response).Split(MultipleFileSeparator) : [];
