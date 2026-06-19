@@ -13,7 +13,7 @@ public class ItemUpload : Button
 		if (Window.ItemPathsDropped)
 		{
 			Window.Focus();
-			string[] itemPaths = Window.GetDroppedItemPaths();
+			string[] itemPaths = Window.ConsumeDroppedItemPaths();
 			if (IsHovered && ItemPathsDropped is not null)
 			{
 				ItemPathsDropped.Invoke(itemPaths);

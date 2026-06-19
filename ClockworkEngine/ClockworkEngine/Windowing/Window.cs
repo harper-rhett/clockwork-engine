@@ -117,7 +117,7 @@ public unsafe static class Window
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadDroppedFiles")]
 	private static extern ItemPathList LoadDroppedItemPaths();
-	public static string[] GetDroppedItemPaths()
+	public static string[] ConsumeDroppedItemPaths()
 	{
 		ItemPathList itemPaths = LoadDroppedItemPaths();
 		string[] paths = itemPaths.ToArray();
