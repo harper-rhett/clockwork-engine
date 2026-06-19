@@ -21,6 +21,7 @@ public static class Engine
 	public static float GlobalFrameTime {  get; private set; }
 	private static bool isInitialized;
 	internal const string raylibLibraryName = "raylib";
+	internal const string tinyDialogsName = "tinyfiledialogs";
 
 	// Game size
 	public static Vector2 GameSize

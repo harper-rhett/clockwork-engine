@@ -3,7 +3,7 @@ using System;
 
 namespace Clockwork.UI;
 
-public class ItemUpload : Button
+public class UploadBox : Button
 {
 	public event Action<string[]> ItemPathsDropped;
 
