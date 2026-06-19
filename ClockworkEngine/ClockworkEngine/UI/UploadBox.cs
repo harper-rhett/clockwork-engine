@@ -33,18 +33,18 @@ public class UploadBox : Button
 		switch (Type)
 		{
 			case UploadBoxType.SingleFile:
-				WindowDialogs.TrySelectFile("Select File", out string[] singleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
-				ItemPathsSelected.Invoke(singleFilePaths);
+				bool singleFileSuccess = WindowDialogs.TrySelectFile("Select File", out string[] singleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
+				if (singleFileSuccess) ItemPathsSelected.Invoke(singleFilePaths);
 				break;
 
 			case UploadBoxType.MultipleFiles:
-				WindowDialogs.TrySelectFile("Select Files", out string[] multipleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
-				ItemPathsSelected.Invoke(multipleFilePaths);
+				bool multipleFilesSuccess = WindowDialogs.TrySelectFile("Select Files", out string[] multipleFilePaths, defaultPath: DefaultPath, extensionfilters: ExtensionFilters);
+				if (multipleFilesSuccess) ItemPathsSelected.Invoke(multipleFilePaths);
 				break;
 
 			case UploadBoxType.Folder:
-				WindowDialogs.TrySelectFolder("Select Folder", out string folderPath, defaultPath: DefaultPath);
-				ItemPathsSelected.Invoke([folderPath]);
+				bool folderSuccess = WindowDialogs.TrySelectFolder("Select Folder", out string folderPath, defaultPath: DefaultPath);
+				if (folderSuccess) ItemPathsSelected.Invoke([folderPath]);
 				break;
 		}
 		OnReleased(this);
