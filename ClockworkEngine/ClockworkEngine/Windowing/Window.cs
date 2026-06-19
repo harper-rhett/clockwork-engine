@@ -3,6 +3,7 @@ using System.Numerics;
 using Clockwork.Graphics;
 using Clockwork.Input;
 using System;
+using Clockwork.UI;
 
 namespace Clockwork.Windowing;
 
@@ -35,6 +36,7 @@ public unsafe static class Window
 	public static extern void Close();
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsWindowResized")]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsResized();
 	public static bool WasResized => IsResized();
 	public static event Engine.OnResized Resized;
@@ -102,6 +104,26 @@ public unsafe static class Window
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowFocused")]
 	public static extern void Focus();
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsWindowFocused")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsWindowFocused();
+	public static bool IsFocused => IsWindowFocused();
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsFileDropped")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsItemPathsDropped();
+	public static bool ItemPathsDropped => IsItemPathsDropped();
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadDroppedFiles")]
+	private static extern ItemPathList LoadDroppedItemPaths();
+	public static string[] GetDroppedItemPaths()
+	{
+		ItemPathList itemPaths = LoadDroppedItemPaths();
+		string[] paths = itemPaths.ToArray();
+		itemPaths.Dispose();
+		return paths;
+	}
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetWindowPosition")]
 	private static extern Vector2 GetPosition();

@@ -17,6 +17,7 @@ public unsafe struct MaterialData : IDisposable
 	private static extern void Unload(MaterialData materialData);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsMaterialValid")]
+	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsThisValid(MaterialData materialData);
 	public bool IsValid => IsThisValid(this);
 

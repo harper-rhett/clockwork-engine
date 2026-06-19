@@ -208,16 +208,4 @@ public static class Engine
 		screenshotBurstFolderPath = null;
 		IsScreenshotBursting = false;
 	}
-
-	[DllImport(raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsFileDropped")]
-	private static extern bool IsItemPathDropped();
-	public static bool ItemPathDropped => IsItemPathDropped();
-
-	[DllImport(raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadDroppedFiles")]
-	private static extern ItemPathList LoadDroppedItemPaths();
-	public static string[] GetDroppedItemPaths()
-	{
-		ItemPathList itemPaths = LoadDroppedItemPaths();
-		return itemPaths.ToArray();
-	}
 }

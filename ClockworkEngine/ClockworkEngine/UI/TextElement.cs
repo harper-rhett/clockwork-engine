@@ -58,7 +58,7 @@ public class TextElement : Element
 		set
 		{
 			horizontalAlignment = value;
-			RefreshHorizontalAlignment();
+			AlignHorizontal();
 		}
 	}
 
@@ -69,7 +69,7 @@ public class TextElement : Element
 		set
 		{
 			verticalAlignment = value;
-			RefreshVerticalAlignment();
+			AlignVertical();
 		}
 	}
 
@@ -113,7 +113,7 @@ public class TextElement : Element
 		TextHeight = (int)size.Y;
 	}
 
-	private void RefreshHorizontalAlignment()
+	private void AlignHorizontal()
 	{
 		switch (horizontalAlignment)
 		{
@@ -129,7 +129,7 @@ public class TextElement : Element
 		}
 	}
 
-	private void RefreshVerticalAlignment()
+	private void AlignVertical()
 	{
 		switch (verticalAlignment)
 		{
@@ -145,8 +145,8 @@ public class TextElement : Element
 		}
 	}
 
-	protected override void OnXUpdated() => RefreshHorizontalAlignment();
-	protected override void OnYUpdated() => RefreshVerticalAlignment();
-	protected override void OnWidthUpdated() => RefreshHorizontalAlignment();
-	protected override void OnHeightUpdated() => RefreshVerticalAlignment();
+	protected override void OnXUpdated() => AlignHorizontal();
+	protected override void OnYUpdated() => AlignVertical();
+	protected override void OnWidthUpdated() => AlignHorizontal();
+	protected override void OnHeightUpdated() => AlignVertical();
 }

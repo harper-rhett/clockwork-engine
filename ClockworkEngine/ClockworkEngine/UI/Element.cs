@@ -99,7 +99,7 @@ public class Element
 	{
 		if (HoverEntered is null && HoverExited is null) return;
 
-		bool isHovering = IsHovering;
+		bool isHovering = IsHovering();
 		if (!wasHovering && isHovering)
 		{
 			HoverEntered?.Invoke(this);
@@ -112,18 +112,15 @@ public class Element
 		}
 	}
 
-	private bool IsHovering
+	protected bool IsHovering()
 	{
-		get
-		{
-			Vector2 mousePosition = Mouse.GamePosition;
-			bool isHovering = mousePosition.X > x
-			&& mousePosition.X < rightBound
-			&& mousePosition.Y > y
-			&& mousePosition.Y < lowerBound
-			&& Mouse.IsOnScreen;
-			return isHovering;
-		}
+		Vector2 mousePosition = Mouse.GamePosition;
+		bool isHovering = mousePosition.X > x
+		&& mousePosition.X < rightBound
+		&& mousePosition.Y > y
+		&& mousePosition.Y < lowerBound
+		&& Mouse.IsOnScreen;
+		return isHovering;
 	}
 
 	private void UpdatePressed()
@@ -139,6 +136,7 @@ public class Element
 	{
 		if (
 			Released is not null
+			&& wasHovering
 			&& Mouse.IsButtonReleased(MouseButton.Left)
 		) Released.Invoke(this);
 	}
