@@ -24,9 +24,9 @@ public class Button : Container
 		SubscribeToEvents();
 	}
 
-	public Button(int x, int y, int width, int height, Style style, Style hoverStyle, Style pressedStyle) : base(x, y, width, height, style)
+	public Button(int x, int y, int width, int height, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(x, y, width, height, defaultStyle)
 	{
-		DefaultStyle = style;
+		DefaultStyle = defaultStyle;
 		HoverStyle = hoverStyle;
 		PressedStyle = pressedStyle;
 		SubscribeToEvents();
@@ -38,9 +38,9 @@ public class Button : Container
 		SubscribeToEvents();
 	}
 
-	public Button(Vector2 position, Vector2 size, Style style, Style hoverStyle, Style pressedStyle) : base(position, size, style)
+	public Button(Vector2 position, Vector2 size, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(position, size, defaultStyle)
 	{
-		DefaultStyle = style;
+		DefaultStyle = defaultStyle;
 		HoverStyle = hoverStyle;
 		PressedStyle = pressedStyle;
 		SubscribeToEvents();

@@ -8,13 +8,13 @@ public class TextElement : Element
 {
 	// NOTE: Instead of remeasuring or realigning in the moment I should just set dirty and fix in the update loop
 
-	private string content = "[default text]";
-	public string Content
+	private string text = "[default text]";
+	public string Text
 	{
-		get => content;
+		get => text;
 		set
 		{
-			content = value;
+			text = value;
 			Measure();
 			AlignHorizontal();
 		}
@@ -85,13 +85,13 @@ public class TextElement : Element
 
 	public TextElement(string content)
 	{
-		Content = content;
+		Text = content;
 		InitializeDefaultState();
 	}
 
 	public TextElement(string content, int fontSize, Color textColor)
 	{
-		this.content = content;
+		this.text = content;
 		this.fontSize = fontSize;
 		TextColor = textColor;
 		characterSpacing = fontSize / 10;
@@ -106,12 +106,12 @@ public class TextElement : Element
 	public override void OnDraw()
 	{
 		base.OnDraw();
-		Text.Draw(font, Content, Position + offset, fontSize, characterSpacing, TextColor);
+		Graphics.Text.Text.Draw(font, Text, Position + offset, fontSize, characterSpacing, TextColor);
 	}
 
 	private void Measure()
 	{
-		Vector2 size = Text.MeasureSize(font, content, fontSize, characterSpacing);
+		Vector2 size = Graphics.Text.Text.MeasureSize(font, text, fontSize, characterSpacing);
 		TextWidth = (int)size.X;
 		TextHeight = (int)size.Y;
 	}
