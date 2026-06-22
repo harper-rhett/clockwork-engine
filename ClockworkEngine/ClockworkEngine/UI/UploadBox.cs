@@ -11,6 +11,7 @@ public class UploadBox : Button
 	public string[] ExtensionFilters = Array.Empty<string>();
 	public event Action<string> ItemPathSelected;
 	public event Action<string[]> ItemPathsSelected;
+	private bool checkDroppedItems;
 
 	public UploadBox() : base()
 	{
@@ -44,8 +45,9 @@ public class UploadBox : Button
 		if (Window.ItemPathsDropped)
 		{
 			Window.Focus();
+			checkDroppedItems = true;
 			string[] itemPaths = Window.ConsumeDroppedItemPaths();
-			if (IsHovered && ItemPathsSelected is not null) Select(itemPaths);
+			if (IsHovering()) Select(itemPaths);
 		}
 	}
 

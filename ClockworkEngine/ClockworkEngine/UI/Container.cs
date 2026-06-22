@@ -33,7 +33,17 @@ public class Container : Element
 	public void AddChild(Element element)
 	{
 		children.Add(element);
+		Refresh();
+	}
 
+	public void InsertChild(int index, Element element)
+	{
+		children.Insert(index, element);
+		Refresh();
+	}
+
+	private void Refresh()
+	{
 		OnWidthUpdated();
 		OnHeightUpdated();
 		OnXUpdated();
