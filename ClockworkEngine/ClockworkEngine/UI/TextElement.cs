@@ -106,7 +106,7 @@ public class TextElement : Element
 	public override void OnDraw()
 	{
 		base.OnDraw();
-		Text.Draw(font, Content, GetPosition() + offset, fontSize, characterSpacing, TextColor);
+		Text.Draw(font, Content, Position + offset, fontSize, characterSpacing, TextColor);
 	}
 
 	private void Measure()

@@ -6,9 +6,9 @@ namespace Clockwork.UI;
 
 public class Button : Container
 {
-	private static Color DefaultBackgroundColor = Colors.White;
-	private static Color DefaultBorderColor = Colors.Black;
-	public Color AccentColor = Colors.Blue;
+	public Style DefaultStyle;
+	public Style HoverStyle;
+	public Style PressedStyle;
 	public bool IsHovered { get; private set; }
 	public bool IsPressed { get; private set; }
 
@@ -24,28 +24,36 @@ public class Button : Container
 		SubscribeToEvents();
 	}
 
-	public Button(int x, int y, int width, int height, Color backgroundColor, Color borderColor, int borderThickness) : base(x, y, width, height)
+	public Button(int x, int y, int width, int height, Style style, Style hoverStyle, Style pressedStyle) : base(x, y, width, height, style)
 	{
-		BackgroundColor = backgroundColor;
-		BorderColor = borderColor;
-		BorderThickness = borderThickness;
+		DefaultStyle = style;
+		HoverStyle = hoverStyle;
+		PressedStyle = pressedStyle;
 		SubscribeToEvents();
 	}
 
-	public Button(Vector2 position, Vector2 size, Color backgroundColor, Color borderColor, int borderThickness) : base(position, size)
+	public Button(Vector2 position, Vector2 size) : base(position, size)
 	{
-		BackgroundColor = backgroundColor;
-		BorderColor = borderColor;
-		BorderThickness = borderThickness;
+		InitializeDefaultState();
+		SubscribeToEvents();
+	}
+
+	public Button(Vector2 position, Vector2 size, Style style, Style hoverStyle, Style pressedStyle) : base(position, size, style)
+	{
+		DefaultStyle = style;
+		HoverStyle = hoverStyle;
+		PressedStyle = pressedStyle;
 		SubscribeToEvents();
 	}
 
 	private void InitializeDefaultState()
 	{
-		BackgroundColor = DefaultBackgroundColor;
-		BorderColor = DefaultBorderColor;
-		BorderThickness = 5;
+		DefaultStyle = new(Colors.White, Colors.Black, 5);
+		HoverStyle = new(Colors.White, Colors.Blue, 5);
+		PressedStyle = new(Colors.SkyBlue, Colors.Blue, 5);
+		ActiveStyle = DefaultStyle;
 		Height = 50;
+		InitializeDisabledStyle();
 	}
 
 	private void SubscribeToEvents()
@@ -58,25 +66,25 @@ public class Button : Container
 
 	public virtual void OnHoverEntered(Element element)
 	{
-		BorderColor = AccentColor;
+		ActiveStyle = HoverStyle;
 		IsHovered = true;
 	}
 
 	public virtual void OnHoverExited(Element element)
 	{
-		BorderColor = DefaultBorderColor;
+		ActiveStyle = DefaultStyle;
 		IsHovered = false;
 	}
 
 	public virtual void OnPressed(Element element)
 	{
-		BackgroundColor = Color.Mix(DefaultBackgroundColor, AccentColor);
+		ActiveStyle = PressedStyle;
 		IsPressed = true;
 	}
 
 	public virtual void OnReleased(Element element)
 	{
-		BackgroundColor = DefaultBackgroundColor;
+		ActiveStyle = HoverStyle;
 		IsPressed = false;
 	}
 }

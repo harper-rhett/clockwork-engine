@@ -25,8 +25,10 @@ public class Container : Element
 	public Container() : base() { }
 
 	public Container(int x, int y, int width, int height) : base(x, y, width, height) { }
+	public Container(int x, int y, int width, int height, Style style) : base(x, y, width, height, style) { }
 
 	public Container(Vector2 position, Vector2 size) : base(position, size) { }
+	public Container(Vector2 position, Vector2 size, Style style) : base(position, size, style) { }
 
 	public void AddChild(Element element)
 	{

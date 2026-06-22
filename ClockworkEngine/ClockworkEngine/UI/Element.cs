@@ -15,11 +15,26 @@ public class Element
 	private int height;
 
 	// General
-	public Color BackgroundColor = Colors.White;
-	public Color BorderColor = Colors.Clear;
-	public int BorderThickness;
+	public Style DisabledStyle;
+	public Style ActiveStyle;
+	public Color BackgroundColor
+	{
+		get => ActiveStyle.BackgroundColor;
+		set => ActiveStyle.BackgroundColor = value;
+	}
+	public Color BorderColor
+	{
+		get => ActiveStyle.BorderColor;
+		set => ActiveStyle.BorderColor = value;
+	}
+	public int BorderThickness
+	{
+		get => ActiveStyle.BorderThickness;
+		set => ActiveStyle.BorderThickness = value;
+	}
 	private int rightBound => x + width;
 	private int lowerBound => y + height;
+	public bool Enabled = true;
 
 	// Hover
 	public event Action<Element> HoverEntered;
@@ -67,6 +82,9 @@ public class Element
 			OnHeightUpdated();
 		}
 	}
+	public Vector2 Position => new(x, y);
+	public Vector2 Size => new(width, height);
+	public Rectangle Rectangle => new(x, y, width, height);
 
 	public Element()
 	{
@@ -76,20 +94,45 @@ public class Element
 
 	public Element(int x, int y, int width, int height)
 	{
-		this.x = x; this.y = y;
-		this.width = width; this.height = height;
+		InitializeTransform(x, y, width, height);
+		InitializeDisabledStyle();
+	}
+
+	public Element(int x, int y, int width, int height, Style style)
+	{
+		InitializeTransform(x, y, width, height);
+		ActiveStyle = style;
+		InitializeDisabledStyle();
 	}
 
 	public Element(Vector2 position, Vector2 size)
 	{
-		x = (int)position.X; y = (int)position.Y;
-		width = (int)size.X; height = (int)size.Y;
+		InitializeTransform((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+		InitializeDisabledStyle();
 	}
 
-	public Vector2 GetPosition() => new Vector2(x, y);
+	public Element(Vector2 position, Vector2 size, Style style)
+	{
+		InitializeTransform((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+		ActiveStyle = style;
+		InitializeDisabledStyle();
+	}
+
+	protected void InitializeTransform(int x, int y, int width, int height)
+	{
+		this.x = x; this.y = y;
+		this.width = width; this.height = height;
+		InitializeDisabledStyle();
+	}
+
+	protected void InitializeDisabledStyle()
+	{
+		DisabledStyle = new(BackgroundColor.SetAlpha(0.5f), BorderColor.SetAlpha(0.5f), BorderThickness);
+	}
 
 	public virtual void OnUpdate()
 	{
+		if (!Enabled) return;
 		UpdateHover();
 		UpdatePressed();
 		UpdateReleased();
@@ -145,15 +188,13 @@ public class Element
 	{
 		if (BackgroundColor == Colors.Clear) return;
 
-		Primitives2D.DrawRectangle(x, y, width, height, BackgroundColor);
+		Style currentStyle = Enabled ? ActiveStyle : DisabledStyle;
+		Primitives2D.DrawRectangle(x, y, width, height, currentStyle.BackgroundColor);
 
-		if (BorderThickness > 0 && BackgroundColor != Colors.Clear) DrawBorder();
-	}
-
-	private void DrawBorder()
-	{
-		Rectangle rectangle = new(x, y, width, height);
-		Primitives2D.DrawRectangleLines(rectangle, BorderThickness, BorderColor);
+		if (BorderThickness > 0 && BackgroundColor != Colors.Clear)
+		{
+			Primitives2D.DrawRectangleLines(Rectangle, currentStyle.BorderThickness, currentStyle.BorderColor);
+		}
 	}
 
 	protected virtual void OnXUpdated() { }

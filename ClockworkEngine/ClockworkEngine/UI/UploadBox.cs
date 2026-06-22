@@ -13,6 +13,7 @@ public class UploadBox : Button
 	public override void OnUpdate()
 	{
 		base.OnUpdate();
+		if (!Enabled) return;
 		if (Window.ItemPathsDropped)
 		{
 			Window.Focus();
@@ -26,9 +27,9 @@ public class UploadBox : Button
 		}
 	}
 
-	public override void OnPressed(Element element)
+	public override void OnReleased(Element element)
 	{
-		base.OnPressed(element);
+		base.OnReleased(element);
 		if (ItemPathsSelected is null) return;
 		switch (Type)
 		{
@@ -47,6 +48,5 @@ public class UploadBox : Button
 				if (folderSuccess) ItemPathsSelected.Invoke([folderPath]);
 				break;
 		}
-		OnReleased(this);
 	}
 }
