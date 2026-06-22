@@ -81,4 +81,14 @@ public class Container : Element
 	{
 		foreach (Element child in children) child.Enabled = false;
 	}
+
+	protected override void OnVisible()
+	{
+		foreach (Element child in children) child.Visible = true;
+	}
+
+	protected override void OnInvisible()
+	{
+		foreach (Element child in children) child.Visible = false;
+	}
 }

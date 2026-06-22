@@ -45,7 +45,17 @@ public class Element
 			else OnDisabled();
 		}
 	}
-	public bool Visible = true;
+	private bool visible = true;
+	public bool Visible
+	{
+		get => visible;
+		set
+		{
+			visible = value;
+			if (visible) OnVisible();
+			else OnInvisible();
+		}
+	}
 
 	// Hover
 	public event Action<Element> HoverEntered;
@@ -197,7 +207,7 @@ public class Element
 
 	public virtual void OnDraw()
 	{
-		if (!Visible || BackgroundColor == Colors.Clear) return;
+		if (!visible || BackgroundColor == Colors.Clear) return;
 
 		Style currentStyle = enabled ? ActiveStyle : DisabledStyle;
 		Primitives2D.DrawRectangle(x, y, width, height, currentStyle.BackgroundColor);
@@ -214,4 +224,6 @@ public class Element
 	protected virtual void OnHeightUpdated() { }
 	protected virtual void OnEnabled() { }
 	protected virtual void OnDisabled() { }
+	protected virtual void OnVisible() { }
+	protected virtual void OnInvisible() { }
 }

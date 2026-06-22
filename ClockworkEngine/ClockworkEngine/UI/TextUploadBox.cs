@@ -47,10 +47,12 @@ public class TextUploadBox : UploadBox
 	protected override void OnItemPathSelected(string itemPath)
 	{
 		Text = itemPath;
+		TextElement.HorizontalAlignment = HorizontalAlignment.Left;
 	}
 
 	protected override void OnItemPathsSelected(string[] itemPaths)
 	{
 		Text = "{ " + string.Join(",", itemPaths) + " }";
+		TextElement.HorizontalAlignment = HorizontalAlignment.Left;
 	}
 }
