@@ -34,7 +34,18 @@ public class Element
 	}
 	private int rightBound => x + width;
 	private int lowerBound => y + height;
-	public bool Enabled = true;
+	private bool enabled = true;
+	public bool Enabled
+	{
+		get => enabled;
+		set
+		{
+			enabled = value;
+			if (enabled) OnEnabled();
+			else OnDisabled();
+		}
+	}
+	public bool Visible = true;
 
 	// Hover
 	public event Action<Element> HoverEntered;
@@ -132,7 +143,7 @@ public class Element
 
 	public virtual void OnUpdate()
 	{
-		if (!Enabled) return;
+		if (!enabled) return;
 		UpdateHover();
 		UpdatePressed();
 		UpdateReleased();
@@ -186,9 +197,9 @@ public class Element
 
 	public virtual void OnDraw()
 	{
-		if (BackgroundColor == Colors.Clear) return;
+		if (!Visible || BackgroundColor == Colors.Clear) return;
 
-		Style currentStyle = Enabled ? ActiveStyle : DisabledStyle;
+		Style currentStyle = enabled ? ActiveStyle : DisabledStyle;
 		Primitives2D.DrawRectangle(x, y, width, height, currentStyle.BackgroundColor);
 
 		if (BorderThickness > 0 && BackgroundColor != Colors.Clear)
@@ -201,4 +212,6 @@ public class Element
 	protected virtual void OnYUpdated() { }
 	protected virtual void OnWidthUpdated() { }
 	protected virtual void OnHeightUpdated() { }
+	protected virtual void OnEnabled() { }
+	protected virtual void OnDisabled() { }
 }

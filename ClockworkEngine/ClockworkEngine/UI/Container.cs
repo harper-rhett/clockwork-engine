@@ -71,4 +71,14 @@ public class Container : Element
 	{
 		foreach (Element child in children) child.Height = Height - PaddingTop - PaddingBottom;
 	}
+
+	protected override void OnEnabled()
+	{
+		foreach (Element child in children) child.Enabled = true;
+	}
+
+	protected override void OnDisabled()
+	{
+		foreach (Element child in children) child.Enabled = false;
+	}
 }

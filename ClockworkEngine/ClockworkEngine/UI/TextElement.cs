@@ -6,8 +6,6 @@ namespace Clockwork.UI;
 
 public class TextElement : Element
 {
-	// NOTE: Instead of remeasuring or realigning in the moment I should just set dirty and fix in the update loop
-
 	private string text = "[default text]";
 	public string Text
 	{
@@ -50,6 +48,7 @@ public class TextElement : Element
 		}
 	}
 	public Color TextColor = Colors.Black;
+	public Color DisabledTextColor;
 	public int TextWidth { get; private set; }
 	public int TextHeight { get; private set; }
 	private Vector2 offset = Vector2.Zero;
@@ -76,8 +75,6 @@ public class TextElement : Element
 		}
 	}
 
-	private static Color DefaultBackgroundColor = Colors.Clear;
-
 	public TextElement()
 	{
 		InitializeDefaultState();
@@ -100,13 +97,15 @@ public class TextElement : Element
 
 	private void InitializeDefaultState()
 	{
-		BackgroundColor = DefaultBackgroundColor;
+		DisabledTextColor = TextColor.SetAlpha(0.5f);
+		BackgroundColor = Colors.Clear;
 	}
 
 	public override void OnDraw()
 	{
 		base.OnDraw();
-		Graphics.Text.Text.Draw(font, Text, Position + offset, fontSize, characterSpacing, TextColor);
+		if (!Visible) return;
+		Graphics.Text.Text.Draw(font, Text, Position + offset, fontSize, characterSpacing, Enabled ? TextColor : DisabledTextColor);
 	}
 
 	private void Measure()
