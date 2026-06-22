@@ -52,7 +52,7 @@ public class Button : Container
 		HoverStyle = new(Colors.White, Colors.Blue, 5);
 		PressedStyle = new(Colors.SkyBlue, Colors.Blue, 5);
 		ActiveStyle = DefaultStyle;
-		Height = 50;
+		Height = 100;
 		InitializeDisabledStyle();
 	}
 

@@ -27,7 +27,7 @@ public class TextElement : Element
 			Measure();
 		}
 	}
-	private int fontSize = 35;
+	private int fontSize = 45;
 	public int FontSize
 	{
 		get => fontSize;
