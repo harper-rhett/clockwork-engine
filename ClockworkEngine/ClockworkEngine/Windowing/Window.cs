@@ -135,4 +135,5 @@ public unsafe static class Window
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetExitKey")]
 	public static extern void SetExitKey(KeyboardKey key);
+	public static void RemoveExitKey() => SetExitKey(KeyboardKey.None);
 }
