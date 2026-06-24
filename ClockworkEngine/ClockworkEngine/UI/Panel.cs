@@ -93,6 +93,7 @@ public class Panel : Entity, IDisposable
 	{
 		RootElement.OnUpdate();
 		renderTexture.BeginDrawing();
+		Drawing.Clear(Colors.Clear);
 		RootElement.OnDraw();
 		RenderTexture.EndDrawing();
 	}
