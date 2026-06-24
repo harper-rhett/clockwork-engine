@@ -77,13 +77,16 @@ public class TextElement : Element
 
 	public TextElement()
 	{
+		Height = FontSize;
 		InitializeDefaultState();
 	}
 
 	public TextElement(string content)
 	{
 		Text = content;
+		Height = FontSize;
 		InitializeDefaultState();
+		Measure();
 	}
 
 	public TextElement(string content, int fontSize, Color textColor)
@@ -92,6 +95,8 @@ public class TextElement : Element
 		this.fontSize = fontSize;
 		TextColor = textColor;
 		characterSpacing = fontSize / 10;
+		Height = fontSize;
+		InitializeDefaultState();
 		Measure();
 	}
 
