@@ -58,13 +58,13 @@ public class Element
 	}
 
 	// Hover
-	public event Action<Element> HoverEntered;
-	public event Action<Element> HoverExited;
+	public event Action HoverEntered;
+	public event Action HoverExited;
 	private bool wasHovering;
 
 	// Input
-	public event Action<Element> Pressed;
-	public event Action<Element> Released;
+	public event Action Pressed;
+	public event Action Released;
 
 	// Public shape
 	public int X
@@ -166,12 +166,12 @@ public class Element
 		bool isHovering = IsHovering();
 		if (!wasHovering && isHovering)
 		{
-			HoverEntered?.Invoke(this);
+			HoverEntered?.Invoke();
 			wasHovering = true;
 		}
 		else if (wasHovering && !isHovering)
 		{
-			HoverExited?.Invoke(this);
+			HoverExited?.Invoke();
 			wasHovering = false;
 		}
 	}
@@ -193,7 +193,7 @@ public class Element
 			Pressed is not null
 			&& wasHovering
 			&& Mouse.IsButtonPressed(MouseButton.Left)
-		) Pressed.Invoke(this);
+		) Pressed.Invoke();
 	}
 
 	private void UpdateReleased()
@@ -202,7 +202,7 @@ public class Element
 			Released is not null
 			&& wasHovering
 			&& Mouse.IsButtonReleased(MouseButton.Left)
-		) Released.Invoke(this);
+		) Released.Invoke();
 	}
 
 	public virtual void OnDraw()

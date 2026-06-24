@@ -54,9 +54,9 @@ public class UploadBox : Button
 	protected virtual void OnItemPathSelected(string itemPath) { }
 	protected virtual void OnItemPathsSelected(string[] itemPaths) { }
 
-	public override void OnReleased(Element element)
+	public override void OnReleased()
 	{
-		base.OnReleased(element);
+		base.OnReleased();
 		switch (Type)
 		{
 			case UploadBoxType.SingleFile:

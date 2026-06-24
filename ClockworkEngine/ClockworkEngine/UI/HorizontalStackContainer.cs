@@ -7,10 +7,12 @@ public class HorizontalStackContainer : Container
 
 	protected override void OnXUpdated()
 	{
+		int xOffset = 0;
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.X = X + PaddingLeft + (child.Width + Spacing) * childIndex;
+			child.X = xOffset + PaddingLeft + Spacing * childIndex;
+			xOffset += child.Width;
 		}
 	}
 

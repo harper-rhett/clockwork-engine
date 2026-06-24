@@ -64,25 +64,25 @@ public class Button : Container
 		Released += OnReleased;
 	}
 
-	public virtual void OnHoverEntered(Element element)
+	public virtual void OnHoverEntered()
 	{
 		ActiveStyle = HoverStyle;
 		IsHovered = true;
 	}
 
-	public virtual void OnHoverExited(Element element)
+	public virtual void OnHoverExited()
 	{
 		ActiveStyle = DefaultStyle;
 		IsHovered = false;
 	}
 
-	public virtual void OnPressed(Element element)
+	public virtual void OnPressed()
 	{
 		ActiveStyle = PressedStyle;
 		IsPressed = true;
 	}
 
-	public virtual void OnReleased(Element element)
+	public virtual void OnReleased()
 	{
 		ActiveStyle = HoverStyle;
 		IsPressed = false;

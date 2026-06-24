@@ -16,10 +16,12 @@ public class VerticalStackContainer : Container
 
 	protected override void OnYUpdated()
 	{
+		int yOffset = 0;
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.Y = Y + PaddingTop + (child.Height + Spacing) * childIndex;
+			child.Y = yOffset + PaddingTop + Spacing * childIndex;
+			yOffset += child.Height;
 		}
 	}
 

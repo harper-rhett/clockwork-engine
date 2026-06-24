@@ -22,6 +22,9 @@ public class Container : Element
 	public int PaddingTop;
 	public int PaddingBottom;
 
+	private List<Element> childrenToAdd = new();
+	private List<(int, Element)> childrenToInsert = new();
+
 	public Container() : base() { }
 
 	public Container(int x, int y, int width, int height) : base(x, y, width, height) { }
@@ -32,14 +35,12 @@ public class Container : Element
 
 	public void AddChild(Element element)
 	{
-		children.Add(element);
-		Refresh();
+		childrenToAdd.Add(element);
 	}
 
 	public void InsertChild(int index, Element element)
 	{
-		children.Insert(index, element);
-		Refresh();
+		childrenToInsert.Add((index, element));
 	}
 
 	private void Refresh()
@@ -53,6 +54,22 @@ public class Container : Element
 	public override void OnUpdate()
 	{
 		base.OnUpdate();
+		bool addChildren = childrenToAdd.Count > 0;
+		bool insertChildren = childrenToInsert.Count > 0;
+		if (addChildren || insertChildren)
+		{
+			if (addChildren)
+			{
+				foreach (Element child in childrenToAdd) children.Add(child);
+				childrenToAdd.Clear();
+			}
+			if (insertChildren)
+			{
+				foreach ((int, Element) child in childrenToInsert) children.Insert(child.Item1, child.Item2);
+				childrenToInsert.Clear();
+			}
+			Refresh();
+		}
 		foreach (Element child in children) child.OnUpdate();
 	}
 

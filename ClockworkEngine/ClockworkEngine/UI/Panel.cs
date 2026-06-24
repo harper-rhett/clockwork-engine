@@ -1,10 +1,11 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Windowing;
+using System;
 using System.Numerics;
 
 namespace Clockwork.UI;
 
-public class Panel : Entity
+public class Panel : Entity, IDisposable
 {
 	public Element RootElement;
 	private RenderTexture renderTexture;
@@ -155,5 +156,10 @@ public class Panel : Entity
 				destinationRectangle.Y = contextHeight - Height;
 				break;
 		}
+	}
+
+	public void Dispose()
+	{
+		renderTexture.Dispose();
 	}
 }
