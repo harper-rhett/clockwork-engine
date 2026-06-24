@@ -1,4 +1,4 @@
-﻿namespace Clockwork.Shapes;
+﻿namespace Clockwork.Graphics.Draw2D;
 
 public enum SpriteOffset
 {

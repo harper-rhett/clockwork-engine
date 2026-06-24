@@ -1,10 +1,9 @@
-﻿using Clockwork.Shapes;
-using Clockwork.Utilities;
+﻿using Clockwork.Utilities;
 using System.Numerics;
 
 namespace Clockwork.Graphics.Draw2D;
 
-public class Sprite : Entity
+public class Sprite
 {
 	// Interface
 	public Transform2D Transform = new();
@@ -77,10 +76,16 @@ public class Sprite : Entity
 		}
 	}
 
-	public Sprite(Vector2 position, float rotation)
+	public Sprite(string filePath)
+	{
+		LoadTexture(filePath);
+	}
+
+	public Sprite(string filePath, Vector2 position, float rotation)
 	{
 		Position = position;
 		Rotation = rotation;
+		LoadTexture(filePath);
 	}
 
 	public void LoadTexture(string filePath)
@@ -92,8 +97,9 @@ public class Sprite : Entity
 		WorldRectangle = new(Position, Width, Height);
 	}
 
-	public override void OnDraw()
+	public void Draw()
 	{
+		WorldRectangle = new(Position, Width, Height);
 		texture.Draw(TextureRectangle, WorldRectangle, Origin, Rotation, Color);
 	}
 }
