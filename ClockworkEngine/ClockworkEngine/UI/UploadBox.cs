@@ -1,4 +1,5 @@
-﻿using Clockwork.Windowing;
+﻿using Clockwork.Input;
+using Clockwork.Windowing;
 using System;
 using System.Numerics;
 
@@ -42,12 +43,18 @@ public class UploadBox : Button
 	{
 		base.OnUpdate();
 		if (!Enabled) return;
+
+		if (checkDroppedItems)
+		{
+			string[] itemPaths = Window.ConsumeDroppedItemPaths();
+			if (IsHovering()) Select(itemPaths);
+			checkDroppedItems = false;
+		}
+
 		if (Window.ItemPathsDropped)
 		{
 			Window.Focus();
 			checkDroppedItems = true;
-			string[] itemPaths = Window.ConsumeDroppedItemPaths();
-			if (IsHovering()) Select(itemPaths);
 		}
 	}
 
