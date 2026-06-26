@@ -9,6 +9,11 @@ public class TextCheckBox : HorizontalStackContainer
 		get => TextElement.Text;
 		set => TextElement.Text = value;
 	}
+	public bool IsChecked
+	{
+		get => CheckBox.IsChecked;
+		set => CheckBox.IsChecked = value;
+	}
 
 	public TextCheckBox(string text)
 	{

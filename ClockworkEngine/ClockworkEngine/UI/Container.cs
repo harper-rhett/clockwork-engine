@@ -24,6 +24,7 @@ public class Container : Element
 
 	private List<Element> childrenToAdd = new();
 	private List<(int, Element)> childrenToInsert = new();
+	private List<Element> childrenToRemove = new();
 
 	public Container() : base() { }
 
@@ -43,6 +44,11 @@ public class Container : Element
 		childrenToInsert.Add((index, element));
 	}
 
+	public void RemoveChild(Element element)
+	{
+		childrenToRemove.Add(element);
+	}
+
 	private void Refresh()
 	{
 		OnWidthUpdated();
@@ -56,7 +62,8 @@ public class Container : Element
 		base.OnUpdate();
 		bool addChildren = childrenToAdd.Count > 0;
 		bool insertChildren = childrenToInsert.Count > 0;
-		if (addChildren || insertChildren)
+		bool removeChildren = childrenToRemove.Count > 0;
+		if (addChildren || insertChildren || removeChildren)
 		{
 			if (addChildren)
 			{
@@ -67,6 +74,11 @@ public class Container : Element
 			{
 				foreach ((int, Element) child in childrenToInsert) children.Insert(child.Item1, child.Item2);
 				childrenToInsert.Clear();
+			}
+			if (removeChildren)
+			{
+				foreach (Element child in childrenToRemove) children.Remove(child);
+				childrenToRemove.Clear();
 			}
 			Refresh();
 		}
