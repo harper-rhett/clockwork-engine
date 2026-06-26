@@ -15,7 +15,7 @@ public class CheckBox : Button
 			Check.ActiveStyle = isChecked ? CheckStyle : UncheckedStyle;
 		}
 	}
-	public Element Check;
+	public Element Check { get; private set; }
 	public Style CheckStyle;
 	public Style UncheckedStyle;
 
@@ -39,10 +39,12 @@ public class CheckBox : Button
 
 	private void InitializeDefaultState()
 	{
-		Padding = 15;
-		CheckStyle = new(Colors.Black, Colors.Red, 25);
-		UncheckedStyle = new(Colors.Clear, Colors.Black, 25);
+		CheckStyle = new(Colors.Black, Colors.Clear, 0);
+		UncheckedStyle = new(Colors.Clear, Colors.Clear, 0);
 		Check.ActiveStyle = UncheckedStyle;
+		Padding = 15;
+		Width = 100;
+		Height = 100;
 	}
 
 	public override void OnPressed()

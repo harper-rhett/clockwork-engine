@@ -215,7 +215,7 @@ public class Element
 			Primitives2D.DrawRectangle(Rectangle, currentStyle.BackgroundColor);
 		}
 
-		if (BorderThickness > 0 && BackgroundColor != Colors.Clear)
+		if (BorderThickness > 0 && BorderColor != Colors.Clear)
 		{
 			Primitives2D.DrawRectangleLines(Rectangle, currentStyle.BorderThickness, currentStyle.BorderColor);
 		}

@@ -87,6 +87,7 @@ public class TextElement : Element
 		Height = FontSize;
 		InitializeDefaultState();
 		Measure();
+		Width = TextWidth;
 	}
 
 	public TextElement(string content, int fontSize, Color textColor)
@@ -98,6 +99,7 @@ public class TextElement : Element
 		Height = fontSize;
 		InitializeDefaultState();
 		Measure();
+		Width = TextWidth;
 	}
 
 	private void InitializeDefaultState()

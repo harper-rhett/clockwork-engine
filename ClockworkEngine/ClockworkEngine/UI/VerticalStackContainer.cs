@@ -20,7 +20,7 @@ public class VerticalStackContainer : Container
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.Y = yOffset + PaddingTop + Spacing * childIndex;
+			child.Y = PaddingTop + yOffset + Spacing * childIndex;
 			yOffset += child.Height;
 		}
 	}

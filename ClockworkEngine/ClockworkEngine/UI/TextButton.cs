@@ -13,30 +13,30 @@ public class TextButton : Button
 
 	public TextButton(string text) : base()
 	{
-		InitializeText(text);
+		Initialize(text);
 	}
 
 	public TextButton(string text, int x, int y, int width, int height) : base(x, y, width, height)
 	{
-		InitializeText(text);
+		Initialize(text);
 	}
 
 	public TextButton(string text, int x, int y, int width, int height, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(x, y, width, height, defaultStyle, hoverStyle, pressedStyle)
 	{
-		InitializeText(text);
+		Initialize(text);
 	}
 
 	public TextButton(string text, Vector2 position, Vector2 size) : base(position, size)
 	{
-		InitializeText(text);
+		Initialize(text);
 	}
 
 	public TextButton(string text, Vector2 position, Vector2 size, Style style, Style hoverStyle, Style pressedStyle) : base(position, size, style, hoverStyle, pressedStyle)
 	{
-		InitializeText(text);
+		Initialize(text);
 	}
 
-	private void InitializeText(string text)
+	private void Initialize(string text)
 	{
 		TextElement = new(text);
 		TextElement.HorizontalAlignment = HorizontalAlignment.Center;

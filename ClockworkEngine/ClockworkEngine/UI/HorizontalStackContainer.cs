@@ -11,7 +11,7 @@ public class HorizontalStackContainer : Container
 		for (int childIndex = 0; childIndex < children.Count; childIndex++)
 		{
 			Element child = children[childIndex];
-			child.X = xOffset + PaddingLeft + Spacing * childIndex;
+			child.X = PaddingLeft + xOffset + Spacing * childIndex;
 			xOffset += child.Width;
 		}
 	}
