@@ -207,10 +207,13 @@ public class Element
 
 	public virtual void OnDraw()
 	{
-		if (!visible || BackgroundColor == Colors.Clear) return;
+		if (!visible) return;
 
 		Style currentStyle = enabled ? ActiveStyle : DisabledStyle;
-		Primitives2D.DrawRectangle(x, y, width, height, currentStyle.BackgroundColor);
+		if (BackgroundColor != Colors.Clear)
+		{
+			Primitives2D.DrawRectangle(Rectangle, currentStyle.BackgroundColor);
+		}
 
 		if (BorderThickness > 0 && BackgroundColor != Colors.Clear)
 		{
