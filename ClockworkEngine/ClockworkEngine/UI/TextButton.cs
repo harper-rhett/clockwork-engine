@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using Clockwork.Graphics.Text;
+using System.Numerics;
 
 namespace Clockwork.UI;
 
@@ -9,6 +10,11 @@ public class TextButton : Button
 	{
 		get => TextElement.Text;
 		set => TextElement.Text = value;
+	}
+	public Font Font
+	{
+		get => TextElement.Font;
+		set => TextElement.Font = value;
 	}
 
 	public TextButton(string text) : base()

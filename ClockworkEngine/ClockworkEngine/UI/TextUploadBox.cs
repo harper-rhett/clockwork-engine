@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using Clockwork.Graphics.Text;
+using System.Numerics;
 
 namespace Clockwork.UI;
 
@@ -9,6 +10,11 @@ public class TextUploadBox : UploadBox
 	{
 		get => TextElement.Text;
 		set => TextElement.Text = value;
+	}
+	public Font Font
+	{
+		get => TextElement.Font;
+		set => TextElement.Font = value;
 	}
 
 	public TextUploadBox(string text) : base()
