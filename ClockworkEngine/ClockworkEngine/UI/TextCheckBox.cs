@@ -1,4 +1,6 @@
-﻿namespace Clockwork.UI;
+﻿using Clockwork.Graphics.Text;
+
+namespace Clockwork.UI;
 
 public class TextCheckBox : HorizontalStackContainer
 {
@@ -8,6 +10,11 @@ public class TextCheckBox : HorizontalStackContainer
 	{
 		get => TextElement.Text;
 		set => TextElement.Text = value;
+	}
+	public Font Font
+	{
+		get => TextElement.Font;
+		set => TextElement.Font = value;
 	}
 	public bool IsChecked
 	{
