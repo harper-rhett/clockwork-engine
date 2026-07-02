@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Clockwork.UI;
@@ -67,12 +68,20 @@ public class Container : Element
 		{
 			if (addChildren)
 			{
-				foreach (Element child in childrenToAdd) children.Add(child);
+				foreach (Element child in childrenToAdd)
+				{
+					children.Add(child);
+					if (!Enabled) child.Enabled = false;
+				}
 				childrenToAdd.Clear();
 			}
 			if (insertChildren)
 			{
-				foreach ((int, Element) child in childrenToInsert) children.Insert(child.Item1, child.Item2);
+				foreach ((int, Element) child in childrenToInsert)
+				{
+					children.Insert(child.Item1, child.Item2);
+					if (!Enabled) child.Item2.Enabled = false;
+				}
 				childrenToInsert.Clear();
 			}
 			if (removeChildren)
