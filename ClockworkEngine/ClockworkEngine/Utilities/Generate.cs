@@ -44,6 +44,6 @@ public static class Generate
 	public static int GetRandomIndex<Type>(this ICollection<Type> collection) => seed.NextIndex(collection);
 	public static Type Item<Type>(IList<Type> list) => seed.NextItem(list);
 	public static Type GetRandomItem<Type>(this IList<Type> list) => seed.NextItem(list);
-	public static void RemoveItem<Type>(IList<Type> list) => seed.RemoveNextItem(list);
-	public static void RemoveRandomItem<Type>(this IList<Type> list) => seed.RemoveNextItem(list);
+	public static Type RemoveItem<Type>(IList<Type> list) => seed.RemoveNextItem(list);
+	public static Type RemoveRandomItem<Type>(this IList<Type> list) => seed.RemoveNextItem(list);
 }

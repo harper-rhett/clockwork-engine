@@ -128,9 +128,12 @@ namespace Clockwork.Utilities
 			return list[randomIndex];
 		}
 
-		public void RemoveNextItem<Type>(IList<Type> list)
+		public Type RemoveNextItem<Type>(IList<Type> list)
 		{
-			list.RemoveAt(NextIndex(list));
+			int index = NextIndex(list);
+			Type item = list[index];
+			list.RemoveAt(index);
+			return item;
 		}
 	}
 }
