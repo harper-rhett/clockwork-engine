@@ -17,7 +17,7 @@ public unsafe struct Font
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetFontDefault")]
 	private static extern Font GetFont();
-	public static Font Default => GetFont();
+	public static Font Default = GetFont();
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LoadFont")]
 	public static extern Font Load(string fileName);

@@ -22,6 +22,11 @@ public class TextButton : Button
 		Initialize(text);
 	}
 
+	public TextButton(string text, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(defaultStyle, hoverStyle, pressedStyle)
+	{
+		Initialize(text);
+	}
+
 	public TextButton(string text, int x, int y, int width, int height) : base(x, y, width, height)
 	{
 		Initialize(text);

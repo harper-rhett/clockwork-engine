@@ -52,21 +52,20 @@ public class Panel : Entity, IDisposable
 		}
 	}
 
+	public Panel(DrawContext drawContext)
+	{
+		this.drawContext = drawContext;
+		Initialize();
+	}
+
 	public Panel(Element rootElement, DrawContext drawContext)
 	{
 		RootElement = rootElement;
 		this.drawContext = drawContext;
-		Initialize(Engine.GameWidth, Engine.GameHeight);
+		Initialize();
 	}
 
-	public Panel(Element rootElement, DrawContext drawContext, int width, int height)
-	{
-		RootElement = rootElement;
-		this.drawContext = drawContext;
-		Initialize(width, height);
-	}
-
-	private void Initialize(int width, int height)
+	private void Initialize()
 	{
 		if (drawContext is DrawContext.Game)
 		{
@@ -80,12 +79,8 @@ public class Panel : Entity, IDisposable
 			contextHeight = Window.Height;
 			Window.Resized += UpdateContext;
 		}
-		RootElement.X = 0;
-		RootElement.Y = 0;
-		RootElement.Width = Engine.GameWidth;
-		RootElement.Height = Engine.GameHeight;
-		renderTexture = RenderTexture.Load(width, height);
-		sourceRectangle = new(0, 0, width, -height);
+		renderTexture = RenderTexture.Load(contextWidth, contextHeight);
+		sourceRectangle = new(0, 0, contextWidth, -contextHeight);
 		destinationRectangle = sourceRectangle;
 	}
 

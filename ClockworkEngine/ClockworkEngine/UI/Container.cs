@@ -28,6 +28,7 @@ public class Container : Element
 	private List<Element> childrenToRemove = new();
 
 	public Container() : base() { }
+	public Container(Style style) : base(style) { }
 
 	public Container(int x, int y, int width, int height) : base(x, y, width, height) { }
 	public Container(int x, int y, int width, int height, Style style) : base(x, y, width, height, style) { }

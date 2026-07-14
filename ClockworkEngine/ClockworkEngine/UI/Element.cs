@@ -111,6 +111,15 @@ public class Element
 	{
 		width = Engine.GameWidth;
 		height = Engine.GameHeight;
+		InitializeDisabledStyle();
+	}
+
+	public Element(Style style)
+	{
+		width = Engine.GameWidth;
+		height = Engine.GameHeight;
+		ActiveStyle = style;
+		InitializeDisabledStyle();
 	}
 
 	public Element(int x, int y, int width, int height)

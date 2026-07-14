@@ -1,9 +1,19 @@
-﻿namespace Clockwork.UI;
+﻿using System.Numerics;
+
+namespace Clockwork.UI;
 
 public class VerticalStackContainer : Container
 {
 	public int Spacing;
 	public bool StretchChildrenHeight;
+
+	public VerticalStackContainer() : base() { }
+
+	public VerticalStackContainer(int x, int y, int width, int height) : base(x, y, width, height) { }
+	public VerticalStackContainer(int x, int y, int width, int height, Style style) : base(x, y, width, height, style) { }
+
+	public VerticalStackContainer(Vector2 position, Vector2 size) : base(position, size) { }
+	public VerticalStackContainer(Vector2 position, Vector2 size, Style style) : base(position, size, style) { }
 
 	protected override void OnXUpdated()
 	{

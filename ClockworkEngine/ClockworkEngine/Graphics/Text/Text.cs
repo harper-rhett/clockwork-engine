@@ -8,9 +8,9 @@ namespace Clockwork.Graphics.Text;
 
 public static class Text
 {
-	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawText")]
-	public static extern void Draw(string text, int x, int y, int fontSize, Color color);
-	public static void Draw(string text, Vector2 position, int fontSize, Color color) => Draw(text, (int)float.Round(position.X), (int)float.Round(position.Y), fontSize, color);
+	public static void Draw(string text, int x, int y, int fontSize, Color color) => Draw(text, new Vector2(x, y), fontSize, color);
+	public static void Draw(string text, Vector2 position, int fontSize, Color color) => Draw(Font.Default, text, position, fontSize, fontSize / 10f, color);
+	public static void Draw(string text, Vector2 position, float fontSize, float characterSpacing, Color color) => Draw(text, position, fontSize, characterSpacing, color);
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DrawTextEx")]
 	public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float characterSpacing, Color color);
