@@ -8,6 +8,11 @@ public class Camera3D : CameraEntity
 	public Transform3D Transform = new();
 	public Camera3DInternal InternalCamera;
 
+	public Camera3D()
+	{
+		InternalCamera = new(Vector3.Zero, Quaternion.Identity, 45, CameraProjection.Perspective);
+	}
+
 	public Camera3D(Vector3 position)
 	{
 		Transform.WorldPosition = position;

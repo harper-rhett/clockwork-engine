@@ -11,6 +11,11 @@ public class Translation2D : ITranslation2D
 		get => Parent is null ? LocalPosition : Vector2.Transform(LocalPosition, Parent.Matrix);
 		set => LocalPosition = Parent is null ? value : Vector2.Transform(value, Parent.MatrixInverse);
 	}
+	public Vector2 Position
+	{
+		get => WorldPosition;
+		set => WorldPosition = value;
+	}
 
 	public Vector2 LocalPosition { get; set; }
 

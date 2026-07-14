@@ -11,6 +11,11 @@ public class Transform3D
 		get => Parent is null ? LocalPosition : Vector3.Transform(LocalPosition, Parent.Matrix);
 		set => LocalPosition = Parent is null ? value : Vector3.Transform(value, Parent.MatrixInverse);
 	}
+	public Vector3 Position
+	{
+		get => WorldPosition;
+		set => WorldPosition = value;
+	}
 
 	public Vector3 LocalPosition;
 
@@ -18,6 +23,11 @@ public class Transform3D
 	{
 		get => Parent is null ? LocalRotation : Parent.WorldRotation * LocalRotation;
 		set => LocalRotation = Parent is null ? value : Quaternion.Inverse(Parent.WorldRotation) * value;
+	}
+	public Quaternion Rotation
+	{
+		get => WorldRotation;
+		set => WorldRotation = value;
 	}
 
 	public Quaternion LocalRotation = Quaternion.Identity;

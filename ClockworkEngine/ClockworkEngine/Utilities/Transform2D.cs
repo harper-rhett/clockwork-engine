@@ -38,7 +38,6 @@ public class Transform2D : ITranslation2D, IRotation2D
 		get => Parent is null ? LocalRotation : Parent.WorldRotation + LocalRotation;
 		set => LocalRotation = Parent is null ? value : value - Parent.WorldRotation;
 	}
-
 	public float Rotation
 	{
 		get => WorldRotation;

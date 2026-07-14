@@ -9,10 +9,8 @@ public class FreeCamera3D : Camera3D
 	public float MovementSpeed = 2f;
 	public float TurnSpeed = 0.5f;
 
-	public FreeCamera3D(Vector3 position) : base(position)
-	{
-
-	}
+	public FreeCamera3D() : base() { }
+	public FreeCamera3D(Vector3 position) : base(position) { }
 
 	public override void OnUpdate()
 	{
