@@ -47,7 +47,10 @@ public abstract class Entity
 	public virtual void OnDrawGUI() { }
 
 	// Scene addition
-	public void AddToScene(Scene scene) => scene.AddEntity(this);
+	public void AddToScene(Scene scene)
+	{
+		scene.AddEntity(this);
+	}
 	internal void RegisterScene(Scene scene)
 	{
 		Scene = scene;
@@ -55,7 +58,10 @@ public abstract class Entity
 	}
 
 	// Scene removal
-	public void RemoveFromScene() => Scene.RemoveEntity(this);
+	public void RemoveFromScene()
+	{
+		Scene.RemoveEntity(this);
+	}
 	internal void UnregisterScene()
 	{
 		Scene = null;

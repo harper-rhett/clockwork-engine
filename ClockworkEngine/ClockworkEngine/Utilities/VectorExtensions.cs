@@ -62,4 +62,14 @@ public static class VectorExtensions
 	{
 		return (vector / gridSize).Rounded() * gridSize;
 	}
+
+	public static Vector2 DirectionTo(this Vector2 originVector, Vector2 targetVector)
+	{
+		return Vector2.Normalize(targetVector - originVector);
+	}
+
+	public static Vector3 DirectionTo(this Vector3 originVector, Vector3 targetVector)
+	{
+		return Vector3.Normalize(targetVector - originVector);
+	}
 }

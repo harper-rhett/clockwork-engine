@@ -88,7 +88,7 @@ public class Easer : Entity
 
 	public Quaternion EaseQuaternion(Quaternion from, Quaternion to)
 	{
-		return Quaternion.Lerp(from, to, CurveProgress);
+		return Quaternion.Slerp(from, to, CurveProgress);
 	}
 
 	public Color EaseColor(Color from, Color to)
