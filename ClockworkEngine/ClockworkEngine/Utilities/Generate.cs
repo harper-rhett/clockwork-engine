@@ -15,7 +15,7 @@ public static class Generate
 
 	// Primitives
 	public static int Integer() => seed.NextInteger();
-	public static int Integer(int max) => seed.NextInteger(max);
+	public static int Integer(int maxExclusive) => seed.NextInteger(maxExclusive);
 	public static int Integer(int minInclusive, int maxExclusive) => seed.NextInteger(minInclusive, maxExclusive);
 	public static float Float() => seed.NextFloat();
 	public static float Float(float max) => seed.NextFloat(max);

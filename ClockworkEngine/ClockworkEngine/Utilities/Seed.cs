@@ -25,7 +25,7 @@ namespace Clockwork.Utilities
 		}
 
 		public int NextInteger() => random.Next();
-		public int NextInteger(int max) => random.Next(max);
+		public int NextInteger(int maxExclusive) => random.Next(maxExclusive);
 		public int NextInteger(int minInclusive, int maxExclusive) => random.Next(minInclusive, maxExclusive);
 
 		public float NextFloat() => random.NextSingle();
