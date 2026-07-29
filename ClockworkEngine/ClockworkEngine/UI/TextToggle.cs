@@ -1,10 +1,11 @@
 ﻿using Clockwork.Graphics.Text;
+using System;
 
 namespace Clockwork.UI;
 
-public class TextCheckBox : HorizontalStackContainer
+public class TextToggle : HorizontalStackContainer
 {
-	public CheckBox CheckBox { get; private set; }
+	public Toggle Toggle { get; private set; }
 	public TextElement TextElement { get; private set; }
 	public string Text
 	{
@@ -18,11 +19,16 @@ public class TextCheckBox : HorizontalStackContainer
 	}
 	public bool IsChecked
 	{
-		get => CheckBox.IsChecked;
-		set => CheckBox.IsChecked = value;
+		get => Toggle.IsChecked;
+		set => Toggle.IsChecked = value;
+	}
+	public event Toggle.OnToggled Toggled
+	{
+		add => Toggle.Toggled += value;
+		remove => Toggle.Toggled -= value;
 	}
 
-	public TextCheckBox(string text)
+	public TextToggle(string text)
 	{
 		Initialize(text);
 		InitializeDefaultState();
@@ -30,8 +36,8 @@ public class TextCheckBox : HorizontalStackContainer
 
 	private void Initialize(string text)
 	{
-		CheckBox = new();
-		AddChild(CheckBox);
+		Toggle = new();
+		AddChild(Toggle);
 
 		TextElement = new(text);
 		TextElement.VerticalAlignment = VerticalAlignment.Center;

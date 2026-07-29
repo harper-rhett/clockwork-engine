@@ -63,8 +63,24 @@ public unsafe static class Window
 		else ClearState(flags);
 	}
 
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsWindowState")]
+	[return: MarshalAs(UnmanagedType.I1)]
+	private static extern bool IsState(WindowFlags flag);
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ToggleBorderlessWindowed")]
+	private static extern void ToggleBorderlessWindowed();
+
 	public static void SetVsync(bool isEnabled) => SetState(WindowFlags.VSync, isEnabled);
-	public static void SetFullscreen(bool isFullscreen) => SetState(WindowFlags.Fullscreen, isFullscreen);
+
+	public static bool IsFullscreen => IsState(WindowFlags.Borderless);
+	public static void SetFullscreen(bool isFullscreen)
+	{
+		if (isFullscreen != IsFullscreen) ToggleBorderlessWindowed();
+	}
+
+	public static bool IsExclusiveFullscreen => IsState(WindowFlags.Fullscreen);
+	public static void SetExclusiveFullscreen(bool isFullscreen) => SetState(WindowFlags.Fullscreen, isFullscreen);
+
 	public static void SetResizable(bool isResizable) => SetState(WindowFlags.Resizable, isResizable);
 	public static void SetUndecorated(bool isUndecorated) => SetState(WindowFlags.Undecorated, isUndecorated);
 	public static void SetMinimized(bool isMinimized) => SetState(WindowFlags.Minimized, isMinimized);
@@ -79,6 +95,17 @@ public unsafe static class Window
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetScreenHeight")]
 	private static extern int GetHeight();
 	public static int Height => GetHeight();
+
+	// Actual framebuffer size. Equals Width/Height for windowed, maximized and borderless-windowed
+	// modes, but can differ under exclusive fullscreen or HighDpi -- use these when what you need is
+	// the real number of pixels being rendered to.
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetRenderWidth")]
+	private static extern int GetRenderWidth();
+	public static int RenderWidth => GetRenderWidth();
+
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetRenderHeight")]
+	private static extern int GetRenderHeight();
+	public static int RenderHeight => GetRenderHeight();
 
 	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetWindowSize")]
 	public static extern void Resize(int width, int height);

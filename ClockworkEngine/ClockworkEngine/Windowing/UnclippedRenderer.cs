@@ -69,8 +69,8 @@ internal class UnclippedRenderer : WindowRenderer
 
 	private void CalculateMouse()
 	{
-		int windowX = Mouse.WindowX;
-		int windowY = Mouse.WindowY;
+		int windowX = MouseRenderX;
+		int windowY = MouseRenderY;
 
 		float widthScale = gameRectangle.Width / viewportRectangle.Width;
 		float viewportX = float.Clamp(windowX - viewportRectangle.X, 0, viewportRectangle.Width);

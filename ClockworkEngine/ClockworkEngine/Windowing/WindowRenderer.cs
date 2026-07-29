@@ -1,4 +1,5 @@
 ﻿using Clockwork.Graphics;
+using Clockwork.Input;
 
 namespace Clockwork.Windowing;
 
@@ -32,11 +33,14 @@ public abstract class WindowRenderer
 	// Fetch new values
 	protected void RefreshDimensions(RenderTexture gameRenderTexture)
 	{
-		windowWidth = Window.Width;
-		windowHeight = Window.Height;
+		windowWidth = Window.RenderWidth;
+		windowHeight = Window.RenderHeight;
 		gameWidth = gameRenderTexture.Texture.Width;
 		gameHeight = gameRenderTexture.Texture.Height;
 	}
+
+	protected int MouseRenderX => (int)(Mouse.WindowX * (float)Window.RenderWidth / Window.Width);
+	protected int MouseRenderY => (int)(Mouse.WindowY * (float)Window.RenderHeight / Window.Height);
 
 	// Custom implementation for game sizing
 	internal abstract void Update(RenderTexture gameRenderTexture);

@@ -1,9 +1,10 @@
 ﻿using Clockwork.Graphics;
+using System;
 using System.Numerics;
 
 namespace Clockwork.UI;
 
-public class CheckBox : Button
+public class Toggle : Button
 {
 	private bool isChecked;
 	public bool IsChecked
@@ -18,14 +19,16 @@ public class CheckBox : Button
 	public Element Check { get; private set; }
 	public Style CheckStyle;
 	public Style UncheckedStyle;
+	public delegate void OnToggled(bool isEnabled);
+	public event OnToggled Toggled;
 
-	public CheckBox()
+	public Toggle()
 	{
 		Initialize();
 		InitializeDefaultState();
 	}
 
-	public CheckBox(Vector2 position, Vector2 size) : base(position, size)
+	public Toggle(Vector2 position, Vector2 size) : base(position, size)
 	{
 		Initialize();
 		InitializeDefaultState();
@@ -56,6 +59,7 @@ public class CheckBox : Button
 	{
 		base.OnReleased();
 		IsChecked = !IsChecked;
+		Toggled?.Invoke(IsChecked);
 	}
 
 	public override void OnDraw()
