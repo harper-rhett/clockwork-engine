@@ -36,17 +36,17 @@ public class Container : Element
 	public Container(Vector2 position, Vector2 size) : base(position, size) { }
 	public Container(Vector2 position, Vector2 size, Style style) : base(position, size, style) { }
 
-	public void AddChild(Element element)
+	public virtual void AddChild(Element element)
 	{
 		childrenToAdd.Add(element);
 	}
 
-	public void InsertChild(int index, Element element)
+	public virtual void InsertChild(int index, Element element)
 	{
 		childrenToInsert.Add((index, element));
 	}
 
-	public void RemoveChild(Element element)
+	public virtual void RemoveChild(Element element)
 	{
 		childrenToRemove.Add(element);
 	}
