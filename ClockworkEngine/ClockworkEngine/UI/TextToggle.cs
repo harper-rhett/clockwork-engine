@@ -22,10 +22,10 @@ public class TextToggle : HorizontalStackContainer
 		get => Toggle.IsChecked;
 		set => Toggle.IsChecked = value;
 	}
-	public event Toggle.OnToggled Toggled
+	public event Toggle.OnValueChanged ValueChanged
 	{
-		add => Toggle.Toggled += value;
-		remove => Toggle.Toggled -= value;
+		add => Toggle.ValueChanged += value;
+		remove => Toggle.ValueChanged -= value;
 	}
 
 	public TextToggle(string text)

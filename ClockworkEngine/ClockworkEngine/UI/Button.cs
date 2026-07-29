@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Clockwork.UI;
 
-public class Button : Container
+public class Button : FrameContainer
 {
 	public Style DefaultStyle;
 	public Style HoverStyle;

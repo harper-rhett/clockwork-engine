@@ -19,8 +19,8 @@ public class Toggle : Button
 	public Element Check { get; private set; }
 	public Style CheckStyle;
 	public Style UncheckedStyle;
-	public delegate void OnToggled(bool isEnabled);
-	public event OnToggled Toggled;
+	public delegate void OnValueChanged(bool isChecked);
+	public event OnValueChanged ValueChanged;
 
 	public Toggle()
 	{
@@ -59,7 +59,7 @@ public class Toggle : Button
 	{
 		base.OnReleased();
 		IsChecked = !IsChecked;
-		Toggled?.Invoke(IsChecked);
+		ValueChanged?.Invoke(IsChecked);
 	}
 
 	public override void OnDraw()

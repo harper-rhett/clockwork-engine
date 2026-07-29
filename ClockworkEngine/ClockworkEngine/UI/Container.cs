@@ -51,7 +51,7 @@ public class Container : Element
 		childrenToRemove.Add(element);
 	}
 
-	private void Refresh()
+	public void ForceUpdate()
 	{
 		OnWidthUpdated();
 		OnHeightUpdated();
@@ -90,7 +90,7 @@ public class Container : Element
 				foreach (Element child in childrenToRemove) children.Remove(child);
 				childrenToRemove.Clear();
 			}
-			Refresh();
+			ForceUpdate();
 		}
 		foreach (Element child in children) child.OnUpdate();
 	}
@@ -99,26 +99,6 @@ public class Container : Element
 	{
 		base.OnDraw();
 		foreach (Element child in children) child.OnDraw();
-	}
-
-	protected override void OnXUpdated()
-	{
-		foreach (Element child in children) child.X = X + PaddingLeft;
-	}
-
-	protected override void OnYUpdated()
-	{
-		foreach (Element child in children) child.Y = Y + PaddingTop;
-	}
-
-	protected override void OnWidthUpdated()
-	{
-		foreach (Element child in children) child.Width = Width - PaddingLeft - PaddingRight;
-	}
-
-	protected override void OnHeightUpdated()
-	{
-		foreach (Element child in children) child.Height = Height - PaddingTop - PaddingBottom;
 	}
 
 	protected override void OnEnabled()
