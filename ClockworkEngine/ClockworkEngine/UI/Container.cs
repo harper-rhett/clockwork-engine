@@ -51,7 +51,7 @@ public class Container : Element
 		childrenToRemove.Add(element);
 	}
 
-	public void ForceUpdate()
+	public void ForceLayoutUpdate()
 	{
 		OnWidthUpdated();
 		OnHeightUpdated();
@@ -90,7 +90,7 @@ public class Container : Element
 				foreach (Element child in childrenToRemove) children.Remove(child);
 				childrenToRemove.Clear();
 			}
-			ForceUpdate();
+			ForceLayoutUpdate();
 		}
 		foreach (Element child in children) child.OnUpdate();
 	}

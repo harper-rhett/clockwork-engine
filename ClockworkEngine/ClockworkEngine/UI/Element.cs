@@ -103,6 +103,8 @@ public class Element
 			OnHeightUpdated();
 		}
 	}
+	public int GetHalfWidth() => Width / 2;
+	public int GetHalfHeight() => Height / 2;
 	public Vector2 Position => new(x, y);
 	public Vector2 Size => new(width, height);
 	public Rectangle Rectangle => new(x, y, width, height);

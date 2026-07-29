@@ -11,6 +11,7 @@ public class Button : FrameContainer
 	public Style PressedStyle;
 	public bool IsHovered { get; private set; }
 	public bool IsPressed { get; private set; }
+	public event Action Cancelled;
 
 	public Button() : base()
 	{
@@ -85,6 +86,11 @@ public class Button : FrameContainer
 	{
 		ActiveStyle = DefaultStyle;
 		IsHovered = false;
+		if (IsPressed)
+		{
+			IsPressed = false;
+			Cancelled?.Invoke();
+		}
 	}
 
 	public virtual void OnPressed()
@@ -97,5 +103,15 @@ public class Button : FrameContainer
 	{
 		ActiveStyle = HoverStyle;
 		IsPressed = false;
+	}
+
+	protected override void OnDisabled()
+	{
+		base.OnDisabled();
+		if (IsPressed)
+		{
+			IsPressed = false;
+			Cancelled?.Invoke();
+		}
 	}
 }
