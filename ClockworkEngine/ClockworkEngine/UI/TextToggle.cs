@@ -3,7 +3,7 @@ using System;
 
 namespace Clockwork.UI;
 
-public class TextToggle : HorizontalStackContainer
+public class TextToggle : AlignmentContainer
 {
 	public Toggle Toggle { get; private set; }
 	public TextElement TextElement { get; private set; }
@@ -30,23 +30,18 @@ public class TextToggle : HorizontalStackContainer
 
 	public TextToggle(string text)
 	{
-		Initialize(text);
-		InitializeDefaultState();
-	}
-
-	private void Initialize(string text)
-	{
-		Toggle = new();
-		AddChild(Toggle);
-
 		TextElement = new(text);
-		TextElement.VerticalAlignment = VerticalAlignment.Center;
 		AddChild(TextElement);
-	}
+		Alignment textAlignment = new(HorizontalAlignment.Left, VerticalAlignment.Center);
+		SetAlignment(TextElement, textAlignment);
 
-	private void InitializeDefaultState()
-	{
+		Toggle = new();
+		Toggle.Width = 75;
+		Toggle.Height = 75;
+		AddChild(Toggle);
+		Alignment toglleAlignment = new(HorizontalAlignment.Right, VerticalAlignment.Center);
+		SetAlignment(Toggle, toglleAlignment);
+
 		Height = 100;
-		Spacing = 25;
 	}
 }

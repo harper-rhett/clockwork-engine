@@ -24,18 +24,13 @@ public class HorizontalTextSlider : AlignmentContainer
 
 	public HorizontalTextSlider(string text)
 	{
-		Initialize(text);
-	}
-
-	private void Initialize(string text)
-	{
 		TextElement = new(text);
-		TextElement.VerticalAlignment = VerticalAlignment.Center;
 		AddChild(TextElement);
 		Alignment textAlignment = new(HorizontalAlignment.Left, VerticalAlignment.Center);
 		SetAlignment(TextElement, textAlignment);
 
 		Slider = new();
+		Slider.Width = 400;
 		AddChild(Slider);
 		Alignment sliderAlignment = new(HorizontalAlignment.Right, VerticalAlignment.Center);
 		SetAlignment(Slider, sliderAlignment);

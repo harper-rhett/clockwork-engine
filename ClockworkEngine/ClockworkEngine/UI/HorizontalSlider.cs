@@ -5,6 +5,8 @@ using System.Numerics;
 
 namespace Clockwork.UI;
 
+// NOTE: Maybe add hovering text over the handle that represents the value.
+
 public class HorizontalSlider : Container
 {
 	public Element Rail { get; private set; }
