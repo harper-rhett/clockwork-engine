@@ -13,6 +13,7 @@ Primitive shapes can be drawn from `Primitives2D` and `Primitives3D`. Shape enti
 - `LineShape`
 - `RectangleShape`
 - `PolygonShape`
+- `SpriteShape`
 
 Use is as simple as this:
 
@@ -23,7 +24,7 @@ myPolygon.Position = customPosition;
 
 Most shape entities have a `Transform` for position and rotation, and convenience `Position` and `Rotation` properties that wrap it.
 
-These entities can also be inherited from for more control. Additionally, they have built-in intersection tests, which means you can treat them as colliders through inheritance:
+These entities can also be inherited from for more control. Additionally, they have built-in intersection tests (from the `Clockwork.Intersections` namespace), which means you can treat them as colliders through inheritance:
 
 ```csharp
 public class Player : RectangleShape
@@ -44,6 +45,13 @@ public class Player : RectangleShape
 		}
 	}
 }
+```
+
+`SpriteShape` is the exception — instead of a primitive, it draws a [sprite](../graphics/graphics.md#sprites) as an entity. It's a quick way to get an image on screen with a transform:
+
+```csharp
+SpriteShape player = scene.AddEntity(new SpriteShape("player.png"));
+player.Position = spawnPoint;
 ```
 
 ## 3D Shapes

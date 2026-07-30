@@ -21,6 +21,15 @@ Vector2 flippedX = direction.NegateX();
 Vector2 flippedY = direction.NegateY();
 ```
 
+Snap a vector to a grid, or get the unit direction from one point to another:
+
+```csharp
+Vector2 onGrid = position.Snapped(16f);         // snap to a 16-unit grid
+Vector2 toTarget = position.DirectionTo(target); // normalized direction
+```
+
+`DirectionTo` works for `Vector3` as well.
+
 There's also a static method for averaging two vectors:
 
 ```csharp

@@ -38,4 +38,4 @@ void ShootProjectile()
 }
 ```
 
-The cooldown time can be changed at runtime through `fireTimer.CooldownTime`. The `OnFired()` method is virtual for subclassing.
+Call `Stop()` to halt a running fire timer, and `Start()` again to resume. The cooldown time can be changed at runtime through `fireTimer.CooldownTime`, and the `OnFired()` method is virtual for subclassing.

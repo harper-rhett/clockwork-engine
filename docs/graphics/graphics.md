@@ -82,6 +82,23 @@ myRenderTexture.Texture.Draw(x, y, Colors.White);
 
 When textures are no longer needed, they should be cleaned up with `texture.Dispose()` to release them from memory. This is not necessary if you are okay with your textures persisting in memory until the game exits.
 
+## Sprites
+
+A raw `Texture` draws at a plain position. A `Sprite` wraps a texture with a [transform](../utilities/transforms.md), so it can be positioned, rotated, and scaled, and rotate around a chosen anchor:
+
+```csharp
+Sprite sprite = new("player.png");
+sprite.Position = new Vector2(100, 50);
+sprite.Rotation = 0.5f;
+sprite.Scale = new Vector2(2, 2);
+sprite.Offset = SpriteOffset.Center; // rotate/position around the center
+sprite.Draw();
+```
+
+`Offset` sets the sprite's origin to a named anchor — `Center`, `TopLeft`, `BottomCenter`, and the rest of the nine positions in `SpriteOffset`. The sprite also reports handy measurements like `Width`/`Height`, `ScaledWidth`/`ScaledHeight`, and `WorldRectangle`.
+
+If you want a sprite that lives in a scene as an entity, use [`SpriteShape`](../shapes/shapes.md), which wraps a `Sprite` and draws itself.
+
 ## Colors
 
 The `Color` struct supports multiple constructor formats:

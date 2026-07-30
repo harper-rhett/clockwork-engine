@@ -74,3 +74,11 @@ If you'd rather drive screenshots from the keyboard, set `Engine.ScreenshotComma
 ## Viewport Culling
 
 The engine only draws entities that report themselves as visible, which keeps large scenes performant. By default every entity is visible, but you can override `Entity.IsVisible()` to cull off-screen entities. See the [entity](entity.md) and [camera](camera.md) docs for details.
+
+## Resize Event
+
+When the game resolution changes, `Engine` raises `GameResized` with the new dimensions. This is the game-space counterpart to the window's [`Resized`](../windowing/windowing.md) event, and it's handy for re-laying-out anything anchored to the game size:
+
+```csharp
+Engine.GameResized += (width, height) => RepositionHud(width, height);
+```

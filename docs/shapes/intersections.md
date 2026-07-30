@@ -1,8 +1,10 @@
 # Intersections
 
+> `using Clockwork.Intersections;`
+
 > **Example:** See `CollisionExample` in the [examples repository](https://github.com/harper-rhett/clockwork-examples) for cross-shape intersection tests in action.
 
-If you want to check for collisions between two shapes, intersections might be a good choice for your calculations.
+If you want to check for collisions between two shapes, intersections might be a good choice for your calculations. Everything on this page — the `Intersection2D` and `Intersection3D` classes and the `IIntersectsWith*` interfaces — lives in the `Clockwork.Intersections` namespace.
 
 ## 2D Intersections
 

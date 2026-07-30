@@ -28,6 +28,13 @@ You can also construct a transform with initial values:
 Transform2D transform = new(new Vector2(100, 50), 0.5f);
 ```
 
+For the common case where you just want world-space access, `Position` and `Rotation` are shortcuts for `WorldPosition` and `WorldRotation`:
+
+```csharp
+transform.Position = new Vector2(100, 50);
+transform.Rotation = 0.5f;
+```
+
 When a parent is assigned, `WorldPosition` and `WorldRotation` are calculated relative to the parent's transform. `LocalPosition` and `LocalRotation` are the offsets from the parent. The directional properties (`Up`, `Down`, `Left`, `Right`) return unit vectors based on the current world rotation, which is useful for movement:
 
 ```csharp

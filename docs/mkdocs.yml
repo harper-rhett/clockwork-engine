@@ -33,8 +33,8 @@ nav:
     - tiles/ldtk.md
   - UI:
     - ui/ui.md
-  - Graphs:
-    - graphs/graphs.md
+    - ui/containers.md
+    - ui/widgets.md
   - Utilities:
     - utilities/transforms.md
     - utilities/timers.md
