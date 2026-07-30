@@ -61,4 +61,12 @@ public static class QuaternionExtensions
 		Quaternion rotatedQuaternion = quaternion * rotation;
 		return rotatedQuaternion;
 	}
+
+	public static Quaternion CreateLookRotation(Vector3 forwardDirection, Vector3 upDirection)
+	{
+		Matrix4x4 worldMatrix = Matrix4x4.CreateWorld(Vector3.Zero, forwardDirection, upDirection);
+		return Quaternion.CreateFromRotationMatrix(worldMatrix);
+	}
+
+	public static Quaternion CreateLookRotation(Vector3 forwardDirection) => CreateLookRotation(forwardDirection, Vector3.UnitY);
 }

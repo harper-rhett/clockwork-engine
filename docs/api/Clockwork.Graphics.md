@@ -1,5 +1,15 @@
 # <a id="Clockwork_Graphics"></a> Namespace Clockwork.Graphics
 
+### Namespaces
+
+ [Clockwork.Graphics.Cameras](Clockwork.Graphics.Cameras.md)
+
+ [Clockwork.Graphics.Draw2D](Clockwork.Graphics.Draw2D.md)
+
+ [Clockwork.Graphics.Draw3D](Clockwork.Graphics.Draw3D.md)
+
+ [Clockwork.Graphics.Text](Clockwork.Graphics.Text.md)
+
 ### Classes
 
  [Colors](Clockwork.Graphics.Colors.md)
@@ -12,37 +22,25 @@
 
  [Parallax](Clockwork.Graphics.Parallax.md)
 
- [Primitives](Clockwork.Graphics.Primitives.md)
-
- [Spline](Clockwork.Graphics.Spline.md)
-
- [Text](Clockwork.Graphics.Text.md)
+ [Shader](Clockwork.Graphics.Shader.md)
 
 ### Structs
 
  [Color](Clockwork.Graphics.Color.md)
 
- [Font](Clockwork.Graphics.Font.md)
-
- [GlyphInfo](Clockwork.Graphics.GlyphInfo.md)
-
  [Image](Clockwork.Graphics.Image.md)
-
- [NinePatch](Clockwork.Graphics.NinePatch.md)
 
  [Rectangle](Clockwork.Graphics.Rectangle.md)
 
  [RenderTexture](Clockwork.Graphics.RenderTexture.md)
 
- [Shader](Clockwork.Graphics.Shader.md)
+ [ShaderData](Clockwork.Graphics.ShaderData.md)
 
  [Texture](Clockwork.Graphics.Texture.md)
 
 ### Enums
 
  [BlendMode](Clockwork.Graphics.BlendMode.md)
-
- [NinePatchLayout](Clockwork.Graphics.NinePatchLayout.md)
 
  [PixelFormat](Clockwork.Graphics.PixelFormat.md)
 

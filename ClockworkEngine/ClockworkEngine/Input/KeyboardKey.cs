@@ -2,7 +2,7 @@
 
 public enum KeyboardKey
 {
-	Null = 0,
+	None = 0,
 
 	// Alphanumeric keys
 	Apostrophe = 39,

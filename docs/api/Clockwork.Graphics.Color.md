@@ -18,6 +18,12 @@ public struct Color
 
 ## Constructors
 
+### <a id="Clockwork_Graphics_Color__ctor"></a> Color\(\)
+
+```csharp
+public Color()
+```
+
 ### <a id="Clockwork_Graphics_Color__ctor_System_Byte_System_Byte_System_Byte_System_Byte_"></a> Color\(byte, byte, byte, byte\)
 
 ```csharp
@@ -162,6 +168,38 @@ public Color DropAlpha()
 
  [Color](Clockwork.Graphics.Color.md)
 
+### <a id="Clockwork_Graphics_Color_Equals_System_Object_"></a> Equals\(object\)
+
+Indicates whether this instance and a specified object are equal.
+
+```csharp
+public override bool Equals(object otherObject)
+```
+
+#### Parameters
+
+`otherObject` [object](https://learn.microsoft.com/dotnet/api/system.object)
+
+#### Returns
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+
+### <a id="Clockwork_Graphics_Color_GetHashCode"></a> GetHashCode\(\)
+
+Returns the hash code for this instance.
+
+```csharp
+public override int GetHashCode()
+```
+
+#### Returns
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+A 32-bit signed integer that is the hash code for this instance.
+
 ### <a id="Clockwork_Graphics_Color_Lerp_Clockwork_Graphics_Color_Clockwork_Graphics_Color_System_Single_"></a> Lerp\(Color, Color, float\)
 
 ```csharp
@@ -175,6 +213,22 @@ public static Color Lerp(Color from, Color to, float amount)
 `to` [Color](Clockwork.Graphics.Color.md)
 
 `amount` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Color_Mix_Clockwork_Graphics_Color_Clockwork_Graphics_Color_"></a> Mix\(Color, Color\)
+
+```csharp
+public static Color Mix(Color firstColor, Color secondColor)
+```
+
+#### Parameters
+
+`firstColor` [Color](Clockwork.Graphics.Color.md)
+
+`secondColor` [Color](Clockwork.Graphics.Color.md)
 
 #### Returns
 
@@ -221,4 +275,38 @@ public override string ToString()
  [string](https://learn.microsoft.com/dotnet/api/system.string)
 
 The fully qualified type name.
+
+## Operators
+
+### <a id="Clockwork_Graphics_Color_op_Equality_Clockwork_Graphics_Color_Clockwork_Graphics_Color_"></a> operator ==\(Color, Color\)
+
+```csharp
+public static bool operator ==(Color leftColor, Color rightColor)
+```
+
+#### Parameters
+
+`leftColor` [Color](Clockwork.Graphics.Color.md)
+
+`rightColor` [Color](Clockwork.Graphics.Color.md)
+
+#### Returns
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Graphics_Color_op_Inequality_Clockwork_Graphics_Color_Clockwork_Graphics_Color_"></a> operator \!=\(Color, Color\)
+
+```csharp
+public static bool operator !=(Color leftColor, Color rightColor)
+```
+
+#### Parameters
+
+`leftColor` [Color](Clockwork.Graphics.Color.md)
+
+`rightColor` [Color](Clockwork.Graphics.Color.md)
+
+#### Returns
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 

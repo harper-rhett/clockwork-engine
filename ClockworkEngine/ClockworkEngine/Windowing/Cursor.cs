@@ -4,19 +4,19 @@ namespace Clockwork.Windowing;
 
 internal class Cursor
 {
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ShowCursor")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ShowCursor")]
 	public static extern void Show();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "HideCursor")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "HideCursor")]
 	public static extern void Hide();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "EnableCursor")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EnableCursor")]
 	public static extern void Enable();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "DisableCursor")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DisableCursor")]
 	public static extern void Disable();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsCursorOnScreen")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsCursorOnScreen")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	private static extern bool IsThisOnScreen();
 	public static bool IsOnScreen => IsThisOnScreen();

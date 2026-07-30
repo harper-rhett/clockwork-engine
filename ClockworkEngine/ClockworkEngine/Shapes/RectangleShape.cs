@@ -2,6 +2,7 @@
 using Clockwork.Utilities;
 using Clockwork.Graphics;
 using Clockwork.Graphics.Draw2D;
+using Clockwork.Intersections;
 
 namespace Clockwork.Shapes;
 
@@ -13,6 +14,17 @@ public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircl
 	public int Height;
 	public Color Color;
 	public Rectangle Rectangle => new(Transform.WorldPosition - Origin, Width, Height);
+
+	public Vector2 Position
+	{
+		get => Transform.Position;
+		set => Transform.Position = value;
+	}
+	public float Rotation
+	{
+		get => Transform.Rotation;
+		set => Transform.Rotation = value;
+	}
 
 	public RectangleShape(int width, int height, Color color)
 	{
@@ -26,8 +38,8 @@ public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircl
 		Primitives2D.DrawRectangle(Rectangle, Vector2.Zero, Transform.WorldRotation, Color);
 	}
 
-	public bool IntersectsWithPoint(Vector2 position) => Intersection.PointInRectangle(position, Rectangle);
-	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection.RectangleOnRectangle(Rectangle, rectangle);
-	public bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius) => Intersection.CircleOnRectangle(circlePosition, circleRadius, Rectangle);
-	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection.LineOnRectangle(lineStartPosition, lineEndPosition, Rectangle);
+	public bool IntersectsWithPoint(Vector2 position) => Intersection2D.PointInRectangle(position, Rectangle);
+	public bool IntersectsWithRectangle(Rectangle rectangle) => Intersection2D.RectangleOnRectangle(Rectangle, rectangle);
+	public bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius) => Intersection2D.CircleOnRectangle(circlePosition, circleRadius, Rectangle);
+	public bool IntersectsWithLine(Vector2 lineStartPosition, Vector2 lineEndPosition) => Intersection2D.LineOnRectangle(lineStartPosition, lineEndPosition, Rectangle);
 }

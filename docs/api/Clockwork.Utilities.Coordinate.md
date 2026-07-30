@@ -4,8 +4,12 @@ Namespace: [Clockwork.Utilities](Clockwork.Utilities.md)
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public struct Coordinate
+public record struct Coordinate : IEquatable<Coordinate>
 ```
+
+#### Implements
+
+[IEquatable<Coordinate\>](https://learn.microsoft.com/dotnet/api/system.iequatable\-1)
 
 #### Inherited Members
 

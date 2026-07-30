@@ -4,12 +4,8 @@ Namespace: [Clockwork.Graphics](Clockwork.Graphics.md)
 Assembly: ClockworkEngine.dll  
 
 ```csharp
-public struct Image : IDisposable
+public struct Image
 ```
-
-#### Implements
-
-[IDisposable](https://learn.microsoft.com/dotnet/api/system.idisposable)
 
 #### Inherited Members
 
@@ -88,8 +84,6 @@ public bool IsValid { get; }
 
 ### <a id="Clockwork_Graphics_Image_Dispose"></a> Dispose\(\)
 
-Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-
 ```csharp
 public void Dispose()
 ```
@@ -105,6 +99,18 @@ public void Export(string fileName, out bool success)
 `fileName` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
 `success` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Graphics_Image_FlipHorizontal"></a> FlipHorizontal\(\)
+
+```csharp
+public void FlipHorizontal()
+```
+
+### <a id="Clockwork_Graphics_Image_FlipVertical"></a> FlipVertical\(\)
+
+```csharp
+public void FlipVertical()
+```
 
 ### <a id="Clockwork_Graphics_Image_Load_System_String_"></a> Load\(string\)
 

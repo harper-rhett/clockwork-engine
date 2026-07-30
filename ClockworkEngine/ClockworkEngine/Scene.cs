@@ -1,4 +1,8 @@
 ﻿using Clockwork.Graphics;
+using Clockwork.Graphics.Cameras;
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Clockwork;
 
@@ -14,6 +18,8 @@ public class Scene
 	public float TimeModifier = 1;
 	public Color BackgroundColor;
 
+	public float FrameTime => Engine.GlobalFrameTime * TimeModifier;
+
 	public Scene()
 	{
 		BackgroundColor = Colors.Black;
@@ -24,10 +30,21 @@ public class Scene
 		BackgroundColor = backgroundColor;
 	}
 
+	public Scene(IEnumerable<Entity> entities)
+	{
+		foreach (Entity entity in entities) AddEntity(entity);
+	}
+
+	public Scene(IEnumerable<Entity> entities, Color backgroundColor)
+	{
+		BackgroundColor = backgroundColor;
+		foreach (Entity entity in entities) AddEntity(entity);
+	}
+
 	public void Update()
 	{
 		if (IsPaused) return;
-		Time += Engine.FrameTime * TimeModifier;
+		Time += FrameTime;
 
 		Entities.ProcessAdditions();
 		Entities.ProcessMoves();
@@ -37,9 +54,15 @@ public class Scene
 
 	private void UpdateEntities()
 	{
-		foreach (Entity entity in Entities.InUpdateOrder)
+		IList<List<Entity>> updateLayers = Entities.UpdateLayers.Values;
+		for (int layerIndex = 0; layerIndex < updateLayers.Count; layerIndex++)
 		{
-			if (entity.IsUpdating) entity.OnUpdate();
+			Span<Entity> layerEntities = CollectionsMarshal.AsSpan(updateLayers[layerIndex]);
+			for (int entityIndex = 0; entityIndex < layerEntities.Length; entityIndex++)
+			{
+				Entity entity = layerEntities[entityIndex];
+				if (entity.IsUpdating) entity.OnUpdate();
+			}
 		}
 	}
 
@@ -47,26 +70,45 @@ public class Scene
 	{
 		Drawing.Clear(BackgroundColor);
 		if (Camera is not null) Camera.Begin();
-		foreach (Entity entity in Entities.InDrawOrder)
+
+		IList<List<Entity>> drawLayers = Entities.DrawLayers.Values;
+		for (int layerIndex = 0; layerIndex < drawLayers.Count; layerIndex++)
 		{
-			if (entity.IsRendering) entity.OnDraw();
+			Span<Entity> layerEntities = CollectionsMarshal.AsSpan(drawLayers[layerIndex]);
+			for (int entityIndex = 0; entityIndex < layerEntities.Length; entityIndex++)
+			{
+				Entity entity = layerEntities[entityIndex];
+				if (entity.IsDrawing && entity.IsVisible()) entity.OnDraw();
+			}
 		}
+
 		if (Camera is not null) Camera.End();
 	}
 
 	public void DrawGUI()
 	{
-		foreach (Entity entity in Entities.InDrawOrder)
+		IList<List<Entity>> drawLayers = Entities.DrawLayers.Values;
+		for (int layerIndex = 0; layerIndex < drawLayers.Count; layerIndex++)
 		{
-			if (entity.IsRendering) entity.OnDrawGUI();
+			Span<Entity> layerEntities = CollectionsMarshal.AsSpan(drawLayers[layerIndex]);
+			for (int entityIndex = 0; entityIndex < layerEntities.Length; entityIndex++)
+			{
+				Entity entity = layerEntities[entityIndex];
+				if (entity.IsDrawing) entity.OnDrawGUI();
+			}
 		}
 	}
 
 	public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where EntitySubclass : Entity
 	{
-		entity.Scene = this;
+		entity.RegisterScene(this);
 		Entities.Add(entity);
-		entity.OnAddedToScene();
 		return entity;
+	}
+
+	public void RemoveEntity(Entity entity)
+	{
+		entity.UnregisterScene();
+		Entities.Remove(entity);
 	}
 }

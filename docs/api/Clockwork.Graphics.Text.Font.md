@@ -1,0 +1,196 @@
+# <a id="Clockwork_Graphics_Text_Font"></a> Struct Font
+
+Namespace: [Clockwork.Graphics.Text](Clockwork.Graphics.Text.md)  
+Assembly: ClockworkEngine.dll  
+
+```csharp
+public struct Font
+```
+
+#### Inherited Members
+
+[object.Equals\(object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\)), 
+[object.Equals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
+[object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
+[object.GetType\(\)](https://learn.microsoft.com/dotnet/api/system.object.gettype), 
+[object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
+[object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
+
+## Constructors
+
+### <a id="Clockwork_Graphics_Text_Font__ctor"></a> Font\(\)
+
+```csharp
+public Font()
+```
+
+## Fields
+
+### <a id="Clockwork_Graphics_Text_Font_BaseSize"></a> BaseSize
+
+```csharp
+public int BaseSize
+```
+
+#### Field Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Graphics_Text_Font_Default"></a> Default
+
+```csharp
+public static Font Default
+```
+
+#### Field Value
+
+ [Font](Clockwork.Graphics.Text.Font.md)
+
+### <a id="Clockwork_Graphics_Text_Font_GlyphCount"></a> GlyphCount
+
+```csharp
+public int GlyphCount
+```
+
+#### Field Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Graphics_Text_Font_GlyphPadding"></a> GlyphPadding
+
+```csharp
+public int GlyphPadding
+```
+
+#### Field Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Graphics_Text_Font_Glyphs"></a> Glyphs
+
+```csharp
+public GlyphInfo* Glyphs
+```
+
+#### Field Value
+
+ [GlyphInfo](Clockwork.Graphics.Text.GlyphInfo.md)\*
+
+### <a id="Clockwork_Graphics_Text_Font_Recs"></a> Recs
+
+```csharp
+public Rectangle* Recs
+```
+
+#### Field Value
+
+ [Rectangle](Clockwork.Graphics.Rectangle.md)\*
+
+### <a id="Clockwork_Graphics_Text_Font_Texture"></a> Texture
+
+```csharp
+public Texture Texture
+```
+
+#### Field Value
+
+ [Texture](Clockwork.Graphics.Texture.md)
+
+## Properties
+
+### <a id="Clockwork_Graphics_Text_Font_IsValid"></a> IsValid
+
+```csharp
+public bool IsValid { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+## Methods
+
+### <a id="Clockwork_Graphics_Text_Font_Dispose"></a> Dispose\(\)
+
+```csharp
+public void Dispose()
+```
+
+### <a id="Clockwork_Graphics_Text_Font_Load_System_String_"></a> Load\(string\)
+
+```csharp
+public static extern Font Load(string fileName)
+```
+
+#### Parameters
+
+`fileName` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+#### Returns
+
+ [Font](Clockwork.Graphics.Text.Font.md)
+
+### <a id="Clockwork_Graphics_Text_Font_Load_Clockwork_Graphics_Image_Clockwork_Graphics_Color_System_Int32_"></a> Load\(Image, Color, int\)
+
+```csharp
+public static extern Font Load(Image image, Color key, int firstCharacter)
+```
+
+#### Parameters
+
+`image` [Image](Clockwork.Graphics.Image.md)
+
+`key` [Color](Clockwork.Graphics.Color.md)
+
+`firstCharacter` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+#### Returns
+
+ [Font](Clockwork.Graphics.Text.Font.md)
+
+### <a id="Clockwork_Graphics_Text_Font_Load_System_String_System_Int32_System_Int32___System_Int32_"></a> Load\(string, int, int\[\], int\)
+
+```csharp
+public static extern Font Load(string fileName, int fontSize, int[] codepoints, int codepointCount)
+```
+
+#### Parameters
+
+`fileName` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+`fontSize` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`codepoints` [int](https://learn.microsoft.com/dotnet/api/system.int32)\[\]
+
+`codepointCount` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+#### Returns
+
+ [Font](Clockwork.Graphics.Text.Font.md)
+
+### <a id="Clockwork_Graphics_Text_Font_Load_System_String_System_Int32_"></a> Load\(string, int\)
+
+```csharp
+public static Font Load(string fileName, int fontSize)
+```
+
+#### Parameters
+
+`fileName` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+`fontSize` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+#### Returns
+
+ [Font](Clockwork.Graphics.Text.Font.md)
+
+### <a id="Clockwork_Graphics_Text_Font_Unload_Clockwork_Graphics_Text_Font_"></a> Unload\(Font\)
+
+```csharp
+public static extern void Unload(Font font)
+```
+
+#### Parameters
+
+`font` [Font](Clockwork.Graphics.Text.Font.md)
+

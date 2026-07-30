@@ -20,6 +20,14 @@ public struct Music : IDisposable
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Constructors
+
+### <a id="Clockwork_Audio_Music__ctor"></a> Music\(\)
+
+```csharp
+public Music()
+```
+
 ## Fields
 
 ### <a id="Clockwork_Audio_Music_CtxData"></a> CtxData

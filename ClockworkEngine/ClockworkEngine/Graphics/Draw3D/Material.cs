@@ -1,11 +1,18 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
 
 namespace Clockwork.Graphics.Draw3D;
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Material
+public class Material : IDisposable
 {
-	public Shader Shader;
-	public MaterialMap* Maps;
-	public fixed float Param[4];
+	public MaterialData Data { get; private set; }
+
+	public Material()
+	{
+		Data = MaterialData.LoadDefault();
+	}
+
+	public void Dispose()
+	{
+		Data.Dispose();
+	}
 }

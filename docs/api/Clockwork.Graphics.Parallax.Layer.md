@@ -24,10 +24,10 @@ public class Parallax.Layer
 
 ## Constructors
 
-### <a id="Clockwork_Graphics_Parallax_Layer__ctor_Clockwork_Graphics_Texture_System_Numerics_Vector2_System_Single_"></a> Layer\(Texture, Vector2, float\)
+### <a id="Clockwork_Graphics_Parallax_Layer__ctor_Clockwork_Graphics_Texture_System_Numerics_Vector2_System_Single_System_Single_"></a> Layer\(Texture, Vector2, float, float\)
 
 ```csharp
-public Layer(Texture texture, Vector2 offset, float speed)
+public Layer(Texture texture, Vector2 offset, float speedX, float speedY)
 ```
 
 #### Parameters
@@ -36,7 +36,9 @@ public Layer(Texture texture, Vector2 offset, float speed)
 
 `offset` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-`speed` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`speedX` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`speedY` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ## Fields
 
@@ -50,10 +52,20 @@ public readonly Vector2 Offset
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
-### <a id="Clockwork_Graphics_Parallax_Layer_Speed"></a> Speed
+### <a id="Clockwork_Graphics_Parallax_Layer_SpeedX"></a> SpeedX
 
 ```csharp
-public readonly float Speed
+public readonly float SpeedX
+```
+
+#### Field Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+### <a id="Clockwork_Graphics_Parallax_Layer_SpeedY"></a> SpeedY
+
+```csharp
+public readonly float SpeedY
 ```
 
 #### Field Value

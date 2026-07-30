@@ -1,5 +1,7 @@
 ﻿using Clockwork.Utilities;
 using Clockwork.Graphics;
+using System.Collections.Generic;
+using System;
 
 namespace Clockwork.Particles;
 
@@ -57,7 +59,7 @@ public sealed class ParticleEngine2D : Entity
 		if (RemoveOnExhausted && IsExhausted)
 		{
 			Exhausted?.Invoke();
-			Remove();
+			RemoveFromScene();
 		}
 
 		for (int particleIndex = count - 1; particleIndex >= 0; particleIndex--)
@@ -72,10 +74,10 @@ public sealed class ParticleEngine2D : Entity
 				RemoveParticle(particleIndex);
 				continue;
 			}
-			particle.timeToDeath -= Engine.FrameTime;
+			particle.timeToDeath -= FrameTime;
 
 			// Apply modifiers
-			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, Scene.Time, Engine.FrameTime);
+			foreach (Particle2DModifier modifier in modifiers) modifier(ref particle, Scene.Time, FrameTime);
 		}
 	}
 
@@ -156,6 +158,6 @@ public sealed class ParticleEngine2D : Entity
 
 	public override void OnRemovedFromScene()
 	{
-		fireTimer.Remove();
+		fireTimer.RemoveFromScene();
 	}
 }

@@ -4,7 +4,7 @@ public class FireTimer : Entity
 {
 	public float CooldownTime;
 	private float backloggedTime;
-	private bool isStarted;
+	private bool isFiring;
 	public delegate void FiredDelegate();
 	public event FiredDelegate Fired;
 
@@ -16,10 +16,10 @@ public class FireTimer : Entity
 
 	public override void OnUpdate()
 	{
-		if (!isStarted) return;
+		if (!isFiring) return;
 
-		backloggedTime += Engine.FrameTime;
-		int backloggedActions = (int)MathF.Floor(backloggedTime / CooldownTime);
+		backloggedTime += FrameTime;
+		int backloggedActions = (int)float.Floor(backloggedTime / CooldownTime);
 		backloggedTime -= backloggedActions * CooldownTime;
 
 		for (int actionNumber = 1; actionNumber <= backloggedActions; actionNumber++) Fire();
@@ -29,7 +29,12 @@ public class FireTimer : Entity
 
 	public void Start()
 	{
-		isStarted = true;
+		isFiring = true;
+	}
+
+	public void Stop()
+	{
+		isFiring = false;
 	}
 
 	private void Fire()

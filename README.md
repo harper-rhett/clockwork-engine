@@ -1,5 +1,7 @@
-![Logo](logo.png)
+<img src="media/logo.png" width="200" />
+
 # Clockwork Engine
+
 Clockwork Engine is a (currently) 2D C# game development framework built on the [Raylib Graphics Library](https://www.raylib.com/). It is outfitted with tools designed to make prototyping simple, projects scalable, and scope-creep manageable.
 
 Clockwork Engine currently supports:
@@ -7,6 +9,15 @@ Clockwork Engine currently supports:
 - Linux x64
 - Mac x64
 - Mac Arm64
+
+## Examples
+
+<img src="media/polygons.webp" height="200" />
+<img src="media/fireworks.webp" height="200" />
+<img src="media/orbits.webp" height="200" />
+<img src="media/quadtree.webp" height="200" />
+<img src="media/organisms.webp" height="200" />
+<img src="media/platformer.webp" height="200" />
 
 ## Resources
 
@@ -28,6 +39,8 @@ Clockwork Engine currently supports:
 - Collision helpers (with extensions built into the entity system)
 - Texture animation (including an animation manager)
 - Tiling systems (incoming support for the LDtk level editor)
+- Algorithmic tools (most recently added `Quadtree` class)
+- Simulation tools (most recently added soft-body verlet physics)
 
 ## Roadmap
 
@@ -69,8 +82,7 @@ In `Program.cs`:
 using Clockwork;
 
 Engine.Initialize("My Game", 256, 256); // title, game width, game height
-MyGame myGame = new();
-Engine.Start(myGame);
+Engine.Start(new MyGame());
 ```
 
 In `MyGame.cs`:
@@ -79,29 +91,29 @@ using Clockwork;
 
 internal class MyGame : Game // the game class handles scenes
 {
-	Scene scene = new(); // the scene class handles entities (their layers, update loops, and registry)
+	Scene scene = new(); // the scene class handles entities (their layers and update loops)
 
 	public MyGame()
 	{
-    // Initialize game here
+    	// Initialize game here
 
-    // If you are only using one scene (such as for prototyping) you can add entities to the scene in your game class.
-    MyEntity myEntity = AddEntity(new MyEntity()); // added to the scene
-    // For larger projects it is recommended you create your own scene classes (inheriting from Scene).
-    // For instance, MenuScene.cs, GameScene.cs, etc.
+    	// If you are only using one scene (such as for prototyping) you can add entities to the scene in your game class.
+    	MyEntity myEntity = AddEntity(new MyEntity()); // added to the scene
+    	// For larger projects it is recommended you create your own scene classes (inheriting from Scene).
+    	// For instance, MenuScene.cs, GameScene.cs, etc.
 
-    // If you'd like, you don't have to use scenes at all. You can create your own entity management logic.
-    // Though, that would defeat the purpose of this framework.
+    	// If you'd like, you don't have to use scenes at all. You can create your own entity management logic.
+    	// Though, that would defeat the purpose of this framework.
 	}
 
 	public override void OnUpdate()
 	{
-		scene.Update();
+		scene.Update(); // make sure to update your scene
 	}
 
 	public override void OnDraw()
 	{
-		scene.Draw();
+		scene.Draw(); // make sure to draw your scene
 	}
 }
 ```
@@ -119,3 +131,11 @@ Click "show all settings" and change the configuration to "release" and the depl
 I am largely open to suggestions and criticisms, but __I am not open to pull requests__. This is a learning opportunity, and so building this framework line-by-line is important to me. In the __very distant__ future I may even replace Raylib with my own graphics library, and create a custom physics engine. Along the way, I would like to make 2D and 3D level editors, and possibly node-based shader and texture editors as well. If you are frustrated with any aspect of this engine, I encourage you to submit an issue. I intend to listen to all criticisms and adjust my engine accordingly.
 
 Otherwise, the best way to support my development is by [supporting my work financially](https://github.com/sponsors/harper-rhett). The contribution will directly fund my open-source projects, ultimately benefiting you and the open-source community.
+
+## AI Disclaimer
+
+I am an LLM user, and Claude was used to assist the development of this project. I primarily use AI for research, but recently started using it for documentation generation. While I did create the original documentation, the latest version is highly modified by Claude Code.
+
+On the other hand:
+- **I rarely and sparsely use AI for code generation.**
+- **99% of Clockwork Engine's source code is hand-written by yours truly, a human being.**

@@ -8,13 +8,15 @@ Input is as simple as any game developer could hope for! Check out a keyboard pr
 if (Keyboard.IsKeyPressed(KeyboardKey.Space)) Jump();
 ```
 
-Ah... so simple! Mouse input is roughly the same, though there are many varieties of mouse positions:
+Ah... so simple! Mouse input is roughly the same, though there are several coordinate spaces to choose from:
 
 ```csharp
-int mouseWindowX = Mouse.WindowX; // mouse x relative to the window
-int mouseGameX = Mouse.GameX; // mouse x relative to the game viewport
-int mouseWorldX = myCamera2D.MouseWorldX; // mouse x relative to the world
+int mouseWindowX = Mouse.WindowX;          // mouse x relative to the window
+int mouseGameX = Mouse.GameX;              // mouse x relative to the game viewport
+float mouseWorldX = camera.GetMouseWorldX(); // mouse x relative to the world (via Camera2D)
 ```
+
+There's also `Mouse.WindowPosition`, `Mouse.GamePosition`, `Mouse.Delta`, and `Mouse.WheelDelta` for common mouse queries. You can check whether the cursor is on screen with `Mouse.IsOnScreen`.
 
 And gamepads are actual objects:
 

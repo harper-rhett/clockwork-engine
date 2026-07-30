@@ -64,6 +64,16 @@ public static int GameY { get; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
+### <a id="Clockwork_Input_Mouse_IsOnScreen"></a> IsOnScreen
+
+```csharp
+public static bool IsOnScreen { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
 ### <a id="Clockwork_Input_Mouse_WheelDelta"></a> WheelDelta
 
 ```csharp

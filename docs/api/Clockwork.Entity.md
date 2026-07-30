@@ -14,7 +14,7 @@ public abstract class Entity
 
 #### Derived
 
-[Camera](Clockwork.Camera.md), 
+[CameraEntity](Clockwork.Graphics.Cameras.CameraEntity.md), 
 [CircleShape](Clockwork.Shapes.CircleShape.md), 
 [Easer](Clockwork.Animation.Easer.md), 
 [FireTimer](Clockwork.Utilities.FireTimer.md), 
@@ -22,12 +22,15 @@ public abstract class Entity
 [MusicPlayer](Clockwork.Audio.MusicPlayer.md), 
 [MusicRepeater](Clockwork.Audio.MusicRepeater.md), 
 [MusicRepeater2Part](Clockwork.Audio.MusicRepeater2Part.md), 
+[Panel](Clockwork.UI.Panel.md), 
 [Parallax](Clockwork.Graphics.Parallax.md), 
 [ParticleEngine2D](Clockwork.Particles.ParticleEngine2D.md), 
 [PointShape](Clockwork.Shapes.PointShape.md), 
 [PolygonShape](Clockwork.Shapes.PolygonShape.md), 
 [RectangleShape](Clockwork.Shapes.RectangleShape.md), 
-[TiledWorld](Clockwork.Tiles.TiledWorld.md), 
+[SphereShape](Clockwork.Shapes.SphereShape.md), 
+[SpriteShape](Clockwork.Shapes.SpriteShape.md), 
+[TiledLayer<TiledAreaType\>](Clockwork.Tiles.TiledLayer\-1.md), 
 [TriggerTimer](Clockwork.Utilities.TriggerTimer.md)
 
 #### Inherited Members
@@ -42,10 +45,10 @@ public abstract class Entity
 
 ## Fields
 
-### <a id="Clockwork_Entity_IsRendering"></a> IsRendering
+### <a id="Clockwork_Entity_IsDrawing"></a> IsDrawing
 
 ```csharp
-public bool IsRendering
+public bool IsDrawing
 ```
 
 #### Field Value
@@ -84,6 +87,36 @@ public int DrawLayer { get; set; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
+### <a id="Clockwork_Entity_FrameTime"></a> FrameTime
+
+```csharp
+public float FrameTime { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+### <a id="Clockwork_Entity_IsInScene"></a> IsInScene
+
+```csharp
+public bool IsInScene { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Entity_Time"></a> Time
+
+```csharp
+public float Time { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
 ### <a id="Clockwork_Entity_UpdateLayer"></a> UpdateLayer
 
 ```csharp
@@ -95,6 +128,26 @@ public int UpdateLayer { get; set; }
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 ## Methods
+
+### <a id="Clockwork_Entity_AddToScene_Clockwork_Scene_"></a> AddToScene\(Scene\)
+
+```csharp
+public void AddToScene(Scene scene)
+```
+
+#### Parameters
+
+`scene` [Scene](Clockwork.Scene.md)
+
+### <a id="Clockwork_Entity_IsVisible"></a> IsVisible\(\)
+
+```csharp
+public virtual bool IsVisible()
+```
+
+#### Returns
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 ### <a id="Clockwork_Entity_OnAddedToScene"></a> OnAddedToScene\(\)
 
@@ -126,9 +179,19 @@ public virtual void OnRemovedFromScene()
 public virtual void OnUpdate()
 ```
 
-### <a id="Clockwork_Entity_Remove"></a> Remove\(\)
+### <a id="Clockwork_Entity_RemoveFromScene"></a> RemoveFromScene\(\)
 
 ```csharp
-public void Remove()
+public void RemoveFromScene()
 ```
+
+### <a id="Clockwork_Entity_Removed"></a> Removed
+
+```csharp
+public event Action Removed
+```
+
+#### Event Type
+
+ [Action](https://learn.microsoft.com/dotnet/api/system.action)
 

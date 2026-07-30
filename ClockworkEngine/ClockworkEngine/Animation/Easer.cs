@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Clockwork.Graphics;
 
 namespace Clockwork.Animation;
@@ -65,7 +66,7 @@ public class Easer : Entity
 		IsEasing = false;
 		Finished?.Invoke();
 		OnFinished();
-		if (RemoveOnFinished) Remove();
+		if (RemoveOnFinished) RemoveFromScene();
 	}
 
 	protected virtual void OnFinished() { }
@@ -87,7 +88,7 @@ public class Easer : Entity
 
 	public Quaternion EaseQuaternion(Quaternion from, Quaternion to)
 	{
-		return Quaternion.Lerp(from, to, CurveProgress);
+		return Quaternion.Slerp(from, to, CurveProgress);
 	}
 
 	public Color EaseColor(Color from, Color to)

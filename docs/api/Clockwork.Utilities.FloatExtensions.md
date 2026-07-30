@@ -66,3 +66,37 @@ public static int Rounded(this float value)
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
+### <a id="Clockwork_Utilities_FloatExtensions_Wrapped_System_Single_System_Single_"></a> Wrapped\(float, float\)
+
+```csharp
+public static float Wrapped(this float value, float max)
+```
+
+#### Parameters
+
+`value` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`max` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+### <a id="Clockwork_Utilities_FloatExtensions_Wrapped_System_Single_System_Single_System_Single__"></a> Wrapped\(float, float, out float\)
+
+```csharp
+public static float Wrapped(this float value, float max, out float wraps)
+```
+
+#### Parameters
+
+`value` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`max` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`wraps` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
+

@@ -40,6 +40,28 @@ public Scene(Color backgroundColor)
 
 `backgroundColor` [Color](Clockwork.Graphics.Color.md)
 
+### <a id="Clockwork_Scene__ctor_System_Collections_Generic_IEnumerable_Clockwork_Entity__"></a> Scene\(IEnumerable<Entity\>\)
+
+```csharp
+public Scene(IEnumerable<Entity> entities)
+```
+
+#### Parameters
+
+`entities` [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable\-1)<[Entity](Clockwork.Entity.md)\>
+
+### <a id="Clockwork_Scene__ctor_System_Collections_Generic_IEnumerable_Clockwork_Entity__Clockwork_Graphics_Color_"></a> Scene\(IEnumerable<Entity\>, Color\)
+
+```csharp
+public Scene(IEnumerable<Entity> entities, Color backgroundColor)
+```
+
+#### Parameters
+
+`entities` [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable\-1)<[Entity](Clockwork.Entity.md)\>
+
+`backgroundColor` [Color](Clockwork.Graphics.Color.md)
+
 ## Fields
 
 ### <a id="Clockwork_Scene_BackgroundColor"></a> BackgroundColor
@@ -55,12 +77,12 @@ public Color BackgroundColor
 ### <a id="Clockwork_Scene_Camera"></a> Camera
 
 ```csharp
-public Camera Camera
+public CameraEntity Camera
 ```
 
 #### Field Value
 
- [Camera](Clockwork.Camera.md)
+ [CameraEntity](Clockwork.Graphics.Cameras.CameraEntity.md)
 
 ### <a id="Clockwork_Scene_IsPaused"></a> IsPaused
 
@@ -95,6 +117,16 @@ public Entities Entities { get; }
 #### Property Value
 
  [Entities](Clockwork.Entities.md)
+
+### <a id="Clockwork_Scene_FrameTime"></a> FrameTime
+
+```csharp
+public float FrameTime { get; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Scene_Time"></a> Time
 
@@ -133,6 +165,22 @@ public EntitySubclass AddEntity<EntitySubclass>(EntitySubclass entity) where Ent
 ```csharp
 public void Draw()
 ```
+
+### <a id="Clockwork_Scene_DrawGUI"></a> DrawGUI\(\)
+
+```csharp
+public void DrawGUI()
+```
+
+### <a id="Clockwork_Scene_RemoveEntity_Clockwork_Entity_"></a> RemoveEntity\(Entity\)
+
+```csharp
+public void RemoveEntity(Entity entity)
+```
+
+#### Parameters
+
+`entity` [Entity](Clockwork.Entity.md)
 
 ### <a id="Clockwork_Scene_Update"></a> Update\(\)
 

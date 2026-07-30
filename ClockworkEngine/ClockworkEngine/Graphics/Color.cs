@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Clockwork.Graphics;
 
@@ -91,8 +92,38 @@ public struct Color
 		return color;
 	}
 
+	public static Color Mix(Color firstColor, Color secondColor)
+	{
+		return Lerp(firstColor, secondColor, 0.5f);
+	}
+
 	public override string ToString()
 	{
 		return $"({R}, {G}, {B}, {A})";
+	}
+
+	public override bool Equals(object otherObject)
+	{
+		if (otherObject is not Color otherColor) return false;
+		else return
+			R == otherColor.R
+			&& G == otherColor.G
+			&& B == otherColor.B
+			&& A == otherColor.A;
+	}
+
+	public static bool operator ==(Color leftColor, Color rightColor)
+	{
+		return leftColor.Equals(rightColor);
+	}
+
+	public static bool operator !=(Color leftColor, Color rightColor)
+	{
+		return !(leftColor == rightColor);
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(R, G, B, A);
 	}
 }

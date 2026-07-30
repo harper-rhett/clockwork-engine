@@ -8,34 +8,26 @@ public class Transform3D
 
 	public Vector3 WorldPosition
 	{
-		get
-		{
-			if (Parent is null) return LocalPosition;
-			else return Vector3.Transform(LocalPosition, Parent.Matrix);
-		}
-
-		set
-		{
-			if (Parent is null) LocalPosition = value;
-			else LocalPosition = Vector3.Transform(value, Parent.MatrixInverse);
-		}
+		get => Parent is null ? LocalPosition : Vector3.Transform(LocalPosition, Parent.Matrix);
+		set => LocalPosition = Parent is null ? value : Vector3.Transform(value, Parent.MatrixInverse);
+	}
+	public Vector3 Position
+	{
+		get => WorldPosition;
+		set => WorldPosition = value;
 	}
 
 	public Vector3 LocalPosition;
 
 	public Quaternion WorldRotation
 	{
-		get
-		{
-			if (Parent is null) return LocalRotation;
-			else return Parent.WorldRotation * LocalRotation;
-		}
-
-		set
-		{
-			if (Parent is null) LocalRotation = value;
-			else LocalRotation = Quaternion.Inverse(Parent.WorldRotation) * value;
-		}
+		get => Parent is null ? LocalRotation : Parent.WorldRotation * LocalRotation;
+		set => LocalRotation = Parent is null ? value : Quaternion.Inverse(Parent.WorldRotation) * value;
+	}
+	public Quaternion Rotation
+	{
+		get => WorldRotation;
+		set => WorldRotation = value;
 	}
 
 	public Quaternion LocalRotation = Quaternion.Identity;
@@ -48,7 +40,7 @@ public class Transform3D
 			Matrix4x4 rotationMatrix = Matrix4x4.CreateFromQuaternion(WorldRotation);
 			Matrix4x4 localToWorld = rotationMatrix * translationMatrix;
 			if (Parent is null) return localToWorld;
-			else return Parent.Matrix * localToWorld;
+			else return localToWorld * Parent.Matrix;
 		}
 	}
 
@@ -67,4 +59,12 @@ public class Transform3D
 	public Vector3 Left => WorldRotation.GetLeft();
 	public Vector3 Up => WorldRotation.GetUp();
 	public Vector3 Down => WorldRotation.GetDown();
+
+	public Transform3D() { }
+
+	public Transform3D(Vector3 position, Quaternion rotation)
+	{
+		WorldPosition = position;
+		WorldRotation = rotation;
+	}
 }

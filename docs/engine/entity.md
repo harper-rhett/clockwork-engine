@@ -5,7 +5,7 @@ An entity is an object that exists physically in your game. Entities can be a pl
 ```csharp
 public class CustomEntity : Entity
 {
-	public CustomEntity(Scene scene) : base(scene)
+	public CustomEntity()
 	{
 		// Initialize
 	}
@@ -20,21 +20,56 @@ public class CustomEntity : Entity
 		// Shapes, textures, text, etc.
 	}
 
-	public override void OnRemove()
+	public override void OnDrawGUI()
 	{
-		// clean up resources here, like other entities created by this one
+		// HUD elements, debug text, etc.
 	}
 }
 ```
 
-It's important to note that the entity's [scene](scene.md) can be accessed from inside the class. For instance:
+Entities do not require a scene reference in their constructor. Instead, the `Scene` field is set automatically when the entity is added to a scene. You can access it at any time after the entity has been added:
 
 ```csharp
 public override void OnUpdate()
 {
-	if (scene.Time > 5) Explode();
+	if (Scene.Time > 5) Explode();
 }
 ```
+
+## Lifecycle
+
+Entities have two lifecycle callbacks for when they enter or leave a scene:
+
+```csharp
+public override void OnAddedToScene()
+{
+	// Scene is now accessible. Create child entities, start timers, etc.
+}
+
+public override void OnRemovedFromScene()
+{
+	// Clean up child entities or other resources.
+}
+```
+
+`OnAddedToScene` is the right place for any initialization that depends on `Scene` being available, such as adding child entities to the same scene. `OnRemovedFromScene` replaces the old `OnRemove` callback.
+
+Entities can also add or remove themselves from scenes:
+
+```csharp
+myEntity.AddToScene(scene);
+myEntity.RemoveFromScene();
+```
+
+There's also a `Removed` event you can subscribe to:
+
+```csharp
+myEntity.Removed += () => Console.WriteLine("Goodbye!");
+```
+
+The `IsInScene` property tells you whether an entity is currently in a scene.
+
+## Custom Scene References
 
 If your entity belongs to a custom scene with useful methods, it might be a good idea to save the scene's reference for later:
 
@@ -42,7 +77,7 @@ If your entity belongs to a custom scene with useful methods, it might be a good
 private GameScene gameScene;
 private int health;
 
-public CustomEntity(GameScene gameScene) : base(gameScene)
+public CustomEntity(GameScene gameScene)
 {
 	this.gameScene = gameScene;
 }
@@ -53,8 +88,36 @@ public override void OnUpdate()
 }
 ```
 
-Finally, `Entity` has several very useful public properties:
+## Properties
+
+`Entity` has several very useful public properties:
 - `Entity.IsUpdating`: Pause the update loop.
-- `Entity.IsRendering`: Pause the draw loop.
+- `Entity.IsDrawing`: Pause the draw loop.
 - `Entity.UpdateLayer`: Change the update layer.
 - `Entity.DrawLayer`: Change the draw layer.
+- `Entity.IsInScene`: Whether the entity is currently in a scene.
+- `Entity.FrameTime`: The scene's frame time, respecting pause and time scaling.
+- `Entity.Time`: The scene's elapsed time in seconds.
+
+`FrameTime` and `Time` are conveniences that read from the entity's scene, so you don't have to write `Scene.FrameTime` everywhere:
+
+```csharp
+public override void OnUpdate()
+{
+	position += velocity * FrameTime;
+	if (Time > deathTime) RemoveFromScene();
+}
+```
+
+## Viewport Culling
+
+The scene skips drawing entities that aren't visible. By default `IsVisible()` returns `true`, but you can override it to cull entities outside the camera's view. This is a big win in large worlds where most entities are off-screen at any moment:
+
+```csharp
+public override bool IsVisible()
+{
+	return Intersection2D.PointInRectangle(Position, gameScene.Camera.GetAxisAlignedViewport());
+}
+```
+
+Culling only affects drawing. Entities continue to update even when not visible, so game logic stays correct. See the [camera](camera.md) docs for `GetAxisAlignedViewport`.

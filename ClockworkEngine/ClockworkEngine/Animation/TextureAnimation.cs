@@ -58,7 +58,7 @@ public class TextureAnimation
 		cell.Height *= direction.Y;
 		texture.Draw(cell, position.Floored(), color);
 
-		if (!IsPaused) currentTime += Engine.FrameTime;
+		if (!IsPaused) currentTime += Engine.GlobalFrameTime;
 		if (!PlayOnce) currentTime %= PlayTime;
 	}
 

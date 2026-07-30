@@ -8,5 +8,9 @@
 
  [TiledCollider<TileType\>](Clockwork.Tiles.TiledCollider\-1.md)
 
- [TiledWorld](Clockwork.Tiles.TiledWorld.md)
+ [TiledGameArea](Clockwork.Tiles.TiledGameArea.md)
+
+ [TiledLayer<TiledAreaType\>](Clockwork.Tiles.TiledLayer\-1.md)
+
+ [TiledLayer](Clockwork.Tiles.TiledLayer.md)
 

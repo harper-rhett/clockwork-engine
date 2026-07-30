@@ -4,25 +4,25 @@ namespace Clockwork.Input;
 
 public static class Keyboard
 {
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyPressed")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyPressed")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyPressed(KeyboardKey key);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyRepeating")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyRepeating")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyRepeating(KeyboardKey key);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyDown")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyDown")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyDown(KeyboardKey key);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyReleased")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IsKeyReleased")]
 	[return: MarshalAs(UnmanagedType.I1)]
 	public static extern bool IsKeyReleased(KeyboardKey key);
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetKeyPressed")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetKeyPressed")]
 	public static extern KeyboardKey GetKeyPressed();
 
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetCharPressed")]
+	[DllImport(Engine.raylibLibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetCharPressed")]
 	public static extern int GetUnicodePressed();
 }

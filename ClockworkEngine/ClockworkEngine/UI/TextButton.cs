@@ -1,0 +1,57 @@
+﻿using Clockwork.Graphics.Text;
+using System.Numerics;
+
+namespace Clockwork.UI;
+
+public class TextButton : Button
+{
+	public TextElement TextElement { get; private set; }
+	public string Text
+	{
+		get => TextElement.Text;
+		set => TextElement.Text = value;
+	}
+	public Font Font
+	{
+		get => TextElement.Font;
+		set => TextElement.Font = value;
+	}
+
+	public TextButton(string text) : base()
+	{
+		Initialize(text);
+	}
+
+	public TextButton(string text, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(defaultStyle, hoverStyle, pressedStyle)
+	{
+		Initialize(text);
+	}
+
+	public TextButton(string text, int x, int y, int width, int height) : base(x, y, width, height)
+	{
+		Initialize(text);
+	}
+
+	public TextButton(string text, int x, int y, int width, int height, Style defaultStyle, Style hoverStyle, Style pressedStyle) : base(x, y, width, height, defaultStyle, hoverStyle, pressedStyle)
+	{
+		Initialize(text);
+	}
+
+	public TextButton(string text, Vector2 position, Vector2 size) : base(position, size)
+	{
+		Initialize(text);
+	}
+
+	public TextButton(string text, Vector2 position, Vector2 size, Style style, Style hoverStyle, Style pressedStyle) : base(position, size, style, hoverStyle, pressedStyle)
+	{
+		Initialize(text);
+	}
+
+	private void Initialize(string text)
+	{
+		TextElement = new(text);
+		TextElement.HorizontalAlignment = HorizontalAlignment.Center;
+		TextElement.VerticalAlignment = VerticalAlignment.Center;
+		AddChild(TextElement);
+	}
+}

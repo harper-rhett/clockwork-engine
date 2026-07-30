@@ -4,8 +4,6 @@
 
  [CircleShape](Clockwork.Shapes.CircleShape.md)
 
- [Intersection](Clockwork.Shapes.Intersection.md)
-
  [LineShape](Clockwork.Shapes.LineShape.md)
 
  [PointShape](Clockwork.Shapes.PointShape.md)
@@ -14,13 +12,11 @@
 
  [RectangleShape](Clockwork.Shapes.RectangleShape.md)
 
-### Interfaces
+ [SphereShape](Clockwork.Shapes.SphereShape.md)
 
- [IIntersectsWithCircle](Clockwork.Shapes.IIntersectsWithCircle.md)
+ [SpriteShape](Clockwork.Shapes.SpriteShape.md)
 
- [IIntersectsWithLine](Clockwork.Shapes.IIntersectsWithLine.md)
+### Structs
 
- [IIntersectsWithPoint](Clockwork.Shapes.IIntersectsWithPoint.md)
-
- [IIntersectsWithRectangle](Clockwork.Shapes.IIntersectsWithRectangle.md)
+ [RayCollision](Clockwork.Shapes.RayCollision.md)
 

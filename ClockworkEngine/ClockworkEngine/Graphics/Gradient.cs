@@ -1,4 +1,8 @@
-﻿namespace Clockwork.Graphics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Clockwork.Graphics;
 
 public class Gradient
 {
