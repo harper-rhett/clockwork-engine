@@ -51,6 +51,8 @@ public unsafe struct Texture : IDisposable
 	private static extern void DrawNinePatch(Texture texture, NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color);
 	public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 origin, float rotation, Color color) => DrawNinePatch(this, ninePatch, destination, origin, rotation, color);
 
+	public Rectangle GetRectangle() => new(0, 0, Width, Height);
+
 	public void Dispose()
 	{
 		Unload(this);

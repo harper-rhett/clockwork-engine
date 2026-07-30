@@ -14,4 +14,6 @@ public struct Style
 		BorderColor = borderColor;
 		BorderThickness = borderThickness;
 	}
+
+	public static Style Invisible => new(Colors.Clear, Colors.Clear, 0);
 }
