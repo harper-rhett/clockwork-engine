@@ -1,38 +1,40 @@
-1. ##### Generate new documentation with Claude
+## 1. Generate new documentation with Claude
 
-##### 2\. Generate new API
+## 2. Generate new API
 
-###### &#x09;a. Remove all markdown files in docs/api
+### a. Remove all markdown files in docs/api
 
-###### &#x09;b. Run: docfx docfx.json --serve
+### b. Run: docfx docfx.json --serve
 
-##### 3\. Build
+## 3. Build
 
-###### &#x09;a. Increment project version
+### a. Increment project version
 
-###### &#x09;b. Set build mode to release
+### b. Set build mode to release
 
-###### &#x09;c. Run: dotnet pack
+### c. Run: dotnet pack
 
-##### 4\. Push to NuGet
+### d. Merge development with main
 
-###### &#x09;a. Grab the \[PACKAGE] path: ClockworkEngine/bin/Release/ClockworkEngine.X.Y.Z.nupkg
+## 4. Push to NuGet
 
-###### &#x09;b. Run: dotnet nuget push \[PACKAGE] --api-key \[APIKEY] --source https://api.nuget.org/v3/index.json
+### Grab the [PACKAGE] path: ClockworkEngine/bin/Release/ClockworkEngine.X.Y.Z.nupkg
 
-###### &#x09;c. Check: https://packages.nuget.org/packages/ClockworkEngine
+### b. Run: dotnet nuget push [PACKAGE] --api-key [APIKEY] --source https://api.nuget.org/v3/index.json
 
-#### 5\. Update examples
+### c. Check: https://packages.nuget.org/packages/ClockworkEngine
 
-###### &#x09;a. Ensure clockwork-examples `UseLocalEngine` variable is set to false
+## 5. Update examples
 
-###### &#x09;b. Push clockwork-examples/development to main
+### a. Ensure clockwork-examples `UseLocalEngine` variable is set to false
 
-#### 6\. Update template
+### &#x09;b. Push clockwork-examples/development to main
 
-###### &#x09;a. Make sure API is up to date
+## 6. Update template
 
-###### &#x09;b. Export template
+### &#x09;a. Make sure API is up to date
 
-###### &#x09;c. Upload template to GitHub Releases
+### &#x09;b. Export template
+
+### &#x09;c. Upload template to GitHub Releases
 
