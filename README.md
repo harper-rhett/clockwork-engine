@@ -25,7 +25,7 @@ Clockwork Engine currently supports:
 - [Template](https://github.com/harper-rhett/clockwork-template)
 - [Examples](https://github.com/harper-rhett/clockwork-examples)
 - [Documentation](https://clockwork-engine.readthedocs.io/en/latest/)
-- [Discord Server](https://discord.gg/7qsRSKSYU8)
+- [Discord Server](https://discord.gg/7pCBdkGUe2)
 
 ## Features
 
