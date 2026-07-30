@@ -16,10 +16,10 @@ public class VerletJoint : CircleShape, IIntersectsWithPoint, IIntersectsWithCir
 
 #### Implements
 
-[IIntersectsWithPoint](Clockwork.Shapes.IIntersectsWithPoint.md), 
-[IIntersectsWithCircle](Clockwork.Shapes.IIntersectsWithCircle.md), 
-[IIntersectsWithRectangle](Clockwork.Shapes.IIntersectsWithRectangle.md), 
-[IIntersectsWithLine](Clockwork.Shapes.IIntersectsWithLine.md)
+[IIntersectsWithPoint](Clockwork.Intersections.IIntersectsWithPoint.md), 
+[IIntersectsWithCircle](Clockwork.Intersections.IIntersectsWithCircle.md), 
+[IIntersectsWithRectangle](Clockwork.Intersections.IIntersectsWithRectangle.md), 
+[IIntersectsWithLine](Clockwork.Intersections.IIntersectsWithLine.md)
 
 #### Inherited Members
 

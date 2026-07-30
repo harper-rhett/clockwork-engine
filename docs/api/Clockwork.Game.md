@@ -37,7 +37,7 @@ public abstract void OnDraw()
 ### <a id="Clockwork_Game_OnDrawGUI"></a> OnDrawGUI\(\)
 
 ```csharp
-public virtual void OnDrawGUI()
+public abstract void OnDrawGUI()
 ```
 
 ### <a id="Clockwork_Game_OnUpdate"></a> OnUpdate\(\)

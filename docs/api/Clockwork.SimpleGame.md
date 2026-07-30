@@ -58,6 +58,12 @@ public Scene Scene
 public override void OnDraw()
 ```
 
+### <a id="Clockwork_SimpleGame_OnDrawGUI"></a> OnDrawGUI\(\)
+
+```csharp
+public override void OnDrawGUI()
+```
+
 ### <a id="Clockwork_SimpleGame_OnUpdate"></a> OnUpdate\(\)
 
 ```csharp

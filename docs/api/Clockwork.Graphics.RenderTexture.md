@@ -62,6 +62,16 @@ public Texture Texture
 
 ## Properties
 
+### <a id="Clockwork_Graphics_RenderTexture_Height"></a> Height
+
+```csharp
+public int Height { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
 ### <a id="Clockwork_Graphics_RenderTexture_IsValid"></a> IsValid
 
 ```csharp
@@ -71,6 +81,16 @@ public bool IsValid { get; }
 #### Property Value
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Graphics_RenderTexture_Width"></a> Width
+
+```csharp
+public int Width { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 ## Methods
 

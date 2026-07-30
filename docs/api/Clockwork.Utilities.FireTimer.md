@@ -90,6 +90,12 @@ public override void OnUpdate()
 public void Start()
 ```
 
+### <a id="Clockwork_Utilities_FireTimer_Stop"></a> Stop\(\)
+
+```csharp
+public void Stop()
+```
+
 ### <a id="Clockwork_Utilities_FireTimer_Fired"></a> Fired
 
 ```csharp

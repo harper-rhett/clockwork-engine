@@ -212,3 +212,13 @@ public static void TakeScreenshot(string folderPath)
 
 `folderPath` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
+### <a id="Clockwork_Engine_GameResized"></a> GameResized
+
+```csharp
+public static event Engine.OnResized GameResized
+```
+
+#### Event Type
+
+ [Engine](Clockwork.Engine.md).[OnResized](Clockwork.Engine.OnResized.md)
+

@@ -47,6 +47,12 @@ public class Camera3D : CameraEntity
 
 ## Constructors
 
+### <a id="Clockwork_Graphics_Cameras_Camera3D__ctor"></a> Camera3D\(\)
+
+```csharp
+public Camera3D()
+```
+
 ### <a id="Clockwork_Graphics_Cameras_Camera3D__ctor_System_Numerics_Vector3_"></a> Camera3D\(Vector3\)
 
 ```csharp

@@ -1,6 +1,6 @@
-# <a id="Clockwork_Shapes_IIntersectsWithCircle"></a> Interface IIntersectsWithCircle
+# <a id="Clockwork_Intersections_IIntersectsWithCircle"></a> Interface IIntersectsWithCircle
 
-Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)  
+Namespace: [Clockwork.Intersections](Clockwork.Intersections.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -9,7 +9,7 @@ public interface IIntersectsWithCircle
 
 ## Methods
 
-### <a id="Clockwork_Shapes_IIntersectsWithCircle_IntersectsWithCircle_System_Numerics_Vector2_System_Single_"></a> IntersectsWithCircle\(Vector2, float\)
+### <a id="Clockwork_Intersections_IIntersectsWithCircle_IntersectsWithCircle_System_Numerics_Vector2_System_Single_"></a> IntersectsWithCircle\(Vector2, float\)
 
 ```csharp
 bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius)
@@ -25,7 +25,7 @@ bool IntersectsWithCircle(Vector2 circlePosition, float circleRadius)
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_IIntersectsWithCircle_IntersectsWithCircle_Clockwork_Shapes_CircleShape_"></a> IntersectsWithCircle\(CircleShape\)
+### <a id="Clockwork_Intersections_IIntersectsWithCircle_IntersectsWithCircle_Clockwork_Shapes_CircleShape_"></a> IntersectsWithCircle\(CircleShape\)
 
 ```csharp
 bool IntersectsWithCircle(CircleShape circleShape)

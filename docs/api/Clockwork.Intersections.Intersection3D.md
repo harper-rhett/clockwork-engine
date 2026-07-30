@@ -1,6 +1,6 @@
-# <a id="Clockwork_Shapes_Intersection3D"></a> Class Intersection3D
+# <a id="Clockwork_Intersections_Intersection3D"></a> Class Intersection3D
 
-Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)  
+Namespace: [Clockwork.Intersections](Clockwork.Intersections.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -10,7 +10,7 @@ public static class Intersection3D
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[Intersection3D](Clockwork.Shapes.Intersection3D.md)
+[Intersection3D](Clockwork.Intersections.Intersection3D.md)
 
 #### Inherited Members
 
@@ -24,7 +24,7 @@ public static class Intersection3D
 
 ## Methods
 
-### <a id="Clockwork_Shapes_Intersection3D_RayInSphere_Ray_System_Numerics_Vector3_System_Single_"></a> RayInSphere\(Ray, Vector3, float\)
+### <a id="Clockwork_Intersections_Intersection3D_RayInSphere_Ray_System_Numerics_Vector3_System_Single_"></a> RayInSphere\(Ray, Vector3, float\)
 
 ```csharp
 public static bool RayInSphere(Ray ray, Vector3 spherePosition, float sphereRadius)
@@ -42,7 +42,7 @@ public static bool RayInSphere(Ray ray, Vector3 spherePosition, float sphereRadi
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_Intersection3D_RayInSphereCollision_Ray_System_Numerics_Vector3_System_Single_"></a> RayInSphereCollision\(Ray, Vector3, float\)
+### <a id="Clockwork_Intersections_Intersection3D_RayInSphereCollision_Ray_System_Numerics_Vector3_System_Single_"></a> RayInSphereCollision\(Ray, Vector3, float\)
 
 ```csharp
 public static extern RayCollision RayInSphereCollision(Ray ray, Vector3 spherePosition, float sphereRadius)

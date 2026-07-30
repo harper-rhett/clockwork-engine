@@ -8,9 +8,9 @@
 
  [Clockwork.Graphics](Clockwork.Graphics.md)
 
- [Clockwork.Graphs](Clockwork.Graphs.md)
-
  [Clockwork.Input](Clockwork.Input.md)
+
+ [Clockwork.Intersections](Clockwork.Intersections.md)
 
  [Clockwork.Particles](Clockwork.Particles.md)
 
@@ -43,4 +43,8 @@
  [Scene](Clockwork.Scene.md)
 
  [SimpleGame](Clockwork.SimpleGame.md)
+
+### Delegates
+
+ [Engine.OnResized](Clockwork.Engine.OnResized.md)
 

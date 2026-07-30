@@ -6,6 +6,8 @@
 
  [Spline](Clockwork.Graphics.Draw2D.Spline.md)
 
+ [Sprite](Clockwork.Graphics.Draw2D.Sprite.md)
+
 ### Structs
 
  [NinePatch](Clockwork.Graphics.Draw2D.NinePatch.md)
@@ -13,4 +15,6 @@
 ### Enums
 
  [NinePatchLayout](Clockwork.Graphics.Draw2D.NinePatchLayout.md)
+
+ [SpriteOffset](Clockwork.Graphics.Draw2D.SpriteOffset.md)
 

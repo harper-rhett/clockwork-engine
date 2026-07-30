@@ -178,6 +178,16 @@ public void DrawNinePatch(NinePatch ninePatch, Rectangle destination, Vector2 or
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
+### <a id="Clockwork_Graphics_Texture_GetRectangle"></a> GetRectangle\(\)
+
+```csharp
+public Rectangle GetRectangle()
+```
+
+#### Returns
+
+ [Rectangle](Clockwork.Graphics.Rectangle.md)
+
 ### <a id="Clockwork_Graphics_Texture_Load_System_String_"></a> Load\(string\)
 
 ```csharp

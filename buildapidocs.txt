@@ -1,2 +1,0 @@
-1. Remove all markdown files in docs/api
-2. docfx docfx.json --serve

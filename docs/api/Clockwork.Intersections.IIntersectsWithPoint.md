@@ -1,6 +1,6 @@
-# <a id="Clockwork_Shapes_IIntersectsWithPoint"></a> Interface IIntersectsWithPoint
+# <a id="Clockwork_Intersections_IIntersectsWithPoint"></a> Interface IIntersectsWithPoint
 
-Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)  
+Namespace: [Clockwork.Intersections](Clockwork.Intersections.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -9,7 +9,7 @@ public interface IIntersectsWithPoint
 
 ## Methods
 
-### <a id="Clockwork_Shapes_IIntersectsWithPoint_IntersectsWithPoint_System_Numerics_Vector2_"></a> IntersectsWithPoint\(Vector2\)
+### <a id="Clockwork_Intersections_IIntersectsWithPoint_IntersectsWithPoint_System_Numerics_Vector2_"></a> IntersectsWithPoint\(Vector2\)
 
 ```csharp
 bool IntersectsWithPoint(Vector2 pointPosition)
@@ -23,7 +23,7 @@ bool IntersectsWithPoint(Vector2 pointPosition)
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_IIntersectsWithPoint_IntersectsWithPoint_Clockwork_Shapes_PointShape_"></a> IntersectsWithPoint\(PointShape\)
+### <a id="Clockwork_Intersections_IIntersectsWithPoint_IntersectsWithPoint_Clockwork_Shapes_PointShape_"></a> IntersectsWithPoint\(PointShape\)
 
 ```csharp
 bool IntersectsWithPoint(PointShape pointShape)

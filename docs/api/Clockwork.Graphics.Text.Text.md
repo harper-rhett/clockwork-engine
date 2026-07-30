@@ -27,7 +27,7 @@ public static class Text
 ### <a id="Clockwork_Graphics_Text_Text_Draw_System_String_System_Int32_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> Draw\(string, int, int, int, Color\)
 
 ```csharp
-public static extern void Draw(string text, int x, int y, int fontSize, Color color)
+public static void Draw(string text, int x, int y, int fontSize, Color color)
 ```
 
 #### Parameters
@@ -58,10 +58,28 @@ public static void Draw(string text, Vector2 position, int fontSize, Color color
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
+### <a id="Clockwork_Graphics_Text_Text_Draw_System_String_System_Numerics_Vector2_System_Single_System_Single_Clockwork_Graphics_Color_"></a> Draw\(string, Vector2, float, float, Color\)
+
+```csharp
+public static void Draw(string text, Vector2 position, float fontSize, float characterSpacing, Color color)
+```
+
+#### Parameters
+
+`text` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+`position` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`fontSize` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`characterSpacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
 ### <a id="Clockwork_Graphics_Text_Text_Draw_Clockwork_Graphics_Text_Font_System_String_System_Numerics_Vector2_System_Single_System_Single_Clockwork_Graphics_Color_"></a> Draw\(Font, string, Vector2, float, float, Color\)
 
 ```csharp
-public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float spacing, Color color)
+public static extern void Draw(Font font, string text, Vector2 position, float fontSize, float characterSpacing, Color color)
 ```
 
 #### Parameters
@@ -74,14 +92,14 @@ public static extern void Draw(Font font, string text, Vector2 position, float f
 
 `fontSize` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`spacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`characterSpacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
 ### <a id="Clockwork_Graphics_Text_Text_Draw_Clockwork_Graphics_Text_Font_System_String_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Single_System_Single_Clockwork_Graphics_Color_"></a> Draw\(Font, string, Vector2, Vector2, float, float, float, Color\)
 
 ```csharp
-public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color color)
+public static extern void Draw(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float characterSpacing, Color color)
 ```
 
 #### Parameters
@@ -98,7 +116,7 @@ public static extern void Draw(Font font, string text, Vector2 position, Vector2
 
 `fontSize` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`spacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`characterSpacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
@@ -119,7 +137,7 @@ public static void DrawDebug(int fontSize, Color color, params string[] logs)
 ### <a id="Clockwork_Graphics_Text_Text_MeasureSize_Clockwork_Graphics_Text_Font_System_String_System_Single_System_Single_"></a> MeasureSize\(Font, string, float, float\)
 
 ```csharp
-public static extern Vector2 MeasureSize(Font font, string text, float fontSize, float spacing)
+public static extern Vector2 MeasureSize(Font font, string text, float fontSize, float characterSpacing)
 ```
 
 #### Parameters
@@ -130,7 +148,7 @@ public static extern Vector2 MeasureSize(Font font, string text, float fontSize,
 
 `fontSize` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`spacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`characterSpacing` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 #### Returns
 

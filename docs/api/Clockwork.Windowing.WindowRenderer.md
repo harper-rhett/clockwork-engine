@@ -76,6 +76,26 @@ protected bool DidResize { get; }
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
+### <a id="Clockwork_Windowing_WindowRenderer_MouseRenderX"></a> MouseRenderX
+
+```csharp
+protected int MouseRenderX { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Windowing_WindowRenderer_MouseRenderY"></a> MouseRenderY
+
+```csharp
+protected int MouseRenderY { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
 ## Methods
 
 ### <a id="Clockwork_Windowing_WindowRenderer_RefreshDimensions_Clockwork_Graphics_RenderTexture_"></a> RefreshDimensions\(RenderTexture\)

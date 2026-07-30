@@ -22,6 +22,28 @@ public static class Profiler
 [object.ReferenceEquals\(object?, object?\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Fields
+
+### <a id="Clockwork_Profiler_TrackDrawLoop"></a> TrackDrawLoop
+
+```csharp
+public static bool TrackDrawLoop
+```
+
+#### Field Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Profiler_TrackUpdateLoop"></a> TrackUpdateLoop
+
+```csharp
+public static bool TrackUpdateLoop
+```
+
+#### Field Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
 ## Properties
 
 ### <a id="Clockwork_Profiler_IsActive"></a> IsActive

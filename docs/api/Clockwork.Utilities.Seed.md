@@ -187,12 +187,12 @@ public int NextInteger()
 ### <a id="Clockwork_Utilities_Seed_NextInteger_System_Int32_"></a> NextInteger\(int\)
 
 ```csharp
-public int NextInteger(int max)
+public int NextInteger(int maxExclusive)
 ```
 
 #### Parameters
 
-`max` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`maxExclusive` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 #### Returns
 
@@ -309,12 +309,16 @@ public Vector2 NextVector2(Rectangle bounds)
 ### <a id="Clockwork_Utilities_Seed_RemoveNextItem__1_System_Collections_Generic_IList___0__"></a> RemoveNextItem<Type\>\(IList<Type\>\)
 
 ```csharp
-public void RemoveNextItem<Type>(IList<Type> list)
+public Type RemoveNextItem<Type>(IList<Type> list)
 ```
 
 #### Parameters
 
 `list` [IList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist\-1)<Type\>
+
+#### Returns
+
+ Type
 
 #### Type Parameters
 

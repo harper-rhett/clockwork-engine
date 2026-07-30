@@ -15,7 +15,7 @@ public class SphereShape : Entity, IIntersectsWithRay
 
 #### Implements
 
-[IIntersectsWithRay](Clockwork.Shapes.IIntersectsWithRay.md)
+[IIntersectsWithRay](Clockwork.Intersections.IIntersectsWithRay.md)
 
 #### Inherited Members
 

@@ -34,6 +34,46 @@ public static int Height { get; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
+### <a id="Clockwork_Windowing_Window_IsExclusiveFullscreen"></a> IsExclusiveFullscreen
+
+```csharp
+public static bool IsExclusiveFullscreen { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Windowing_Window_IsFocused"></a> IsFocused
+
+```csharp
+public static bool IsFocused { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Windowing_Window_IsFullscreen"></a> IsFullscreen
+
+```csharp
+public static bool IsFullscreen { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Windowing_Window_ItemPathsDropped"></a> ItemPathsDropped
+
+```csharp
+public static bool ItemPathsDropped { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
 ### <a id="Clockwork_Windowing_Window_Monitor"></a> Monitor
 
 ```csharp
@@ -54,6 +94,36 @@ public static Vector2 Position { get; set; }
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
+### <a id="Clockwork_Windowing_Window_RenderHeight"></a> RenderHeight
+
+```csharp
+public static int RenderHeight { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Windowing_Window_RenderWidth"></a> RenderWidth
+
+```csharp
+public static int RenderWidth { get; }
+```
+
+#### Property Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+### <a id="Clockwork_Windowing_Window_WasResized"></a> WasResized
+
+```csharp
+public static bool WasResized { get; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
 ### <a id="Clockwork_Windowing_Window_Width"></a> Width
 
 ```csharp
@@ -71,6 +141,16 @@ public static int Width { get; }
 ```csharp
 public static extern void Close()
 ```
+
+### <a id="Clockwork_Windowing_Window_ConsumeDroppedItemPaths"></a> ConsumeDroppedItemPaths\(\)
+
+```csharp
+public static string[] ConsumeDroppedItemPaths()
+```
+
+#### Returns
+
+ [string](https://learn.microsoft.com/dotnet/api/system.string)\[\]
 
 ### <a id="Clockwork_Windowing_Window_Focus"></a> Focus\(\)
 
@@ -91,6 +171,12 @@ public static extern void Initialize(int width, int height, string title)
 `height` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `title` [string](https://learn.microsoft.com/dotnet/api/system.string)
+
+### <a id="Clockwork_Windowing_Window_RemoveExitKey"></a> RemoveExitKey\(\)
+
+```csharp
+public static void RemoveExitKey()
+```
 
 ### <a id="Clockwork_Windowing_Window_Resize_System_Int32_System_Int32_"></a> Resize\(int, int\)
 
@@ -113,6 +199,16 @@ public static void SetBorderless(bool isBorderless)
 #### Parameters
 
 `isBorderless` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Windowing_Window_SetExclusiveFullscreen_System_Boolean_"></a> SetExclusiveFullscreen\(bool\)
+
+```csharp
+public static void SetExclusiveFullscreen(bool isFullscreen)
+```
+
+#### Parameters
+
+`isFullscreen` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 ### <a id="Clockwork_Windowing_Window_SetExitKey_Clockwork_Input_KeyboardKey_"></a> SetExitKey\(KeyboardKey\)
 
@@ -225,4 +321,14 @@ public static void SetVsync(bool isEnabled)
 #### Parameters
 
 `isEnabled` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="Clockwork_Windowing_Window_Resized"></a> Resized
+
+```csharp
+public static event Engine.OnResized Resized
+```
+
+#### Event Type
+
+ [Engine](Clockwork.Engine.md).[OnResized](Clockwork.Engine.OnResized.md)
 

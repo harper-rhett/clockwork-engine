@@ -15,9 +15,9 @@ public class PointShape : Entity, IIntersectsWithCircle, IIntersectsWithRectangl
 
 #### Implements
 
-[IIntersectsWithCircle](Clockwork.Shapes.IIntersectsWithCircle.md), 
-[IIntersectsWithRectangle](Clockwork.Shapes.IIntersectsWithRectangle.md), 
-[IIntersectsWithLine](Clockwork.Shapes.IIntersectsWithLine.md)
+[IIntersectsWithCircle](Clockwork.Intersections.IIntersectsWithCircle.md), 
+[IIntersectsWithRectangle](Clockwork.Intersections.IIntersectsWithRectangle.md), 
+[IIntersectsWithLine](Clockwork.Intersections.IIntersectsWithLine.md)
 
 #### Inherited Members
 

@@ -1,6 +1,6 @@
-# <a id="Clockwork_Shapes_IIntersectsWithRectangle"></a> Interface IIntersectsWithRectangle
+# <a id="Clockwork_Intersections_IIntersectsWithRectangle"></a> Interface IIntersectsWithRectangle
 
-Namespace: [Clockwork.Shapes](Clockwork.Shapes.md)  
+Namespace: [Clockwork.Intersections](Clockwork.Intersections.md)  
 Assembly: ClockworkEngine.dll  
 
 ```csharp
@@ -9,7 +9,7 @@ public interface IIntersectsWithRectangle
 
 ## Methods
 
-### <a id="Clockwork_Shapes_IIntersectsWithRectangle_IntersectsWithRectangle_Clockwork_Graphics_Rectangle_"></a> IntersectsWithRectangle\(Rectangle\)
+### <a id="Clockwork_Intersections_IIntersectsWithRectangle_IntersectsWithRectangle_Clockwork_Graphics_Rectangle_"></a> IntersectsWithRectangle\(Rectangle\)
 
 ```csharp
 bool IntersectsWithRectangle(Rectangle rectangle)
@@ -23,7 +23,7 @@ bool IntersectsWithRectangle(Rectangle rectangle)
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Clockwork_Shapes_IIntersectsWithRectangle_IntersectsWithRectangle_Clockwork_Shapes_RectangleShape_"></a> IntersectsWithRectangle\(RectangleShape\)
+### <a id="Clockwork_Intersections_IIntersectsWithRectangle_IntersectsWithRectangle_Clockwork_Shapes_RectangleShape_"></a> IntersectsWithRectangle\(RectangleShape\)
 
 ```csharp
 bool IntersectsWithRectangle(RectangleShape rectangleShape)

@@ -223,12 +223,12 @@ public static int Integer()
 ### <a id="Clockwork_Utilities_Generate_Integer_System_Int32_"></a> Integer\(int\)
 
 ```csharp
-public static int Integer(int max)
+public static int Integer(int maxExclusive)
 ```
 
 #### Parameters
 
-`max` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`maxExclusive` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 #### Returns
 
@@ -291,12 +291,16 @@ public static float Radians()
 ### <a id="Clockwork_Utilities_Generate_RemoveItem__1_System_Collections_Generic_IList___0__"></a> RemoveItem<Type\>\(IList<Type\>\)
 
 ```csharp
-public static void RemoveItem<Type>(IList<Type> list)
+public static Type RemoveItem<Type>(IList<Type> list)
 ```
 
 #### Parameters
 
 `list` [IList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist\-1)<Type\>
+
+#### Returns
+
+ Type
 
 #### Type Parameters
 
@@ -305,12 +309,16 @@ public static void RemoveItem<Type>(IList<Type> list)
 ### <a id="Clockwork_Utilities_Generate_RemoveRandomItem__1_System_Collections_Generic_IList___0__"></a> RemoveRandomItem<Type\>\(IList<Type\>\)
 
 ```csharp
-public static void RemoveRandomItem<Type>(this IList<Type> list)
+public static Type RemoveRandomItem<Type>(this IList<Type> list)
 ```
 
 #### Parameters
 
 `list` [IList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist\-1)<Type\>
+
+#### Returns
+
+ Type
 
 #### Type Parameters
 

@@ -1,0 +1,11 @@
+1. Generate new documentation with Claude
+2. Generate new API
+	a. Remove all markdown files in docs/api
+	b. docfx docfx.json --serve
+3. Build
+	a. Increment project version
+	b. Set build mode to release
+	c. Run `dotnet pack`
+4. Push to NuGet
+	a. Grab the [PACKAGE] path: ClockworkEngine/bin/Release/ClockworkEngine.X.Y.Z.nupkg
+	b. Run `dotnet nuget push [PACKAGE] --api-key [APIKEY] --source https://api.nuget.org/v3/index.json`

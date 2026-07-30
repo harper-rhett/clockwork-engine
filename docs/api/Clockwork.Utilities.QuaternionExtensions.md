@@ -24,6 +24,36 @@ public static class QuaternionExtensions
 
 ## Methods
 
+### <a id="Clockwork_Utilities_QuaternionExtensions_CreateLookRotation_System_Numerics_Vector3_System_Numerics_Vector3_"></a> CreateLookRotation\(Vector3, Vector3\)
+
+```csharp
+public static Quaternion CreateLookRotation(Vector3 forwardDirection, Vector3 upDirection)
+```
+
+#### Parameters
+
+`forwardDirection` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`upDirection` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+#### Returns
+
+ [Quaternion](https://learn.microsoft.com/dotnet/api/system.numerics.quaternion)
+
+### <a id="Clockwork_Utilities_QuaternionExtensions_CreateLookRotation_System_Numerics_Vector3_"></a> CreateLookRotation\(Vector3\)
+
+```csharp
+public static Quaternion CreateLookRotation(Vector3 forwardDirection)
+```
+
+#### Parameters
+
+`forwardDirection` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+#### Returns
+
+ [Quaternion](https://learn.microsoft.com/dotnet/api/system.numerics.quaternion)
+
 ### <a id="Clockwork_Utilities_QuaternionExtensions_CreateRotation_System_Numerics_Vector3_System_Single_"></a> CreateRotation\(Vector3, float\)
 
 ```csharp

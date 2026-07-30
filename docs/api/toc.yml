@@ -19,6 +19,9 @@
     href: Clockwork.Scene.md
   - name: SimpleGame
     href: Clockwork.SimpleGame.md
+  - name: Delegates
+  - name: Engine.OnResized
+    href: Clockwork.Engine.OnResized.md
 - name: Clockwork.Animation
   href: Clockwork.Animation.md
   items:
@@ -127,12 +130,16 @@
     href: Clockwork.Graphics.Draw2D.Primitives2D.md
   - name: Spline
     href: Clockwork.Graphics.Draw2D.Spline.md
+  - name: Sprite
+    href: Clockwork.Graphics.Draw2D.Sprite.md
   - name: Structs
   - name: NinePatch
     href: Clockwork.Graphics.Draw2D.NinePatch.md
   - name: Enums
   - name: NinePatchLayout
     href: Clockwork.Graphics.Draw2D.NinePatchLayout.md
+  - name: SpriteOffset
+    href: Clockwork.Graphics.Draw2D.SpriteOffset.md
 - name: Clockwork.Graphics.Draw3D
   href: Clockwork.Graphics.Draw3D.md
   items:
@@ -169,12 +176,6 @@
     href: Clockwork.Graphics.Text.Font.md
   - name: GlyphInfo
     href: Clockwork.Graphics.Text.GlyphInfo.md
-- name: Clockwork.Graphs
-  href: Clockwork.Graphs.md
-  items:
-  - name: Classes
-  - name: ScatterPlot
-    href: Clockwork.Graphs.ScatterPlot.md
 - name: Clockwork.Input
   href: Clockwork.Input.md
   items:
@@ -196,6 +197,25 @@
     href: Clockwork.Input.MouseButton.md
   - name: MouseCursor
     href: Clockwork.Input.MouseCursor.md
+- name: Clockwork.Intersections
+  href: Clockwork.Intersections.md
+  items:
+  - name: Classes
+  - name: Intersection2D
+    href: Clockwork.Intersections.Intersection2D.md
+  - name: Intersection3D
+    href: Clockwork.Intersections.Intersection3D.md
+  - name: Interfaces
+  - name: IIntersectsWithCircle
+    href: Clockwork.Intersections.IIntersectsWithCircle.md
+  - name: IIntersectsWithLine
+    href: Clockwork.Intersections.IIntersectsWithLine.md
+  - name: IIntersectsWithPoint
+    href: Clockwork.Intersections.IIntersectsWithPoint.md
+  - name: IIntersectsWithRay
+    href: Clockwork.Intersections.IIntersectsWithRay.md
+  - name: IIntersectsWithRectangle
+    href: Clockwork.Intersections.IIntersectsWithRectangle.md
 - name: Clockwork.Particles
   href: Clockwork.Particles.md
   items:
@@ -230,10 +250,6 @@
   - name: Classes
   - name: CircleShape
     href: Clockwork.Shapes.CircleShape.md
-  - name: Intersection2D
-    href: Clockwork.Shapes.Intersection2D.md
-  - name: Intersection3D
-    href: Clockwork.Shapes.Intersection3D.md
   - name: LineShape
     href: Clockwork.Shapes.LineShape.md
   - name: PointShape
@@ -244,20 +260,11 @@
     href: Clockwork.Shapes.RectangleShape.md
   - name: SphereShape
     href: Clockwork.Shapes.SphereShape.md
+  - name: SpriteShape
+    href: Clockwork.Shapes.SpriteShape.md
   - name: Structs
   - name: RayCollision
     href: Clockwork.Shapes.RayCollision.md
-  - name: Interfaces
-  - name: IIntersectsWithCircle
-    href: Clockwork.Shapes.IIntersectsWithCircle.md
-  - name: IIntersectsWithLine
-    href: Clockwork.Shapes.IIntersectsWithLine.md
-  - name: IIntersectsWithPoint
-    href: Clockwork.Shapes.IIntersectsWithPoint.md
-  - name: IIntersectsWithRay
-    href: Clockwork.Shapes.IIntersectsWithRay.md
-  - name: IIntersectsWithRectangle
-    href: Clockwork.Shapes.IIntersectsWithRectangle.md
 - name: Clockwork.Simulation
   href: Clockwork.Simulation.md
   items:
@@ -286,12 +293,57 @@
   href: Clockwork.UI.md
   items:
   - name: Classes
+  - name: AlignmentContainer
+    href: Clockwork.UI.AlignmentContainer.md
   - name: Button
     href: Clockwork.UI.Button.md
   - name: Container
     href: Clockwork.UI.Container.md
   - name: Element
     href: Clockwork.UI.Element.md
+  - name: FrameContainer
+    href: Clockwork.UI.FrameContainer.md
+  - name: HorizontalSlider
+    href: Clockwork.UI.HorizontalSlider.md
+  - name: HorizontalStackContainer
+    href: Clockwork.UI.HorizontalStackContainer.md
+  - name: HorizontalTextSlider
+    href: Clockwork.UI.HorizontalTextSlider.md
+  - name: Panel
+    href: Clockwork.UI.Panel.md
+  - name: TextButton
+    href: Clockwork.UI.TextButton.md
+  - name: TextElement
+    href: Clockwork.UI.TextElement.md
+  - name: TextToggle
+    href: Clockwork.UI.TextToggle.md
+  - name: TextUploadBox
+    href: Clockwork.UI.TextUploadBox.md
+  - name: TextureElement
+    href: Clockwork.UI.TextureElement.md
+  - name: Toggle
+    href: Clockwork.UI.Toggle.md
+  - name: UploadBox
+    href: Clockwork.UI.UploadBox.md
+  - name: VerticalStackContainer
+    href: Clockwork.UI.VerticalStackContainer.md
+  - name: Structs
+  - name: Alignment
+    href: Clockwork.UI.Alignment.md
+  - name: Style
+    href: Clockwork.UI.Style.md
+  - name: Enums
+  - name: DrawContext
+    href: Clockwork.UI.DrawContext.md
+  - name: HorizontalAlignment
+    href: Clockwork.UI.HorizontalAlignment.md
+  - name: VerticalAlignment
+    href: Clockwork.UI.VerticalAlignment.md
+  - name: Delegates
+  - name: HorizontalSlider.OnValueChanged
+    href: Clockwork.UI.HorizontalSlider.OnValueChanged.md
+  - name: Toggle.OnValueChanged
+    href: Clockwork.UI.Toggle.OnValueChanged.md
 - name: Clockwork.Utilities
   href: Clockwork.Utilities.md
   items:
@@ -347,5 +399,7 @@
     href: Clockwork.Windowing.Monitor.md
   - name: Window
     href: Clockwork.Windowing.Window.md
+  - name: WindowDialogs
+    href: Clockwork.Windowing.WindowDialogs.md
   - name: WindowRenderer
     href: Clockwork.Windowing.WindowRenderer.md

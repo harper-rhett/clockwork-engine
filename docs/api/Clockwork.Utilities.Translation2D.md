@@ -70,6 +70,16 @@ public Matrix3x2 MatrixInverse { get; }
 
  [Matrix3x2](https://learn.microsoft.com/dotnet/api/system.numerics.matrix3x2)
 
+### <a id="Clockwork_Utilities_Translation2D_Position"></a> Position
+
+```csharp
+public Vector2 Position { get; set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="Clockwork_Utilities_Translation2D_WorldPosition"></a> WorldPosition
 
 ```csharp

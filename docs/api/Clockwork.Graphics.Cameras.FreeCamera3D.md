@@ -48,6 +48,12 @@ public class FreeCamera3D : Camera3D
 
 ## Constructors
 
+### <a id="Clockwork_Graphics_Cameras_FreeCamera3D__ctor"></a> FreeCamera3D\(\)
+
+```csharp
+public FreeCamera3D()
+```
+
 ### <a id="Clockwork_Graphics_Cameras_FreeCamera3D__ctor_System_Numerics_Vector3_"></a> FreeCamera3D\(Vector3\)
 
 ```csharp

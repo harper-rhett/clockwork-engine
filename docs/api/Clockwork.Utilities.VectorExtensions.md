@@ -54,6 +54,38 @@ public static Vector2 Ceiled(this Vector2 vector)
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
+### <a id="Clockwork_Utilities_VectorExtensions_DirectionTo_System_Numerics_Vector2_System_Numerics_Vector2_"></a> DirectionTo\(Vector2, Vector2\)
+
+```csharp
+public static Vector2 DirectionTo(this Vector2 originVector, Vector2 targetVector)
+```
+
+#### Parameters
+
+`originVector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`targetVector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_DirectionTo_System_Numerics_Vector3_System_Numerics_Vector3_"></a> DirectionTo\(Vector3, Vector3\)
+
+```csharp
+public static Vector3 DirectionTo(this Vector3 originVector, Vector3 targetVector)
+```
+
+#### Parameters
+
+`originVector` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`targetVector` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+#### Returns
+
+ [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
 ### <a id="Clockwork_Utilities_VectorExtensions_Floored_System_Numerics_Vector2_"></a> Floored\(Vector2\)
 
 ```csharp
@@ -167,6 +199,22 @@ public static Vector2 SetY(this Vector2 vector, float y)
 `vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
 
 `y` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+#### Returns
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_VectorExtensions_Snapped_System_Numerics_Vector2_System_Single_"></a> Snapped\(Vector2, float\)
+
+```csharp
+public static Vector2 Snapped(this Vector2 vector, float gridSize)
+```
+
+#### Parameters
+
+`vector` [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+`gridSize` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 #### Returns
 

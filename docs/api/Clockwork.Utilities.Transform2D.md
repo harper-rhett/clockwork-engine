@@ -121,6 +121,16 @@ public Matrix3x2 MatrixInverse { get; }
 
  [Matrix3x2](https://learn.microsoft.com/dotnet/api/system.numerics.matrix3x2)
 
+### <a id="Clockwork_Utilities_Transform2D_Position"></a> Position
+
+```csharp
+public Vector2 Position { get; set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="Clockwork_Utilities_Transform2D_Right"></a> Right
 
 ```csharp
@@ -130,6 +140,16 @@ public Vector2 Right { get; }
 #### Property Value
 
  [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
+### <a id="Clockwork_Utilities_Transform2D_Rotation"></a> Rotation
+
+```csharp
+public float Rotation { get; set; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Utilities_Transform2D_Up"></a> Up
 

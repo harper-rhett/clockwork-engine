@@ -15,10 +15,10 @@ public class RectangleShape : Entity, IIntersectsWithPoint, IIntersectsWithCircl
 
 #### Implements
 
-[IIntersectsWithPoint](Clockwork.Shapes.IIntersectsWithPoint.md), 
-[IIntersectsWithCircle](Clockwork.Shapes.IIntersectsWithCircle.md), 
-[IIntersectsWithRectangle](Clockwork.Shapes.IIntersectsWithRectangle.md), 
-[IIntersectsWithLine](Clockwork.Shapes.IIntersectsWithLine.md)
+[IIntersectsWithPoint](Clockwork.Intersections.IIntersectsWithPoint.md), 
+[IIntersectsWithCircle](Clockwork.Intersections.IIntersectsWithCircle.md), 
+[IIntersectsWithRectangle](Clockwork.Intersections.IIntersectsWithRectangle.md), 
+[IIntersectsWithLine](Clockwork.Intersections.IIntersectsWithLine.md)
 
 #### Inherited Members
 
@@ -107,6 +107,16 @@ public int Width
 
 ## Properties
 
+### <a id="Clockwork_Shapes_RectangleShape_Position"></a> Position
+
+```csharp
+public Vector2 Position { get; set; }
+```
+
+#### Property Value
+
+ [Vector2](https://learn.microsoft.com/dotnet/api/system.numerics.vector2)
+
 ### <a id="Clockwork_Shapes_RectangleShape_Rectangle"></a> Rectangle
 
 ```csharp
@@ -116,6 +126,16 @@ public Rectangle Rectangle { get; }
 #### Property Value
 
  [Rectangle](Clockwork.Graphics.Rectangle.md)
+
+### <a id="Clockwork_Shapes_RectangleShape_Rotation"></a> Rotation
+
+```csharp
+public float Rotation { get; set; }
+```
+
+#### Property Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Clockwork_Shapes_RectangleShape_Transform"></a> Transform
 

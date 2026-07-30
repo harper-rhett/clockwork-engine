@@ -136,6 +136,16 @@ public Matrix4x4 MatrixInverse { get; }
 
  [Matrix4x4](https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4)
 
+### <a id="Clockwork_Utilities_Transform3D_Position"></a> Position
+
+```csharp
+public Vector3 Position { get; set; }
+```
+
+#### Property Value
+
+ [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
 ### <a id="Clockwork_Utilities_Transform3D_Right"></a> Right
 
 ```csharp
@@ -145,6 +155,16 @@ public Vector3 Right { get; }
 #### Property Value
 
  [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+### <a id="Clockwork_Utilities_Transform3D_Rotation"></a> Rotation
+
+```csharp
+public Quaternion Rotation { get; set; }
+```
+
+#### Property Value
+
+ [Quaternion](https://learn.microsoft.com/dotnet/api/system.numerics.quaternion)
 
 ### <a id="Clockwork_Utilities_Transform3D_Up"></a> Up
 

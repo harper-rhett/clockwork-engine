@@ -88,19 +88,19 @@ public static extern void DrawBoxWires(Vector3 position, Vector3 size, Color col
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCapsule_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> DrawCapsule\(Vector3, Vector3, float, int, int, Color\)
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCapsule_System_Numerics_Vector3_System_Single_System_Single_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> DrawCapsule\(Vector3, float, float, int, int, Color\)
 
 ```csharp
-public static extern void DrawCapsule(Vector3 startPosition, Vector3 endPosition, float radius, int slices, int rings, Color color)
+public static void DrawCapsule(Vector3 position, float radius, float height, int slices, int rings, Color color)
 ```
 
 #### Parameters
 
-`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
-
-`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+`position` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
 
 `radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`height` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
@@ -108,23 +108,19 @@ public static extern void DrawCapsule(Vector3 startPosition, Vector3 endPosition
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCapsuleWires_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> DrawCapsuleWires\(Vector3, Vector3, float, int, int, Color\)
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCapsule_System_Numerics_Vector3_System_Single_System_Single_Clockwork_Graphics_Color_"></a> DrawCapsule\(Vector3, float, float, Color\)
 
 ```csharp
-public static extern void DrawCapsuleWires(Vector3 startPosition, Vector3 endPosition, float radius, int slices, int rings, Color color)
+public static void DrawCapsule(Vector3 position, float radius, float height, Color color)
 ```
 
 #### Parameters
 
-`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
-
-`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+`position` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
 
 `radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`rings` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`height` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
@@ -180,23 +176,37 @@ public static extern void DrawCylinder(Vector3 position, float radiusTop, float 
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
-### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCylinder_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Single_System_Int32_Clockwork_Graphics_Color_"></a> DrawCylinder\(Vector3, Vector3, float, float, int, Color\)
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCylinder_System_Numerics_Vector3_System_Single_System_Single_System_Int32_Clockwork_Graphics_Color_"></a> DrawCylinder\(Vector3, float, float, int, Color\)
 
 ```csharp
-public static extern void DrawCylinder(Vector3 startPosition, Vector3 endPosition, float startRadius, float endRadius, int sides, Color color)
+public static void DrawCylinder(Vector3 position, float radius, float height, int slices, Color color)
 ```
 
 #### Parameters
 
-`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+`position` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
 
-`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+`radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`startRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`height` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-`endRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+`slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-`sides` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCylinder_System_Numerics_Vector3_System_Single_System_Single_Clockwork_Graphics_Color_"></a> DrawCylinder\(Vector3, float, float, Color\)
+
+```csharp
+public static void DrawCylinder(Vector3 position, float radius, float height, Color color)
+```
+
+#### Parameters
+
+`position` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`height` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
@@ -217,26 +227,6 @@ public static extern void DrawCylinderWires(Vector3 position, float radiusTop, f
 `height` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 `slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`color` [Color](Clockwork.Graphics.Color.md)
-
-### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawCylinderWires_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Single_System_Int32_Clockwork_Graphics_Color_"></a> DrawCylinderWires\(Vector3, Vector3, float, float, int, Color\)
-
-```csharp
-public static extern void DrawCylinderWires(Vector3 startPosition, Vector3 endPosition, float startRadius, float endRadius, int sides, Color color)
-```
-
-#### Parameters
-
-`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
-
-`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
-
-`startRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-`endRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-`sides` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
@@ -263,6 +253,102 @@ public static extern void DrawLine(Vector3 startPosition, Vector3 endPosition, C
 `startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
 
 `endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawLine_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Single_System_Int32_Clockwork_Graphics_Color_"></a> DrawLine\(Vector3, Vector3, float, float, int, Color\)
+
+```csharp
+public static extern void DrawLine(Vector3 startPosition, Vector3 endPosition, float startRadius, float endRadius, int sides, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`startRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`endRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`sides` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawLineRounded_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> DrawLineRounded\(Vector3, Vector3, float, int, int, Color\)
+
+```csharp
+public static extern void DrawLineRounded(Vector3 startPosition, Vector3 endPosition, float radius, int slices, int rings, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`rings` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawLineRounded_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_Clockwork_Graphics_Color_"></a> DrawLineRounded\(Vector3, Vector3, float, Color\)
+
+```csharp
+public static void DrawLineRounded(Vector3 startPosition, Vector3 endPosition, float radius, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawLineRoundedWires_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Int32_System_Int32_Clockwork_Graphics_Color_"></a> DrawLineRoundedWires\(Vector3, Vector3, float, int, int, Color\)
+
+```csharp
+public static extern void DrawLineRoundedWires(Vector3 startPosition, Vector3 endPosition, float radius, int slices, int rings, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`radius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`slices` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`rings` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+`color` [Color](Clockwork.Graphics.Color.md)
+
+### <a id="Clockwork_Graphics_Draw3D_Primitives3D_DrawLineWires_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Single_System_Int32_Clockwork_Graphics_Color_"></a> DrawLineWires\(Vector3, Vector3, float, float, int, Color\)
+
+```csharp
+public static extern void DrawLineWires(Vector3 startPosition, Vector3 endPosition, float startRadius, float endRadius, int sides, Color color)
+```
+
+#### Parameters
+
+`startPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`endPosition` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+`startRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`endRadius` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+`sides` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
 `color` [Color](Clockwork.Graphics.Color.md)
 
