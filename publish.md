@@ -28,13 +28,18 @@
 
 ### a. Ensure clockwork-examples `UseLocalEngine` variable is set to false
 
-### &#x09;b. Push clockwork-examples/development to main
+### b. Push clockwork-examples/development to main
 
 ## 6. Update template
 
-### &#x09;a. Make sure API is up to date
+### a. Make sure API is up to date
 
-### &#x09;b. Export template
+### b. Export template (Project > Export Template)
 
-### &#x09;c. Upload template to GitHub Releases
+### c. Upload template to GitHub Releases
 
+## 7. Update Community
+
+### a. Update GitHub releases
+
+### b. Make announcement on Discord
