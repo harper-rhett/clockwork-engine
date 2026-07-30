@@ -1,6 +1,7 @@
 ﻿using Clockwork.Graphics;
 using Clockwork.Input;
 using System;
+using System.IO;
 using System.Numerics;
 
 namespace Clockwork.UI;
@@ -11,6 +12,7 @@ public class HorizontalSlider : Container
 {
 	public Element Rail { get; private set; }
 	public Button Handle { get; private set; }
+	public TextElement ValueText { get; private set; }
 	public delegate void OnValueChanged(float value);
 	public event OnValueChanged ValueChanged;
 	public bool IsDragging { get; private set; }
@@ -25,6 +27,7 @@ public class HorizontalSlider : Container
 			UpdateHandleY();
 		}
 	}
+	public int ValueTextOffset = 40;
 
 	public HorizontalSlider() : base()
 	{
@@ -45,6 +48,13 @@ public class HorizontalSlider : Container
 		Handle.Released += OnHandleReleased;
 		AddChild(Handle);
 
+		ValueText = new();
+		ValueText.FontSize = 50;
+		ValueText.Visible = false;
+		ValueText.HorizontalAlignment = HorizontalAlignment.Center;
+		ValueText.VerticalAlignment = VerticalAlignment.Center;
+		AddChild(ValueText);
+
 		Height = 100;
 		PaddingTop = 35;
 		PaddingBottom = 35;
@@ -54,9 +64,9 @@ public class HorizontalSlider : Container
 		ForceLayoutUpdate();
 	}
 
-	public override void OnUpdate()
+	public override void OnUpdate(DrawContext drawContext)
 	{
-		base.OnUpdate();
+		base.OnUpdate(drawContext);
 
 		// Cancel if no longer dragging
 		if (!IsDragging) return;
@@ -68,7 +78,17 @@ public class HorizontalSlider : Container
 
 		// Calculate position
 		int handleHalfWidth = Handle.GetHalfWidth();
-		Handle.X = int.Clamp(Mouse.WindowX - handleHalfWidth, X + PaddingLeft - handleHalfWidth, X + Width - PaddingRight - handleHalfWidth);
+		int mouseX = drawContext == DrawContext.Game ? Mouse.GameX : Mouse.WindowX;
+		int valueX = int.Clamp(mouseX, X + PaddingLeft, X + Width - PaddingRight);
+		Handle.X = valueX - handleHalfWidth;
+		int localX = Handle.X - Rail.X + Handle.GetHalfWidth();
+		value = localX / (float)Rail.Width;
+
+		// Position value text
+		ValueText.Text = $"{value:F2}";
+		ValueText.Width = ValueText.TextWidth;
+		ValueText.X = valueX - ValueText.GetHalfWidth();
+		ValueText.Y = Handle.Y - ValueTextOffset;
 	}
 
 	private void UpdateHandleX()
@@ -83,14 +103,14 @@ public class HorizontalSlider : Container
 
 	private void StopDragging()
 	{
+		ValueText.Visible = false;
 		IsDragging = false;
-		int localX = Handle.X - Rail.X + Handle.GetHalfWidth();
-		value = localX / (float)Rail.Width;
 		ValueChanged?.Invoke(value);
 	}
 
 	private void OnHandlePressed()
 	{
+		ValueText.Visible = true;
 		IsDragging = true;
 	}
 

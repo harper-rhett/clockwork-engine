@@ -59,9 +59,9 @@ public class Container : Element
 		OnYUpdated();
 	}
 
-	public override void OnUpdate()
+	public override void OnUpdate(DrawContext drawContext)
 	{
-		base.OnUpdate();
+		base.OnUpdate(drawContext);
 		bool addChildren = childrenToAdd.Count > 0;
 		bool insertChildren = childrenToInsert.Count > 0;
 		bool removeChildren = childrenToRemove.Count > 0;
@@ -92,7 +92,7 @@ public class Container : Element
 			}
 			ForceLayoutUpdate();
 		}
-		foreach (Element child in children) child.OnUpdate();
+		foreach (Element child in children) child.OnUpdate(drawContext);
 	}
 
 	public override void OnDraw()

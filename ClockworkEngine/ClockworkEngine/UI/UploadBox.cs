@@ -39,15 +39,15 @@ public class UploadBox : Button
 
 	}
 
-	public override void OnUpdate()
+	public override void OnUpdate(DrawContext drawContext)
 	{
-		base.OnUpdate();
+		base.OnUpdate(drawContext);
 		if (!Enabled) return;
 
 		if (checkDroppedItems)
 		{
 			string[] itemPaths = Window.ConsumeDroppedItemPaths();
-			if (IsHovering()) Select(itemPaths);
+			if (IsHovering(drawContext)) Select(itemPaths);
 			checkDroppedItems = false;
 		}
 

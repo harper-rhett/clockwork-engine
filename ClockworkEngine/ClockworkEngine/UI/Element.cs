@@ -162,19 +162,19 @@ public class Element
 		DisabledStyle = new(BackgroundColor.SetAlpha(0.5f), BorderColor.SetAlpha(0.5f), BorderThickness);
 	}
 
-	public virtual void OnUpdate()
+	public virtual void OnUpdate(DrawContext drawContext)
 	{
 		if (!enabled) return;
-		UpdateHover();
+		UpdateHover(drawContext);
 		UpdatePressed();
 		UpdateReleased();
 	}
 
-	private void UpdateHover()
+	private void UpdateHover(DrawContext drawContext)
 	{
 		if (HoverEntered is null && HoverExited is null) return;
 
-		bool isHovering = IsHovering();
+		bool isHovering = IsHovering(drawContext);
 		if (!wasHovering && isHovering)
 		{
 			HoverEntered?.Invoke();
@@ -187,14 +187,15 @@ public class Element
 		}
 	}
 
-	protected bool IsHovering()
+	protected bool IsHovering(DrawContext drawContext)
 	{
-		Vector2 mousePosition = Mouse.GamePosition;
+		Vector2 mousePosition = drawContext == DrawContext.Game ? Mouse.GamePosition : Mouse.WindowPosition;
+		
 		bool isHovering = mousePosition.X > x
-		&& mousePosition.X < rightBound
-		&& mousePosition.Y > y
-		&& mousePosition.Y < lowerBound
-		&& Mouse.IsOnScreen;
+			&& mousePosition.X < rightBound
+			&& mousePosition.Y > y
+			&& mousePosition.Y < lowerBound
+			&& Mouse.IsOnScreen;
 		return isHovering;
 	}
 

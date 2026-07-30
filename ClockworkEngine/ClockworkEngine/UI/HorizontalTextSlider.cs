@@ -30,7 +30,7 @@ public class HorizontalTextSlider : AlignmentContainer
 		SetAlignment(TextElement, textAlignment);
 
 		Slider = new();
-		Slider.Width = 400;
+		Slider.Width = 500;
 		AddChild(Slider);
 		Alignment sliderAlignment = new(HorizontalAlignment.Right, VerticalAlignment.Center);
 		SetAlignment(Slider, sliderAlignment);

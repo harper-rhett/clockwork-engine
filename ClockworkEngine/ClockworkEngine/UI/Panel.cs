@@ -86,7 +86,7 @@ public class Panel : Entity, IDisposable
 
 	public override void OnUpdate()
 	{
-		RootElement.OnUpdate();
+		RootElement.OnUpdate(drawContext);
 		renderTexture.BeginDrawing();
 		Drawing.Clear(Colors.Clear);
 		RootElement.OnDraw();
