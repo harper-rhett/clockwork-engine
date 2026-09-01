@@ -4,6 +4,8 @@ using System.Numerics;
 
 namespace Clockwork.UI;
 
+// NOTE: I would like to work TextHandle into this class if possible.
+
 public class TextElement : Element
 {
 	private string text = "[default text]";
